@@ -1,0 +1,9 @@
+1. Fat free crm:
+rake ffcrm:setup
+OR
+rake db:migrate && rake ffcrm:setup:admin USERNAME=cuongtm PASSWORD=cuongtm EMAIL=cuongtm@example.com
+
+2. Running test:
+bundle exec rspec spec/models/entities/account_contact_spec.rb
+OR
+zeus rspec spec/controllers/tasks_controller_spec.rb

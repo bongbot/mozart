@@ -1,0 +1,8 @@
+<h1>Editing Admin Setting</h1>
+
+<%= form_for @admin_setting, url: admin_setting_path(@admin_setting), method: :patch do |f| %>
+    <%= render :partial => 'form' , :locals => {:f => f} %>
+<% end %>
+
+<%= link_to 'Show', admin_setting_path(@admin_setting) %> |
+<%= link_to 'Back', admin_settings_path %>

@@ -1,0 +1,31 @@
+.title Settings
+
+%p{:id => "notice"}
+  = notice
+%h1
+  Listing Admin Settings
+
+%div{:style => "font-size:14px"}
+-@all_setting_groups.each do |setting_group|
+  .card
+    .card-block
+      .card-header
+        .pull-left
+          = setting_group[:name]
+        .pull-right
+          = link_to 'New Setting', new_admin_setting_path(group_type:setting_group[:group_type])
+        .clearfix
+      .card-content
+      -setting_group[:value].each do |admin_setting|
+        .row
+          .col-md-5{:style => "overflow:hidden"}
+            = admin_setting.value
+          .col-md-1
+            = link_to 'Show', admin_setting_path(admin_setting)
+          .col-md-1
+            = link_to 'Edit', edit_admin_setting_path(admin_setting)
+          .col-md-1
+            = link_to 'Destroy', admin_setting_path(admin_setting), method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+

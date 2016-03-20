@@ -1,0 +1,14 @@
+/*Input*/
+input[type=text] {
+    height: auto;
+}
+
+/*Override Bootstrap*/
+.label {
+    color: black;
+    font-size: inherit;
+}
+
+.sidebar {
+    width: auto;
+}

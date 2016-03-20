@@ -1,0 +1,18 @@
+.row{:class=>"main-content"}
+  .col-md-1{:class => "red"}
+    .div
+      %div
+        - tabs.each do |tab|
+          %div
+            = link_to(tab[:url], :class => tab[:active] ? "active" : nil) do
+              %i.fa{class: tab[:icon]}
+              = t(tab[:text])
+  = show_flash
+  .col-md-11
+    %div{ :class => :sidebar, :id => :sidebar, :valign => :top }
+      = render "layouts/sidebar"
+    %table{ :width => "100%", :height => "100%", :cellpadding => 0, :cellspacing => 0, :class => :tabbed }
+      %tr
+        -#todo: deal with sidebar
+        %td{ :class => :main, :id => :main, :valign => :top }
+          = yield
