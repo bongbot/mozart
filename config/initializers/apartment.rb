@@ -4,12 +4,12 @@
 #
 # require 'apartment/elevators/generic'
 # require 'apartment/elevators/domain'
-require 'apartment/elevators/subdomain'
+# require 'apartment/elevators/subdomain'
 
 #
 # Apartment Configuration
 #
-Apartment.configure do |config|
+# Apartment.configure do |config|
 
   # Add any models that you do not want to be multi-tenanted, but remain in the global (public) namespace.
   # A typical example would be a Customer or Tenant model that stores each Tenant's information.
@@ -23,7 +23,7 @@ Apartment.configure do |config|
   # config.tenant_names = lambda{ Customer.pluck(:tenant_name) }
   # config.tenant_names = ['tenant1', 'tenant2']
   #
-  config.tenant_names = lambda { ToDo_Tenant_Or_User_Model.pluck :database }
+  # config.tenant_names = lambda { ToDo_Tenant_Or_User_Model.pluck :database }
 
   #
   # ==> PostgreSQL only options
@@ -55,7 +55,7 @@ Apartment.configure do |config|
   # Uncomment the line below if you want to disable this behaviour in production.
   #
   # config.prepend_environment = !Rails.env.production?
-end
+# end
 
 # Setup a custom Tenant switching middleware. The Proc should return the name of the Tenant that
 # you want to switch to.
@@ -64,4 +64,4 @@ end
 # }
 
 # Rails.application.config.middleware.use 'Apartment::Elevators::Domain'
-Rails.application.config.middleware.use 'Apartment::Elevators::Subdomain'
+# Rails.application.config.middleware.use 'Apartment::Elevators::Subdomain'
