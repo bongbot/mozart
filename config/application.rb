@@ -26,6 +26,19 @@ module FatFreeCRM
 
   class Application < Rails::Application
 
+    # Travis-ci: remove tenant-aparment code for simple testing
+    unless ENV["TRAVIS_CI"] == "true"
+      require 'apartment/elevators/generic' # or 'domain' or 'generic'
+      config.middleware.use 'Apartment::Elevators::Generic', Proc.new {     |request|
+                              if request.host.split(".")    .length > 1
+                                request.host.split(".")[0]
+                              else
+                                config   = Rails.configuration.database_configuration
+                                config[Rails.env]["database"]
+                              end
+                                                           }
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
