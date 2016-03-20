@@ -23,17 +23,8 @@ Bundler.require(*Rails.groups)
 require 'fat_free_crm/gem_ext/rails/engine'
 
 module FatFreeCRM
-  require 'apartment/elevators/generic' # or 'domain' or 'generic'
 
   class Application < Rails::Application
-    config.middleware.use 'Apartment::Elevators::Generic', Proc.new {     |request|
-                            # if request.host.split(".")    .length > 1
-                            #   request.host.split(".")[0]
-                            # else
-                              config   = Rails.configuration.database_configuration
-                              config[Rails.env]["database"]
-                            # end
-                                                         }
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
