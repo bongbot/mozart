@@ -13,8 +13,8 @@
     - else
       = replace_content(@task, @task.bucket)
   MAGNIFY.closeModal();
-  common();
 
 - else # Errors
   $('#magnify-center').effect("shake", { duration:250, distance: 6 });
   $('#buttonbar-submit input[type="submit"]').prop("disabled", false);
+crm.runOnload();

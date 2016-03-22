@@ -1,11 +1,4 @@
 = styles_for :task
-:javascript
-  function common(){
-    $("#trigger-panel-filter").triggerPanel();
-  }
-  $(function(){
-    common();
-  });
 
 - if @view == "completed"
   - buckets = Setting.unroll(:task_completed)

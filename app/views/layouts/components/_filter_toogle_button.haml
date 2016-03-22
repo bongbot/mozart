@@ -1,0 +1,9 @@
+%button#trigger-panel-filter{:class => "btn btn-success", "data-panel-id" => "d-filter-panel", "data-show" => "false" }
+  Filter
+
+:javascript
+  $(function(){
+    window.crm.registerUniqueHook(function(){
+        $("#trigger-panel-filter").triggerPanel();
+      }, "trigger-panel-filter-hook");
+  })

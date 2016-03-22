@@ -3,11 +3,10 @@
     .pull-left
       = render "selector"
     .pull-right
-      %button{:class => "btn btn-success", :id => "trigger-panel-filter", "data-panel-id" => "filter-panel", "data-show" => "false" }
-      Filter
+      = render "layouts/components/filter_toogle_button"
     .clearfix
 
-  .filter-panel{:id => "filter-panel", :class => "hidden-xs-up"}
+  #d-filter-panel{:class => "hidden-xs-up"}
     - if @view == "pending" || @view == "assigned"
       - Setting.unroll(:task_bucket).each do |value, key|
         .check_box{:style => "border-bottom: 1px silver dotted;"}

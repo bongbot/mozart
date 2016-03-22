@@ -1,14 +1,15 @@
 (function($){
-console.log("TTT: " + "Trigger Loaded ");
   $.fn.triggerPanel = function() {
       function init(elem){
-          $(elem).data("show", false);
-          console.log("TTT: " + $(elem).data("panel-id"));
-          $("#" + $(elem).data("panel-id")).addClass("hidden-xs-up");
+          var filterPanel = $("#" + $(elem).data("panel-id"));
+          if(filterPanel.length == 0) {
+              console.log("TTT: " + "You may forgot to add filterPanel with id: " + $(elem).data("panel-id"));
+              return;
+          }
       }
       init(this);
 
-
+      console.log("TTT: " + "Attach:" + $(this).attr("id"));
       $(this).click(function(){
           var panel = $("#" + $(this).data("panel-id"));
           var current = $(this).data("show");
