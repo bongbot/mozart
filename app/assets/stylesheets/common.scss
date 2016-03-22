@@ -22,7 +22,7 @@ $sidebar_width: 210px;
     top: 2px; } }
 
 .title_tools {
-  font-size: 12px;
+  font-size: 14px;
   float: right;
   margin: 0;
   margin-top: 4px;
@@ -113,7 +113,7 @@ $sidebar_width: 210px;
 
 .sidebar {
   color: #3f3f3f;
-  font-size: 11px;
+  font-size: 14px;
   padding: 0px 0px 0px 0px;
 }
 
@@ -124,7 +124,7 @@ $sidebar_width: 210px;
     height: 30px; } }
 
 .tools {
-  font-size: 10px;
+  font-size: 14px;
   float: right;
   padding: 0px 0px 0px 4px;
   &#comment_new_tools {
@@ -511,7 +511,7 @@ $sidebar_width: 210px;
 .selector {
   color: black;
   cursor: pointer;
-  font-size: 10px;
+  font-size: 14px;
   text-align: center; }
 
 .on {
@@ -762,6 +762,14 @@ table.asset_attributes {
     background-color: darkgray;
   }
 }
+
+//modulebar START
+.module-bar{
+  .module-bar-item {
+    padding: 20px 5px 20px 15px;
+  }
+}
+//modulebar END
 
 
 //Footer at bottom

@@ -1,12 +1,6 @@
 .row{:class=>"main-content"}
-  .col-md-1{:class => "red"}
-    .div
-      %div
-        - tabs.each do |tab|
-          %div
-            = link_to(tab[:url], :class => tab[:active] ? "active" : nil) do
-              %i.fa{class: tab[:icon]}
-              = t(tab[:text])
+  .col-md-1{}
+    = render "layouts/modulebar"
   = show_flash
   .col-md-11
     %div{ :class => :sidebar, :id => :sidebar, :valign => :top }

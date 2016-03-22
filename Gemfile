@@ -75,9 +75,7 @@ group :heroku do
 end
 
 gem 'bootstrap', '~> 4.0.0.alpha3'
-source 'https://rails-assets.org' do
-  gem 'rails-assets-tether', '>= 1.1.0'
-end
+gem 'rails-assets-tether', '>= 1.1.0'
 
 gem 'sass-rails', '>= 3.2'
 
@@ -91,3 +89,6 @@ gem 'tzinfo-data'
 
 # Apartment: multi-tenant
 gem 'apartment'
+
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+

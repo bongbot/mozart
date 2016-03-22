@@ -42,5 +42,9 @@ if defined?(FatFreeCRM::Application)
     # Checks for improperly declared sprockets dependencies.
     # Raises helpful error messages.
     config.assets.raise_runtime_errors = true
+
+    # Time zone
+    config.time_zone = "Hanoi"
+    config.active_record.default_timezone = "Hanoi"
   end
 end

@@ -16,6 +16,8 @@
   - buckets = Setting.unroll(:task_bucket)
   = render "title"
 
+.div
+
 .log#tasks
   - buckets.each do |value, key|
     %div{ hidden_if(filtered_out?(@view, key)), :id => "list_#{key}" }

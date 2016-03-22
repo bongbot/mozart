@@ -4,11 +4,6 @@
   - else
     .strip.white #{t :other}
 
-  .tools
-    = link_to_task_edit(pending, bucket) + " | "
-    = link_to_discard(pending) + " | " if shown_on_landing_page?
-    = link_to_task_delete(pending, bucket)
-
   = check_box_tag dom_id(pending, :complete), 1, false, :onclick => link_to_task_complete(pending, bucket)
 
   .indentwide
@@ -50,3 +45,12 @@
     - unless pending.background_info.blank?
       %div
         %dt= h(pending.background_info)
+
+    .tools-next
+      .strip
+        = link_to_task_edit(pending, bucket)
+      - if shown_on_landing_page?
+        .strip{:class => "danger"}
+          = link_to_discard(pending)
+      .strip{:class => "danger"}
+        = link_to_task_delete(pending, bucket)

@@ -4,13 +4,6 @@
   - else
     .strip.white #{t :other}
 
-  .tools
-    - if shown_on_landing_page?
-      = link_to_discard(completed) + (current_user == completed.user ? ' | ' : '')
-    - if can?(:manage, completed)
-      = link_to_task_uncomplete(completed, bucket)  + ' | '
-      = link_to_task_delete(completed, bucket)
-
   .indent
     %strike= auto_link h(completed.name)
     - if completed.asset_id?
@@ -23,3 +16,13 @@
     - unless completed.background_info.blank?
       %div
         %dt= completed.background_info
+    .tools-next
+      - if shown_on_landing_page?
+        .strip{:class => "danger"}
+        = link_to_discard(completed)
+      - if can?(:manage, completed)
+        .strip
+          = link_to_task_uncomplete(completed, bucket)
+        .strip{:class => "danger"}
+          = link_to_task_delete(completed, bucket)
+
