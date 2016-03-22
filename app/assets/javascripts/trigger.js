@@ -1,5 +1,11 @@
 (function($){
   $.fn.triggerPanel = function() {
+      //prevent adding two butto with same id
+      var elementId = $(this).attr("id");
+      if($("[id|='"+ elementId + "']").length > 1){
+          console.log("TTT: W:" + "You may have added two element with same id");
+      }
+
       function init(elem){
           var filterPanel = $("#" + $(elem).data("panel-id"));
           if(filterPanel.length == 0) {
@@ -9,7 +15,9 @@
       }
       init(this);
 
-      console.log("TTT: " + "Attach:" + $(this).attr("id"));
+      console.log("TTT: " + "Attach:" + elementId);
+      $(this).unbind('click');
+
       $(this).click(function(){
           var panel = $("#" + $(this).data("panel-id"));
           var current = $(this).data("show");
