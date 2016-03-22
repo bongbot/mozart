@@ -459,10 +459,6 @@ $sidebar_width: 210px;
   background: snow;
   margin: 0px 0px 12px 0px;
   padding: 6px 8px 6px 8px;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -moz-box-shadow: 2px 2px 8px #bbbbbb, -2px 0px 8px #bbbbbb;
-  -webkit-box-shadow: 2px 2px 8px #bbbbbb, -2px 0px 8px #bbbbbb;
 
   .caption {
     border-bottom: 1px grey solid;
@@ -512,7 +508,9 @@ $sidebar_width: 210px;
   color: black;
   cursor: pointer;
   font-size: 14px;
-  text-align: center; }
+  text-align: center;
+  padding: 5px;
+}
 
 .on {
   background: lightgoldenrodyellow;
@@ -790,4 +788,10 @@ footer {
 
 html, body {
   height: 100%;
+}
+
+
+/* Many class padding and margin here*/
+.b-margin-20 {
+  margin-bottom: 20px;
 }

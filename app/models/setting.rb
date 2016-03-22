@@ -57,7 +57,8 @@ class Setting < ActiveRecord::Base
       if database_and_table_exists?
         eles = where(:name => name.to_s)
         if eles and eles.length > 0
-          if eles.first and eles.first.is_a?(Array)  # array
+          # if setting value is array type, return array instead of element
+          if eles.first and eles.first.is_array
             setting = eles.map{|ele| ele.value}
             return cache[name] = setting
           else
