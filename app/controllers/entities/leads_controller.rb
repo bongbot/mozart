@@ -25,6 +25,12 @@ class LeadsController < EntitiesController
     @comment = Comment.new
     @timeline = timeline(@lead)
 
+    get_campaigns
+
+    if params[:previous].to_s =~ /(\d+)\z/
+      @previous = Lead.my.find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
+    end
+
   end
   # GET /leads/new
   #----------------------------------------------------------------------------
