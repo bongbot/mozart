@@ -16,6 +16,5 @@
   common();
 
 - else # Errors
-  $('##{dom_id(@task)}').effect("shake", { duration:250, distance: 6 });
-  $('#task_name').focus();
-  $('#task_submit').enable();
+  $('#magnify-center').effect("shake", { duration:250, distance: 6 });
+  $('#buttonbar-submit input[type="submit"]').prop("disabled", false);

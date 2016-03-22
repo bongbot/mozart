@@ -44,7 +44,6 @@ if defined?(FatFreeCRM::Application)
     config.assets.raise_runtime_errors = true
 
     # Time zone
-    config.time_zone = "Hanoi"
-    config.active_record.default_timezone = "Hanoi"
+    config.active_record.default_timezone = :local
   end
 end

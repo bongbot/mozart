@@ -33,7 +33,10 @@
     $('##{dom_id(@task)}').effect("highlight", { duration:1500 });
     $('#recently').replaceWith('#{ j render(:partial => "shared/recently") }');
 
+  MAGNIFY.closeModal();
+
 - else # Couldn't create the task -- validation failed.
-  $('#create_task').effect("shake", { duration:250, distance: 6 });
-  $('#task_name').focus();
-  $('#new_task input[type=submit]').enable();
+  $('#magnify-center').effect("shake", { duration:250, distance: 6 });
+  -#$('#task_name').focus();
+  -#$('#new_task input[type=submit]').enable();
+  $('#buttonbar-submit input[type="submit"]').prop("disabled", false);
