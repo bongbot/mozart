@@ -523,4 +523,18 @@ module ApplicationHelper
     options = { renderer: RemoteLinkPaginationHelper::LinkRenderer }.merge(options)
     will_paginate(collection, options)
   end
+
+  #----------------------------------------------------------------------------
+  def render_filter_toggle_button
+    render "layouts/components/filter_toggle_button"
+  end
+
+  def render_filter_toggle_panel(&block)
+    data = "<div id= 'd-filter-panel' class='hidden-xs-up'>"
+    data << if block_given?
+              capture(&block)
+            end
+    data << "</div>"
+    data.html_safe
+  end
 end
