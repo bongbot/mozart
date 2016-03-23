@@ -59,7 +59,11 @@ module FatFreeCRM
     # Find class instances that contain operations for the given view hook.
     #------------------------------------------------------------------------------
     def self.view_responder(method)
-      @@responder[method] ||= @@classes.map(&:instance).select { |instance| instance.class.view_hooks[method] }
+      if Rails.env.development?
+        @@responder[method] = @@classes.map(&:instance).select { |instance| instance.class.view_hooks[method] }
+      else
+        @@responder[method] ||= @@classes.map(&:instance).select { |instance| instance.class.view_hooks[method] }
+      end
     end
     # Invokes the view hook Proc stored under :hook and captures its output.
     # => Instead of defining methods on the class, view hooks are
