@@ -13,7 +13,20 @@ module FatFreeCRM
     # Adds a class inherited from from FatFreeCRM::Callback::Base.
     #--------------------------------------------------------------------------
     def self.add(klass)
-      @@classes << klass
+      if Rails.env.development?
+        exist = ->(_) {_.name == klass.name}
+        if @@classes.any?{exist}
+          Rails.logger.info "TTT:" + "Reload with new class"
+          @@classes = @@classes.reject {exist}
+          @@classes << klass
+        else
+          @@classes << klass
+        end
+      else
+        # No warning in production mode, we expect no abnormal behavior in production
+        @@classes << klass
+      end
+
     end
 
     #                     [Controller] and [Legacy View] Hooks
@@ -22,7 +35,12 @@ module FatFreeCRM
     # Finds class instance that responds to given method.
     #------------------------------------------------------------------------------
     def self.responder(method)
-      @@responder[method] ||= @@classes.map(&:instance).select { |instance| instance.respond_to?(method) }
+      if Rails.env.development?
+        # alway reload hook
+        @@responder[method] = @@classes.map(&:instance).select { |instance| instance.respond_to?(method) }
+      else
+        @@responder[method] ||= @@classes.map(&:instance).select { |instance| instance.respond_to?(method) }
+      end
     end
 
     # Invokes the hook named :method and captures its output.
