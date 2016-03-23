@@ -2,10 +2,10 @@
   .filter_header
     .caption= t :lead_statuses
     .pull-right
-      = render "layouts/components/filter_toogle_button"
+      = render_filter_toggle_button
     .clearfix
 
-  #d-filter-panel{:class => "hidden-xs-up"}
+  = render_filter_toggle_panel do
     - Setting.lead_status.each do |key|
       .check_box{:style => "border-bottom: 1px silver dotted;"}
         %div{:style => "float:right;"}

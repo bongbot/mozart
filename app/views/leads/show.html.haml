@@ -7,7 +7,9 @@
   = styles_for :task
 
   = render 'leads/title_bar', :lead => @lead
-  
+  %div#edit_lead
+    = render(:partial => "edit")
+
   = render "comments/new", :commentable => @lead
   = render :partial => "shared/timeline", :collection => @timeline
 
