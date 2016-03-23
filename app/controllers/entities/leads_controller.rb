@@ -25,6 +25,8 @@ class LeadsController < EntitiesController
     @comment = Comment.new
     @timeline = timeline(@lead)
 
+    Rails.logger.info "TTT:" + @timeline.inspect
+
     get_campaigns
 
     if params[:previous].to_s =~ /(\d+)\z/

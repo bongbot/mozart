@@ -21,12 +21,13 @@ module UsersHelper
     User.by_name
   end
 
-  def user_select(asset, users, myself)
+  def user_select(asset, users, myself, editable=true)
     user_options = user_options_for_select(users, myself)
     select(asset, :assigned_to, user_options,
            { include_blank: t(:unassigned) },
            style:         "width:160px",
-           class: 'select2')
+           class: 'select2 ',
+          disabled: !editable)
   end
 
   def user_options_for_select(users, myself)

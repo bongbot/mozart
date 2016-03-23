@@ -82,7 +82,7 @@ module ApplicationHelper
   end
 
   #----------------------------------------------------------------------------
-  def link_to_inline(id, url, options = {})
+  def link_to_inline(id, url, edit = false, options = {})
     text = options[:text] || t(id, default: id.to_s.titleize)
     text = (arrow_for(id) + text) unless options[:plain]
     related = (options[:related] ? "&related=#{options[:related]}" : '')
@@ -90,7 +90,7 @@ module ApplicationHelper
     link_to(text,
             url + "#{url.include?('?') ? '&' : '?'}cancel=false" + related,
             remote: true,
-            onclick: "this.href = this.href.replace(/cancel=(true|false)/,'cancel='+ ($('##{id}').css('display') != 'none'));",
+            onclick: "this.href = this.href.replace(/cancel=(true|false)/,'cancel=#{edit}');",
             class: options[:class]
     )
   end
@@ -536,5 +536,9 @@ module ApplicationHelper
             end
     data << "</div>"
     data.html_safe
+  end
+
+  def todo
+    "<div class='danger'>todo</div>".html_safe
   end
 end
