@@ -90,8 +90,11 @@ class LeadsController < EntitiesController
       # Must set access before user_ids, because user_ids= method depends on access value.
       @lead.access = resource_params[:access] if resource_params[:access]
       if @lead.update_with_lead_counters(resource_params)
+        Rails.logger.info "TTT:" + "1"
+        @campaigns = Campaign.my.order('name')
         update_sidebar
       else
+        Rails.logger.info "TTT:" + "2"
         @campaigns = Campaign.my.order('name')
       end
     end

@@ -4,7 +4,7 @@
 
 - if @entity.errors.empty?
   - if called_from_landing_page?
-    crm.flip_form('edit_#{entity_name}');
+    $('##{id}').html('#{ j render(:partial => "edit",  :locals => {:edit => false}) }');
     crm.set_title('edit_#{entity_name}', '#{h @entity.full_name}');
     = refresh_sidebar(:show, :summary)
   - else
@@ -18,7 +18,7 @@
       $('#recently').replaceWith('#{ j render(:partial => "shared/recently") }');
 
 - else
-  $('##{id}').html('#{ j render(:partial => "edit") }');
+  $('##{id}').html('#{ j render(:partial => "edit",  :locals => {:edit => true}) }');
   $('##{id}').effect("shake", { duration:250, distance: 6 });
   - if @entity.errors[:first_name].blank? and entity.errors[:last_name].present?
     $('#lead_last_name').focus();

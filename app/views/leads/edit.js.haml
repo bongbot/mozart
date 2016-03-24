@@ -2,13 +2,13 @@
 - @entity = instance_variable_get("@#{entity_name}")
 - id = dom_id(@entity)
 
+
 - if params[:cancel].true? # <--------------------- Hide [Edit]
   crm.set_title('edit_#{entity_name}', '#{h @entity.full_name}');
   $('#edit_#{entity_name}').html('#{ j render(:partial => "edit", :locals => {:edit => false}) }');
 
 - else # <----------------------------------------  Show [Edit] form.
-  - if params[:cancel].false?                    # Called from title of the landing page...
-    $('#edit_#{entity_name}').html('#{ j render(:partial => "edit", :locals => {:edit => true}) }');
-    - unless %w(converted rejected).include? @entity.status
-      crm.hide_form('convert_lead');
-    crm.set_title('edit_#{entity_name}', "#{t :edit} #{h @entity.full_name}");
+  crm.set_title('edit_#{entity_name}', "#{t :edit} #{h @entity.full_name}");
+  $('#edit_#{entity_name}').html('#{ j render(:partial => "edit", :locals => {:edit => true}) }');
+  - unless %w(converted rejected).include? @entity.status
+    crm.hide_form('convert_lead');
