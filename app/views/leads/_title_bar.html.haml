@@ -2,8 +2,8 @@
 #confirm{ hidden }
 .title_tools#menu
   - unless %w(converted rejected).include?(@lead.status)
-    = link_to_inline(:convert_lead, convert_lead_path(@lead), :text => t(:convert)) + " | "
-  = link_to_inline(:edit_lead, edit_lead_path(@lead), :text => t(:edit), :edit => edit) + " | "
+    = link_to_inline(:convert_lead, convert_lead_path(@lead), :text => t(:convert), "data-kind" => "convert") + " | "
+  = link_to_inline(:edit_lead, edit_lead_path(@lead), :text => t(:edit), :edit => edit, "data-kind" => "edit") + " | "
   - if @lead.status != "rejected"
     = link_to_function(t(:reject) + '?', confirm_reject(@lead)) + " | "
   = link_to_function(t(:delete) + '?', confirm_delete(@lead))

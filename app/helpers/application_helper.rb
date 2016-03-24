@@ -86,27 +86,23 @@ module ApplicationHelper
     text = options[:text] || t(id, default: id.to_s.titleize)
     text = (arrow_for(id) + text) unless options[:plain]
     related = (options[:related] ? "&related=#{options[:related]}" : '')
+    data_kind = options["data-kind"] || ""
 
     # todo: terrible javascript
     if options.include?(:edit)
       edit = options[:edit]
-      js = "var edit = this.getAttribute('data-edit') ;
-                    var newEdit = edit === 'true' ? 'false' : 'true'
-                    this.href = this.href.replace(/cancel=(true|false)/,'cancel=' + edit);
-                    this.setAttribute('data-edit', newEdit);"
 
       link_to(text,
               url + "#{url.include?('?') ? '&' : '?'}cancel=false" + related,
               remote: true,
               'data-edit' => edit,
-              onclick: js,
+              "data-kind" => data_kind,
               class: options[:class])
     else
-      edit = false
       link_to(text,
               url + "#{url.include?('?') ? '&' : '?'}cancel=false" + related,
               remote: true,
-              onclick: "this.href = this.href.replace(/cancel=(true|false)/,'cancel=#{edit}');",
+              "data-kind" => data_kind,
               class: options[:class])
     end
   end

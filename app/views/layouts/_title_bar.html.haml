@@ -1,0 +1,47 @@
+- lead ||= {}
+- edit ||= false
+
+- model_name = controller_name.singularize
+- model_klass = model_name.camelcase.constantize
+
+= render :partial => "#{controller_name}/title_bar", :locals => {:lead => @lead, :edit => false}
+
+:javascript
+  var event = crm.event;
+  event.on(EVENT_EDIT_START, function(){
+    console.log('TTT: Edit start');
+  });
+
+  event.on(EVENT_EDIT_OK, function(){
+    console.log('TTT: Edit ok');
+    var editBtn = menu.find("a[data-kind='edit']");
+    updateEditButton(false)
+  });
+
+  event.on(EVENT_EDIT_NG, function(){
+    console.log('TTT: Edit ng');
+  });
+
+  event.on('error', function(){
+    console.log('TTT: AAA');
+    alert("TTT");
+  });
+
+  //edit button
+  function updateEditButton(newEdit){
+        var editBtn = $("#menu a[data-kind='edit']");
+        editBtn.attr('href', editBtn.attr('href').replace(/cancel=(true|false)/,'cancel=' + newEdit));
+        editBtn.attr('data-edit', newEdit);
+  }
+
+  $(function(){
+    var menu = $("#menu");
+    var editBtn = menu.find("a[data-kind='edit']");
+    editBtn.click(function(){
+        setTimeout(function(){
+          var edit = editBtn.attr('data-edit') ;
+          var newEdit = !(edit === 'true');
+          updateEditButton(newEdit);
+        });
+    });
+  });

@@ -16,7 +16,7 @@
       = refresh_sidebar_for(:campaigns, :show, :summary)
     - else
       $('#recently').replaceWith('#{ j render(:partial => "shared/recently") }');
-
+  crm.event.emit(EVENT_EDIT_OK);
 - else
   $('##{id}').html('#{ j render(:partial => "edit",  :locals => {:edit => true}) }');
   $('##{id}').effect("shake", { duration:250, distance: 6 });
@@ -24,6 +24,6 @@
     $('#lead_last_name').focus();
   - else
     $('##{dom_id(@entity, :edit)} input[type!=hidden]').first().focus();
-
+  crm.event.emit(EVENT_EDIT_NG);
 = hook(:entity_update, self, {entity: @entity})
 crm.runOnload();

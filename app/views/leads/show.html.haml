@@ -6,7 +6,7 @@
 
   = styles_for :task
 
-  = render :partial => 'leads/title_bar', :locals => {:lead => @lead, :edit => false}
+  = render :partial => 'layouts/title_bar', :locals => {:lead => @lead, :edit => false}
   %div#edit_lead
     = render(:partial => "edit", :locals => {:edit => false})
 
@@ -20,3 +20,11 @@
     = render :partial => "versions/versions", :locals => {:object => @lead}
 
     = load_select_popups_for(@lead, :tasks)
+  :javascript
+    function say() {
+      console.log("WWW");
+      //var a = "cuong";
+      console.log(a);
+    }
+
+    say.apply(this, []);
