@@ -10,28 +10,31 @@
   var event = crm.event;
   event.on(EVENT_EDIT_START, function(){
     console.log('TTT: Edit start');
+    updateEditButtonCancellable(true);
+  });
+
+  event.on(EVENT_EDIT_CANCEL, function(){
+    console.log('TTT: Edit ng');
+    updateEditButtonCancellable(false);
   });
 
   event.on(EVENT_EDIT_OK, function(){
     console.log('TTT: Edit ok');
-    var editBtn = menu.find("a[data-kind='edit']");
-    updateEditButton(false)
+    updateEditButtonCancellable(false);
   });
 
   event.on(EVENT_EDIT_NG, function(){
     console.log('TTT: Edit ng');
-  });
-
-  event.on('error', function(){
-    console.log('TTT: AAA');
-    alert("TTT");
+    updateEditButtonCancellable(false);
   });
 
   //edit button
-  function updateEditButton(newEdit){
+  function updateEditButtonCancellable(newEdit){
         var editBtn = $("#menu a[data-kind='edit']");
         editBtn.attr('href', editBtn.attr('href').replace(/cancel=(true|false)/,'cancel=' + newEdit));
         editBtn.attr('data-edit', newEdit);
+        var label = newEdit ? 'Cancel' : 'Edit'
+        editBtn.html(label);
   }
 
   $(function(){
@@ -39,9 +42,9 @@
     var editBtn = menu.find("a[data-kind='edit']");
     editBtn.click(function(){
         setTimeout(function(){
-          var edit = editBtn.attr('data-edit') ;
-          var newEdit = !(edit === 'true');
-          updateEditButton(newEdit);
+          //var edit = editBtn.attr('data-edit') ;
+          //var newEdit = !(edit === 'true');
+          //updateEditButtonCancellable(newEdit);
         });
     });
   });

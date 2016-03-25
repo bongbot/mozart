@@ -20,11 +20,3 @@
     = render :partial => "versions/versions", :locals => {:object => @lead}
 
     = load_select_popups_for(@lead, :tasks)
-  :javascript
-    function say() {
-      console.log("WWW");
-      //var a = "cuong";
-      console.log(a);
-    }
-
-    say.apply(this, []);

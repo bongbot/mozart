@@ -4,11 +4,15 @@
 # See MIT-LICENSE file or http://www.opensource.org/licenses/mit-license.php
 #------------------------------------------------------------------------------
 module FieldsHelper
-  def c_show_when_exist(f, name, &block)
-    value = f.object[name]
+  def c_show_when_exist(f, name, edit = false, &block)
     data = ""
-    if(value.present?)
+    if edit
       data << capture(&block)
+    else
+      value = f.object[name]
+      if(value.present?)
+        data << capture(&block)
+      end
     end
     data.html_safe
   end

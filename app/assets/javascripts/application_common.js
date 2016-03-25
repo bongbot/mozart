@@ -26,3 +26,4 @@ crm.event = new EventEmitter();
 var EVENT_EDIT_OK = "editOk"
 var EVENT_EDIT_NG = "editNg"
 var EVENT_EDIT_START = "editStart"
+var EVENT_EDIT_CANCEL = "editCancel"

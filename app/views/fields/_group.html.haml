@@ -1,3 +1,5 @@
+- edit ||= false
+
 - if field_group.name != 'custom_fields'
   -# start a new section
   - collapsed = session[field_group.key].nil?
@@ -6,6 +8,6 @@
     .section
       %small{ hidden_if(!collapsed).merge(:id => "#{field_group.key}_intro") }
       %div[field_group]{ hidden_if(collapsed) }
-        = render :partial => 'fields/group_table', :locals => {:f => f, :field_group => field_group}
+        = render :partial => 'fields/group_table', :locals => {:f => f, :field_group => field_group, :edit => edit}
 - else
-  .section= render :partial => 'fields/group_table', :locals => {:f => f, :field_group => field_group}
+  .section= render :partial => 'fields/group_table', :locals => {:f => f, :field_group => field_group, :edit => edit}

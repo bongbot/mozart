@@ -1,3 +1,4 @@
+- edit ||= false
 - asset = controller_name.singularize
 - field_groups = {}
 
@@ -5,4 +6,4 @@
   - f.object.field_groups.each do |field_group|
     - if field_group.fields.present? and field_group.name != 'custom_fields'
       - field_groups[field_group.tag.name.downcase] = "#{field_group.key}_container" if field_group.tag
-      = render :partial => 'fields/group', :locals => {:f => f, :field_group => field_group}
+      = render :partial => 'fields/group', :locals => {:f => f, :field_group => field_group, :edit => edit}
