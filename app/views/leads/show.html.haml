@@ -1,22 +1,25 @@
-- if (template = template_for_current_view)
-  = render(template, :lead => @lead)
-- else
+-#- edit = @edit || false
+-#
+-#- if (template = template_for_current_view)
+-#  = template
+-#  = render(template, :lead => @lead)
+-#- else
 
-  -# default view
+-# default view
 
-  = styles_for :task
+= styles_for :task
 
-  = render :partial => 'layouts/title_bar', :locals => {:lead => @lead, :edit => false}
-  %div#edit_lead
-    = render(:partial => "edit", :locals => {:edit => false})
+= render :partial => 'layouts/title_bar', :locals => {:lead => @lead, :edit => edit}
+%div#edit_lead
+  = render(:partial => "edit", :locals => {:edit => edit})
 
-  = render "comments/new", :commentable => @lead
-  = render :partial => "shared/timeline", :collection => @timeline
+= render "comments/new", :commentable => @lead
+= render :partial => "shared/timeline", :collection => @timeline
 
-  = hook(:show_lead_bottom, self, {entity: @lead}) do
+= hook(:show_lead_bottom, self, {entity: @lead}) do
 
-    = render :partial => "tasks/tasks", :locals => {:object => @lead}
+  = render :partial => "tasks/tasks", :locals => {:object => @lead}
 
-    = render :partial => "versions/versions", :locals => {:object => @lead}
+  = render :partial => "versions/versions", :locals => {:object => @lead}
 
-    = load_select_popups_for(@lead, :tasks)
+  = load_select_popups_for(@lead, :tasks)
