@@ -1,4 +1,4 @@
--#- edit = @edit || false
+- edit = @edit || false
 -#
 -#- if (template = template_for_current_view)
 -#  = template
@@ -11,7 +11,7 @@
 
 = render :partial => 'layouts/title_bar', :locals => {:lead => @lead, :edit => edit}
 %div#edit_lead
-  = render(:partial => "edit", :locals => {:edit => edit})
+  = render(:partial => "leads/edit", :locals => {:edit => edit})
 
 = render "comments/new", :commentable => @lead
 = render :partial => "shared/timeline", :collection => @timeline

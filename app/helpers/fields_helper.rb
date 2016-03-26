@@ -17,8 +17,12 @@ module FieldsHelper
     data.html_safe
   end
 
-  def c_textfield(f, name, &block)
-    f.object[name]
+  def c_textfield(f, name, edit = false, &block)
+    if edit
+      f.text_field name
+    else
+      f.object[name]
+    end
   end
 
   def c_text_area(f, name, &block)
@@ -28,8 +32,14 @@ module FieldsHelper
     data
   end
 
-  def c_autocomplete_field(f, name, &block)
-    f.object[name]
+  def c_autocomplete_field(f, name, edit=false, options = {}, &block)
+    path = options[:path]
+    if edit
+      f.autocomplete_field :company, path
+    else
+      f.object[name]
+    end
   end
+
 end
 

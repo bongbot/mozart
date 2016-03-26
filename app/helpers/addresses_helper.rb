@@ -14,4 +14,9 @@ module AddressesHelper
   def priority_countries
     Setting[:priority_countries]
   end
+
+  def address_exist?(address)
+    fields = [:street1,:street2,:city,:state,:zipcode,:country]
+    fields.any?{|field| address[field].present?}
+  end
 end

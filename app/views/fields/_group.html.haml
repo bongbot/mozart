@@ -11,3 +11,9 @@
         = render :partial => 'fields/group_table', :locals => {:f => f, :field_group => field_group, :edit => edit}
 - else
   .section= render :partial => 'fields/group_table', :locals => {:f => f, :field_group => field_group, :edit => edit}
+
+:css
+  label.mz{
+    font-weight: bold;
+    margin-right: 10px;
+  }

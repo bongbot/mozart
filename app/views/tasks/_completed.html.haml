@@ -18,11 +18,11 @@
         %dt= completed.background_info
     .tools-next
       - if shown_on_landing_page?
-        .strip{:class => "danger"}
+        .strip.danger
         = link_to_discard(completed)
       - if can?(:manage, completed)
         .strip
           = link_to_task_uncomplete(completed, bucket)
-        .strip{:class => "danger"}
+        .strip.danger
           = link_to_task_delete(completed, bucket)
 

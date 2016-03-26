@@ -1,71 +1,38 @@
 - edit ||= false
+
 - collapsed = session[:lead_contact].nil? # && @lead.errors.empty?
 = subtitle :lead_contact, collapsed, t(:contact_info)
-- if edit
-  .section
-    %small#lead_contact_intro{ hidden_if(!collapsed) }
-      = t(:intro, t(:lead_info_small)) unless edit
-    #lead_contact{ hidden_if(collapsed) }
-      %table
-        %tr
-          %td
-            .label.top #{t :job_title}:
-            = f.text_field :title
-          %td= spacer
-          %td
-            .label.top #{t :company}:
-            = f.autocomplete_field :company, autocomplete_account_name_leads_path
-        %tr
-          %td
-            .label #{t :alt_email}:
-            = f.text_field :alt_email
-          %td= spacer
-          %td
-            .label #{t :mobile}:
-            = f.text_field :mobile
-        %tr
-          %td
-            = render "shared/address", :f => f, :asset => @lead, :type => 'business', :title => :address
-          %td= spacer
-          %td
-            .label #{t :referred_by}:
-            = f.text_field :referred_by
-            %div{:style => "margin-top:6px"}
-              .check_box
-                = f.check_box :do_not_call, {}, true
-                #{t :do_not_call}
-- else
-  .section
-    %small#lead_contact_intro{ hidden_if(!collapsed) }
-      = t(:intro, t(:lead_info_small)) unless !edit
-    #lead_contact{ hidden_if(collapsed) }
-      .row
-        = c_show_when_exist(f, :job_title) do
-          .col-md-3
-            .label.top #{t :job_title}:
-            = c_textfield(f, :title)
-        = c_show_when_exist(f, :company) do
-          .col-md-3
-            .label.top #{t :company}:
-            = c_autocomplete_field(f, :company)
-      .row
-        = c_show_when_exist(f, :alt_email) do
-          .col-md-3
-            .label #{t :alt_email}:
-            = c_textfield(f, :alt_email)
-        = c_show_when_exist(f, :mobile) do
-          .col-md-3
-            .label #{t :mobile}:
-            = c_textfield(f, :mobile)
-      .row
-        -#todo: check for address exist or not
+
+.section
+  %small#lead_contact_intro{ hidden_if(!collapsed) }
+    = t(:intro, t(:lead_info_small)) unless !edit
+  #lead_contact{ hidden_if(collapsed) }
+    .row
+      = c_show_when_exist(f, :title, edit) do
         .col-md-3
-          = render "shared/address", :f => f, :asset => @lead, :type => 'business', :title => :address
-        = c_show_when_exist(f, :referred_by) do
-          .col-md-3
-            .label #{t :referred_by}:
-            = c_textfield(f, :referred_by)
-            %div{:style => "margin-top:6px"}
-              .check_box
-                = f.check_box :do_not_call, {}, true
-                #{t :do_not_call}
+          .label.top #{t :job_title}:
+          = c_textfield(f, :title, edit)
+      = c_show_when_exist(f, :company, edit) do
+        .col-md-3
+          .label.top #{t :company}:
+          = c_autocomplete_field(f, :company, edit, {:path => autocomplete_account_name_leads_path})
+    .row
+      = c_show_when_exist(f, :alt_email, edit) do
+        .col-md-3
+          .label #{t :alt_email}:
+          = c_textfield(f, :alt_email, edit)
+      = c_show_when_exist(f, :mobile, edit) do
+        .col-md-3
+          .label #{t :mobile}:
+          = c_textfield(f, :mobile, edit)
+    .row
+      .col-md-3
+        = render "shared/address", :f => f, :asset => @lead, :type => 'business', :title => :address, :edit => edit
+      = c_show_when_exist(f, :referred_by, edit) do
+        .col-md-3
+          .label.label-block #{t :referred_by}:
+          = c_textfield(f, :referred_by, edit)
+          %div{:style => "margin-top:6px"}
+            .check_box
+              = f.check_box :do_not_call, {:disabled => !edit}, true
+              #{t :do_not_call}

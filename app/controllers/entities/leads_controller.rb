@@ -7,6 +7,8 @@ class LeadsController < EntitiesController
   before_action :get_data_for_sidebar, only: :index
   autocomplete :account, :name, full: true
 
+  respond_to :html, :json
+
   # GET /leads
   #----------------------------------------------------------------------------
   def index
@@ -24,8 +26,6 @@ class LeadsController < EntitiesController
   def show
     @comment = Comment.new
     @timeline = timeline(@lead)
-
-    Rails.logger.info "TTT:" + @timeline.inspect
 
     get_campaigns
 
@@ -49,7 +49,6 @@ class LeadsController < EntitiesController
       end
     end
 
-    respond_with(@lead)
   end
 
   # GET /leads/1/edit                                                      AJAX
@@ -61,7 +60,16 @@ class LeadsController < EntitiesController
       @previous = Lead.my.find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
 
-    respond_with(@lead)
+    respond_with(@lead) do |format|
+      format.html {
+        Rails.logger.info "TTT:" + "GET FULLPAGE"
+        @edit = true
+        @comment = Comment.new
+        @timeline = timeline(@lead)
+        render "show"
+      }
+    end
+
   end
 
   # POST /leads
@@ -90,11 +98,9 @@ class LeadsController < EntitiesController
       # Must set access before user_ids, because user_ids= method depends on access value.
       @lead.access = resource_params[:access] if resource_params[:access]
       if @lead.update_with_lead_counters(resource_params)
-        Rails.logger.info "TTT:" + "1"
         @campaigns = Campaign.my.order('name')
         update_sidebar
       else
-        Rails.logger.info "TTT:" + "2"
         @campaigns = Campaign.my.order('name')
       end
     end

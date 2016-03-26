@@ -343,18 +343,17 @@ module ApplicationHelper
 
   # Render a text field that is part of compound address.
   #----------------------------------------------------------------------------
-  def address_field(form, object, attribute, extra_styles)
+  def address_field(form, object, attribute, extra_styles, edit = false)
     hint = "#{t(attribute)}..."
-    if object.send(attribute).blank?
+    if edit
       form.text_field(attribute,
                       style:   "margin-top: 6px; #{extra_styles}",
                       placeholder: hint
       )
     else
-      form.text_field(attribute,
-                      style:   "margin-top: 6px; #{extra_styles}",
-                      placeholder: hint
-      )
+      if object.send(attribute).present?
+        object.send(attribute)
+      end
     end
   end
 
@@ -553,17 +552,23 @@ module ApplicationHelper
   def todo
     "<div class='danger'>todo</div>".html_safe
   end
+
+  def is_new?(model)
+    not (model and model.id.present?)
+  end
 end
 
-module SimpleForm
-  class FormBuilder
-    def input_mz(attribute_name, options = {}, &block)
-      edit = options[:edit] || false
-      if edit
-        self.input(attribute_name, options = {}, &block)
-      else
-        self[field.name]
-      end
+
+
+class MzInput < SimpleForm::Inputs::Base
+  def input(wrapper_options)
+    merged_input_options = merge_wrapper_options(input_html_options, wrapper_options)
+    edit = merged_input_options[:edit] || false
+    if edit
+      "#{@builder.text_field(attribute_name, merged_input_options)}".html_safe
+    else
+      data = object.send("#{attribute_name}")
+      data ? data.html_safe : ""
     end
   end
 end
