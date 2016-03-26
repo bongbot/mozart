@@ -1,4 +1,5 @@
 - edit ||= false
+
 - collapsed = session[:campaign_objectives].nil? # && @campaign.errors.empty?
 = subtitle :campaign_objectives, collapsed, t(:objectives)
 .section
@@ -7,24 +8,26 @@
   #campaign_objectives{ hidden_if(collapsed) }
     %small
       #{t :objectives_help}
-    %table
-      %tr
-        %td
-          .label #{t :number_of_leads}:
-          = f.text_field :target_leads, :style => "width:110px; text-align:right;"
-        %td= spacer
-        %td
-          .label #{t :conversion_label}:
-          = f.text_field :target_conversion, :style => "width:110px; text-align:right;"
-        %td= spacer
-        %td
-          .label #{t :revenue_label}:
-          = f.text_field :target_revenue, :value => @campaign.target_revenue ? @campaign.target_revenue.to_i : "", :style => "width:110px; text-align:right;"
-        %td= spacer
-        %td
-          .label #{t :budget_label}:
-          = f.text_field :budget, :value => @campaign.budget ? @campaign.budget.to_i : "", :style => "width:110px; text-align:right;"
-      %tr
-        %td{ :colspan => 7 }
-          .label #{t :objectives}:
-          = f.text_area :objectives, :style => "width:500px", :rows => 2
+
+    .row
+      = c_show_when_exist(f, :target_leads, edit) do
+        .col-md-2
+          .label.label-block #{t :number_of_leads}:
+          = c_textfield(f, :target_leads, edit, :style => "width:110px; text-align:right;")
+      = c_show_when_exist(f, :target_conversion, edit) do
+        .col-md-2
+          .label.label-block #{t :conversion_label}:
+          = c_textfield(f, :target_conversion, edit, :style => "width:110px; text-align:right;")
+      = c_show_when_exist(f, :target_revenue, edit) do
+        .col-md-2
+          .label.label-block #{t :revenue_label}:
+          = c_textfield(f, :target_revenue, edit, :value => @campaign.target_revenue ? @campaign.target_revenue.to_i : "", :style => "width:110px; text-align:right;")
+      = c_show_when_exist(f, :budget, edit) do
+        .col-md-2
+          .label.label-block #{t :budget_label}:
+          = c_textfield(f, :budget, edit, :value => @campaign.budget ? @campaign.budget.to_i : "", :style => "width:110px; text-align:right;")
+    .row
+      = c_show_when_exist(f, :objectives, edit) do
+        .col-md-2{ :colspan => 7 }
+          .label.label-block #{t :objectives}:
+          = c_text_area(f, :objectives, :style => "width:500px", :rows => 2)

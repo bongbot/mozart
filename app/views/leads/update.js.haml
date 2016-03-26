@@ -26,4 +26,5 @@
     $('##{dom_id(@entity, :edit)} input[type!=hidden]').first().focus();
   crm.event.emit(EVENT_EDIT_NG);
 = hook(:entity_update, self, {entity: @entity})
+
 crm.runOnload();

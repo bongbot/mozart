@@ -1,66 +1,66 @@
 - edit ||= false
 
-- if edit
-  = hook(:lead_top_section, self, :f => f) do
-    .section
-      .row
+-#- if edit
+-#  = hook(:lead_top_section, self, :f => f) do
+-#    .section
+-#      .row
+-#        .col-md-3
+-#          .label.top{ :class => "#{Setting.require_first_names ? 'req' : nil}" } #{t :first_name}:
+-#          = f.text_field :first_name, :autofocus => true
+-#        -#%div = spacer
+-#        .col-md-3
+-#          .label.top{ :class => "#{Setting.require_last_names ? 'req' : nil}" } #{t :last_name}:
+-#          = f.text_field :last_name
+-#      .row
+-#        .col-md-3
+-#          .label #{t :email}:
+-#          = f.text_field :email
+-#        -#%div = spacer
+-#        .col-md-3
+-#          .label #{t :phone}:
+-#          = f.text_field :phone
+-#
+-#      - if Setting.background_info && Setting.background_info.include?(:lead)
+-#        .row
+-#          %div
+-#            .label= t(:background_info) << ':'
+-#            = f.text_area :background_info, :style =>"width:500px", :rows => 3
+-#      .row
+-#        = render :partial => "/shared/tags", :locals => {:f => f, :span => 3, :edit => edit}
+-#
+-#      = hook(:lead_top_section_bottom, self, :f => f)
+-#      .clearfix
+-#- else
+= hook(:lead_top_section, self, :f => f) do
+  .section
+    .row
+      = c_show_when_exist(f, :first_name, edit) do
         .col-md-3
           .label.top{ :class => "#{Setting.require_first_names ? 'req' : nil}" } #{t :first_name}:
-          = f.text_field :first_name, :autofocus => true
-        -#%div = spacer
+          =  c_textfield(f, :first_name, edit)
+      = c_show_when_exist(f, :last_name, edit) do
         .col-md-3
           .label.top{ :class => "#{Setting.require_last_names ? 'req' : nil}" } #{t :last_name}:
-          = f.text_field :last_name
-      .row
+          = c_textfield(f, :last_name, edit)
+    .row
+      = c_show_when_exist(f, :email, edit) do
         .col-md-3
           .label #{t :email}:
-          = f.text_field :email
-        -#%div = spacer
+          = c_textfield(f, :email, edit)
+      -#%div = spacer
+      = c_show_when_exist(f, :phone, edit) do
         .col-md-3
           .label #{t :phone}:
-          = f.text_field :phone
+          = c_textfield(f, :phone, edit)
 
-      - if Setting.background_info && Setting.background_info.include?(:lead)
-        .row
-          %div
+    - if Setting.background_info && Setting.background_info.include?(:lead)
+      .row
+        %div
+          = c_show_when_exist(f, :background_info, edit) do
             .label= t(:background_info) << ':'
-            = f.text_area :background_info, :style =>"width:500px", :rows => 3
-      .row
-        = render :partial => "/shared/tags", :locals => {:f => f, :span => 3, :edit => edit}
+            = c_text_area(f, :background_info)
+    .row
+      = render :partial => "/shared/tags", :locals => {:f => f, :edit => edit}
 
-      = hook(:lead_top_section_bottom, self, :f => f)
-      .clearfix
-- else
-  = hook(:lead_top_section, self, :f => f) do
-    .section
-      .row
-        = c_show_when_exist(f, :first_name) do
-          .col-md-3
-            .label.top{ :class => "#{Setting.require_first_names ? 'req' : nil}" } #{t :first_name}:
-            =  c_textfield(f, :first_name)
-        = c_show_when_exist(f, :last_name) do
-          .col-md-3
-            .label.top{ :class => "#{Setting.require_last_names ? 'req' : nil}" } #{t :last_name}:
-            = c_textfield(f, :last_name)
-      .row
-        = c_show_when_exist(f, :email) do
-          .col-md-3
-            .label #{t :email}:
-            = c_textfield(f, :email)
-        -#%div = spacer
-        = c_show_when_exist(f, :phone) do
-          .col-md-3
-            .label #{t :phone}:
-            = c_textfield(f, :phone)
-
-      - if Setting.background_info && Setting.background_info.include?(:lead)
-        .row
-          %div
-            = c_show_when_exist(f, :background_info) do
-              .label= t(:background_info) << ':'
-              = c_text_area(f, :background_info)
-      .row
-        = render :partial => "/shared/tags", :locals => {:f => f, :edit => edit}
-
-      = hook(:lead_top_section_bottom, self, :f => f)
-      .clearfix
+    = hook(:lead_top_section_bottom, self, :f => f)
+    .clearfix

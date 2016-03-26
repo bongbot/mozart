@@ -7,8 +7,6 @@ class LeadsController < EntitiesController
   before_action :get_data_for_sidebar, only: :index
   autocomplete :account, :name, full: true
 
-  respond_to :html, :json
-
   # GET /leads
   #----------------------------------------------------------------------------
   def index
@@ -49,6 +47,8 @@ class LeadsController < EntitiesController
       end
     end
 
+    render "show"
+
   end
 
   # GET /leads/1/edit                                                      AJAX
@@ -62,7 +62,6 @@ class LeadsController < EntitiesController
 
     respond_with(@lead) do |format|
       format.html {
-        Rails.logger.info "TTT:" + "GET FULLPAGE"
         @edit = true
         @comment = Comment.new
         @timeline = timeline(@lead)

@@ -1,13 +1,21 @@
-- if (template = template_for_current_view)
-  = render(template, :campaign => @campaign)
+- is_new = is_new?(@campaign)
+- edit = is_new || @edit
+
+-#- if (template = template_for_current_view)
+-#  = render(template, :campaign => @campaign)
+-#- else
+
+-# default view
+
+= styles_for :task, :lead, :opportunity
+
+= render :partial => 'layouts/title_bar', :locals => {:model => @campaign, :edit => edit}
+- if is_new
+  = render(:partial => "campaigns/new", :locals => {:edit => edit})
 - else
+  = render(:partial => "campaigns/edit", :locals => {:edit => edit})
 
-  -# default view
-
-  = styles_for :task, :lead, :opportunity
-
-  = render 'campaigns/title_bar', :campaign => @campaign
-
+- if not is_new
   = render "comments/new", :commentable => @campaign
   = render :partial => "shared/timeline", :collection => @timeline
 

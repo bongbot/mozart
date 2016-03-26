@@ -1,8 +1,0 @@
-= styles_for :task
-
-= render :partial => 'layouts/title_bar', :locals => {:lead => @lead, :edit => true}
-%div#edit_lead
-  = render(:partial => "leads/edit", :locals => {:edit => true})
-
-= render "comments/new", :commentable => @lead
-

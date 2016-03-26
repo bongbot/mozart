@@ -1,4 +1,5 @@
-- edit = @edit || false
+- is_new = is_new?(@lead)
+- edit = is_new || @edit
 -#
 -#- if (template = template_for_current_view)
 -#  = template
@@ -7,19 +8,22 @@
 
 -# default view
 
-= styles_for :task
+= styles_for :lead
 
-= render :partial => 'layouts/title_bar', :locals => {:lead => @lead, :edit => edit}
-%div#edit_lead
+= render :partial => 'layouts/title_bar', :locals => {:model => @lead, :edit => edit}
+- if is_new
+  = render(:partial => "leads/new", :locals => {:edit => edit})
+- else
   = render(:partial => "leads/edit", :locals => {:edit => edit})
 
-= render "comments/new", :commentable => @lead
-= render :partial => "shared/timeline", :collection => @timeline
+- if not is_new
+  = render "comments/new", :commentable => @lead
+  = render :partial => "shared/timeline", :collection => @timeline
 
-= hook(:show_lead_bottom, self, {entity: @lead}) do
+  = hook(:show_lead_bottom, self, {entity: @lead}) do
 
-  = render :partial => "tasks/tasks", :locals => {:object => @lead}
+    = render :partial => "tasks/tasks", :locals => {:object => @lead}
 
-  = render :partial => "versions/versions", :locals => {:object => @lead}
+    = render :partial => "versions/versions", :locals => {:object => @lead}
 
-  = load_select_popups_for(@lead, :tasks)
+    = load_select_popups_for(@lead, :tasks)

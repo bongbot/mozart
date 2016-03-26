@@ -1,0 +1,8 @@
+- campaign ||= {}
+
+.tools-next
+  - if can?(:update, campaign)
+    .strip= link_to(t(:edit), edit_path(campaign))
+
+  - if can?(:destroy, campaign)
+    .strip.danger= link_to_delete(campaign)

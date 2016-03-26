@@ -1,10 +1,10 @@
-- lead ||= {}
 - edit ||= false
+- model ||= {}
 
 - model_name = controller_name.singularize
 - model_klass = model_name.camelcase.constantize
 
-= render :partial => "#{controller_name}/title_bar", :locals => {:lead => @lead, :edit => false}
+= render :partial => "#{controller_name}/title_bar", :locals => {:model => model, :edit => true, :name => "cuong"}
 
 :javascript
   var event = crm.event;

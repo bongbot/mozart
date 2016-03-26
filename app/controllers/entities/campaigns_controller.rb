@@ -75,8 +75,7 @@ class CampaignsController < EntitiesController
         respond_to_related_not_found(model) && return
       end
     end
-
-    respond_with(@campaign)
+    render "show"
   end
 
   # GET /campaigns/1/edit                                                  AJAX
@@ -86,7 +85,15 @@ class CampaignsController < EntitiesController
       @previous = Campaign.my.find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
 
-    respond_with(@campaign)
+    respond_with(@lead) do |format|
+      format.html {
+        @edit = true
+        @comment = Comment.new
+        @timeline = timeline(@campaign)
+        render "show"
+      }
+    end
+
   end
 
   # POST /campaigns

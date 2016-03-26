@@ -1,11 +1,19 @@
-#confirm{ hidden }
-.title_tools#menu
-  = link_to_inline(:edit_campaign, edit_campaign_path(@campaign), :text => t(:edit)) + " | "
-  = link_to_function(t(:delete) + '?', confirm_delete(@campaign))
-.title_tools#buttons
-  = view_buttons
-.title#edit_campaign_title
-  = h(@campaign.name)
-  = image_tag("loading.gif", :size => :thumb, :id => "loading", :style => "display: none;")
+- edit ||= false
 
-%div#edit_campaign{ hidden }
+- model ||= {}
+- campaign = model
+
+- if is_new?(campaign)
+  .title_tools#menu
+  .title#title
+    = t :create_campaign
+- else
+  #confirm{ hidden }
+  .title_tools#menu
+    = link_to_inline(:edit_campaign, edit_campaign_path(campaign), :text => t(:edit), :edit => edit, "data-kind" => "edit") + " | "
+    = link_to_function(t(:delete) + '?', confirm_delete(campaign))
+  .title_tools#buttons
+    = view_buttons
+  .title#edit_campaign_title
+    = h(campaign.name)
+    = image_tag("loading.gif", :size => :thumb, :id => "loading", :style => "display: none;")

@@ -554,8 +554,14 @@ module ApplicationHelper
   end
 
   def is_new?(model)
-    not (model and model.id.present?)
+    (not model) or model.id.blank?
   end
+
+  def edit_path(model)
+    model_underscore = model.class.name.to_s.underscore
+    send("edit_#{model_underscore}_path", model)
+  end
+
 end
 
 

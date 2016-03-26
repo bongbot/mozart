@@ -1,29 +1,34 @@
+- edit ||= false
+- disabled = !edit
+
 = hook(:campaign_top_section, self, :f => f) do
   .section
-    %table
-      %tr
-        %td(colspan="5")
+    .row
+      = c_show_when_exist(f, :name, edit) do
+        .col-md-3
           .label.top.req #{t :name}:
-          = f.text_field :name, :autofocus => true, :style => "width:500px"
-      %tr
-        %td
-          .label #{t :start_date}:
-          = f.text_field :starts_on, :value => f.object.starts_on, :style => "width:110px", :autocomplete => :off, :class => 'date'
-        %td= spacer
-        %td
-          .label #{t :end_date}:
-          = f.text_field :ends_on, :value => f.object.ends_on, :style => "width:110px", :autocomplete => :off, :class => 'date'
-        %td= spacer
-        %td
-          .label #{t :status}:
-          = f.select :status, Setting.unroll(:campaign_status), { :selected => (@campaign.status || "planned").to_sym }, { :style => "width:250px" }
+          = c_textfield(f, :name, edit, :autofocus => true, :style => "width:500px")
+    .row
+      = c_show_when_exist(f, :start_date, edit) do
+        .col-md-2
+          .label.label-block #{t :start_date}:
+          = c_textfield(f, :starts_on, edit, :value => f.object.starts_on, :style => "width:110px", :autocomplete => :off, :class => 'date')
+      = c_show_when_exist(f, :end_date, edit) do
+        .col-md-2
+          .label.label-block #{t :end_date}:
+          = c_textfield(f, :ends_on, edit, :value => f.object.ends_on, :style => "width:110px", :autocomplete => :off, :class => 'date')
+      = c_show_when_exist(f, :status, edit) do
+        .col-md-2
+          .label.label-block #{t :status}:
+          = f.select :status, Setting.unroll(:campaign_status), { :selected => (@campaign.status || "planned").to_sym }, { :style => "width:250px", :disabled => disabled}
 
-      - if Setting.background_info && Setting.background_info.include?(:campaign)
-        %tr
-          %td(colspan="5")
+    - if Setting.background_info && Setting.background_info.include?(:campaign)
+      .row
+        = c_show_when_exist(f, :background_info, edit) do
+          .col-md-3
             .label= t(:background_info) << ':'
-            = f.text_area :background_info, :style =>"width:500px", :rows => 3
+            = c_text_area(f, :background_info, edit, :style =>"width:500px", :rows => 3)
 
-      = render :partial => "/shared/tags", :locals => {:f => f, :span => 5}
+    = render :partial => "/shared/tags", :locals => {:f => f, :span => 5}
 
-      = hook(:campaign_top_section_bottom, self, :f => f)
+    = hook(:campaign_top_section_bottom, self, :f => f)

@@ -17,18 +17,23 @@ module FieldsHelper
     data.html_safe
   end
 
-  def c_textfield(f, name, edit = false, &block)
+  def c_textfield(f, name, edit = false, options ={}, &block)
     if edit
-      f.text_field name
+      f.text_field name, options
     else
+      # if have value parameter
       f.object[name]
     end
   end
 
-  def c_text_area(f, name, &block)
+  def c_text_area(f, name, edit = false, options ={},&block)
     value = f.object[name]
     data = ""
-    data << content_tag("p", value)
+    if edit
+      f.text_area name, options
+    else
+      data << content_tag("p", value)
+    end
     data
   end
 
