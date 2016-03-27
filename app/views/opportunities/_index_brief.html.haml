@@ -4,16 +4,6 @@
   - else
     .strip.white #{t :other}
 
-  %ul.tools
-    - if can?(:update, opportunity)
-      %li= link_to_edit(opportunity)
-
-    - if shown_on_landing_page?
-      %li= link_to_discard(opportunity)
-
-    - if can?(:destroy, opportunity)
-      %li= link_to_delete(opportunity)
-
   .indent
     = link_to_if can?(:read, opportunity), opportunity.name, opportunity
     - if (account = opportunity.account) && account.id
@@ -25,5 +15,7 @@
         = t(:added_by, :time_ago => timeago(opportunity.created_at), :user => h(user_name)).html_safe
       - else
         = t(:added_ago, :value => timeago(opportunity.created_at)).html_safe
+
+    = render "opportunities/index_tool_buttons", :opportunity => opportunity
 
     = hook(:opportunity_bottom, self, :opportunity => opportunity)

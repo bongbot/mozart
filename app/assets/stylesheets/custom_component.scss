@@ -55,3 +55,13 @@
 .errorExplanation p {
   margin-top: inherit;
 }
+
+//Overide for ransack-ui
+.span12 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+  float: left;
+  width: 100%;
+}

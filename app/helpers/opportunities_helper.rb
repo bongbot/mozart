@@ -34,13 +34,21 @@ module OpportunitiesHelper
   # and prepends the currently selected campaign, if any.
   #----------------------------------------------------------------------------
   def opportunity_campaign_select(options = {})
-    options[:selected] ||= @opportunity.campaign_id || 0
-    selected_campaign = Campaign.find_by_id(options[:selected])
-    campaigns = ([selected_campaign] + Campaign.my.order(:name).limit(25)).compact.uniq
-    collection_select :opportunity, :campaign_id, campaigns, :id, :name, options,
-                      :"data-placeholder" => t(:select_a_campaign),
-                      :"data-url" => auto_complete_campaigns_path(format: 'json'),
-                      style: "width:330px; display:none;",
-                      class: 'ajax_chosen'
+    edit = options[:edit] || false
+
+    if edit
+      options[:selected] ||= @opportunity.campaign_id || 0
+      selected_campaign = Campaign.find_by_id(options[:selected])
+      campaigns = ([selected_campaign] + Campaign.my.order(:name).limit(25)).compact.uniq
+      collection_select :opportunity, :campaign_id, campaigns, :id, :name, options,
+                        :"data-placeholder" => t(:select_a_campaign),
+                        :"data-url" => auto_complete_campaigns_path(format: 'json'),
+                        style: "width:330px; display:none;",
+                        class: 'ajax_chosen'
+    else
+      options[:selected] ||= @opportunity.campaign_id || 0
+      selected_campaign = Campaign.find_by_id(options[:selected])
+      selected_campaign ? selected_campaign.name : ""
+    end
   end
 end

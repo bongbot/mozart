@@ -23,6 +23,8 @@ class OpportunitiesController < EntitiesController
   # AJAX /opportunities/1
   #----------------------------------------------------------------------------
   def show
+    @account  = @opportunity.account || Account.new(user: current_user)
+
     @comment = Comment.new
     @timeline = timeline(@opportunity)
     respond_with(@opportunity)
@@ -46,7 +48,7 @@ class OpportunitiesController < EntitiesController
       end
     end
 
-    respond_with(@opportunity)
+    render "show"
   end
 
   # GET /opportunities/1/edit                                              AJAX
@@ -98,21 +100,19 @@ class OpportunitiesController < EntitiesController
   #----------------------------------------------------------------------------
   def update
     respond_with(@opportunity) do |_format|
-      if @opportunity.update_with_account_and_permissions(params.permit!)
-        if called_from_index_page?
-          get_data_for_sidebar
-        elsif called_from_landing_page?(:accounts)
-          get_data_for_sidebar(:account)
-        elsif called_from_landing_page?(:campaigns)
-          get_data_for_sidebar(:campaign)
-        end
+      @opportunity.update_with_account_and_permissions(params.permit!)
+        # if called_from_index_page?
+        #   get_data_for_sidebar
+        # elsif called_from_landing_page?(:accounts)
+        #   get_data_for_sidebar(:account)
+        # elsif called_from_landing_page?(:campaigns)
+        #   get_data_for_sidebar(:campaign)
+        # end
+      @accounts = Account.my.order('name')
+      if @opportunity.account
+        @account = Account.find(@opportunity.account.id)
       else
-        @accounts = Account.my.order('name')
-        if @opportunity.account
-          @account = Account.find(@opportunity.account.id)
-        else
-          @account = Account.new(user: current_user)
-        end
+        @account = Account.new(user: current_user)
       end
     end
   end

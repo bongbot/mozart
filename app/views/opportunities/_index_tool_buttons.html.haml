@@ -1,0 +1,13 @@
+- opportunity ||= {}
+
+.tools-next
+  = hook(:opportunity_tools_before, self, :opportunity => opportunity)
+
+  - if can?(:update, opportunity)
+    .strip= link_to(t(:edit), edit_path(opportunity))
+
+  - if shown_on_landing_page?
+    .strip.danger= link_to_discard(opportunity)
+
+  - if can?(:destroy, opportunity)
+    .strip.danger= link_to_delete(opportunity)
