@@ -24,7 +24,8 @@ class ContactsController < EntitiesController
     @stage = Setting.unroll(:opportunity_stage)
     @comment = Comment.new
     @timeline = timeline(@contact)
-    respond_with(@contact)
+
+    @account = @contact.account || Account.new(user: current_user)
   end
 
   # GET /contacts/new
@@ -42,7 +43,7 @@ class ContactsController < EntitiesController
       end
     end
 
-    respond_with(@contact)
+    render "show"
   end
 
   # GET /contacts/1/edit                                                   AJAX
@@ -53,7 +54,16 @@ class ContactsController < EntitiesController
       @previous = Contact.my.find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
 
-    respond_with(@contact)
+    respond_with(@contact) do |format|
+      format.html {
+        @stage = Setting.unroll(:opportunity_stage)
+        @comment = Comment.new
+        @timeline = timeline(@contact)
+
+        @edit = true
+        render "show"
+      }
+    end
   end
 
   # POST /contacts
@@ -63,7 +73,7 @@ class ContactsController < EntitiesController
     respond_with(@contact) do |_format|
       if @contact.save_with_account_and_permissions(params.permit!)
         @contact.add_comment_by_user(@comment_body, current_user)
-        @contacts = get_contacts if called_from_index_page?
+        # @contacts = get_contacts if called_from_index_page?
       else
         unless params[:account][:id].blank?
           @account = Account.find(params[:account][:id])
@@ -83,12 +93,11 @@ class ContactsController < EntitiesController
   #----------------------------------------------------------------------------
   def update
     respond_with(@contact) do |_format|
-      unless @contact.update_with_account_and_permissions(params.permit!)
-        if @contact.account
-          @account = @contact.account
-        else
-          @account = Account.new(user: current_user)
-        end
+      @contact.update_with_account_and_permissions(params.permit!)
+      if @contact.account
+        @account = @contact.account
+      else
+        @account = Account.new(user: current_user)
       end
     end
   end

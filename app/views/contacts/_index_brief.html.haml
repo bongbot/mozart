@@ -1,18 +1,6 @@
 %li.highlight[contact]
   = avatar_for(contact, :size => "16x16")
 
-  %ul.tools
-    = hook(:contact_tools_before, self, :contact => contact)
-
-    - if can?(:update, contact)
-      %li= link_to_edit(contact)
-
-    - if shown_on_landing_page?
-      %li= link_to_discard(contact)
-
-    - if can?(:destroy, contact)
-      %li= link_to_delete(contact)
-
   .indentslim
     = link_to_if can?(:read, contact), contact.full_name(@current_user.preference[:contacts_naming]), contact
     %tt
@@ -21,5 +9,7 @@
       - if (lead = contact.lead) and lead.referred_by?
         &ndash;
         == #{t :referred_by_small} #{lead.referred_by}
+
+    = render "contacts/index_tool_buttons", :contact => contact
 
     = hook(:contact_bottom, self, :contact => contact)

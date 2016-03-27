@@ -1,0 +1,13 @@
+- contact ||= {}
+
+.tools-next
+  = hook(:contact_tools_before, self, :contact => contact)
+
+  - if can?(:update, contact)
+    .strip= link_to(t(:edit), edit_path(contact))
+
+  - if shown_on_landing_page?
+    .strip.danger= link_to_discard(contact)
+
+  - if can?(:destroy, contact)
+    .strip.danger= link_to_delete(contact)

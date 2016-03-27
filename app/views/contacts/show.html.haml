@@ -1,13 +1,19 @@
-- if (template = template_for_current_view)
-  = render(template, :contact => @contact)
-- else
+- is_new = is_new?(@contact)
+- edit = is_new || @edit
+-#- if (template = template_for_current_view)
+-#  = render(template, :contact => @contact)
+-#- else
 
-  -# default view
+-# default view
 
-  = styles_for :task, :opportunity
-  
-  = render 'contacts/title_bar', :contact => @contact
+= styles_for :task, :opportunity
 
+= render :partial => 'layouts/title_bar', :locals => {:model => @contact, :edit => edit}
+
+- template = is_new ?  "contacts/new" : "contacts/edit"
+= render(:partial => template, :locals => {:edit => edit})
+
+- if not is_new
   = render "comments/new", :commentable => @contact
   = render :partial => "shared/timeline", :collection => @timeline
 
@@ -16,7 +22,7 @@
     = render :partial => "tasks/tasks", :locals => {:object => @contact}
 
     = render :partial => "opportunities/opportunities", :locals => {:object => @contact}
-    
+
     = render :partial => "versions/versions", :locals => {:object => @contact}
 
     = load_select_popups_for(@contact, :tasks, :opportunities)

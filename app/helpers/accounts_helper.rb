@@ -36,26 +36,37 @@ module AccountsHelper
 
   # Select an existing account or create a new one.
   #----------------------------------------------------------------------------
-  def account_select_or_create(form, &_block)
-    options = {}
-    yield options if block_given?
+  def account_select_or_create(form, edit = false, &_block)
+    if edit
+      options = {}
+      yield options if block_given?
 
-    content_tag(:div, class: 'label') do
-      t(:account).html_safe +
+      content_tag(:div, class: 'label') do
+        t(:account).html_safe +
 
-        content_tag(:span, id: 'account_create_title') do
-          "(#{t :create_new} #{t :or} <a href='#' onclick='crm.select_account(); return false;'>#{t :select_existing}</a>):".html_safe
-        end +
+          content_tag(:span, id: 'account_create_title', style: "display: none;") do
+            "(#{t :create_new} #{t :or} <a href='#' onclick='crm.select_account(); return false;'>#{t :select_existing}</a>):".html_safe
+          end +
 
-        content_tag(:span, id: 'account_select_title') do
-          "(<a href='#' onclick='crm.create_account(); return false;'>#{t :create_new}</a> #{t :or} #{t :select_existing}):".html_safe
-        end +
+          content_tag(:span, id: 'account_select_title') do
+            "(<a href='#' onclick='crm.create_account(); return false;'>#{t :create_new}</a> #{t :or} #{t :select_existing}):".html_safe
+          end +
 
-        content_tag(:span, ':', id: 'account_disabled_title')
-    end +
+          content_tag(:span, ':', id: 'account_disabled_title')
+      end +
 
-      account_select(options) +
-      form.text_field(:name, style: 'width:324px; display:none;')
+        account_select(options) +
+        form.text_field(:name, style: 'width:324px; display:none;')
+    else
+      options = {}
+      yield options if block_given?
+      data = content_tag(:div, class: 'label') do
+        t(:account).html_safe
+      end
+      account_name = form.object.name.blank? ? "N/A" : form.object.name
+      data <<  account_name
+      data
+    end
   end
 
   # Output account url for a given contact

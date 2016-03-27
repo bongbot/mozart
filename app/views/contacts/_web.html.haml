@@ -5,27 +5,32 @@
   %small#contact_presence_intro{ hidden_if(!collapsed) }
     = t(:intro, t(:web_presence_small)) unless edit
   #contact_presence{ hidden_if(collapsed) }
-    %table
-      %tr
-        %td
+    .row
+      = c_show_when_exist(f, :blog, edit) do
+        .col-md-3
           .label.top #{t :blog}:
-          = f.text_field :blog
-        %td= spacer
-        %td
+          = c_textfield(f, :blog, edit)
+
+      = c_show_when_exist(f, :twitter, edit) do
+        .col-md-3
           .label.top #{t :twitter}:
-          = f.text_field :twitter
-      %tr
-        %td
+          = c_textfield(f, :twitter, edit)
+
+    .row
+      = c_show_when_exist(f, :linkedin, edit) do
+        .col-md-3
           .label #{t :linked_in}:
-          = f.text_field :linkedin
-        %td= spacer
-        %td
+          = c_textfield(f, :linkedin, edit)
+
+      = c_show_when_exist(f, :facebook, edit) do
+        .col-md-3
           .label #{t :facebook}:
-          = f.text_field :facebook
-      %tr
-        %td
+          = c_textfield(f, :facebook, edit)
+
+    .row
+      = c_show_when_exist(f, :skype, edit) do
+        .col-md-3
           .label #{t :skype}:
-          = f.text_field :skype
-        %td= spacer
-        %td= spacer
+          = c_textfield(f, :skype, edit)
+
 
