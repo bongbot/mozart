@@ -5,15 +5,6 @@
   - else
     .strip{:style => "color: gray;"} #{t :other}
 
-  %ul.tools
-    = hook(:account_tools_before, self, :account => account)
-
-    - if can?(:update, account)
-      %li= link_to_edit(account)
-
-    - if can?(:destroy, account)
-      %li= link_to_delete(account)
-
   .indent
     = link_to(account.name, account)
     - if amount != 0.0
@@ -38,5 +29,7 @@
     - if account.tag_list.present?
       %dt
         .tags= tags_for_index(account)
+
+    = render "accounts/index_tool_buttons", :account => account
 
     = hook(:account_bottom, self, :account => account)

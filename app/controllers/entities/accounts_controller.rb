@@ -24,7 +24,13 @@ class AccountsController < EntitiesController
     @stage = Setting.unroll(:opportunity_stage)
     @comment = Comment.new
     @timeline = timeline(@account)
+
     respond_with(@account)
+    # respond_with(@account) do |format|
+    #     format.html do
+    #
+    #     end
+    # end
   end
 
   # GET /accounts/new
@@ -37,7 +43,7 @@ class AccountsController < EntitiesController
       instance_variable_set("@#{model}", model.classify.constantize.find(id))
     end
 
-    respond_with(@account)
+    render "show"
   end
 
   # GET /accounts/1/edit                                                   AJAX
@@ -47,7 +53,15 @@ class AccountsController < EntitiesController
       @previous = Account.my.find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
 
-    respond_with(@account)
+    respond_with(@account) do |format|
+      format.html {
+        @stage = Setting.unroll(:opportunity_stage)
+        @comment = Comment.new
+        @timeline = timeline(@account)
+        @edit = true
+        render "show"
+      }
+    end
   end
 
   # POST /accounts
@@ -59,9 +73,10 @@ class AccountsController < EntitiesController
         @account.add_comment_by_user(@comment_body, current_user)
         # None: account can only be created from the Accounts index page, so we
         # don't have to check whether we're on the index page.
-        @accounts = get_accounts
+        # @accounts = get_accounts
         get_data_for_sidebar
       end
+
     end
   end
 

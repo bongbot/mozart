@@ -16,6 +16,6 @@
         &ndash;
         == #{t :referred_by_small} #{lead.referred_by}
 
-    = render "leads/index_brief_tool_buttons", :lead => lead
+    = render "leads/index_tool_buttons", :lead => lead
 
     = hook(:lead_bottom, self, :lead => lead)

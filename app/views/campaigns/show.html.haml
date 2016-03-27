@@ -10,10 +10,9 @@
 = styles_for :task, :lead, :opportunity
 
 = render :partial => 'layouts/title_bar', :locals => {:model => @campaign, :edit => edit}
-- if is_new
-  = render(:partial => "campaigns/new", :locals => {:edit => edit})
-- else
-  = render(:partial => "campaigns/edit", :locals => {:edit => edit})
+
+- template = is_new ?  "campaigns/new" : "campaigns/edit"
+= render(:partial => template, :locals => {:edit => edit})
 
 - if not is_new
   = render "comments/new", :commentable => @campaign

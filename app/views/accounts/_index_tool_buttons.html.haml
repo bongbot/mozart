@@ -1,0 +1,8 @@
+- account ||= {}
+
+.tools-next
+  - if can?(:update, account)
+    .strip= link_to(t(:edit), edit_path(account))
+
+  - if can?(:destroy, account)
+    .strip.danger= link_to_delete(account)

@@ -14,3 +14,4 @@
   - unless %w(converted rejected).include? @entity.status
     crm.hide_form('convert_lead');
   crm.event.emit(EVENT_EDIT_START);
+crm.runOnload();

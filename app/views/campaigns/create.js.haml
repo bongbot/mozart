@@ -1,13 +1,13 @@
 - entity_name = controller.controller_name.singularize.underscore #account
 - @entity = instance_variable_get("@#{entity_name}")
-- create_id = "create_#{entity_name}" # create_account
+- create_id = "edit_#{entity_name}" # create_account
 - index_path = entity_name.pluralize + "_path"
 
 - if @entity.valid?
   window.location.href = "#{send(index_path)}";
 
 - else
-  $('##{create_id}').html('#{ j render(:partial => "new") }');
+  $('##{create_id}').html('#{ j render(:partial => "new", :locals => {:edit => true}) }');
   $('##{create_id}').effect("shake", { duration:250, distance: 6 });
   - if @entity.errors[:name].blank? and @entity.errors[:ends_on].present?
     $('#campaign_ends_on').focus();

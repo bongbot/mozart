@@ -1,15 +1,20 @@
-- if (template = template_for_current_view)
-  = render(template, :account => @account)
-- else
-  
-  -# default view
+- is_new = is_new?(@account)
+- edit = is_new || @edit
 
-  = styles_for :task, :contact, :opportunity
+-#- if (template = template_for_current_view)
+-#  = render(template, :account => @account)
+-#- else
 
-  = render 'accounts/title_bar', :account => @account
+-# default view
 
-  %div#edit_account{ hidden }
+= styles_for :task, :contact, :opportunity
 
+= render :partial => 'layouts/title_bar', :locals => {:model => @account, :edit => edit}
+
+- template = is_new ?  "accounts/new" : "accounts/edit"
+= render(:partial => template, :locals => {:edit => edit})
+
+- if not is_new
   = render "comments/new", :commentable => @account
   = render :partial => "shared/timeline", :collection => @timeline
 

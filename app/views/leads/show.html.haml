@@ -11,10 +11,9 @@
 = styles_for :lead
 
 = render :partial => 'layouts/title_bar', :locals => {:model => @lead, :edit => edit}
-- if is_new
-  = render(:partial => "leads/new", :locals => {:edit => edit})
-- else
-  = render(:partial => "leads/edit", :locals => {:edit => edit})
+
+- template = is_new ?  "leads/new" : "leads/edit"
+= render(:partial => template, :locals => {:edit => edit})
 
 - if not is_new
   = render "comments/new", :commentable => @lead

@@ -6,6 +6,6 @@
     = link_to(campaign.name, campaign)
     = render "campaigns/status", :campaign => campaign
 
-    = render "campaigns/index_brief_tool_buttons", :campaign => campaign
+    = render "campaigns/index_tool_buttons", :campaign => campaign
 
     = hook(:campaign_bottom, self, :campaign => campaign)

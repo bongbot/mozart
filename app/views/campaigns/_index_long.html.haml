@@ -1,13 +1,6 @@
 %li.highlight[campaign]
   .strip{:class => campaign.status}= t(campaign.status)
 
-  %ul.tools
-    - if can?(:update, campaign)
-      %li= link_to_edit(campaign)
-
-    - if can?(:destroy, campaign)
-      %li= link_to_delete(campaign)
-
   .indent
     = link_to(campaign.name, campaign)
     = render "campaigns/status", :campaign => campaign
@@ -16,5 +9,7 @@
     - if campaign.tag_list.present?
       %dt
         .tags= tags_for_index(campaign)
+
+    = render "campaigns/index_tool_buttons", :campaign => campaign
 
     = hook(:campaign_bottom, self, :campaign => campaign)

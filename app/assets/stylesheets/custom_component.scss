@@ -50,3 +50,8 @@
   display: block;
   text-align: left;
 }
+
+//Override Boostrap
+.errorExplanation p {
+  margin-top: inherit;
+}
