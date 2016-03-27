@@ -309,7 +309,7 @@ ja:
   extra_info: 追加情報
   extra_info_small: 追加取引先責任者
   facebook: Facebook
-  linked_in: LinkedIn
+  linkedin: LinkedIn
   myself: 自分自身
   permissions_intro_private: デフォルトでは、あなただけが%{value}にアクセスできます。パーミッションは後で変更することができます。
   permissions_intro_public: デフォルトでは、全ユーザが%{value}にアクセスできます。パーミッションは後で変更することができます。

@@ -409,7 +409,7 @@ ru:
   extra_info: Дополнительные данные
   extra_info_small: дополнительные данные
   facebook: Вконтакте
-  linked_in: Одноклассники
+  linkedin: Одноклассники
   myself: Мне
   permissions_intro_private: By default only you will have access to the %{value}.
     You can change permissions later.

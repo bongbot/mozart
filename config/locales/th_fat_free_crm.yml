@@ -308,7 +308,7 @@ th:
   extra_info: ข้อมูลเพิ่มเติม
   extra_info_small: ที่อยู่ติดต่อเพิ่มเติม
   facebook: Facebook
-  linked_in: LinkedIn
+  linkedin: LinkedIn
   myself: ตัวฉัน
   permissions_intro_private: By default only you will have access to the %{value}.
     You can change permissions later.

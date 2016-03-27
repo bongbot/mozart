@@ -402,7 +402,7 @@ en-US:
   extra_info: Extra Information
   extra_info_small: extra contact
   facebook: Facebook
-  linked_in: LinkedIn
+  linkedin: LinkedIn
   myself: Myself
   permissions_intro_private: By default only you will have access to the %{value}.
     You can change permissions later.

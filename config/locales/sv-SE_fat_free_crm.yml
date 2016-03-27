@@ -305,7 +305,7 @@ sv-SE:
   extra_info: Övrig
   extra_info_small: övrig
   facebook: Facebook
-  linked_in: LinkedIn
+  linkedin: LinkedIn
   myself: Mig själv
   permissions_intro_private: Normalt har endast du tillgång till %{value}. Du kan
     ändra rättigheterna senare.

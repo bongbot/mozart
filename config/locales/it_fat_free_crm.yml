@@ -320,7 +320,7 @@ it:
   extra_info: Informazioni Extra
   extra_info_small: contatto extra
   facebook: Facebook
-  linked_in: LinkedIn
+  linkedin: LinkedIn
   myself: Me stesso
   permissions_intro_private: Di default solo tu avrai accesso a %{value}. Potrai cambiare
     i permessi piu' tardi.

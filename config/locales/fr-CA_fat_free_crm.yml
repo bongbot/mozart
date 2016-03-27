@@ -321,7 +321,7 @@ fr-CA:
   extra_info: Informations supplémentaires
   extra_info_small: contact supplémentaire
   facebook: Facebook
-  linked_in: LinkedIn
+  linkedin: LinkedIn
   myself: Moi-même
   permissions_intro_private: Par défaut vous seul aurez accès à %{value}. Vous pouvez
     modifier les permissions ultérieurement.

@@ -313,7 +313,7 @@ pl:
   extra_info: Dodatkowe info
   extra_info_small: dodatkowy kontakt
   facebook: Facebook
-  linked_in: LinkedIn
+  linkedin: LinkedIn
   myself: mnie
   permissions_intro_private: Domyślnie tylko Ty będziesz miał dostęp do %{value}.
     Można to poźniej zmienić.

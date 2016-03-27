@@ -322,7 +322,7 @@ es:
   extra_info: Información adicional
   extra_info_small: éste contacto
   facebook: Facebook
-  linked_in: LinkedIn
+  linkedin: LinkedIn
   myself: Mí
   permissions_intro_private: Por defecto sólo usted tendrá acceso a %{value}. Puede
     cambiar los permisos más tarde.
