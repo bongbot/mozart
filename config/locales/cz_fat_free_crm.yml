@@ -265,7 +265,7 @@ cz:
   mobile_small: mobil
   open_in_window: Otevřít %{value} v novém okně
   phone_small: telfon
-  phone_toll_free: Bezplatná linka
+  toll_free_phone: Bezplatná linka
   pipeline: potrubní
   same_as_billing: stejná jako fakturační
   save_account: Uložit klienta

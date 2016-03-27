@@ -248,7 +248,7 @@ th:
   mobile_small: โทรศัพท์มือถือ
   open_in_window: เปิด %{value} ในหน้าต่างใหม่
   phone_small: โทรศัพท์
-  phone_toll_free: เบอร์โทรฟรี
+  toll_free_phone: เบอร์โทรฟรี
   keep_private: เป็นรายการส่วนตัว ไม่ให้ผู้อื่นเห็น
   make_public: สามารถเห็นได้ทุกคน
   same_as_billing: เหมือนกับที่อยู่วางบิล

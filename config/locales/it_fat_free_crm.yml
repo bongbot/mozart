@@ -258,7 +258,7 @@ it:
   mobile_small: Cellulare
   open_in_window: Apri %{value} in una nuova finestra
   phone_small: Telefono
-  phone_toll_free: Numero verde
+  toll_free_phone: Numero verde
   pipeline: Sequenza
   same_as_billing: uguale alla fatturazione
   save_account: Salva Conto

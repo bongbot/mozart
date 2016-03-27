@@ -331,7 +331,7 @@ pt-BR:
   mobile_small: celular
   open_in_window: Abrir %{value} em uma nova janela
   phone_small: telefone
-  phone_toll_free: Toll-free phone
+  toll_free_phone: Toll-free phone
   pipeline: Funil
   same_as_billing: mesmo da cobrança
   save_account: Salvar conta

@@ -261,7 +261,7 @@ es:
   open_in_window: Abrir %{value} en una ventana nueva
   mail_to: Correo electrónico a %{value}
   phone_small: teléfono
-  phone_toll_free: Llamada gratuita
+  toll_free_phone: Llamada gratuita
   keep_private: Uso privado, no compartir con otros
   make_public: Compartir con todos
   same_as_billing: la misma que la de facturación

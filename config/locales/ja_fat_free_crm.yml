@@ -249,7 +249,7 @@ ja:
   open_in_window: 新しいウィンドウで%{value}を開く
   mail_to: ! '%{value}へのメール'
   phone_small: 電話
-  phone_toll_free: 通話無料
+  toll_free_phone: 通話無料
   keep_private: 秘密扱いにして、他人と共有しない
   make_public: 全員と共有する
   same_as_billing: 請求先と同じ

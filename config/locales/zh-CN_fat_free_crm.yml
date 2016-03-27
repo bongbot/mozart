@@ -329,7 +329,7 @@ zh-CN:
   mobile_small: 手机
   open_in_window: 在一个新窗口打开%{value}
   phone_small: 电话
-  phone_toll_free: 免费电话
+  toll_free_phone: 免费电话
   pipeline: 渠道
   same_as_billing: 与账单相同　
   save_account: 保存客户

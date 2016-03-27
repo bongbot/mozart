@@ -329,7 +329,7 @@ en-US:
   mobile_small: mobile
   open_in_window: Open %{value} in a new window
   phone_small: phone
-  phone_toll_free: Toll-free
+  toll_free_phone: Toll-free
   pipeline: Pipeline
   same_as_billing: same as billing
   save_account: Save Account

@@ -253,7 +253,7 @@ pl:
   mobile_small: komórka
   open_in_window: Otwórz %{value} w nowym oknie
   phone_small: telefon
-  phone_toll_free: Infolinia
+  toll_free_phone: Infolinia
   keep_private: Nie udostępniaj innym
   make_public: Udostępnij wszystkim
   same_as_billing: jak obok

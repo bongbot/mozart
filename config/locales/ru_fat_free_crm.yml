@@ -335,7 +335,7 @@ ru:
   mobile_small: мобильный
   open_in_window: Открыть %{value} в новом окне
   phone_small: телефон
-  phone_toll_free: Номер 8-800
+  toll_free_phone: Номер 8-800
   pipeline: Pipeline
   same_as_billing: тот же
   save_account: Сохранить карточку контрагента

@@ -329,7 +329,7 @@ fr:
   mobile_small: mobile
   open_in_window: Ouvrir %{value} dans une nouvelle fenêtre
   phone_small: téléphone
-  phone_toll_free: Tel. gratuit
+  toll_free_phone: Tel. gratuit
   pipeline: Prévisions
   same_as_billing: identique à facturation
   save_account: Enregistrer le compte

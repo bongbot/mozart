@@ -244,7 +244,7 @@ sv-SE:
   open_in_window: Öppna %{value} i ett nytt fönster
   mail_to: Skicka e-post till %{value}
   phone_small: telefon
-  phone_toll_free: Avgiftsfri
+  toll_free_phone: Avgiftsfri
   keep_private: Privat, dela inte med andra
   make_public: Dela med alla
   same_as_billing: same as billing
