@@ -1,0 +1,14 @@
+- is_new = is_new?(@task)
+- edit = is_new || @edit
+
+= render :partial => 'layouts/title_bar', :locals => {:model => @lead, :edit => edit}
+
+- template = is_new ?  "tasks/new" : "tasks/edit"
+= render(:partial => template, :locals => {:edit => edit})
+
+-#- unless is_new
+-#  = render "comments/new", :commentable => @lead
+-#  = render :partial => "shared/timeline", :collection => @timeline
+-#
+-#  = hook(:show_lead_bottom, self, {entity: @lead}) do
+-#    = render :partial => "versions/versions", :locals => {:object => @lead}

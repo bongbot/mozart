@@ -25,6 +25,8 @@ class TasksController < ApplicationController
   #----------------------------------------------------------------------------
   def show
     @task = Task.tracked_by(current_user).find(params[:id])
+    @bucket = Setting.unroll(:task_bucket)[1..-1] << [t(:due_specific_date, default: 'On Specific Date...'), :specific_time]
+    @category = Setting.unroll(:task_category)
     respond_with(@task)
   end
 
