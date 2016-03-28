@@ -75,7 +75,8 @@ class TasksController < ApplicationController
 
     respond_with(@task) do |_format|
       if @task.save
-        update_sidebar if called_from_index_page?
+        # update_sidebar if called_from_index_page?
+        Rails.logger.info "TTT:REDIRECTPATH:" + session[:return_to_path].inspect
       end
     end
   end
@@ -96,12 +97,15 @@ class TasksController < ApplicationController
     respond_with(@task) do |_format|
       if @task.update_attributes(task_params)
         @task.bucket = @task.computed_bucket
-        if called_from_index_page?
-          if Task.bucket_empty?(@task_before_update.bucket, current_user, @view)
-            @empty_bucket = @task_before_update.bucket
-          end
-          update_sidebar
-        end
+        # if called_from_index_page?
+        #   if Task.bucket_empty?(@task_before_update.bucket, current_user, @view)
+        #     @empty_bucket = @task_before_update.bucket
+        #   end
+        #   update_sidebar
+        # end
+
+        Rails.logger.info "TTT:REDIRECTPATH:" + session[:return_to_path].inspect
+
       end
     end
   end

@@ -6,6 +6,9 @@
   .title_tools#menu
   .title#title
     = t :create_task
+
+  = render "tasks/save_and_back"
+
 - else
   #confirm{ hidden }
   .title_tools#menu

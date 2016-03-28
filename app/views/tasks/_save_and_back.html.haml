@@ -1,0 +1,16 @@
+.buttonbar.btn.btn-success{:id => "buttonbar-save-and-back"}
+  Save and back
+:javascript
+  $(function(){
+    $("#buttonbar-save-and-back").click(function(){
+      var form = $("#new_task");
+      console.log('TTT: form: ' + form)
+      form.attr(form.attr("action") + "?" + "save_and_back=true");
+       $('<input />').attr('type', 'hidden')
+            .attr('name', "save_and_back")
+            .attr('value', "true")
+            .appendTo(form);
+      form.submit();
+    })
+  })
+

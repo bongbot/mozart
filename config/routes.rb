@@ -55,6 +55,7 @@ Rails.application.routes.draw do
       match :auto_complete, via: [:get, :post]
       get :redraw
       get :versions
+      get :create_assest
     end
     member do
       put :attach
