@@ -7,7 +7,8 @@
     = image_tag("loading.gif", :size => :thumb, :id => "loading", :style => "display: none;")
 - else
   - buckets = Setting.unroll(:task_bucket)
-  = render "title"
+  -#= render "title"
+  = render 'entities/title_bar'
 
 .div
 

@@ -47,7 +47,8 @@ class TasksController < ApplicationController
       end
     end
 
-    respond_with(@task)
+    render "show"
+
   end
 
   # GET /tasks/1/edit                                                      AJAX

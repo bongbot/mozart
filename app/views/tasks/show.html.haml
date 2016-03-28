@@ -1,7 +1,7 @@
 - is_new = is_new?(@task)
 - edit = is_new || @edit
 
-= render :partial => 'layouts/title_bar', :locals => {:model => @lead, :edit => edit}
+= render :partial => 'layouts/title_bar', :locals => {:model => @task, :edit => edit}
 
 - template = is_new ?  "tasks/new" : "tasks/edit"
 = render(:partial => template, :locals => {:edit => edit})

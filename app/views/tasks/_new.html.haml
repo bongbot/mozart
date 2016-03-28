@@ -11,6 +11,6 @@
 
     .buttonbar{:id => "buttonbar-submit"}
       = f.submit t :create_task
-      #{t :or}
-      = link_to_cancel new_task_path + "?view=#{@view}"
+      -##{t :or}
+      -#= link_to_cancel new_task_path + "?view=#{@view}"
 
