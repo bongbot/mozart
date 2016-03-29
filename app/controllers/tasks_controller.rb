@@ -35,6 +35,7 @@ class TasksController < ApplicationController
   def new
     @view = view
     @task = Task.new
+
     @bucket = Setting.unroll(:task_bucket)[1..-1] << [t(:due_specific_date, default: 'On Specific Date...'), :specific_time]
     @category = Setting.unroll(:task_category)
 
@@ -56,6 +57,7 @@ class TasksController < ApplicationController
   def edit
     @view = view
     @task = Task.tracked_by(current_user).find(params[:id])
+
     @bucket = Setting.unroll(:task_bucket)[1..-1] << [t(:due_specific_date, default: 'On Specific Date...'), :specific_time]
     @category = Setting.unroll(:task_category)
     @asset = @task.asset if @task.asset_id?
@@ -73,10 +75,14 @@ class TasksController < ApplicationController
     @view = view
     @task = Task.new(task_params) # NOTE: we don't display validation messages for tasks.
 
+    @bucket = Setting.unroll(:task_bucket)[1..-1] << [t(:due_specific_date, default: 'On Specific Date...'), :specific_time]
+    @category = Setting.unroll(:task_category)
+    @asset = @task.asset if @task.asset_id?
+
     respond_with(@task) do |_format|
       if @task.save
-        # update_sidebar if called_from_index_page?
-        Rails.logger.info "TTT:REDIRECTPATH:" + session[:return_to_path].inspect
+        # Rails.logger.info "TTT:REDIRECTPATH:" + session[:return_to_path].inspect
+
       end
     end
   end
@@ -86,6 +92,11 @@ class TasksController < ApplicationController
   def update
     @view = view
     @task = Task.tracked_by(current_user).find(params[:id])
+
+    @bucket = Setting.unroll(:task_bucket)[1..-1] << [t(:due_specific_date, default: 'On Specific Date...'), :specific_time]
+    @category = Setting.unroll(:task_category)
+    @asset = @task.asset if @task.asset_id?
+
     @task_before_update = @task.dup
 
     if @task.due_at && (@task.due_at < Date.today.to_time)
@@ -97,15 +108,6 @@ class TasksController < ApplicationController
     respond_with(@task) do |_format|
       if @task.update_attributes(task_params)
         @task.bucket = @task.computed_bucket
-        # if called_from_index_page?
-        #   if Task.bucket_empty?(@task_before_update.bucket, current_user, @view)
-        #     @empty_bucket = @task_before_update.bucket
-        #   end
-        #   update_sidebar
-        # end
-
-        Rails.logger.info "TTT:REDIRECTPATH:" + session[:return_to_path].inspect
-
       end
     end
   end

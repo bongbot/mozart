@@ -568,6 +568,25 @@ module ApplicationHelper
     send("edit_#{model_underscore}_path", model)
   end
 
+  def redirect_to_previous_path_if_needed
+    data = ""
+    if check_redirect_to_previous_path
+        data << "console.log('TTT: Going to return to previouse path' );"
+        data << "window.location.href = '#{j (previous_path)}';"
+    end
+    data
+  end
+
+  def redirect_to_previous_path_if_needed_or_redirect_to(path)
+    data = ""
+    if check_redirect_to_previous_path
+      data << "console.log('TTT: Going to return to previouse path' );"
+      data << "window.location.href = '#{j (previous_path)}';"
+    else
+      data << "window.location.href = '#{path}';"
+    end
+    data
+  end
 end
 
 

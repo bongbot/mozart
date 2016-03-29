@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
   helper_method :called_from_index_page?, :called_from_landing_page?
   helper_method :klass
 
+  # Redirect to previous assest logic: Helper method
+  helper_method :check_redirect_to_previous_path
+  helper_method :previous_path
+
   respond_to :html, only: [:index, :show, :auto_complete]
   respond_to :js
   respond_to :json, :xml, except: :edit
@@ -252,5 +256,14 @@ class ApplicationController < ActionController::Base
           else
             login_url
     end
+  end
+
+  # Redirect to previous assest logic: Session variables
+  def check_redirect_to_previous_path
+    params[:save_and_back].present?
+  end
+
+  def previous_path
+    session[:return_to_path]
   end
 end

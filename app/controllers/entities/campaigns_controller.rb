@@ -167,11 +167,13 @@ class CampaignsController < EntitiesController
     end
   end
 
+  # todo: move this logic to application controller
   # GET /campaigns/create_assest                                                 AJAX
   #----------------------------------------------------------------------------
   def create_assest
     session[:return_to_path] = request.referer
-    redirect_to params[:assest_path]
+    related = "related=#{params[:related]}"
+    redirect_to (params[:assest_path] + "?" + related)
   end
 
   private
