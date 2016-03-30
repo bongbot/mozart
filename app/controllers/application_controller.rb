@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   helper_method :klass
 
   # Redirect to previous assest logic: Helper method
-  helper_method :check_redirect_to_previous_path
+  helper_method :previous_path?
   helper_method :previous_path
 
   respond_to :html, only: [:index, :show, :auto_complete]
@@ -259,11 +259,12 @@ class ApplicationController < ActionController::Base
   end
 
   # Redirect to previous assest logic: Session variables
-  def check_redirect_to_previous_path
-    params[:save_and_back].present?
+  def previous_path?
+    params[:return_to_path].present?
   end
 
   def previous_path
-    session[:return_to_path]
+    params[:return_to_path]
   end
+
 end

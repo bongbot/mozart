@@ -6,8 +6,8 @@
   .title_tools#menu
   .title#title
     = t :create_task
-
-  = render "tasks/save_and_back"
+    - if previous_path?
+      = render "shared/save_and_back"
 
 - else
   #confirm{ hidden }
