@@ -7,7 +7,7 @@
   = redirect_to_previous_path_or(index_path)
 
 - else # Couldn't create the task -- validation failed.
-  $('##{create_id}').html('#{ j render(:partial => "new") }');
+  $('##{create_id}').html('#{ j render(:partial => "edit", :locals => {:is_new => true}) }');
   $('##{create_id}').effect("shake", { duration:250, distance: 6 });
   $('#new_#{entity_name} input[type!=hidden]').first().focus();
 

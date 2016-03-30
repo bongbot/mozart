@@ -47,8 +47,8 @@
         %dt= h(pending.background_info)
 
     .tools-next
-      .strip
-        = link_to_task_edit(pending, bucket)
+      .strip= link_to(t(:edit), edit_path(pending))
+
       - if shown_on_landing_page?
         .strip{:class => "danger"}
           = link_to_discard(pending)

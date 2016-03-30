@@ -43,7 +43,7 @@
 
     .tools-next
       .strip
-        = link_to_task_edit(assigned, bucket)
+        .strip= link_to(t(:edit), edit_path(assigned))
       - if shown_on_landing_page?
         .strip{:class => "danger"}
           = link_to_discard(assigned)
