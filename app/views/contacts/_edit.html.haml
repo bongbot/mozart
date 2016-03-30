@@ -3,13 +3,16 @@
 #edit_contact
   .remote
     = simple_form_for(@contact, :html => one_submit_only, :remote => true) do |f|
-      = link_to_close edit_contact_path(@contact)
       = f.hidden_field :user_id
+      - if is_new
+        = hidden_field_tag "opportunity", "#{@opportunity.id if @opportunity}"
 
       = f.error_messages :object_name => t('contact')
 
       = render "contacts/top_section", :f => f, :edit => edit
       = render "fields/edit_custom_field_group", :f => f, :edit => edit
+      - if is_new
+        = render "shared/add_comment",   :f => f, :edit => edit
       = render "contacts/extra",       :f => f, :edit => edit
       = render "contacts/web",         :f => f, :edit => edit
       = render "fields/groups",        :f => f, :edit => edit
@@ -17,4 +20,4 @@
       = hook(:entity_form, self, {f: f, entity: @contact})
 
       .buttonbar
-        = f.submit t(:save_contact), :onclick => "crm.save_contact()"
+        = f.submit t(:save_contact), :onclick => (is_new ? "crm.create_contact()" : "crm.save_contact()")

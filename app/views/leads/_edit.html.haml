@@ -4,6 +4,8 @@
   .remote
     = simple_form_for(@lead, :html => one_submit_only, :remote => true) do |f|
       = f.hidden_field :user_id
+      - if is_new
+        = hidden_field_tag "campaign", "#{@campaign.id if @campaign}"
 
       = f.error_messages :object_name => t('lead')
 
@@ -11,6 +13,8 @@
       = render "fields/edit_custom_field_group", :f => f, :edit => edit
       = render "leads/status",         :f => f, :edit => edit
       = render "leads/contact",        :f => f, :edit => edit
+      - if is_new
+        = render "shared/add_comment",   :f => f, :edit => true
       = render "leads/web",            :f => f, :edit => edit
       = render "fields/groups",        :f => f, :edit => edit
       = render "entities/permissions", :f => f, :edit => edit, :entity => @lead

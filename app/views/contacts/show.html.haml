@@ -10,8 +10,7 @@
 
 = render :partial => 'layouts/title_bar', :locals => {:model => @contact, :edit => edit}
 
-- template = is_new ?  "contacts/new" : "contacts/edit"
-= render(:partial => template, :locals => {:edit => edit})
+= render(:partial => "contacts/edit", :locals => {:edit => edit, :is_new => is_new})
 
 - if not is_new
   = render "comments/new", :commentable => @contact
