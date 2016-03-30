@@ -66,7 +66,12 @@ class TasksController < ApplicationController
       @previous = Task.tracked_by(current_user).find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
 
-    respond_with(@task)
+    respond_with(@task) do |format|
+      format.html {
+        @edit = true
+        render "show"
+      }
+    end
   end
 
   # POST /tasks
