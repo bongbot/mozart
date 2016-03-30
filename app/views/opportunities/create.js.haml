@@ -4,7 +4,7 @@
 - index_path = index_path(entity_name)
 
 - if @entity.valid?
-  = redirect_to_previous_path_if_needed_or_redirect_to(index_path)
+  = redirect_to_previous_path_or(index_path)
 
 - else
   $('##{create_id}').html('#{ j render(:partial => "new") }');

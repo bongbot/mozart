@@ -577,7 +577,7 @@ module ApplicationHelper
     data
   end
 
-  def redirect_to_previous_path_if_needed_or_redirect_to(path)
+  def redirect_to_previous_path_or(path)
     data = ""
     if previous_path?
       data << "console.log('TTT: Going to return to previouse path' );"
