@@ -8,8 +8,8 @@
 
 #
 # Apartment Configuration
-#
-# Apartment.configure do |config|
+
+Apartment.configure do |config|
 
   # Add any models that you do not want to be multi-tenanted, but remain in the global (public) namespace.
   # A typical example would be a Customer or Tenant model that stores each Tenant's information.
@@ -21,7 +21,7 @@
   # This object should yield an array of strings representing each Tenant name.
   #
   # config.tenant_names = lambda{ Customer.pluck(:tenant_name) }
-  # config.tenant_names = ['tenant1', 'tenant2']
+  config.tenant_names = ['mozart_development']
   #
   # config.tenant_names = lambda { ToDo_Tenant_Or_User_Model.pluck :database }
 
@@ -55,7 +55,7 @@
   # Uncomment the line below if you want to disable this behaviour in production.
   #
   # config.prepend_environment = !Rails.env.production?
-# end
+end
 
 # Setup a custom Tenant switching middleware. The Proc should return the name of the Tenant that
 # you want to switch to.

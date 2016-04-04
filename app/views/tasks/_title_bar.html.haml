@@ -9,6 +9,14 @@
     - if previous_path?
       = render "shared/save_and_back"
 
+  .buttonbar{:id => "buttonbar-submit"}
+    - if is_new
+      = f.submit t :create_task
+    - else
+      = f.submit t :save_task
+
+      = link_to_cancel edit_task_path(@task)
+
 - else
   #confirm{ hidden }
   .title_tools#menu

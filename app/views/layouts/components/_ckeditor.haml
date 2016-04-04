@@ -1,0 +1,14 @@
+- id ||= ""
+-#- name
+-#- f
+
+- if edit
+  = f.text_area name, :id => id, :cols => 40, :rows => 4
+  :javascript
+    $(function(){
+      window.crm.registerUniqueHook(function(){
+        CKEDITOR.replace( 'task-description' )
+      }, "ckeditor-task-description");
+    })
+- else
+  = f.object.send(name.to_s).html_safe

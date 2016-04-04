@@ -1,7 +1,8 @@
+= content_for :custome_js do
+  =javascript_include_tag "ckeditor/init"
+
 - is_new = is_new?(@task)
 - edit = is_new || @edit
-
-= render :partial => 'layouts/title_bar', :locals => {:model => @task, :edit => edit}
 
 = render(:partial => "tasks/edit", :locals => {:edit => edit, :is_new => is_new})
 

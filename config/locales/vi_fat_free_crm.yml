@@ -543,7 +543,7 @@ en-US:
   total_tasks: Total %{value}
   view_assigned_tasks: view assigned tasks
   view_pending_tasks: view pending tasks
-  task_description: Description
+  task_description: Miêu tả
 
   # Views -> Team.
   #----------------------------------------------------------------------------

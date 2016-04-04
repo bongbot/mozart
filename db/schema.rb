@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160319182206) do
+ActiveRecord::Schema.define(version: 20160404164512) do
 
   create_table "account_contacts", force: :cascade do |t|
     t.integer  "account_id", limit: 4
@@ -393,6 +393,7 @@ ActiveRecord::Schema.define(version: 20160319182206) do
     t.datetime "updated_at"
     t.string   "background_info",  limit: 255
     t.text     "subscribed_users", limit: 65535
+    t.string   "description",      limit: 1000
   end
 
   add_index "tasks", ["assigned_to"], name: "index_tasks_on_assigned_to", using: :btree

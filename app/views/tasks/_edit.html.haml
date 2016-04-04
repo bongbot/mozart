@@ -4,6 +4,8 @@
 #edit_task
   .remote
     = simple_form_for(@task, :html => one_submit_only, :remote => true) do |f|
+      = render :partial => 'layouts/title_bar', :locals => {:model => @task, :edit => edit}
+
       = hidden_field_tag :view, @view
       - if is_new
         = hidden_field_tag "task[user_id]", current_user.id
@@ -12,19 +14,11 @@
 
       = f.error_messages :object_name => t('task')
 
-      = render "tasks/top_section",    :f => f, :edit => true
-      = render "fields/groups", :f => f, :edit => true
+      = render "tasks/top_section",    :f => f, :edit => edit
+      = render "fields/groups", :f => f, :edit => edit
 
-      .buttonbar{:id => "buttonbar-submit"}
-        - if is_new
-          = f.submit t :create_task
-        - else
-          = f.submit t :save_task
-          == #{t :or}
-          = link_to_cancel edit_task_path(@task)
-          == #{t :or} #{t :move_to}
-          - [ "due_asap", "due_today", "due_tomorrow", "due_this_week", "due_next_week", "due_later" ].each do |due_day|
-            = link_to(t(due_day.to_sym), "#", :onclick => %Q/crm.reschedule_task(#{@task.id}, "#{due_day}")/)
-            = " | " if due_day != "due_later"
-          .clearfix
+      %span.label #{t :move_to}:
+      - [ "due_asap", "due_today", "due_tomorrow", "due_this_week", "due_next_week", "due_later" ].each do |due_day|
+        = link_to(t(due_day.to_sym), "#", :onclick => %Q/crm.reschedule_task(#{@task.id}, "#{due_day}")/)
+        = " | " if due_day != "due_later"
 

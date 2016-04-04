@@ -1,0 +1,2 @@
+1. Add description to task
+rails g migration addDescriptionToTasks description:string{1000}
