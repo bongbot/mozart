@@ -11,7 +11,11 @@ module FieldsHelper
     else
       name = name.kind_of?(Array) ? name : [name]
       should_display = name.any?{|ele|
-        f.object.send(ele).present?
+        if f.respond_to?(ele)
+          f.object.send(ele).present?
+        else
+          f.object[ele].present?
+        end
       }
       if should_display
         data << capture(&block)
