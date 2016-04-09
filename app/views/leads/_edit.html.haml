@@ -4,6 +4,8 @@
 #edit_lead
   .remote
     = simple_form_for(@lead, :html => one_submit_only, :remote => true) do |f|
+      = render :partial => 'layouts/title_bar', :locals => {:model => @lead, :edit => edit}
+
       = f.hidden_field :user_id
       - if is_new
         = hidden_field_tag "campaign", "#{@campaign.id if @campaign}"

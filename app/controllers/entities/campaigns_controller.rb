@@ -75,7 +75,11 @@ class CampaignsController < EntitiesController
         respond_to_related_not_found(model) && return
       end
     end
-    render "show"
+    respond_with(@campaign) do |format|
+      format.html {
+        render "show"
+      }
+    end
   end
 
   # GET /campaigns/1/edit                                                  AJAX

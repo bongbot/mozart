@@ -18,8 +18,6 @@
     - if lead.status != "rejected"
       = link_to_function(t(:reject) + '?', confirm_reject(lead)) + " | "
     = link_to_function(t(:delete) + '?', confirm_delete(lead))
-  .title_tools#buttons
-    = view_buttons
   .title#title
     = h(lead.full_name)
     = image_tag("loading.gif", :size => :thumb, :id => "loading", :style => "display: none;")

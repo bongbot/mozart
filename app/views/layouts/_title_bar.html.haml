@@ -1,58 +1,57 @@
 - edit ||= false
 - model ||= {}
 - f ||= {}
+- is_new = is_new?(model)
 
 - model_name = controller_name.singularize
 - model_klass = model_name.camelcase.constantize
 
 - name = model.send(:name).present? ? model.send(:name) : ""
+- new_path = "new_" + model_name + "_path"
+- edit_path = "edit_" + model_name + "_path"
 
 .entity_title
   .text_title
     = name
   .horizontal_line
+
 .entity_title_bar
-  = render :partial => "#{controller_name}/title_bar", :locals => {:model => model, :f => f, :edit => edit}
+  = render "layouts/components/back_button"
+  - if previous_path?
+    = render "shared/save_and_back"
+
+  - if is_new
+    = f.submit :name => (t :create), :class => "btn btn-success"
+    = link_to_close send(new_path)
+  - else
+    - if edit
+      = f.submit :name => (t :save), :class => "btn btn-success"
+      = link_to_cancel send(edit_path, model), :options => {:class => "btn btn-danger"}
+    - else
+      = link_to_inline(:edit, send(edit_path, model), :text => t(:edit), :edit => edit, "data-kind" => "edit", :class => "btn btn-success")
+
+    #confirm{ hidden }
+    .title_tools#menu
+      = link_to_function(t(:delete) + '?', confirm_delete(model), :class => "btn btn-danger")
+
+
+  -#= render :partial => "#{controller_name}/title_bar", :locals => {:model => model, :f => f, :edit => edit}
 
 :javascript
   var event = crm.event;
   event.on(EVENT_EDIT_START, function(){
     console.log('TTT: Edit start');
-    updateEditButtonCancellable(true);
   });
 
   event.on(EVENT_EDIT_CANCEL, function(){
     console.log('TTT: Edit ng');
-    updateEditButtonCancellable(false);
   });
 
   event.on(EVENT_EDIT_OK, function(){
     console.log('TTT: Edit ok');
-    updateEditButtonCancellable(false);
   });
 
   event.on(EVENT_EDIT_NG, function(){
     console.log('TTT: Edit ng');
-    updateEditButtonCancellable(false);
   });
 
-  //edit button
-  function updateEditButtonCancellable(newEdit){
-        var editBtn = $("#menu a[data-kind='edit']");
-        editBtn.attr('href', editBtn.attr('href').replace(/cancel=(true|false)/,'cancel=' + newEdit));
-        editBtn.attr('data-edit', newEdit);
-        var label = newEdit ? 'Cancel' : 'Edit'
-        editBtn.html(label);
-  }
-
-  $(function(){
-    var menu = $("#menu");
-    var editBtn = menu.find("a[data-kind='edit']");
-    editBtn.click(function(){
-        setTimeout(function(){
-          //var edit = editBtn.attr('data-edit') ;
-          //var newEdit = !(edit === 'true');
-          //updateEditButtonCancellable(newEdit);
-        });
-    });
-  });

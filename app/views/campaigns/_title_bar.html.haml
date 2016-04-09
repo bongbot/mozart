@@ -29,22 +29,19 @@
 - is_new = is_new?(campaign)
 
 = render "layouts/components/back_button"
+- if previous_path?
+  = render "shared/save_and_back"
 
 - if is_new
   .title_tools#menu
   .title#title
     = t :create_campaign
-    - if previous_path?
-      = render "shared/save_and_back"
-  = f.submit (t :create_campaign)
+  = f.submit :name => (t :create_campaign), :class => "btn btn-success"
 
 - else
   - if edit
-    = f.submit :name => (t :save_campaign), :class => "btn btn-danger"
-    - if previous_path?
-      = render "shared/save_and_back"
-
-    = link_to_cancel edit_campaign_path(@campaign), :options => {:class => "btn btn-success"}
+    = f.submit :name => (t :save_campaign), :class => "btn btn-success"
+    = link_to_cancel edit_campaign_path(@campaign), :options => {:class => "btn btn-danger"}
   - else
     = link_to_inline(:edit_campaign, edit_campaign_path(campaign), :text => t(:edit), :edit => edit, "data-kind" => "edit", :class => "btn btn-success")
 
