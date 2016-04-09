@@ -11,4 +11,4 @@
       }, "ckeditor-task-description");
     })
 - else
-  = f.object.send(name.to_s).html_safe
+  = f.object.send(name.to_s) ? f.object.send(name.to_s).html_safe : ""

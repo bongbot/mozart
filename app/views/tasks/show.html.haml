@@ -7,8 +7,8 @@
 = render(:partial => "tasks/edit", :locals => {:edit => edit, :is_new => is_new})
 
 -#- unless is_new
--#  = render "comments/new", :commentable => @lead
+-#  = render "comments/new", :commentable => @task
 -#  = render :partial => "shared/timeline", :collection => @timeline
 -#
--#  = hook(:show_lead_bottom, self, {entity: @lead}) do
--#    = render :partial => "versions/versions", :locals => {:object => @lead}
+-#  = hook(:show_task_bottom, self, {entity: @task}) do
+    = render :partial => "versions/versions", :locals => {:object => @task}

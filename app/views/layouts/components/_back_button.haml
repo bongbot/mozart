@@ -1,0 +1,12 @@
+.btn.btn-success.back
+  <-|
+
+:javascript
+  $(function(){
+    window.crm.registerUniqueHook(function(){
+    $(".back").click(function(){
+        window.history.back();
+    })}, "back-hook");
+  })
+
+

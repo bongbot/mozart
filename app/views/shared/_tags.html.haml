@@ -1,8 +1,9 @@
 - edit ||= false
 - asset = controller_name.singularize
+
 - if edit
-  %div{ :valign => :top}
-    .label= t(:tags) + ":"
+  .row_theme{ :valign => :top}
+    .label-medium= t(:tags) + ":"
 
     = f.hidden_field :tag_list,
     {:class => "select2_tag", :data => {:tags => Tag.all.map{|t| t.name},
@@ -10,6 +11,8 @@
     :multiple => true, :asset_id => f.object.try(:id),
     }, value: f.object.tag_list.join(",")}
 - else
-  %div{ :valign => :top}
-    .label= t(:tags) + ":"
-    = f.object.tag_list.join(",")
+  = c_show_when_exist(f, :tag_list, edit) do
+    .row_theme{ :valign => :top}
+      .label-medium= t(:tags) + ":"
+      - f.object.tag_list.each do |tag|
+        = link_to(tag, "/tags/#{tag}", :class => "link_tag")

@@ -1,34 +1,33 @@
 - edit ||= false
 - disabled = !edit
 
+= section_title :campaign_detail
 = hook(:campaign_top_section, self, :f => f) do
-  .section
-    .row
-      = c_show_when_exist(f, :name, edit) do
-        .col-md-3
-          .label.top.req #{t :name}:
-          = c_textfield(f, :name, edit, :autofocus => true, :style => "width:500px")
-    .row
-      = c_show_when_exist(f, :start_date, edit) do
-        .col-md-2
-          .label.label-block #{t :start_date}:
-          = c_textfield(f, :starts_on, edit, :value => f.object.starts_on, :style => "width:110px", :autocomplete => :off, :class => 'date')
-      = c_show_when_exist(f, :end_date, edit) do
-        .col-md-2
-          .label.label-block #{t :end_date}:
-          = c_textfield(f, :ends_on, edit, :value => f.object.ends_on, :style => "width:110px", :autocomplete => :off, :class => 'date')
-      = c_show_when_exist(f, :status, edit) do
-        .col-md-2
-          .label.label-block #{t :status}:
-          = f.select :status, Setting.unroll(:campaign_status), { :selected => (@campaign.status || "planned").to_sym }, { :style => "width:250px", :disabled => disabled}
+  .row_theme
+    = c_show_when_exist(f, :name, edit) do
+      .label-medium.top.req #{t :name}:
+      = c_textfield(f, :name, edit, :autofocus => true)
 
-    - if Setting.background_info && Setting.background_info.include?(:campaign)
-      .row
-        = c_show_when_exist(f, :background_info, edit) do
-          .col-md-3
-            .label= t(:background_info) << ':'
-            = c_text_area(f, :background_info, edit, :style =>"width:500px", :rows => 3)
+  = c_show_when_exist(f, [:starts_on, :end_on], edit) do
+    .row_theme
+      = c_show_when_exist(f, :starts_on, edit) do
+        .label-medium #{t :start_date}:
+        = c_textfield(f, :starts_on, edit, :value => f.object.starts_on, :autocomplete => :off, :class => 'date')
+      = c_show_when_exist(f, :ends_on, edit) do
+        .label-medium #{t :end_date}:
+        = c_textfield(f, :ends_on, edit, :value => f.object.ends_on, :autocomplete => :off, :class => 'date')
 
-    = render :partial => "/shared/tags", :locals => {:f => f, :span => 5}
+  .row_theme
+    = c_show_when_exist(f, :status, edit) do
+      .label-medium #{t :status}:
+      = c_selectfield(f, :status, Setting.unroll(:campaign_status), { :selected => (@campaign.status || "planned").to_sym }, { :disabled => disabled}, edit)
 
-    = hook(:campaign_top_section_bottom, self, :f => f)
+  - if Setting.background_info && Setting.background_info.include?(:campaign)
+    .row_theme
+      = c_show_when_exist(f, :background_info, edit) do
+        .label-medium= t(:background_info) << ':'
+        = c_text_area(f, :background_info, edit, :style =>"width:500px", :rows => 3)
+
+  = render :partial => "/shared/tags", :locals => {:f => f, :span => 5, :edit => edit}
+
+  = hook(:campaign_top_section_bottom, self, :f => f)

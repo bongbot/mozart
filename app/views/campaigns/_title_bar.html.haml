@@ -1,22 +1,55 @@
 - edit ||= false
 
 - model ||= {}
-- campaign = model
+-#- campaign = model
+-#
+-#- if is_new?(campaign)
+-#  .title_tools#menu
+-#  .title#title
+-#    = t :create_campaign
+-#    - if previous_path?
+-#      = render "shared/save_and_back"
+-#
+-#- else
+-#  #confirm{ hidden }
+-#  .title_tools#menu
+-#    = link_to_inline(:edit_campaign, edit_campaign_path(campaign), :text => t(:edit), :edit => edit, "data-kind" => "edit") + " | "
+-#    = link_to_function(t(:delete) + '?', confirm_delete(campaign))
+-#  .title_tools#buttons
+-#    = view_buttons
+-#  .title#edit_campaign_title
+-#    = h(campaign.name)
+-#    = image_tag("loading.gif", :size => :thumb, :id => "loading", :style => "display: none;")
 
-- if is_new?(campaign)
+
+
+- edit ||= false
+- model ||= {}
+- campaign = model
+- is_new = is_new?(campaign)
+
+= render "layouts/components/back_button"
+
+- if is_new
   .title_tools#menu
   .title#title
     = t :create_campaign
     - if previous_path?
       = render "shared/save_and_back"
+  = f.submit (t :create_campaign)
 
 - else
+  - if edit
+    = f.submit :name => (t :save_campaign), :class => "btn btn-danger"
+    - if previous_path?
+      = render "shared/save_and_back"
+
+    = link_to_cancel edit_campaign_path(@campaign), :options => {:class => "btn btn-success"}
+  - else
+    = link_to_inline(:edit_campaign, edit_campaign_path(campaign), :text => t(:edit), :edit => edit, "data-kind" => "edit", :class => "btn btn-success")
+
   #confirm{ hidden }
   .title_tools#menu
-    = link_to_inline(:edit_campaign, edit_campaign_path(campaign), :text => t(:edit), :edit => edit, "data-kind" => "edit") + " | "
-    = link_to_function(t(:delete) + '?', confirm_delete(campaign))
-  .title_tools#buttons
-    = view_buttons
-  .title#edit_campaign_title
-    = h(campaign.name)
-    = image_tag("loading.gif", :size => :thumb, :id => "loading", :style => "display: none;")
+    = link_to_function(t(:delete) + '?', confirm_delete(campaign), :class => "btn btn-danger")
+
+

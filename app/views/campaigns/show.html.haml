@@ -1,15 +1,7 @@
 - is_new = is_new?(@campaign)
 - edit = is_new || @edit
 
--#- if (template = template_for_current_view)
--#  = render(template, :campaign => @campaign)
--#- else
-
--# default view
-
 = styles_for :task, :lead, :opportunity
-
-= render :partial => 'layouts/title_bar', :locals => {:model => @campaign, :edit => edit}
 
 = render(:partial => "campaigns/edit", :locals => {:edit => edit, :is_new => is_new})
 

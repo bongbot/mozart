@@ -162,13 +162,18 @@
       if value is "specific_time"
         $("#task_bucket").toggle() # Hide dropdown.
         $("#task_calendar").toggle() # Show editable date field.
+        $("#task_bucket_back").toggle()
         $("#task_calendar").datepicker({
           showOn: 'focus',
           changeMonth: true,
           dateFormat: 'yy-mm-dd'}).focus() # Focus to invoke calendar popup.
+      else if value is "bucket_back"
+        $("#task_bucket").toggle() # Hide dropdown.
+        $("#task_bucket").val("due_today");
+        $("#task_calendar").toggle() # Show editable date field.
+        $("#task_bucket_back").toggle()
 
-
-    #----------------------------------------------------------------------------
+#----------------------------------------------------------------------------
     flip_campaign_permissions: (value) ->
       if value
         $("#lead_access_campaign").prop('disabled', false)
@@ -262,6 +267,7 @@
 
     #----------------------------------------------------------------------------
     reschedule_task: (id, bucket) ->
+      $("#task_bucket").prop("disabled", false)
       $("#task_bucket").val bucket
       $("#edit_task_" + id + " input[type=submit]")[0].click()
 

@@ -1,37 +1,49 @@
+- edit ||= false
+- disabled = !edit
+
 %div
-  .row
-    .col-md-12
+  .row_theme
+    = c_show_when_exist(f, :name, edit) do
       .label-medium.top.req #{t :name}:
-      = f.text_field :name, :autofocus => true, :style => "width:500px"
-  .row
-    .col-md-12
-      .label
+      = c_textfield(f, :name, edit, :autofocus => true, :style => "width:500px")
+
+  .row_theme
+    = c_show_when_exist(f, :bucket, edit) do
       .label-medium.req #{t :due}:
       - bucket = (params[:bucket].blank? ? @task.bucket : params[:bucket]) || "due_asap"
-      - with_time = Setting.task_calendar_with_time
-      - if @task.bucket != "specific_time"
-        = f.select :bucket, @bucket, { :selected => bucket.to_sym }, { :style => "width:160px;", :onchange => "crm.flip_calendar(this.value)" }
-        = f.text_field :calendar, :style => "width:160px; display:none;", :autocomplete => :off, :class => (with_time ? 'datetime' : 'date')
+      - if edit
+        - with_time = Setting.task_calendar_with_time
+        - if @task.bucket != "specific_time"
+          = f.select :bucket, @bucket, { :selected => bucket.to_sym }, { :style => "width:160px;", :onchange => "crm.flip_calendar(this.value)" }
+          = f.text_field :calendar, :style => "width:160px; display:none;", :autocomplete => :off, :class => (with_time ? 'datetime' : 'date')
+          = image_tag("back.png", :id => "task_bucket_back" , :class => "button",
+                     :style => "display:none;", :onclick => "crm.flip_calendar('bucket_back')")
+        - else
+          = f.select :bucket, @bucket, { :selected => :specific_time }, { :style => "width:160px; display:none;", :onchange => "crm.flip_calendar(this.value)" }
+          - fmt = with_time ? '%Y-%m-%d %H:%M' : '%Y-%m-%d'
+          = f.text_field :calendar, :value => f.object.due_at.strftime(fmt), :style => "width:160px;", :autocomplete => :off, :class => (with_time ? 'datetime' : 'date')
+          = image_tag("back.png", :id => "task_bucket_back", :class => "button",
+          :onclick => "crm.flip_calendar('bucket_back')")
       - else
-        = f.select :bucket, @bucket, { :selected => :specific_time }, { :style => "width:160px; display:none;", :onchange => "crm.flip_calendar(this.value)" }
-        - fmt = with_time ? '%Y-%m-%d %H:%M' : '%Y-%m-%d'
-        = f.text_field :calendar, :value => f.object.due_at.strftime(fmt), :style => "width:160px;", :autocomplete => :off, :class => (with_time ? 'datetime' : 'date')
-    .col-md-12
-      .label-medium.req #{t :assign_to}:
-      = user_select(:task, all_users, current_user)
-    .col-md-12
-      .label-medium.req #{t :category}:
-      = f.select :category, @category, { :selected => @task.category.blank? ? nil : @task.category.to_sym, :include_blank => t(:select_blank) }, { :style => "width:160px" }
+        = f.select :bucket, @bucket, { :selected => bucket.to_sym }, { :style => "width:160px;", :disabled => disabled }
 
-  .row
-    .col-md-6
-      .label-medium #{t :task_description}:
-      = render :partial => "layouts/components/ckeditor", :locals => {:id => 'task-description', :name => :description, :f => f, :edit => edit}
+  .row_theme
+    .label-medium.req #{t :assign_to}:
+    = user_select(:task, all_users, current_user, edit)
+
+  .row_theme
+    .label-medium.req #{t :category}:
+    = f.select :category, @category, { :selected => @task.category.blank? ? nil : @task.category.to_sym, :include_blank => t(:select_blank) }, { :style => "width:160px", :disabled => disabled }
+
+  .row_theme
+    .row
+      .col-md-6
+        .label-medium #{t :task_description}:
+        = render :partial => "layouts/components/ckeditor", :locals => {:id => 'task-description', :name => :description, :f => f, :edit => edit}
 
   - if Setting.background_info && Setting.background_info.include?(:task)
-    .row
-      .col-md-12
-        .label-medium= t(:extra_info).capitalize << ':'
-        = f.text_area :background_info, :style =>"width:500px", :rows => 3
+    .row_theme
+      .label-medium= t(:extra_info).capitalize << ':'
+      = f.text_area :background_info, :style =>"width:500px", :rows => 3
 
   = hook(:task_top_section_bottom, self, :f => f)

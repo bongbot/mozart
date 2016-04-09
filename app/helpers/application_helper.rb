@@ -158,9 +158,11 @@ module ApplicationHelper
   #----------------------------------------------------------------------------
   def link_to_cancel(url, params = {})
     url = params[:url] if params[:url]
+    options = params[:options] || {}
+    options = options.merge({remote: true})
     link_to(t(:cancel),
             url + "#{url.include?('?') ? '&' : '?'}cancel=true",
-            remote: true
+            options
     )
   end
 
@@ -453,16 +455,20 @@ module ApplicationHelper
 
   #----------------------------------------------------------------------------
   # Combines the 'subtitle' helper with the small info text on the same line.
-  def section_title(id, hidden = true, text = nil, info_text = nil)
-    text = id.to_s.split("_").last.capitalize if text.nil?
-    content_tag("div", class: "subtitle show_attributes") do
-      content = link_to("<small>#{ hidden ? '&#9658;' : '&#9660;' }</small> #{sanitize text}".html_safe,
-                        url_for(controller: :home, action: :toggle, id: id),
-                        remote:  true,
-                        onclick: "crm.flip_subtitle(this)"
-      )
-      content << content_tag("small", info_text.to_s, class: "subtitle_inline_info", id: "#{id}_intro", style: hidden ? "" : "display:none;")
-    end
+  # def section_title(id, hidden = true, text = nil, info_text = nil)
+  #   text = id.to_s.split("_").last.capitalize if text.nil?
+  #   content_tag("div", class: "subtitle show_attributes") do
+  #     content = link_to("<small>#{ hidden ? '&#9658;' : '&#9660;' }</small> #{sanitize text}".html_safe,
+  #                       url_for(controller: :home, action: :toggle, id: id),
+  #                       remote:  true,
+  #                       onclick: "crm.flip_subtitle(this)"
+  #     )
+  #     content << content_tag("small", info_text.to_s, class: "subtitle_inline_info", id: "#{id}_intro", style: hidden ? "" : "display:none;")
+  #   end
+  # end
+
+  def section_title(text)
+    content_tag("div", "<div class='title-text'><small>#{ hidden ? '&#9658;' : '&#9660;' }</small> #{(t text)}</div>".html_safe, class:"section_title")
   end
 
   #----------------------------------------------------------------------------

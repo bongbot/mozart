@@ -1,6 +1,7 @@
 ---
 en-US:
-  language: English
+  language: Vietnam
+  visible_to: Nhìn thấy
 
   # Generic terms.
   #----------------------------------------------------------------------------
@@ -353,6 +354,7 @@ en-US:
   campaign_targets: Campaign Targets
   campaign_statuses: Campaign Statuses
   campaigns: Campaigns
+  campaign_detail: Chi tiết
   campaigns_options: Campaigns Options
   campaigns_small: campaigns
   conversion: Conversion

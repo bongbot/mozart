@@ -1,31 +1,29 @@
 - edit ||= false
 - model ||= {}
 - task = model
+- is_new = is_new?(task)
 
-- if is_new?(task)
+= render "layouts/components/back_button"
+
+- if is_new
   .title_tools#menu
   .title#title
     = t :create_task
     - if previous_path?
       = render "shared/save_and_back"
-
-  .buttonbar{:id => "buttonbar-submit"}
-    - if is_new
-      = f.submit t :create_task
-    - else
-      = f.submit t :save_task
-
-      = link_to_cancel edit_task_path(@task)
+  = f.submit (t :create_task)
 
 - else
+  - if edit
+    = f.submit :name => (t :save_task), :class => "btn btn-danger"
+    = link_to_cancel edit_task_path(@task), :options => {:class => "btn btn-success"}
+  - else
+    = link_to_inline(:edit_task, edit_task_path(task), :text => t(:edit), :edit => edit, "data-kind" => "edit", :class => "btn btn-success")
+
   #confirm{ hidden }
   .title_tools#menu
-    = link_to_inline(:edit_task, edit_task_path(task), :text => t(:edit), :edit => edit, "data-kind" => "edit") + " | "
-    = link_to_function(t(:delete) + '?', confirm_delete(task))
+    = link_to_function(t(:delete) + '?', confirm_delete(task), :class => "btn btn-danger")
   .title_tools#buttons
     = view_buttons
-  .title#title
-    = h(task.name)
-    = image_tag("loading.gif", :size => :thumb, :id => "loading", :style => "display: none;")
 
-  %div#convert_task{ hidden }
+

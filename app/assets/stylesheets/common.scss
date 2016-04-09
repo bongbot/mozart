@@ -6,6 +6,7 @@
 $color_title: #342d7e;
 $color_subtitle: darkslateblue;
 $sidebar_width: 210px;
+$label_medium_with: 170px;
 
 // Common page elements.
 //------------------------------------------------------------------------------
@@ -154,7 +155,7 @@ $sidebar_width: 210px;
   &:empty {
     display: none;
   }
-  width: 170px;
+  width: $label_medium_with;
 }
 
 
