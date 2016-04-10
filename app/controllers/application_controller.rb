@@ -55,6 +55,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def create_assest
+    flash[:related] = params[:related]
+    flash[:return_to_path] = request.referer
+    redirect_to (params[:assest_path])
+  end
+
   private
 
   #

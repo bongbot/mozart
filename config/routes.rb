@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   match '/home/timezone', as: :timezone, via: [:get, :put, :post]
   post '/home/redraw',   as: :redraw
 
+  # create assest from other page
+  get "create_assest" => "application#create_assest"
+
   resource :authentication, except: [:index, :edit]
   resources :comments,       except: [:new, :show]
   resources :emails,         only: [:destroy]
@@ -57,7 +60,6 @@ Rails.application.routes.draw do
       match :auto_complete, via: [:get, :post]
       get :redraw
       get :versions
-      get :create_assest
     end
     member do
       put :attach
