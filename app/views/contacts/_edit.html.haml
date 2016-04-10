@@ -3,7 +3,7 @@
 
 #edit_contact
   = simple_form_for(@contact, :html => one_submit_only, :remote => true) do |f|
-    = render :partial => 'layouts/title_bar', :locals => {:model => @contact, :edit => edit}
+    = render :partial => 'layouts/title_bar', :locals => {:model => @contact, :f => f, :edit => edit}
     = f.hidden_field :user_id
     - if is_new
       = hidden_field_tag "opportunity", "#{@opportunity.id if @opportunity}"
@@ -12,12 +12,12 @@
 
     = render "contacts/top_section", :f => f, :edit => edit
     = render "fields/edit_custom_field_group", :f => f, :edit => edit
-    - if is_new
-      = render "shared/add_comment",   :f => f, :edit => edit
     = render "contacts/extra",       :f => f, :edit => edit
-    = render "contacts/web",         :f => f, :edit => edit
+    = render "shared/web",         :f => f, :edit => edit
     = render "fields/groups",        :f => f, :edit => edit
     = render "entities/permissions", :f => f, :edit => edit, :entity => @contact
+    - if is_new
+      = render "shared/add_comment",   :f => f, :edit => edit
     = hook(:entity_form, self, {f: f, entity: @contact})
 
     .buttonbar

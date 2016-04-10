@@ -30,7 +30,7 @@ module AccountsHelper
     collection_select :account, :id, accounts, :id, :name, options,
                       :"data-placeholder" => t(:select_an_account),
                       :"data-url" => auto_complete_accounts_path(format: 'json'),
-                      style: "width:330px; display:none;",
+                      style: "width:330px; display:none; vertical-align: bottom",
                       class: 'ajax_chosen'
   end
 
@@ -41,26 +41,25 @@ module AccountsHelper
       options = {}
       yield options if block_given?
 
-      content_tag(:div, class: 'label') do
-        t(:account).html_safe +
+      content_tag(:div, class: 'label-medium') do
+        t(:account).html_safe end +
 
-          content_tag(:span, id: 'account_create_title', style: "display: none;") do
-            "(#{t :create_new} #{t :or} <a href='#' onclick='crm.select_account(); return false;'>#{t :select_existing}</a>):".html_safe
-          end +
+      account_select(options) +
+      form.text_field(:name, style: 'width:324px; display:none;') +
 
-          content_tag(:span, id: 'account_select_title') do
-            "(<a href='#' onclick='crm.create_account(); return false;'>#{t :create_new}</a> #{t :or} #{t :select_existing}):".html_safe
-          end +
+      content_tag(:span, id: 'account_select_create_title') do
+        content_tag(:span, id: 'account_create_title', style: "display: none;") do
+          "#{t :create_new} #{t :or} <a href='#' onclick='crm.select_account(); return false;'>#{t :select_existing}</a>".html_safe
+        end +
 
-          content_tag(:span, ':', id: 'account_disabled_title')
-      end +
-
-        account_select(options) +
-        form.text_field(:name, style: 'width:324px; display:none;')
+        content_tag(:span, id: 'account_select_title') do
+          "<a href='#' onclick='crm.create_account(); return false;'>#{t :create_new}</a> #{t :or} #{t :select_existing}".html_safe
+        end
+      end
     else
       options = {}
       yield options if block_given?
-      data = content_tag(:div, class: 'label') do
+      data = content_tag(:div, class: 'label-medium') do
         t(:account).html_safe
       end
       account_name = form.object.name.blank? ? "N/A" : form.object.name

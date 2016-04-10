@@ -1,9 +1,8 @@
 - edit ||= false
 
-= section_title t(:web_presence)
-= c_show_when_not_exist(f, [:blog, :twitter, :linkedin, :facebook, :skype], edit) do
-  No info available
-#lead_presence
+- if edit
+  = section_title t(:web_presence)
+#web_presence
   = c_show_when_exist(f, :blog, edit) do
     .row_theme
       .label-medium.top #{t :blog}:
@@ -12,9 +11,9 @@
     .row_theme
       .label-medium.top #{t :twitter}:
       = c_textfield(f, :twitter, edit)
-  = c_show_when_exist(f, :linked_in, edit) do
+  = c_show_when_exist(f, :linkedin, edit) do
     .row_theme
-      .label-medium #{t :linked_in}:
+      .label-medium #{t :linkedin}:
       = c_textfield(f, :linkedin, edit)
   = c_show_when_exist(f, :facebook, edit) do
     .row_theme

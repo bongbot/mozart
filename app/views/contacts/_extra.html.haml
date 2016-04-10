@@ -1,38 +1,29 @@
 - edit ||= false
-- collapsed = session[:contact_extra].nil? # && @contact.errors.empty?
 - disabled = !edit
 
-= subtitle :contact_extra, collapsed, t(:extra_info)
-.section
-  %small#contact_extra_intro{ hidden_if(!collapsed) }
-    = t(:intro, t(:extra_info_small)) unless edit
-  #contact_extra{ hidden_if(collapsed) }
-    = hook(:contact_extra_details_form, self, :f => f) do
-      .row
-        = c_show_when_exist(f, :title, edit) do
-          .col-md-2
-            .label #{t :job_title}:
-            = c_textfield(f, :title, edit)
-        = c_show_when_exist(f, :department, edit) do
-          .col-md-2
-            .label #{t :department}:
-            = c_textfield(f, :department, edit)
-      .row
-        = c_show_when_exist(f, :alt_email, edit) do
-          .col-md-2
-            .label #{t :alt_email}:
-            = c_textfield(f, :alt_email, edit)
-        = c_show_when_exist(f, :mobile, edit) do
-          .col-md-2
-            .label #{t :mobile}:
-            = c_textfield(f, :mobile, edit)
-      .row
-        = render "shared/address", :f => f, :asset => @contact, :type => 'business', :title => :address, :edit => edit
-        = c_show_when_exist(f, :fax, edit) do
-          .col-md-2
-            .label #{t :fax}:
-            = c_textfield(f, :fax, edit)
-          %div{:style => "margin-top:6px"}
-            .check_box
-              = f.check_box :do_not_call, {:disabled => disabled}, true
-              #{t :do_not_call}
+- if edit
+  = section_title t(:extra_info)
+#contact_extra
+  = hook(:contact_extra_details_form, self, :f => f) do
+    = c_show_when_exist(f, :title, edit) do
+      .row_theme
+        .label-medium #{t :job_title}:
+        = c_textfield(f, :title, edit)
+    = c_show_when_exist(f, :department, edit) do
+      .row_theme
+        .label-medium #{t :department}:
+        = c_textfield(f, :department, edit)
+    = c_show_when_exist(f, :alt_email, edit) do
+      .row_theme
+        .label-medium #{t :alt_email}:
+        = c_textfield(f, :alt_email, edit)
+    = c_show_when_exist(f, :mobile, edit) do
+      .row_theme
+        .label-medium #{t :mobile}:
+        = c_textfield(f, :mobile, edit)
+    = render "shared/address", :f => f, :asset => @contact, :type => 'business', :title => :address, :edit => edit
+    = c_show_when_exist(f, :fax, edit) do
+      .row_theme
+        .label-medium #{t :fax}:
+        = c_textfield(f, :fax, edit)
+    = render "shared/do_not_call", :f => f, :edit => edit
