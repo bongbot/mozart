@@ -80,11 +80,21 @@ module ApplicationHelper
 
   # We need this because standard Rails [select] turns &#9733; into &amp;#9733;
   #----------------------------------------------------------------------------
-  def rating_select(name, options = {})
-    stars = Hash[(1..5).map { |star| [star, "&#9733;" * star] }].sort
-    options_for_select = %(<option value="0"#{options[:selected].to_i == 0 ? ' selected="selected"' : ''}>#{t :select_none}</option>)
-    options_for_select << stars.map { |star| %(<option value="#{star.first}"#{options[:selected] == star.first ? ' selected="selected"' : ''}>#{star.last}</option>) }.join
-    select_tag name, options_for_select.html_safe, options
+  def rating_select(name, options = {}, edit)
+    if edit
+      stars = Hash[(1..5).map { |star| [star, "&#9733;" * star] }].sort
+      options_for_select = %(<option value="0"#{options[:selected].to_i == 0 ? ' selected="selected"' : ''}>#{t :select_none}</option>)
+      options_for_select << stars.map { |star| %(<option value="#{star.first}"#{options[:selected] == star.first ? ' selected="selected"' : ''}>#{star.last}</option>) }.join
+      select_tag name, options_for_select.html_safe, options
+    else
+      data = ""
+      if options[:selected].to_i == 0
+        data << "None"
+      else
+        data << "&#9733;" * options[:selected].to_i
+      end
+      data.html_safe
+    end
   end
 
   #----------------------------------------------------------------------------
@@ -170,7 +180,8 @@ module ApplicationHelper
   def link_to_close(url)
     link_to("x", url + "#{url.include?('?') ? '&' : '?'}cancel=true",
             remote: true,
-            class: "close",
+            # class: "close",
+            class: "btn btn-danger",
             title: t(:close_form)
     )
   end
@@ -592,6 +603,24 @@ module ApplicationHelper
       data << "window.location.href = '#{path}';"
     end
     data
+  end
+
+  def c_collection_select(assest, method, alls, field1, field2, options, html_options, edit)
+    if edit
+      collection_select(assest, method, alls, field1, field2, options, html_options)
+    else
+      model = instance_variable_get("@#{assest}")
+      res = alls.find{|ele|
+        ele.send(field1) == model.send(method)
+      }
+      data = ""
+      if res
+        data << res.send(field2).to_s
+      else
+        data << "N/A"
+      end
+      data.html_safe
+    end
   end
 
   # Entityname

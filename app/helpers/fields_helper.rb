@@ -27,7 +27,7 @@ module FieldsHelper
   def c_show_when_not_exist(f, name, edit = false, &block)
     data = ""
     if edit
-      data << capture(&block)
+      data << ""
     else
       name = name.kind_of?(Array) ? name : [name]
       should_not_display = name.any?{|ele|
@@ -49,7 +49,7 @@ module FieldsHelper
     end
   end
 
-  def c_selectfield(f, name, allvalues , p3 , p4 , edit, &block)
+  def c_selectfield(f, name, allvalues , p3 , p4 , edit = false, &block)
     if edit
       f.select name, allvalues , p3 , p4
     else

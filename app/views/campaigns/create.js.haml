@@ -1,15 +1,2 @@
-- entity_name = controller.controller_name.singularize.underscore #account
-- @entity = instance_variable_get("@#{entity_name}")
-- create_id = "edit_#{entity_name}" # create_account
-- index_path = index_path(entity_name)
+= render "layouts/js/create"
 
-- if @entity.valid?
-  = redirect_to_previous_path_or(index_path)
-
-- else
-  $('##{create_id}').html('#{ j render(:partial => "new", :locals => {:edit => true}) }');
-  $('##{create_id}').effect("shake", { duration:250, distance: 6 });
-  - if @entity.errors[:name].blank? and @entity.errors[:ends_on].present?
-    $('#campaign_ends_on').focus();
-  - else
-    $('#new_#{entity_name} input[type!=hidden]').first().focus();

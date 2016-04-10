@@ -21,13 +21,22 @@ module UsersHelper
     User.by_name
   end
 
-  def user_select(asset, users, myself, editable=true)
-    user_options = user_options_for_select(users, myself)
-    select(asset, :assigned_to, user_options,
-           { include_blank: t(:unassigned) },
-           style:         "width:160px",
-           class: 'select2 ',
-          disabled: !editable)
+  def user_select(asset, users, myself, editable=false)
+    if editable
+      user_options = user_options_for_select(users, myself)
+      select(asset, :assigned_to, user_options,
+             { include_blank: t(:unassigned) },
+             style:         "width:160px",
+             class: 'select2 ')
+    else
+      user_options = user_options_for_select(users, myself)
+      model = instance_variable_get("@#{asset.to_s}")
+      res = user_options.find{|user|
+        user.last == model.send(:assigned_to)
+      }
+      data = ""
+      data << res.first if res
+    end
   end
 
   def user_options_for_select(users, myself)

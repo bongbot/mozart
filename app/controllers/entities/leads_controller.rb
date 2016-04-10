@@ -47,7 +47,11 @@ class LeadsController < EntitiesController
       end
     end
 
-    render "show"
+    respond_with(@lead) do |format|
+      format.html {
+        render "show"
+      }
+    end
 
   end
 

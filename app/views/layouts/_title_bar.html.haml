@@ -30,9 +30,9 @@
     - else
       = link_to_inline(:edit, send(edit_path, model), :text => t(:edit), :edit => edit, "data-kind" => "edit", :class => "btn btn-success")
 
+    = link_to_function(t(:delete) + '?', confirm_delete(model), :class => "btn btn-danger")
     #confirm{ hidden }
-    .title_tools#menu
-      = link_to_function(t(:delete) + '?', confirm_delete(model), :class => "btn btn-danger")
+    %span#menu
 
 
   -#= render :partial => "#{controller_name}/title_bar", :locals => {:model => model, :f => f, :edit => edit}

@@ -175,6 +175,7 @@
 
 #----------------------------------------------------------------------------
     flip_campaign_permissions: (value) ->
+      console.log "TTT: TODO: handle this"
       if value
         $("#lead_access_campaign").prop('disabled', false)
         $("#lead_access_campaign").checked = 1

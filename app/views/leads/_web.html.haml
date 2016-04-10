@@ -1,62 +1,27 @@
 - edit ||= false
-- if edit
-  - collapsed = session[:lead_presence].nil? # && @lead.errors.empty?
-  = subtitle :lead_presence, collapsed, t(:web_presence)
-  .section
-    %small#lead_presence_intro{ hidden_if(!collapsed) }
-      = t(:intro, t(:web_presence_small)) unless edit
-    #lead_presence{ hidden_if(collapsed) }
-      %table
-        %tr
-          %td
-            .label.top #{t :blog}:
-            = f.text_field :blog
-          %td= spacer
-          %td
-            .label.top #{t :twitter}:
-            = f.text_field :twitter
-        %tr
-          %td
-            .label #{t :linked_in}:
-            = f.text_field :linkedin
-          %td= spacer
-          %td
-            .label #{t :facebook}:
-            = f.text_field :facebook
-        %tr
-          %td
-            .label #{t :skype}:
-            = f.text_field :skype
-          %td= spacer
-          %td= spacer
-- else
-  - collapsed = session[:lead_presence].nil? # && @lead.errors.empty?
-  = subtitle :lead_presence, collapsed, t(:web_presence)
-  .section
-    %small#lead_presence_intro{ hidden_if(!collapsed) }
-      = t(:intro, t(:web_presence_small)) unless !edit
-    #lead_presence{ hidden_if(collapsed) }
-      .row
-        = c_show_when_exist(f, :blog) do
-          .col-md-3
-            .label.top #{t :blog}:
-            = c_textfield(f, :blog)
-        = c_show_when_exist(f, :twitter) do
-          .col-md-3
-            .label.top #{t :twitter}:
-            = c_textfield(f, :twitter)
-      .row
-        = c_show_when_exist(f, :linked_in) do
-          .col-md-3
-            .label #{t :linked_in}:
-            = c_textfield(f, :linkedin)
-        = c_show_when_exist(f, :facebook) do
-          .col-md-3
-            .label #{t :facebook}:
-            = c_textfield(f, :facebook)
-      .row
-        = c_show_when_exist(f, :skype) do
-          .col-md-3
-            .label #{t :skype}:
-            = c_textfield(f, :skype)
+
+= section_title t(:web_presence)
+= c_show_when_not_exist(f, [:blog, :twitter, :linkedin, :facebook, :skype], edit) do
+  No info available
+#lead_presence
+  = c_show_when_exist(f, :blog, edit) do
+    .row_theme
+      .label-medium.top #{t :blog}:
+      = c_textfield(f, :blog, edit)
+  = c_show_when_exist(f, :twitter, edit) do
+    .row_theme
+      .label-medium.top #{t :twitter}:
+      = c_textfield(f, :twitter, edit)
+  = c_show_when_exist(f, :linked_in, edit) do
+    .row_theme
+      .label-medium #{t :linked_in}:
+      = c_textfield(f, :linkedin, edit)
+  = c_show_when_exist(f, :facebook, edit) do
+    .row_theme
+      .label-medium #{t :facebook}:
+      = c_textfield(f, :facebook, edit)
+  = c_show_when_exist(f, :skype, edit) do
+    .row_theme
+      .label-medium #{t :skype}:
+      = c_textfield(f, :skype, edit)
 

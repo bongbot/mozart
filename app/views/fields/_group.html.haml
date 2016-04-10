@@ -2,18 +2,26 @@
 
 - if field_group.name != 'custom_fields'
   -# start a new section
-  - collapsed = session[field_group.key].nil?
   %div{ :id => "#{field_group.key}_container", :"data-tag" => field_group.tag.try(:name) }
-    = subtitle field_group.key, collapsed, t(field_group.name, :default => field_group.label)
-    .section
-      %small{ hidden_if(!collapsed).merge(:id => "#{field_group.key}_intro") }
-      %div[field_group]{ hidden_if(collapsed) }
-        = render :partial => 'fields/group_table', :locals => {:f => f, :field_group => field_group, :edit => edit}
+    = section_title t(field_group.name, :default => field_group.label)
+    %div[field_group]
+      = render :partial => 'fields/group_table', :locals => {:f => f, :field_group => field_group, :edit => edit}
 - else
-  .section= render :partial => 'fields/group_table', :locals => {:f => f, :field_group => field_group, :edit => edit}
+  = render :partial => 'fields/group_table', :locals => {:f => f, :field_group => field_group, :edit => edit}
 
 :css
   label.mz{
+    color: grey;
+
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 14px;
     font-weight: bold;
-    margin-right: 10px;
+    line-height: 1;
+    text-align: right;
+    white-space: nowrap;
+    vertical-align: baseline;
+    @include border-radius();
+
+    width: 170px;
   }
