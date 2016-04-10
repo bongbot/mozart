@@ -56,7 +56,6 @@ module FieldsHelper
       val = f.object.send(name).to_s
       if val.present?
         res = allvalues.find{|ele| val == ele.last.to_s }
-        logger.debug "TTT: : #{allvalues.inspect}    /**#{__FILE__}:#{__LINE__}"
         res.first
       else
         "Other"

@@ -26,11 +26,7 @@ class AccountsController < EntitiesController
     @timeline = timeline(@account)
 
     respond_with(@account)
-    # respond_with(@account) do |format|
-    #     format.html do
-    #
-    #     end
-    # end
+
   end
 
   # GET /accounts/new
@@ -43,7 +39,7 @@ class AccountsController < EntitiesController
       instance_variable_set("@#{model}", model.classify.constantize.find(id))
     end
 
-    render "show"
+    respond_new_custom(@account)
   end
 
   # GET /accounts/1/edit                                                   AJAX
@@ -53,13 +49,12 @@ class AccountsController < EntitiesController
       @previous = Account.my.find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
 
-    respond_with(@account) do |format|
+    respond_edit_custom(@account) do |format|
       format.html {
         @stage = Setting.unroll(:opportunity_stage)
         @comment = Comment.new
         @timeline = timeline(@account)
         @edit = true
-        render "show"
       }
     end
   end
@@ -68,7 +63,7 @@ class AccountsController < EntitiesController
   #----------------------------------------------------------------------------
   def create
     @comment_body = params[:comment_body]
-    respond_with(@account) do |_format|
+    respond_create_custom(@account) do |_format|
       if @account.save
         @account.add_comment_by_user(@comment_body, current_user)
         # None: account can only be created from the Accounts index page, so we
@@ -76,14 +71,13 @@ class AccountsController < EntitiesController
         # @accounts = get_accounts
         get_data_for_sidebar
       end
-
     end
   end
 
   # PUT /accounts/1
   #----------------------------------------------------------------------------
   def update
-    respond_with(@account) do |_format|
+    respond_update_custom(@account) do |_format|
       # Must set access before user_ids, because user_ids= method depends on access value.
       @account.access = params[:account][:access] if params[:account][:access]
       get_data_for_sidebar if @account.update_attributes(resource_params)

@@ -47,6 +47,7 @@ module FatFreeCRM
     config.autoload_paths += Dir[Rails.root.join("app/models/**")] +
                              Dir[Rails.root.join("app/controllers/entities")] +
                              Dir[Rails.root.join("app/controllers/entities/extends")]
+    config.autoload_paths += %W(#{config.root}/lib)
 
     # Prevent Field class from being reloaded more than once as this clears registered customfields
     config.autoload_once_paths += [File.expand_path("../app/models/fields/field.rb", __FILE__)]
@@ -85,6 +86,7 @@ module FatFreeCRM
     config.filter_parameters += [:password, :password_hash, :password_salt, :password_confirmation]
 
     config.active_record.raise_in_transactional_callbacks = true
+
   end
 end
 
