@@ -1,0 +1,11 @@
+- edit ||= false
+
+.row_theme
+  = fields_for(@account) do |a|
+    = a.hidden_field :user_id
+    = a.hidden_field :access
+    = a.hidden_field :assigned_to
+    != account_select_or_create(a, edit) do |options|
+      -# Add [-- None --] account choice when editing existing opportunity that has an account.
+      - options[:selected] = @account.id || 0
+      - options[:include_blank] = true #t(:select_none) unless @opportunity.new_record? || @opportunity.account.blank?

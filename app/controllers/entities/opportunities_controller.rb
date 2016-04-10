@@ -33,6 +33,8 @@ class OpportunitiesController < EntitiesController
   # GET /opportunities/new
   #----------------------------------------------------------------------------
   def new
+    logger.debug "TTT: : #{flash[:tryhard].inspect}    /**#{__FILE__}:#{__LINE__}"
+
     @opportunity.attributes = { user: current_user, stage: Opportunity.default_stage, access: Setting.default_access, assigned_to: nil }
     @account     = Account.new(user: current_user, access: Setting.default_access)
     @accounts    = Account.my.order('name')
@@ -48,7 +50,7 @@ class OpportunitiesController < EntitiesController
       end
     end
 
-    render "show"
+    respond_new_custom(@opportunity)
   end
 
   # GET /opportunities/1/edit                                              AJAX
@@ -61,14 +63,14 @@ class OpportunitiesController < EntitiesController
       @previous = Opportunity.my.find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
 
-    respond_with(@opportunity)
+    respond_edit_custom(@opportunity)
   end
 
   # POST /opportunities
   #----------------------------------------------------------------------------
   def create
     @comment_body = params[:comment_body]
-    respond_with(@opportunity) do |_format|
+    respond_create_custom(@opportunity) do |_format|
       if @opportunity.save_with_account_and_permissions(params.permit!)
         @opportunity.add_comment_by_user(@comment_body, current_user)
         if called_from_index_page?
@@ -99,7 +101,7 @@ class OpportunitiesController < EntitiesController
   # PUT /opportunities/1
   #----------------------------------------------------------------------------
   def update
-    respond_with(@opportunity) do |_format|
+    respond_update_custom(@opportunity) do |_format|
       @opportunity.update_with_account_and_permissions(params.permit!)
         # if called_from_index_page?
         #   get_data_for_sidebar

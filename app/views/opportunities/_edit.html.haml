@@ -2,25 +2,25 @@
 - is_new ||= false
 
 #edit_opportunity
-  .remote
-    = simple_form_for(@opportunity, :html => one_submit_only, :remote => true) do |f|
-      = f.hidden_field :user_id
-      - if is_new
-        = hidden_field_tag "contact",  "#{@contact.id  if @contact}"
-      - else
-        = f.hidden_field :campaign_id
+  = simple_form_for(@opportunity, :html => one_submit_only, :remote => true) do |f|
+    = render :partial => 'layouts/title_bar', :locals => {:model => @opportunity, :f => f, :edit => edit}
+    = f.hidden_field :user_id
+    - if is_new
+      = hidden_field_tag "contact",  "#{@contact.id  if @contact}"
+    - else
+      = f.hidden_field :campaign_id
 
-      = f.error_messages :object_name => t('opportunity')
+    = f.error_messages :object_name => t('opportunity')
 
-      = render "opportunities/top_section", :f => f, :edit => edit
-      = render "fields/edit_custom_field_group", :f => f, :edit => edit
-      - if is_new
-        = render "shared/add_comment",        :f => f, :edit => edit
-      = render "fields/groups",             :f => f, :edit => edit
-      = render "entities/permissions",      :f => f, :edit => edit, :entity => @opportunity
-      = hook(:entity_form, self, {f: f, entity: @opportunity})
+    = render "opportunities/top_section", :f => f, :edit => edit
+    = render "fields/edit_custom_field_group", :f => f, :edit => edit
+    = render "fields/groups",             :f => f, :edit => edit
+    = render "entities/permissions",      :f => f, :edit => edit, :entity => @opportunity
+    - if is_new
+      = render "shared/add_comment",        :f => f, :edit => edit
+    = hook(:entity_form, self, {f: f, entity: @opportunity})
 
-      - if edit
-        .buttonbar
-          = f.submit t(:save_opportunity), :onclick => %/$("#account_assigned_to").val($("#opportunity_assigned_to").val());/
+    -#- if edit
+    -#  .buttonbar
+    -#    = f.submit t(:save_opportunity), :onclick => %/$("#account_assigned_to").val($("#opportunity_assigned_to").val());/
 

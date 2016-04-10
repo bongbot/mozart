@@ -117,7 +117,8 @@ class Opportunity < ActiveRecord::Base
   # Backend handler for [Update Opportunity] form (see opportunity/update).
   #----------------------------------------------------------------------------
   def update_with_account_and_permissions(params)
-    if params[:account] && (params[:account][:id] == "" || params[:account][:name] == "")
+    # todo: check remove of validity params[:account][:name] == ""
+    if params[:account] && (params[:account][:id] == "")
       self.account = nil # Opportunity is not associated with the account anymore.
     elsif params[:account]
       self.account = Account.create_or_select_for(self, params[:account])

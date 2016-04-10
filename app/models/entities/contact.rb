@@ -205,10 +205,8 @@ class Contact < ActiveRecord::Base
   def save_account(params)
     account_params = params[:account]
     if account_params[:id] == ""
-      puts "TTT: " + account_params.inspect
       self.account = nil
     else
-      puts "TTT: " + "A2"
       self.account = Account.create_or_select_for(self, account_params)
     end
   end

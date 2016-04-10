@@ -16,6 +16,8 @@ class ApplicationController < ActionController::Base
   helper_method :klass
 
   # Redirect to previous assest logic: Helper method
+  helper_method :flash_previous_path?
+  helper_method :flash_previous_path
   helper_method :previous_path?
   helper_method :previous_path
 
@@ -259,7 +261,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Redirect to previous assest logic: Session variables
+  # Redirect to previous assest logic: START
+  def flash_previous_path?
+    flash[:return_to_path].present?
+  end
+
+  def flash_previous_path
+    flash[:return_to_path]
+  end
+
   def previous_path?
     params[:return_to_path].present?
   end
@@ -267,5 +277,6 @@ class ApplicationController < ActionController::Base
   def previous_path
     params[:return_to_path]
   end
+  # Redirect to previous assest logic: START
 
 end

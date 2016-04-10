@@ -176,9 +176,9 @@ class CampaignsController < EntitiesController
   # GET /campaigns/create_assest                                                 AJAX
   #----------------------------------------------------------------------------
   def create_assest
-    related = "related=#{params[:related]}"
-    return_to_path = "return_to_path=#{request.referer}"
-    redirect_to (params[:assest_path] + "?" + related + "&" + return_to_path)
+    flash[:related] = params[:related]
+    flash[:return_to_path] = request.referer
+    redirect_to (params[:assest_path])
   end
 
   private

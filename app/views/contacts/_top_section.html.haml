@@ -16,25 +16,18 @@
       .label-medium #{t :phone}:
       = c_textfield(f, :phone, edit)
 
-%div
-  = fields_for(@account) do |a|
-    = a.hidden_field :user_id
-    = a.hidden_field :assigned_to
-    = a.hidden_field :access, :value => Setting.default_access
+  = render "shared/account_select", :edit => edit
+
+  .row_theme
+    .label-medium #{t :assigned_to}:
+    = user_select(:contact, all_users, current_user, edit)
+
+  - if Setting.background_info && Setting.background_info.include?(:contact)
     .row_theme
-      != account_select_or_create(a, edit) do |options|
-        - # Add [-- None --] account choice when editing existing contact that has an account.
-        - options[:include_blank] = "" unless @contact.new_record? || @contact.account.blank?
-    .row_theme
-      .label-medium #{t :assigned_to}:
-      = user_select(:contact, all_users, current_user, edit)
-
-    - if Setting.background_info && Setting.background_info.include?(:contact)
-      .row_theme
-        .label-medium= t(:background_info) << ':'
-        = c_text_area(f, :background_info, edit, :style =>"width:500px", :rows => 3)
+      .label-medium= t(:background_info) << ':'
+      = c_text_area(f, :background_info, edit, :style =>"width:500px", :rows => 3)
 
 
-    = render :partial => "/shared/tags", :locals => {:f => f, :span => 3}
+  = render :partial => "/shared/tags", :locals => {:f => f, :span => 3}
 
-    = hook(:contact_top_section_bottom, self, :f => f)
+  = hook(:contact_top_section_bottom, self, :f => f)

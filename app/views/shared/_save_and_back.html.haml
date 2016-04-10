@@ -1,12 +1,11 @@
 .buttonbar.btn.btn-success{:id => "buttonbar-save-and-back"}
   Save and back
-  #return_to_path.hidden{"value" => previous_path }
+  #return_to_path.hidden{"value" => flash_previous_path }
   #entity_name.hidden{"value" => "edit_" + entity_name }
 :javascript
   $(function(){
     $("#buttonbar-save-and-back").click(function(){
       var form = $("#" + $("#entity_name").attr("value")).find("form");
-      console.log('TTT: form: ' + form)
        $('<input />').attr('type', 'hidden')
             .attr('name', "return_to_path")
             .attr('value', $("#return_to_path").attr("value"))

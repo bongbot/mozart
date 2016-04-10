@@ -2,68 +2,57 @@
 - edit ||= false
 - disabled = !edit
 
+=section_title (t :detail)
 = hook(:opportunity_top_section, self, :f => f) do
-  .section
-    %div
-      .row
-        = c_show_when_exist(f, :name, edit) do
-          .col-md-3
-            .label.req.top #{t :name}:
-            = c_textfield(f, :name, edit, :autofocus => true, :style => "width:325px")
-        = c_show_when_exist(f, :stage, edit) do
-          .col-md-3
-            .label.req.top #{t :stage}:
-            = f.select :stage, @stage, { :selected => @opportunity.stage ? @opportunity.stage.to_sym : nil }, { :style => "width:160px", :disabled => disabled }
+  %div
+    = c_show_when_exist(f, :name, edit) do
+      .row_theme
+        .label-medium.req.top #{t :name}:
+        = c_textfield(f, :name, edit, :autofocus => true, :style => "width:325px")
+    = c_show_when_exist(f, :stage, edit) do
+      .row_theme
+        .label-medium.req.top #{t :stage}:
+        = f.select :stage, @stage, { :selected => @opportunity.stage ? @opportunity.stage.to_sym : nil }, { :style => "width:160px", :disabled => disabled }
 
-    %div{ :border => 0, :width => 500, :cellpadding => 0, :cellspacing => 0 }
-      .row
-        = c_show_when_exist(f, :closes_on, edit) do
-          .col-md-3
-            .label #{t :close_date}:
-            = c_textfield(f, :closes_on, :value => f.object.closes_on, :style => "width:110px;", :autocomplete => :off, :class => 'date')
+  %div{ :border => 0, :width => 500, :cellpadding => 0, :cellspacing => 0 }
+    = c_show_when_exist(f, :closes_on, edit) do
+      .row_theme
+        .label-medium #{t :close_date}:
+        = c_textfield(f, :closes_on, :value => f.object.closes_on, :style => "width:110px;", :autocomplete => :off, :class => 'date')
 
-        = c_show_when_exist(f, :probability, edit) do
-          .col-md-3
-            .label #{t :probability} (%):
-            = c_textfield(f, :probability, :style => "width:110px; text-align:right;")
+    = c_show_when_exist(f, :probability, edit) do
+      .row_theme
+        .label-medium #{t :probability} (%):
+        = c_textfield(f, :probability, :style => "width:110px; text-align:right;")
 
-        = c_show_when_exist(f, :amount, edit) do
-          .col-md-3
-            .label #{t :amount} #{t :currency}:
-            = c_textfield(f, :amount, :style => "width:110px; text-align:right;")
+    = c_show_when_exist(f, :amount, edit) do
+      .row_theme
+        .label-medium #{t :amount} #{t :currency}:
+        = c_textfield(f, :amount, :style => "width:110px; text-align:right;")
 
-        = c_show_when_exist(f, :first_name, edit) do
-          .col-md-3
-            .label #{t :discount} #{t :currency}:
-            = c_textfield(f, :discount, :style => "width:110px; text-align:right;")
+    = c_show_when_exist(f, :first_name, edit) do
+      .row_theme
+        .label-medium #{t :discount} #{t :currency}:
+        = c_textfield(f, :discount, :style => "width:110px; text-align:right;")
 
 
-    = fields_for(@account) do |a|
-      = a.hidden_field :user_id
-      = a.hidden_field :access
-      = a.hidden_field :assigned_to
-      %div
-        .row
-          .col-md-3
-            != account_select_or_create(a, edit) do |options|
-              -# Add [-- None --] account choice when editing existing opportunity that has an account.
-              - options[:selected] = @account.id || 0
-              - options[:include_blank] = true #t(:select_none) unless @opportunity.new_record? || @opportunity.account.blank?
+  = render "shared/account_select", :edit => edit
 
-          .col-md-3
-            .label.req #{t :assigned_to}:
-            = user_select(:opportunity, all_users, current_user, edit)
-        .row
-          .col-md-3
-            .label #{t :campaign}:
-            = opportunity_campaign_select(selected: (@campaign.try(:id) || @opportunity.campaign_id), include_blank: true, :edit => edit )
+  .row_theme
+    .label-medium.req #{t :assigned_to}:
+    = user_select(:opportunity, all_users, current_user, edit)
 
-        - if Setting.background_info && Setting.background_info.include?(:opportunity)
-          .row
-            .col-md-3(colspan="3")
-              .label= t(:background_info) << ':'
-              = c_text_area(f, :background_info, :style =>"width:500px", :rows => 3)
+  = c_show_when_exist(f, :campaign_id, edit) do
+    .row_theme
+      .label-medium #{t :campaign}:
+      = opportunity_campaign_select(selected: (@campaign.try(:id) || @opportunity.campaign_id), include_blank: true, :edit => edit )
 
-        = render :partial => "/shared/tags", :locals => {:f => f, :span => 3}
+  - if Setting.background_info && Setting.background_info.include?(:opportunity)
+    .row
+      .row_theme
+        .label-medium= t(:background_info) << ':'
+        = c_text_area(f, :background_info, :style =>"width:500px", :rows => 3)
 
-        = hook(:opportunity_top_section_bottom, self, :f => f)
+  = render :partial => "/shared/tags", :locals => {:f => f, :span => 3}
+
+  = hook(:opportunity_top_section_bottom, self, :f => f)

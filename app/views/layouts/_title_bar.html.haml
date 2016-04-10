@@ -17,7 +17,7 @@
 
 .entity_title_bar
   = render "layouts/components/back_button"
-  - if previous_path?
+  - if flash_previous_path?
     = render "shared/save_and_back"
 
   - if is_new
