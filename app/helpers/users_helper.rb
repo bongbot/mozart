@@ -34,12 +34,20 @@ module UsersHelper
       res = user_options.find{|user|
         user.last == model.send(:assigned_to)
       }
-      data = ""
-      data << res.first if res
+      data = res ? res.first : (t :unassigned)
+      data
     end
   end
 
   def user_options_for_select(users, myself)
     (users - [myself]).map { |u| [u.full_name, u.id] }.prepend([t(:myself), myself.id])
+  end
+
+  def full_name(object)
+    res = [:first_name, :last_name].inject([]) do |memo, ele|
+      val = object.send(ele)
+      memo << val if val.present?
+    end
+    res.join(" ")
   end
 end

@@ -2,49 +2,49 @@
 - edit ||= false
 - disabled = !edit
 
+= section_title (t :detail)
 = hook(:contact_top_section, self, :f => f) do
-  .section
-    %div
-      .row
-        = c_show_when_exist(f, :first_name, edit) do
-          .col-md-2
-            .label.top.req{ :class => "#{Setting.require_first_names ? 'req' : nil}" } #{t :first_name}:
-            = c_textfield(f, :first_name, edit, :autofocus => true)
-        = c_show_when_exist(f, :last_name, edit) do
-          .col-md-3
-            .label.top{ :class => "#{Setting.require_last_names ? 'req' : nil}" } #{t :last_name}:
-            = c_textfield(f, :last_name, edit)
-      .row
-        = c_show_when_exist(f, :email, edit) do
-          .col-md-2
-            .label #{t :email}:
-            = c_textfield(f, :email, edit)
-        = c_show_when_exist(f, :phone, edit) do
-          .col-md-2
-            .label #{t :phone}:
-            = c_textfield(f, :phone, edit)
+  %div
+    .row
+      = c_show_when_exist(f, :first_name, edit) do
+        .col-md-3
+          .label-medium.top.req{ :class => "#{Setting.require_first_names ? 'req' : nil}" } #{t :first_name}:
+          = c_textfield(f, :first_name, edit, :autofocus => true)
+      = c_show_when_exist(f, :last_name, edit) do
+        .col-md-3
+          .label-medium.top{ :class => "#{Setting.require_last_names ? 'req' : nil}" } #{t :last_name}:
+          = c_textfield(f, :last_name, edit)
+    .row
+      = c_show_when_exist(f, :email, edit) do
+        .col-md-2
+          .label-medium #{t :email}:
+          = c_textfield(f, :email, edit)
+      = c_show_when_exist(f, :phone, edit) do
+        .col-md-2
+          .label-medium #{t :phone}:
+          = c_textfield(f, :phone, edit)
 
-    %div
-      = fields_for(@account) do |a|
-        = a.hidden_field :user_id
-        = a.hidden_field :assigned_to
-        = a.hidden_field :access, :value => Setting.default_access
+  %div
+    = fields_for(@account) do |a|
+      = a.hidden_field :user_id
+      = a.hidden_field :assigned_to
+      = a.hidden_field :access, :value => Setting.default_access
+      .row
+        .col-md-3
+          != account_select_or_create(a, edit) do |options|
+            - # Add [-- None --] account choice when editing existing contact that has an account.
+            - options[:include_blank] = "" unless @contact.new_record? || @contact.account.blank?
+        .col-md-2
+          .label-medium #{t :assigned_to}:
+          = user_select(:contact, all_users, current_user, edit)
+
+      - if Setting.background_info && Setting.background_info.include?(:contact)
         .row
-          .col-md-3
-            != account_select_or_create(a, edit) do |options|
-              - # Add [-- None --] account choice when editing existing contact that has an account.
-              - options[:include_blank] = "" unless @contact.new_record? || @contact.account.blank?
           .col-md-2
-            .label #{t :assigned_to}:
-            = user_select(:contact, all_users, current_user, edit)
-
-        - if Setting.background_info && Setting.background_info.include?(:contact)
-          .row
-            .col-md-2
-              .label= t(:background_info) << ':'
-              = c_text_area(f, :background_info, edit, :style =>"width:500px", :rows => 3)
+            .label-medium= t(:background_info) << ':'
+            = c_text_area(f, :background_info, edit, :style =>"width:500px", :rows => 3)
 
 
-        = render :partial => "/shared/tags", :locals => {:f => f, :span => 3}
+      = render :partial => "/shared/tags", :locals => {:f => f, :span => 3}
 
-        = hook(:contact_top_section_bottom, self, :f => f)
+      = hook(:contact_top_section_bottom, self, :f => f)

@@ -617,7 +617,7 @@ module ApplicationHelper
       if res
         data << res.send(field2).to_s
       else
-        data << "N/A"
+        data << (t :select_none)
       end
       data.html_safe
     end

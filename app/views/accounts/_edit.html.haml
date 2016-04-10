@@ -2,19 +2,18 @@
 - is_new ||= false
 
 #edit_account
-  .remote
-    = simple_form_for(@account, :html => one_submit_only, :remote => true) do |f|
-      = f.hidden_field :user_id
+  = simple_form_for(@account, :html => one_submit_only, :remote => true) do |f|
+    = render :partial => 'layouts/title_bar', :locals => {:model => @account, :f => f, :edit => edit}
 
-      = f.error_messages :object_name => t('account')
+    = f.hidden_field :user_id
 
-      = render "accounts/top_section",  :f => f, :edit => edit
-      = render "fields/edit_custom_field_group", :f => f, :edit => edit
-      - if is_new
-        = render "shared/add_comment", :f => f, :edit => true
-      = render "accounts/contact_info", :f => f, :edit => edit
-      = render "fields/groups",         :f => f, :edit => edit
-      = render "entities/permissions",  :f => f, :edit => edit, :entity => @account
-      = hook(:entity_form, self, {f: f, entity: @account})
+    = f.error_messages :object_name => t('account')
 
-      = render :partial => "layouts/components/submit_button", :locals => {:f => f, :edit => true, :label => :create_account}
+    = render "accounts/top_section",  :f => f, :edit => edit
+    = render "fields/edit_custom_field_group", :f => f, :edit => edit
+    = render "accounts/contact_info", :f => f, :edit => edit
+    = render "fields/groups",         :f => f, :edit => edit
+    = render "entities/permissions",  :f => f, :edit => edit, :entity => @account
+    = hook(:entity_form, self, {f: f, entity: @account})
+    - if is_new
+      = render "shared/add_comment", :f => f, :edit => true

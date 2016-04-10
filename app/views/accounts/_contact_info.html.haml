@@ -1,37 +1,29 @@
 - edit ||= false
-- collapsed = (@account.errors.empty? && session[:account_contact].nil?)
-= subtitle :account_contact, collapsed, t(:contact_info)
 
-.section
-  %small#account_contact_intro{ hidden_if(!collapsed) }
-    = t(:intro, t(:account_small)) unless edit
-  #account_contact{ hidden_if(collapsed) }
-    .row
-      = c_show_when_exist(f, :toll_free_phone, edit) do
-        .col-md-2
-          .label #{t :toll_free_phone}:
-          = c_textfield(f, :toll_free_phone, edit, :style => "width:154px")
-      = c_show_when_exist(f, :phone, edit) do
-        .col-md-2
-          .label #{t :phone}:
-          = c_textfield(f, :phone, edit, :style => "width:154px")
-      = c_show_when_exist(f, :fax, edit) do
-        .col-md-2
-          .label #{t :fax}:
-          = c_textfield(f, :fax, edit, :style => "width:154px")
-    .row
-      = c_show_when_exist(f, :website, edit) do
-        .col-md-2
-          .label.top #{t :website}:
-          = c_textfield(f, :website, edit)
+- if edit
+  = section_title t(:contact_info)
+#account_contact
+  = c_show_when_exist(f, :toll_free_phone, edit) do
+    .row_theme
+      .label-medium #{t :toll_free_phone}:
+      = c_textfield(f, :toll_free_phone, edit, :style => "width:154px")
+  = c_show_when_exist(f, :phone, edit) do
+    .row_theme
+      .label-medium #{t :phone}:
+      = c_textfield(f, :phone, edit, :style => "width:154px")
+  = c_show_when_exist(f, :fax, edit) do
+    .row_theme
+      .label-medium #{t :fax}:
+      = c_textfield(f, :fax, edit, :style => "width:154px")
+  = c_show_when_exist(f, :website, edit) do
+    .row_theme
+      .label-medium.top #{t :website}:
+      = c_textfield(f, :website, edit)
 
-      = c_show_when_exist(f, :email, edit) do
-        .col-md-2
-          .label.top Email:
-          = c_textfield(f, :email, edit)
+  = c_show_when_exist(f, :email, edit) do
+    .row_theme
+      .label-medium.top Email:
+      = c_textfield(f, :email, edit)
 
-    .row
-      .col-md-3
-        = render "shared/address", :f => f, :asset => @account, :type => :billing, :title => :billing_address
-      .col-md-3
-        = render "shared/address", :f => f, :asset => @account, :type => :shipping, :title => :shipping_address, :same_as_billing => true
+  = render "shared/address", :f => f, :asset => @account, :type => :billing, :title => :billing_address, :edit => edit
+  = render "shared/address", :f => f, :asset => @account, :type => :shipping, :title => :shipping_address, :same_as_billing => true, :edit => edit

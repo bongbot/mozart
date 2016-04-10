@@ -9,8 +9,6 @@
 
 = styles_for :task, :contact, :opportunity
 
-= render :partial => 'layouts/title_bar', :locals => {:model => @account, :edit => edit}
-
 = render(:partial => "accounts/edit", :locals => {:edit => edit, :is_new => is_new})
 
 - if not is_new

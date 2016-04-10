@@ -19,4 +19,31 @@ module AddressesHelper
     fields = [:street1,:street2,:city,:state,:zipcode,:country]
     fields.any?{|field| address[field].present?}
   end
+
+  def address_display(address)
+    if address.present?
+      res = []
+      street = address.street1 + " " + address.street2
+      if street.present?
+        res << street
+      end
+
+      [:city, :state, :zipcode].each do |ele|
+        val = address.send(ele)
+        if val.present?
+          res << val
+        end
+      end
+
+      country = address.send(:country)
+      if country.present?
+        country_val = ISO3166::Country[country] ? ISO3166::Country[country] .name : ""
+        res << country_val if country_val.present?
+      end
+
+      res.join(", ")
+    else
+      ""
+    end
+  end
 end

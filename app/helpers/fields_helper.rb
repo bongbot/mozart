@@ -53,9 +53,14 @@ module FieldsHelper
     if edit
       f.select name, allvalues , p3 , p4
     else
-      val = f.object.send(name)
-      res = allvalues.find{|ele| val == ele.last.to_s }
-      res.first
+      val = f.object.send(name).to_s
+      if val.present?
+        res = allvalues.find{|ele| val == ele.last.to_s }
+        logger.debug "TTT: : #{allvalues.inspect}    /**#{__FILE__}:#{__LINE__}"
+        res.first
+      else
+        "Other"
+      end
     end
   end
 

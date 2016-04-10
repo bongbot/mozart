@@ -1,32 +1,29 @@
 - edit ||= false
 - disabled = !edit
 
+= section_title (t :detail)
 = hook(:account_top_section, self, :f => f) do
-  .section
+  = c_show_when_exist(f, :name, edit) do
+    .row_theme
+      .label-medium.top.req #{t :name}:
+      = c_textfield(f, :name, edit, :autofocus => true, :style => "width:500px")
+  .row_theme
+    .label-medium #{t :assigned_to}:
+    = user_select(:account, User.without(current_user), current_user, edit)
+  .row_theme
+    .label-medium #{t :category}:
+    = c_selectfield f, :category, Setting.unroll(:account_category), { :selected => (@account.category || "other").to_sym, :include_blank => t(:other) }, { :style => "width:160px", :disabled => disabled }, edit
+  .row_theme
+    .label-medium #{t :rating}:
+    = rating_select "account[rating]", { :id => :account_rating, :selected => @account.rating, :style => "width:160px", :disabled => disabled }, edit
+
+  - if Setting.background_info && Setting.background_info.include?(:account)
     .row
-      = c_show_when_exist(f, :name, edit) do
-        .col-md-3
-          .label.top.req #{t :name}:
-          = c_textfield(f, :name, edit, :autofocus => true, :style => "width:500px")
-    .row
-      .col-md-3
-        .label #{t :assigned_to}:
-        = user_select(:account, User.without(current_user), current_user, edit)
-      = c_show_when_exist(f, :category, edit) do
-        .col-md-3
-          .label #{t :category}:
-          = f.select :category, Setting.unroll(:account_category), { :selected => (@account.category || "other").to_sym, :include_blank => t(:other) }, { :style => "width:160px", :disabled => disabled }
-      .col-md-3
-        .label #{t :rating}:
-        = rating_select "account[rating]", { :id => :account_rating, :selected => @account.rating, :style => "width:160px", :disabled => disabled }
+      = c_show_when_exist(f, :background_info, edit) do
+        .col-md-3(colspan="5")
+          .label-medium= t(:background_info) << ':'
+          = c_text_area(f, :background_info, edit, :style => "width:500px")
 
-    - if Setting.background_info && Setting.background_info.include?(:account)
-      .row
-        = c_show_when_exist(f, :background_info, edit) do
-          .col-md-3(colspan="5")
-            .label= t(:background_info) << ':'
-            = c_text_area(f, :background_info, edit, :style => "width:500px")
+  = render :partial => "/shared/tags", :locals => {:f => f, :span => 3}
 
-    = render :partial => "/shared/tags", :locals => {:f => f, :span => 3}
-
-    = hook(:account_top_section_bottom, self, :f => f)
+  = hook(:account_top_section_bottom, self, :f => f)

@@ -15,11 +15,11 @@
     = render "fields/edit_custom_field_group", :f => f, :edit => edit
     = render "leads/status",         :f => f, :edit => edit
     = render "leads/contact",        :f => f, :edit => edit
-    - if is_new
-      = render "shared/add_comment",   :f => f, :edit => true
     = render "leads/web",            :f => f, :edit => edit
     = render "fields/groups",        :f => f, :edit => edit
     = render "entities/permissions", :f => f, :edit => edit, :entity => @lead
+    - if is_new
+      = render "shared/add_comment",   :f => f, :edit => true
     = hook(:entity_form, self, {f: f, entity: @lead})
 
     = render :partial => "layouts/components/submit_button", :locals => {:f => f, :edit => edit, :label => :save_lead}

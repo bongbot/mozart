@@ -1,0 +1,14 @@
+- if edit
+  = c_show_when_exist(f, :first_name, edit) do
+    .row
+      .col-md-3
+        .label-medium.top{ :class => "#{Setting.require_first_names ? 'req' : nil}" } #{t :first_name}:
+        =  c_textfield(f, :first_name, edit)
+      = c_show_when_exist(f, :last_name, edit) do
+        .col-md-3
+          .label-medium.top{ :class => "#{Setting.require_last_names ? 'req' : nil}" } #{t :last_name}:
+          = c_textfield(f, :last_name, edit)
+- else
+  .label-medium #{t :full_name}:
+  = full_name(f.object)
+
