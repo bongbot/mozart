@@ -43,7 +43,7 @@ class ContactsController < EntitiesController
       end
     end
 
-    respond_new_custom(@contact)
+    respond_custom(@contact)
   end
 
   # GET /contacts/1/edit                                                   AJAX
@@ -54,7 +54,7 @@ class ContactsController < EntitiesController
       @previous = Contact.my.find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
 
-    respond_edit_custom(@contact) do |format|
+    respond_custom(@contact) do |format|
       format.html {
         @stage = Setting.unroll(:opportunity_stage)
         @comment = Comment.new
@@ -69,7 +69,7 @@ class ContactsController < EntitiesController
   #----------------------------------------------------------------------------
   def create
     @comment_body = params[:comment_body]
-    respond_create_custom(@contact) do |_format|
+    respond_custom(@contact) do |_format|
       if @contact.save_with_account_and_permissions(params.permit!)
         @contact.add_comment_by_user(@comment_body, current_user)
         # @contacts = get_contacts if called_from_index_page?
@@ -91,7 +91,7 @@ class ContactsController < EntitiesController
   # PUT /contacts/1
   #----------------------------------------------------------------------------
   def update
-    respond_update_custom(@contact) do |_format|
+    respond_custom(@contact) do |_format|
       @contact.update_with_account_and_permissions(params.permit!)
       if @contact.account
         @account = @contact.account
@@ -106,7 +106,7 @@ class ContactsController < EntitiesController
   def destroy
     @contact.destroy
 
-    respond_with(@contact) do |format|
+    respond_custom(@contact) do |format|
       format.html { respond_to_destroy(:html) }
       format.js   { respond_to_destroy(:ajax) }
     end

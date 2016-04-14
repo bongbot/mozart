@@ -47,7 +47,7 @@ class LeadsController < EntitiesController
       end
     end
 
-    respond_new_custom(@lead)
+    respond_custom(@lead)
 
   end
 
@@ -61,7 +61,7 @@ class LeadsController < EntitiesController
       @previous = Lead.my.find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
 
-    respond_edit_custom(@lead) do |format|
+    respond_custom(@lead) do |format|
       format.html {
         @edit = true
         @comment = Comment.new
@@ -77,7 +77,7 @@ class LeadsController < EntitiesController
     get_campaigns
     @comment_body = params[:comment_body]
 
-    respond_create_custom(@lead) do |_format|
+    respond_custom(@lead) do |_format|
       if @lead.save_with_permissions(params.permit!)
         @lead.add_comment_by_user(@comment_body, current_user)
         if called_from_index_page?
@@ -93,7 +93,7 @@ class LeadsController < EntitiesController
   # PUT /leads/1
   #----------------------------------------------------------------------------
   def update
-    respond_update_custom(@lead) do |_format|
+    respond_custom(@lead) do |_format|
       # Must set access before user_ids, because user_ids= method depends on access value.
       @lead.access = resource_params[:access] if resource_params[:access]
       if @lead.update_with_lead_counters(resource_params)

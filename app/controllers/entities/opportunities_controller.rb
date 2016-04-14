@@ -27,7 +27,7 @@ class OpportunitiesController < EntitiesController
 
     @comment = Comment.new
     @timeline = timeline(@opportunity)
-    respond_with(@opportunity)
+    respond_custom(@opportunity)
   end
 
   # GET /opportunities/new
@@ -37,9 +37,8 @@ class OpportunitiesController < EntitiesController
     @account     = Account.new(user: current_user, access: Setting.default_access)
     @accounts    = Account.my.order('name')
 
-    if flash[:related]
-      model, id = flash[:related].split('_')
-      if related = model.classify.constantize.my.find_by_id(id)
+    get_related_model do |model, related, id|
+      if related
         instance_variable_set("@#{model}", related)
         @account = related.account if related.respond_to?(:account) && !related.account.nil?
         @campaign = related.campaign if related.respond_to?(:campaign)
@@ -48,7 +47,7 @@ class OpportunitiesController < EntitiesController
       end
     end
 
-    respond_new_custom(@opportunity)
+    respond_custom(@opportunity)
   end
 
   # GET /opportunities/1/edit                                              AJAX
@@ -61,14 +60,14 @@ class OpportunitiesController < EntitiesController
       @previous = Opportunity.my.find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
 
-    respond_edit_custom(@opportunity)
+    respond_custom(@opportunity)
   end
 
   # POST /opportunities
   #----------------------------------------------------------------------------
   def create
     @comment_body = params[:comment_body]
-    respond_create_custom(@opportunity) do |_format|
+    respond_custom(@opportunity) do |_format|
       if @opportunity.save_with_account_and_permissions(params.permit!)
         @opportunity.add_comment_by_user(@comment_body, current_user)
         if called_from_index_page?
@@ -99,7 +98,7 @@ class OpportunitiesController < EntitiesController
   # PUT /opportunities/1
   #----------------------------------------------------------------------------
   def update
-    respond_update_custom(@opportunity) do |_format|
+    respond_custom(@opportunity) do |_format|
       @opportunity.update_with_account_and_permissions(params.permit!)
         # if called_from_index_page?
         #   get_data_for_sidebar
@@ -127,7 +126,7 @@ class OpportunitiesController < EntitiesController
     end
     @opportunity.destroy
 
-    respond_with(@opportunity) do |format|
+    respond_custom(@opportunity) do |format|
       format.html { respond_to_destroy(:html) }
       format.js   { respond_to_destroy(:ajax) }
     end
