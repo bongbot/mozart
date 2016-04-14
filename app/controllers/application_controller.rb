@@ -285,4 +285,22 @@ class ApplicationController < ActionController::Base
   end
   # Redirect to previous assest logic: START
 
+
+  def get_related_model
+    if flash[:related]
+      model, id = flash[:related].split(/_(\d+)/)
+      related = model.classify.constantize.my.find_by_id(id)
+      if block_given?
+        yield(model, related, id)
+      else
+        if related
+          instance_variable_set("@#{model}", related)
+        else
+          @return = true
+          respond_to_related_not_found(model)
+        end
+      end
+    end
+  end
+
 end

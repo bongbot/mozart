@@ -15,7 +15,6 @@
         }
         init(this);
 
-        console.log("TTT: " + "Attach:" + elementId);
         $(this).unbind('click');
 
         $(this).click(function(){

@@ -67,8 +67,8 @@ class CampaignsController < EntitiesController
   def new
     @campaign.attributes = { user: current_user, access: Setting.default_access, assigned_to: nil }
 
-    if params[:related]
-      model, id = params[:related].split('_')
+    if flash[:related]
+      model, id = flash[:related].split('_')
       if related = model.classify.constantize.my.find_by_id(id)
         instance_variable_set("@#{model}", related)
       else
@@ -76,11 +76,7 @@ class CampaignsController < EntitiesController
       end
     end
 
-    respond_with(@campaign) do |format|
-      format.html {
-        render "show"
-      }
-    end
+    respond_custom(@campaign)
   end
 
   # GET /campaigns/1/edit                                                  AJAX
@@ -90,12 +86,10 @@ class CampaignsController < EntitiesController
       @previous = Campaign.my.find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
 
-    respond_with(@campaign) do |format|
+    respond_custom(@campaign) do |format|
       format.html {
-        @edit = true
         @comment = Comment.new
         @timeline = timeline(@campaign)
-        render "show"
       }
     end
 
@@ -106,7 +100,7 @@ class CampaignsController < EntitiesController
   def create
     @comment_body = params[:comment_body]
 
-    respond_with(@campaign) do |_format|
+    respond_custom(@campaign) do |_format|
       if @campaign.save
         @campaign.add_comment_by_user(@comment_body, current_user)
         @campaigns = get_campaigns
@@ -118,7 +112,7 @@ class CampaignsController < EntitiesController
   # PUT /campaigns/1
   #----------------------------------------------------------------------------
   def update
-    respond_with(@campaign) do |_format|
+    respond_custom(@campaign) do |_format|
       # Must set access before user_ids, because user_ids= method depends on access value.
       @campaign.access = resource_params[:access] if resource_params[:access]
       get_data_for_sidebar if @campaign.update_attributes(resource_params) && called_from_index_page?

@@ -5,19 +5,24 @@ crm.registerUniqueHook = function(hookFunction, name){
     if(ONLOAD_HOOK.hasOwnProperty(name)){
         return;
     }
-    window.ONLOAD_HOOK.name = hookFunction;
+    window.ONLOAD_HOOK[name] = hookFunction;
 }
 
 crm.runOnload = function(){
-    var ONLOAD_HOOK = window.ONLOAD_HOOK || [];
-    for(var key in ONLOAD_HOOK){
-        var hook = ONLOAD_HOOK[key];
-        if($.isFunction(hook)){
-            console.log("TTT: run hook" + name);
-            hook();
-        } else {
-            console.log("W: hook only accept function");
-        }
+    var ONLOAD_HOOK = window.ONLOAD_HOOK || {};
+    $.each( ONLOAD_HOOK, function( key, value ) {
+        crm.runHook(key);
+    });
+}
+
+
+crm.runHook = function(name){
+    var hook = ONLOAD_HOOK[name];
+    if($.isFunction(hook)){
+        console.log("TTT: run hook:" + name);
+        hook();
+    } else {
+        console.log("W: hook only accept function");
     }
 }
 

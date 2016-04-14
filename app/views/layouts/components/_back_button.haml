@@ -4,9 +4,12 @@
 :javascript
   $(function(){
     window.crm.registerUniqueHook(function(){
-    $(".back").click(function(){
-        window.history.back();
-    })}, "back-hook");
+      $(".back").unbind();
+      $(".back").click(function(){
+          window.history.back();
+      })
+    }, "back-hook");
   })
+
 
 

@@ -34,12 +34,17 @@
   .row_theme
     .label-medium.req #{t :category}:
     = f.select :category, @category, { :selected => @task.category.blank? ? nil : @task.category.to_sym, :include_blank => t(:select_blank) }, { :style => "width:160px", :disabled => disabled }
-
   .row_theme
-    .row
-      .col-md-6
-        .label-medium #{t :task_description}:
-        = render :partial => "layouts/components/ckeditor", :locals => {:id => 'task-description', :name => :description, :f => f, :edit => edit}
+    .label-medium.pull-left #{t :task_description}:
+    .pull-left.col-md-6
+      = render :partial => "layouts/components/ckeditor", :locals => {:id => 'task-description', :name => :description, :f => f, :edit => edit}
+    .clearfix
+
+  -#.row_theme
+  -#  .row
+  -#    .col-md-6
+  -#      .label-medium #{t :task_description}:
+  -#      = render :partial => "layouts/components/ckeditor", :locals => {:id => 'task-description', :name => :description, :f => f, :edit => edit}
 
   - if Setting.background_info && Setting.background_info.include?(:task)
     .row_theme

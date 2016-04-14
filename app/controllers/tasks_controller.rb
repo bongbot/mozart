@@ -38,18 +38,16 @@ class TasksController < ApplicationController
 
     @bucket = Setting.unroll(:task_bucket)[1..-1] << [t(:due_specific_date, default: 'On Specific Date...'), :specific_time]
     @category = Setting.unroll(:task_category)
-
-    if params[:related]
-      model, id = params[:related].split(/_(\d+)/)
-      if related = model.classify.constantize.my.find_by_id(id)
+    get_related_model do |model, related, id|
+      if related
         instance_variable_set("@asset", related)
       else
-        respond_to_related_not_found(model) && return
+        @return = true
+        respond_to_related_not_found(model)
       end
     end
 
-    render "show"
-
+    respond_custom(@task)
   end
 
   # GET /tasks/1/edit                                                      AJAX
@@ -66,12 +64,7 @@ class TasksController < ApplicationController
       @previous = Task.tracked_by(current_user).find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
 
-    respond_with(@task) do |format|
-      format.html {
-        @edit = true
-        render "show"
-      }
-    end
+    respond_custom(@task)
   end
 
   # POST /tasks
@@ -84,11 +77,9 @@ class TasksController < ApplicationController
     @category = Setting.unroll(:task_category)
     @asset = @task.asset if @task.asset_id?
 
-    respond_with(@task) do |_format|
-      if @task.save
-        # Rails.logger.info "TTT:REDIRECTPATH:" + session[:return_to_path].inspect
+    @task.save
 
-      end
+    respond_custom(@task) do |_format|
     end
   end
 
@@ -110,7 +101,7 @@ class TasksController < ApplicationController
       @task_before_update.bucket = @task.computed_bucket
     end
 
-    respond_with(@task) do |_format|
+    respond_custom(@task) do |_format|
       if @task.update_attributes(task_params)
         @task.bucket = @task.computed_bucket
       end
@@ -130,7 +121,7 @@ class TasksController < ApplicationController
     end
 
     update_sidebar if called_from_index_page?
-    respond_with(@task)
+    respond_custom(@task)
   end
 
   # PUT /tasks/1/complete
@@ -143,7 +134,7 @@ class TasksController < ApplicationController
       @empty_bucket = params[:bucket]
     end
     update_sidebar unless params[:bucket].blank?
-    respond_with(@task)
+    respond_custom(@task)
   end
 
   # PUT /tasks/1/uncomplete
@@ -158,7 +149,7 @@ class TasksController < ApplicationController
     end
 
     update_sidebar
-    respond_with(@task)
+    respond_custom(@task)
   end
 
   # POST /tasks/auto_complete/query                                        AJAX
@@ -177,6 +168,7 @@ class TasksController < ApplicationController
         filters.delete(params[:filter])
       end
     end
+    respond_custom(:tasks)
   end
 
   protected
