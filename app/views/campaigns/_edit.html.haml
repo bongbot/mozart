@@ -11,11 +11,11 @@
 
     = render "campaigns/top_section", :f => f, :edit => edit
     = render "fields/edit_custom_field_group", :f => f, :edit => edit
-    - if is_new
-      = render "shared/add_comment", :f => f, :edit => edit
     = render "campaigns/objectives",  :f => f, :edit => edit
     = render "fields/groups",         :f => f, :edit => edit
     = render "entities/permissions",  :f => f, :edit => edit, :entity => @campaign
+    - if is_new
+      = render "shared/add_comment", :f => f, :edit => edit
     = hook(:entity_form, self, {f: f, entity: @campaign})
 
 

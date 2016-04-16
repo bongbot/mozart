@@ -6,13 +6,15 @@
 - if params[:cancel].true? # <--------------------- Hide [Edit]
   crm.set_title('edit_#{entity_name}', '#{h text_name}');
   $('#edit_#{entity_name}').html('#{ j render(:partial => "edit", :locals => {:edit => false}) }');
-  window.history.pushState('', 'Title1', window.location.href.substring(0, window.location.href.length - 5));
+  window.history.pushState('', 'Title', window.location.href.substring(0, window.location.href.length - 5));
+  = yield
   crm.event.emit(EVENT_EDIT_CANCEL);
 
 - else # <----------------------------------------  Show [Edit] form.
   crm.set_title('edit_#{entity_name}', "#{t :edit} #{h text_name}");
   $('#edit_#{entity_name}').html('#{ j render(:partial => 'edit', :locals => {:edit => true}) }');
   window.history.pushState('', 'Title', window.location.href+ '/edit');
+  =yield
   crm.event.emit(EVENT_EDIT_START);
 
 crm.runOnload();

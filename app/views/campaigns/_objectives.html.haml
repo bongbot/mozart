@@ -1,11 +1,8 @@
 - edit ||= false
 
-= section_title :objectives
+- if edit
+  = section_title :objectives
 #campaign_objectives
-  = c_show_when_not_exist(f, [:target_leads, :target_conversion, :target_revenue, :budget]) do
-    %small
-      #{t :objectives_help}
-
   = c_show_when_exist(f, [:target_leads, :target_conversion], edit) do
     .row_theme
       = c_show_when_exist(f, :target_leads, edit) do

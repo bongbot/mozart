@@ -206,7 +206,7 @@ class LeadsController < EntitiesController
     @leads = get_leads(page: 1, per_page: params[:per_page]) # Start one the first page.
 
     respond_with(@leads) do |format|
-      format.js { render :index }
+      format.js { render :action => "js/index" }
     end
   end
 

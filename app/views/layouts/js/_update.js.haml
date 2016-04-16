@@ -7,7 +7,7 @@
     crm.set_title('edit_#{entity_name}', '#{h @entity.name}');
     $('##{id}').html('#{ j render(:partial => "edit",  :locals => {:edit => false}) }');
     = refresh_sidebar(:show, :summary)
-
+    window.history.pushState('', 'Title', window.location.href.substring(0, window.location.href.length - 5));
     crm.event.emit(EVENT_EDIT_OK);
 - else
   $('##{id}').html('#{ j render(:partial => "edit",  :locals => {:edit => true}) }');
