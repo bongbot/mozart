@@ -143,9 +143,7 @@ class ContactsController < EntitiesController
     @contacts = get_contacts(page: 1, per_page: params[:per_page]) # Start on the first page.
     set_options # Refresh options
 
-    respond_with(@contacts) do |format|
-      format.js { render :index }
-    end
+    respond_custom(@contacts)
   end
 
   private

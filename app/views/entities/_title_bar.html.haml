@@ -1,12 +1,10 @@
 - model_name = controller_name.singularize
-- model_klass = model_name.camelcase.constantize
 
-.title_tools
-  #buttons
-    = view_buttons
-  .create_asset
+.mz-row
+  .pull-left.title
+    %span{:id => "create_#{model_name}_title"} #{t controller_name.to_sym}
+    = image_tag("loading.gif", :size => :thumb, :id => "loading", :style => "display: none;")
+
+  .pull-right
     = link_to(t("create_#{model_name}".to_sym), send("new_#{model_name}_path") )
 
-.title
-  %span{:id => "create_#{model_name}_title"} #{t controller_name.to_sym}
-  = image_tag("loading.gif", :size => :thumb, :id => "loading", :style => "display: none;")

@@ -1,10 +1,11 @@
-%button#trigger-panel-filter{:class => "btn btn-success", "data-panel-id" => "d-filter-panel", "data-show" => "false" }
-  Filter
-
-:javascript
-  $(function(){
-    window.crm.registerUniqueHook(function(){
-        $("#trigger-panel-filter").triggerPanel();
-      }, "trigger-panel-filter-hook");
-  })
-
+.dropdown.pull-right
+  %button#trigger-panel-filter.btn.dropdown-toggle{"data-toggle" => "dropdown"}
+    = t :filter
+    %span.caret
+  %ul.dropdown-menu
+    = yield
+:css
+  .dropdown-menu {
+    padding: 10px;
+    border-radius: 0px;
+  }

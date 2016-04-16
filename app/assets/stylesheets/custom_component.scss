@@ -167,3 +167,20 @@ a.link_tag:hover {
 .nopadding {
   padding: 0px;
 }
+
+.btn {
+  border-color: lightgray;
+  font-weight: bold;
+  background-color: lightgray;
+}
+
+.mz-row {
+  border-bottom: 1px gray solid;
+  padding: 4px 10px 4px 10px;
+}
+
+.mz-row::after {
+  content: "";
+  display: table;
+  clear: both;
+}

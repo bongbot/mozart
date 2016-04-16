@@ -559,17 +559,8 @@ module ApplicationHelper
   end
 
   #----------------------------------------------------------------------------
-  def render_filter_toggle_button
-    render "layouts/components/filter_toggle_button"
-  end
-
-  def render_filter_toggle_panel(&block)
-    data = "<div id= 'd-filter-panel' class='hidden-xs-up'>"
-    data << if block_given?
-              capture(&block)
-            end
-    data << "</div>"
-    data.html_safe
+  def render_filter_toggle_button(&block)
+    render :layout => "layouts/components/filter_toggle_button", &block
   end
 
   def todo

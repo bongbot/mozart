@@ -1,14 +1,12 @@
 = styles_for :task
 
+= render 'entities/title_bar'
+= render 'tasks/tool_bar'
+
 - if @view == "completed"
   - buckets = Setting.unroll(:task_completed)
-  .title
-    = t(:completed_tasks)
-    = image_tag("loading.gif", :size => :thumb, :id => "loading", :style => "display: none;")
 - else
   - buckets = Setting.unroll(:task_bucket)
-  -#= render "title"
-  = render 'entities/title_bar'
 
 .div
 
