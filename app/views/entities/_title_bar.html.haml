@@ -1,10 +1,8 @@
-- model_name = controller_name.singularize
-
 .mz-row
   .pull-left.title
-    %span{:id => "create_#{model_name}_title"} #{t controller_name.to_sym}
+    %span{:id => "create_#{@model_name}_title"} #{t controller_name.to_sym}
     = image_tag("loading.gif", :size => :thumb, :id => "loading", :style => "display: none;")
 
   .pull-right
-    = link_to(t("create_#{model_name}".to_sym), send("new_#{model_name}_path") )
+    = link_to(t("create_#{@model_name}".to_sym), send("new_#{@model_name}_path") )
 

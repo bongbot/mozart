@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_action :set_context
+  before_action :set_common_variable
   before_action :clear_setting_cache
   before_action "hook(:app_before_filter, self)"
   after_action "hook(:app_after_filter,  self)"
@@ -301,6 +302,10 @@ class ApplicationController < ActionController::Base
         end
       end
     end
+  end
+
+  def set_common_variable
+    @model_name = controller_name.singularize
   end
 
 end

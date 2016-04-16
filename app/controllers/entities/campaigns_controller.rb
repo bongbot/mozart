@@ -162,7 +162,7 @@ class CampaignsController < EntitiesController
     @campaigns = get_campaigns(page: 1, per_page: params[:per_page])
 
     respond_with(@campaigns) do |format|
-      format.js { render :index }
+      format.js { render :action => "js/index" }
     end
   end
 

@@ -1,14 +1,12 @@
 = styles_for :task
 
-= render 'entities/title_bar'
-= render 'tasks/tool_bar'
+= render "entities/title_bar"
+= render "tasks/tool_bar"
 
 - if @view == "completed"
   - buckets = Setting.unroll(:task_completed)
 - else
   - buckets = Setting.unroll(:task_bucket)
-
-.div
 
 .log#tasks
   - buckets.each do |value, key|
