@@ -271,12 +271,22 @@ module ApplicationHelper
     refresh_sidebar_for(controller.controller_name, action, shake)
   end
 
+  def refresh_toolbar()
+    refresh_toolbar_for(controller.controller_name)
+  end
+
   # Refresh sidebar using the action view within an arbitrary controller.
   #----------------------------------------------------------------------------
   def refresh_sidebar_for(view, action = nil, shake = nil)
     text = ""
     text << "$('#sidebar').html('#{ j render(partial: 'layouts/sidebar', locals: { view: view, action: action }) }');"
     text << "$('##{j shake.to_s}').effect('shake', { duration:200, distance: 3 });" if shake
+    text.html_safe
+  end
+
+  def refresh_toolbar_for(view)
+    text = ""
+    text << "$('#toolbar').html('#{ j render(partial: "#{view}/tool_bar") }');"
     text.html_safe
   end
 

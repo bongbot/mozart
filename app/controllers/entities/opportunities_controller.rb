@@ -177,12 +177,12 @@ class OpportunitiesController < EntitiesController
         @opportunities = get_opportunities
         if @opportunities.blank?
           @opportunities = get_opportunities(page: current_page - 1) if current_page > 1
-          render(:index) && return
+          render :action => "js/index" && return
         end
       else # Called from related asset.
         self.current_page = 1
       end
-      # At this point render destroy.js
+      render :action => "js/destroy"
     else
       self.current_page = 1
       flash[:notice] = t(:msg_asset_deleted, @opportunity.name)
