@@ -178,7 +178,9 @@ class CampaignsController < EntitiesController
       @campaigns = get_campaigns
       if @campaigns.blank?
         @campaigns = get_campaigns(page: current_page - 1) if current_page > 1
-        render(:index) && return
+        render "js/index" && return
+      else
+        render :action => "js/destroy"
       end
       # At this point render destroy.js
     else # :html request

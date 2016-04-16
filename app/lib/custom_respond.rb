@@ -1,7 +1,11 @@
 module CustomRespond
-  DEFAULT_ALLOWED = [:new, :edit, :create, :update]
+  DEFAULT_ALLOWED = [:index, :new, :edit, :create, :update, :redraw]
 
   DEFAULT_RESPOND = {
+      :index => {
+          :html => "index",
+          :js => "js/index"
+      },
       :new => {
           :html => "show",
           :js => "js/new"
@@ -17,6 +21,10 @@ module CustomRespond
       :update => {
           :js => "js/update"
       },
+      :redraw => {
+          :html => "index",
+          :js => "js/index"
+      },
 
   }
 
@@ -25,12 +33,10 @@ module CustomRespond
       @bk = {}
     end
 
-    def html(&block)
-      @bk[:html] = block if block_given?
-    end
-
-    def js(&block)
-      @bk[:js] = block if block_given?
+    ["html", "js", "xls", "csv"].each do |action|
+      define_method("#{action}") do
+        @bk[action.to_sym] = block if block_given?
+      end
     end
 
     def execute(format)
@@ -48,14 +54,22 @@ module CustomRespond
     custom_format = CustomFormat.new
     yield(custom_format) if block_given?
     respond_with(model) do |format|
-
       format.html {
         custom_format.execute(:html)
         render res[:html]
       }
+
       format.js {
         custom_format.execute(:js)
         render :action => res[:js]
+      }
+
+      format.xls {
+        custom_format.execute(:xls)
+      }
+
+      format.csv {
+        custom_format.execute(:csv)
       }
     end
 
@@ -83,18 +97,23 @@ module CustomRespond
     if @return
       return
     end
+
     action = params[:action].to_sym
     if DEFAULT_ALLOWED.include?(action)
       @edit = true if (request.format.html? and action == :edit)
       respond_default(model, action, &block)
     else
       respond_with(model) do |format|
-        yield if block_given?
+        yield(format) if block_given?
         format.js {
           render :action => "js/" + params[:action]
         }
       end
     end
+  end
+
+  def respond_special_custom(action)
+    render :action => "js/" + action.to_s
   end
 end
 

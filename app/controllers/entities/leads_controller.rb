@@ -12,7 +12,7 @@ class LeadsController < EntitiesController
   def index
     @leads = get_leads(page: params[:page])
 
-    respond_with @leads do |format|
+    respond_custom @leads do |format|
       format.xls { render layout: 'header' }
       format.csv { render csv: @leads }
     end
@@ -38,9 +38,8 @@ class LeadsController < EntitiesController
     @lead.attributes = { user: current_user, access: Setting.default_access, assigned_to: nil }
     get_campaigns
 
-    if flash[:related]
-      model, id = flash[:related].split('_')
-      if related = model.classify.constantize.my.find_by_id(id)
+    get_related_model do |model, related, id|
+      if related
         instance_variable_set("@#{model}", related)
       else
         respond_to_related_not_found(model) && return
@@ -127,9 +126,10 @@ class LeadsController < EntitiesController
       @previous = Lead.my.find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
 
-    respond_with(@lead)
+    respond_custom(@lead)
   end
 
+  # todo: lead promote not used
   # PUT /leads/1/promote
   #----------------------------------------------------------------------------
   def promote
@@ -154,8 +154,11 @@ class LeadsController < EntitiesController
     @lead.reject
     update_sidebar
 
-    respond_with(@lead) do |format|
-      format.html { flash[:notice] = t(:msg_asset_rejected, @lead.full_name); redirect_to leads_path }
+    respond_custom(@lead) do |format|
+      format.html {
+        flash[:notice] = t(:msg_asset_rejected, @lead.full_name)
+        redirect_to leads_path
+      }
     end
   end
 
@@ -235,7 +238,8 @@ class LeadsController < EntitiesController
       else                                        # Called from related asset.
         self.current_page = 1                     # Reset current page to 1 to make sure it stays valid.
         @campaign = @lead.campaign                # Reload lead's campaign if any.
-      end                                         # Render destroy.js
+      end
+      render :action => "js/destroy"
     else # :html destroy
       self.current_page = 1
       flash[:notice] = t(:msg_asset_deleted, @lead.full_name)

@@ -34,9 +34,8 @@ class ContactsController < EntitiesController
     @contact.attributes = { user: current_user, access: Setting.default_access, assigned_to: nil }
     @account = Account.new(user: current_user)
 
-    if params[:related]
-      model, id = params[:related].split('_')
-      if related = model.classify.constantize.my.find_by_id(id)
+    get_related_model do |model, related, id|
+      if related
         instance_variable_set("@#{model}", related)
       else
         respond_to_related_not_found(model) && return
@@ -176,7 +175,7 @@ class ContactsController < EntitiesController
       else
         self.current_page = 1
       end
-      # At this point render destroy.js
+      render :action => "js/destroy"
     else
       self.current_page = 1
       flash[:notice] = t(:msg_asset_deleted, @contact.full_name)

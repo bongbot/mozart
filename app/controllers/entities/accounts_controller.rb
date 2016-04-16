@@ -11,7 +11,7 @@ class AccountsController < EntitiesController
   def index
     @accounts = get_accounts(page: params[:page], per_page: params[:per_page])
 
-    respond_with @accounts do |format|
+    respond_custom @accounts do |format|
       format.xls { render layout: 'header' }
       format.csv { render csv: @accounts }
     end
@@ -89,9 +89,9 @@ class AccountsController < EntitiesController
   def destroy
     @account.destroy
 
-    respond_with(@account) do |format|
+    respond_with(:account) do |format|
       format.html { respond_to_destroy(:html) }
-      format.js   { respond_to_destroy(:ajax) }
+      format.js   { respond_to_destroy(:ajax)}
     end
   end
 
@@ -115,9 +115,8 @@ class AccountsController < EntitiesController
     @accounts = get_accounts(page: 1, per_page: params[:per_page])
     set_options # Refresh options
 
-    respond_with(@accounts) do |format|
-      format.js { render :index }
-    end
+
+    respond_custom(@accounts)
   end
 
   # POST /accounts/filter                                                  AJAX
@@ -143,7 +142,10 @@ class AccountsController < EntitiesController
       get_data_for_sidebar
       if @accounts.empty?
         @accounts = get_accounts(page: current_page - 1) if current_page > 1
-        render(:index) && return
+        # todo: this does not work now
+        render :action => "js/index"
+      else
+        respond_custom(:account)
       end
       # At this point render default destroy.js
     else # :html request
