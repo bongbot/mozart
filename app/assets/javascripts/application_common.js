@@ -28,7 +28,12 @@ crm.runHook = function(name){
 
 //EVENT EMITTER
 crm.event = new EventEmitter();
-var EVENT_EDIT_OK = "editOk"
-var EVENT_EDIT_NG = "editNg"
-var EVENT_EDIT_START = "editStart"
-var EVENT_EDIT_CANCEL = "editCancel"
+var EVENT_EDIT_OK = "editOk";
+var EVENT_EDIT_NG = "editNg";
+var EVENT_EDIT_START = "editStart";
+var EVENT_EDIT_CANCEL = "editCancel";
+
+//Enable all tool tips
+$(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});

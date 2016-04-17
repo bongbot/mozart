@@ -168,14 +168,10 @@ a.link_tag:hover {
   padding: 0px;
 }
 
-.btn {
-  border-color: lightgray;
-  font-weight: bold;
-  //background-color: lightgray;
-}
+
 
 .mz-row {
-  border-bottom: 1px gray solid;
+  border-bottom: 1px silver solid;
   padding: 4px 10px 4px 10px;
 }
 
@@ -183,4 +179,29 @@ a.link_tag:hover {
   content: "";
   display: table;
   clear: both;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.nowrap span {
+  margin-right: 20px;
+}
+
+.task-dropdown {
+  .dropdown-menu {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 10px;
+    font-size: 14px;
+
+    li.check_box {
+      padding: 4px;
+    }
+  }
+}
+
+//"New" button need white font
+a:link.btn-new, a:visited.btn-new {
+  color: white;
 }

@@ -151,7 +151,7 @@ class CampaignsController < EntitiesController
     set_options # Refresh options
 
     respond_with(@campaigns) do |format|
-      format.js { render :index }
+      format.js { render :action => "js/index"}
     end
   end
 

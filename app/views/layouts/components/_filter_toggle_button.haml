@@ -1,11 +1,6 @@
 .dropdown.pull-right
-  %button#trigger-panel-filter.btn.dropdown-toggle{"data-toggle" => "dropdown"}
+  %button#trigger-panel-filter.btn.btn-secondary.dropdown-toggle{"data-toggle" => "dropdown"}
     = t :filter
     %span.caret
   %ul.dropdown-menu
     = yield
-:css
-  .dropdown-menu {
-    padding: 10px;
-    border-radius: 0px;
-  }

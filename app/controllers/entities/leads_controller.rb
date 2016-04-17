@@ -195,7 +195,7 @@ class LeadsController < EntitiesController
     set_options # Refresh options
 
     respond_with(@leads) do |format|
-      format.js { render :index }
+      format.js { render :action => "js/index" }
     end
   end
 

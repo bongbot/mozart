@@ -69,7 +69,8 @@ $label_medium_with: 170px;
   line-height: 20px;
   input {
     position: relative;
-    top: -3px; }
+    vertical-align: bottom;
+  }
   label {
     font-size: 11px; } }
 
@@ -428,19 +429,19 @@ $label_medium_with: 170px;
 .log {
   padding: 8px 0px 0px 0px;
   h3 {
-    border-bottom: 1px #2f2f2f dotted;
+    border-bottom: 1px #2f2f2f solid;
     color: #2f2f2f;
     margin: 0px 0px 4px 0px;
     padding: 2px 0px 2px 86px;
     &.overdue {
       color: crimson;
-      border-bottom: 1px crimson dotted; }
+      border-bottom: 1px crimson solid; }
     &.due_asap {
       color: darkred;
-      border-bottom: 1px darkred dotted; }
+      border-bottom: 1px darkred solid; }
     &.due_today {
       color: darkgreen;
-      border-bottom: 1px darkgreen dotted; } }
+      border-bottom: 1px darkgreen solid; } }
   li {
     color: #3f3f3f;
     font-size: 12px;
@@ -458,7 +459,7 @@ $label_medium_with: 170px;
 .list {
   padding: 8px 0px 7px 0px;
   li {
-    border-bottom: 1px silver dotted;
+    border-bottom: 1px silver solid;
     color: #3f3f3f;
     font-size: 12px;
     list-style: none;
@@ -506,7 +507,7 @@ $label_medium_with: 170px;
     font-size: 13px;
     font-weight: bold; }
   li {
-    border-bottom: 1px silver dotted;
+    border-bottom: 1px silver solid;
     font-size: 12px;
     list-style: none;
     padding: 2px 0px 3px 0px;
@@ -734,7 +735,7 @@ table.asset_attributes {
   width: 100%;
   border-spacing: 4px;
   td, th {
-    border-bottom: 1px dotted silver;
+    border-bottom: 1px silver solid;
     vertical-align: top;
     text-align: left;
   }
@@ -793,13 +794,13 @@ table.asset_attributes {
 
 //Footer at bottom
 $footer_height:  30px;
-$footer_height_1:  -30px;
+$footer_height_nagative:  -30px;
 header {
 }
 
 .wrapper {
   min-height: 100%;
-  margin: 0 auto $footer_height_1; /* the bottom margin is the negative value of the footer's height */
+  margin: 0 auto $footer_height_nagative; /* the bottom margin is the negative value of the footer's height */
 }
 
 
@@ -815,4 +816,18 @@ html, body {
 /* Many class padding and margin here*/
 .b-margin-20 {
   margin-bottom: 20px;
+}
+
+//Make content in left span full-height
+.main-content {
+  position: absolute;
+  bottom: 0px;
+  top: 50px;
+  width: 100%;
+  .col-md-11 {
+    height: 100%;
+  }
+  .board-container {
+    height: 100%;
+  }
 }
