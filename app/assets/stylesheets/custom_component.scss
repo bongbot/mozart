@@ -134,7 +134,7 @@ a.link_tag:hover {
 }
 
 .horizontal_line {
-  border-bottom: 1px groove lightgray;
+  border-bottom: 1px solid silver;
 }
 
 .entity_title {
@@ -204,4 +204,10 @@ a.link_tag:hover {
 //"New" button need white font
 a:link.btn-new, a:visited.btn-new {
   color: white;
+}
+
+//fix href button two short
+.a-btn {
+  font-size: 1rem;
+  line-height: 1.5;
 }

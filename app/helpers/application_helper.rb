@@ -123,6 +123,21 @@ module ApplicationHelper
     end
   end
 
+  # link to inline with tooltip
+  def link_to_inline_tooltip(id, url, options = {})
+    tool_tip = options[:tool_tip]
+    related = (options[:related] ? "&related=#{options[:related]}" : '')
+    tool_tip_options = {"data-toggle" => "tooltip", "data-placement" => "bottom", "data-container" => "body", "data-original-title" => tool_tip}
+    options[:remote] = true
+    options = options.merge(tool_tip_options)
+    options[:onclick] = "$(this).tooltip('hide');";
+
+    link_to("",
+            url + "#{url.include?('?') ? '&' : '?'}cancel=false" + related,
+            options)
+
+  end
+
   #----------------------------------------------------------------------------
   def arrow_for(id)
     content_tag(:span, "&#9658;".html_safe, id: "#{id}_arrow", class: :arrow)

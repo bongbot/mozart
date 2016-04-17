@@ -25,15 +25,17 @@
     = link_to_close send(new_path)
   - else
     - if edit
-      = f.submit :name => (t :save), :class => "btn btn-success"
+      %button.btn.btn-success
+        = t :save
+      -#= f.submit :name => (t :save), :class => "btn btn-success"
       = link_to_cancel send(edit_path, model), :options => {:class => "btn btn-danger"}
     - else
-      = link_to_inline(:edit, send(edit_path, model), :text => t(:edit), :edit => edit, "data-kind" => "edit", :class => "btn btn-success")
+      = link_to_inline_tooltip(:edit, send(edit_path, model), :tool_tip => t(:edit), :class => "btn a-btn btn-success fa fa-pencil")
 
     = link_to_function(t(:delete) + '?', confirm_delete(model), :class => "btn btn-danger")
     #confirm{ hidden }
     %span#menu
-
+.horizontal_line
 
   -#= render :partial => "#{controller_name}/title_bar", :locals => {:model => model, :f => f, :edit => edit}
 

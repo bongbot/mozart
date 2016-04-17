@@ -1,13 +1,1 @@
-- entity_name = controller.controller_name.singularize.underscore #account
-- @entity = instance_variable_get("@#{entity_name}")
-- id = "edit_#{entity_name}"
-
-- if @task.errors.empty?
-  $('##{id}').html('#{ j render(:partial => "edit",  :locals => {:edit => false}) }');
-  crm.event.emit(EVENT_EDIT_OK);
-- else # Errors
-  $('##{id}').html('#{ j render(:partial => "edit",  :locals => {:edit => true}) }');
-  $('##{id}').effect("shake", { duration:250, distance: 6 });
-  crm.event.emit(EVENT_EDIT_NG);
-
-crm.runOnload();
+= render "layouts/js/update"

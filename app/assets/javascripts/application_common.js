@@ -34,6 +34,6 @@ var EVENT_EDIT_START = "editStart";
 var EVENT_EDIT_CANCEL = "editCancel";
 
 //Enable all tool tips
-$(function(){
+crm.registerUniqueHook(function(){
     $('[data-toggle="tooltip"]').tooltip();
-});
+}, "tooltip");
