@@ -1,11 +1,8 @@
+.title_tools
+  = link_to_inline(:create_task, url_for(:action => :new, :view => @view), :text => t(:create_task))
 .title#title
   = (@view == "assigned" ? t(:assigned_tasks) : t(:tasks))
   = image_tag("loading.gif", :size => :thumb, :id => "loading", :style => "display: none;")
-%a{:title => "", :data-toggle => "tooltip", :data-placement => "bottom", :data-container => "body", :href => "/projects/new", :data-original-title => "New project"}
-  %i.fa.fa-plus.fa-fw
-    sfsdf
-.title_tools
-  = link_to_inline(:create_task, url_for(:action => :new, :view => @view), :text => t(:new))
 
 .remote#options{ hidden }
 .remote#create_task{ hidden }
