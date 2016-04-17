@@ -37,3 +37,14 @@ var EVENT_EDIT_CANCEL = "editCancel";
 crm.registerUniqueHook(function(){
     $('[data-toggle="tooltip"]').tooltip();
 }, "tooltip");
+
+//Function to toggle "edit" at the end of url
+crm.toggleUrlEdit = function(toggle){
+    var curUrl = window.location.href;
+    if(toggle){
+        curUrl = curUrl + "/edit"
+    } else {
+        curUrl = curUrl.substring(0, curUrl.length - "/edit".length)
+    }
+    window.history.pushState('', 'Title', curUrl);
+}
