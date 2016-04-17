@@ -193,7 +193,7 @@ module ApplicationHelper
 
   #----------------------------------------------------------------------------
   def link_to_close(url)
-    link_to("x", url + "#{url.include?('?') ? '&' : '?'}cancel=true",
+    link_to(t(:cancel), url + "#{url.include?('?') ? '&' : '?'}cancel=true",
             remote: true,
             # class: "close",
             class: "btn btn-danger",

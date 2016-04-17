@@ -21,7 +21,8 @@
     = render "shared/save_and_back"
 
   - if is_new
-    = f.submit :name => (t :create), :class => "btn btn-success"
+    %button.btn.btn-success
+      = t :save
     = link_to_close send(new_path)
   - else
     - if edit
