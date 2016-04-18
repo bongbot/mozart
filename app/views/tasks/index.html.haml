@@ -1,19 +1,20 @@
 = styles_for :task
 
-= render "entities/title_bar"
+#titlebar
+  = render "entities/title_bar"
 #toolbar
   = render "tasks/tool_bar"
 
-  - if @view == "completed"
-    - buckets = Setting.unroll(:task_completed)
-  - else
-    - buckets = Setting.unroll(:task_bucket)
+- if @view == "completed"
+  - buckets = Setting.unroll(:task_completed)
+- else
+  - buckets = Setting.unroll(:task_bucket)
 
-  .log#tasks
-    - buckets.each do |value, key|
-      %div{ hidden_if(filtered_out?(@view, key)), :id => "list_#{key}" }
-        %h3{:class => key}= t(value)
-        .bucket{:id => key}= render :partial => @view, :collection => @tasks[key] || [], :locals => { :bucket => key }
-    - if @tasks.values.flatten.blank?
-      = render "empty"
-  #export= render "shared/export"
+.log#tasks
+  - buckets.each do |value, key|
+    %div{ hidden_if(filtered_out?(@view, key)), :id => "list_#{key}" }
+      %h3{:class => key}= t(value)
+      .bucket{:id => key}= render :partial => @view, :collection => @tasks[key] || [], :locals => { :bucket => key }
+  - if @tasks.values.flatten.blank?
+    = render "empty"
+#export= render "shared/export"

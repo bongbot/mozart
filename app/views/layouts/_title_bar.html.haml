@@ -11,11 +11,11 @@
 - edit_path = "edit_" + model_name + "_path"
 
 .entity_header
-  .entity_title.bottom_line
-    .text_title
+  #titlebar
+    .title
       = name
 
-  .entity_title_bar.bottom_line
+  #toolbar
     = render "layouts/components/back_button"
     - if flash_previous_path?
       = render "shared/save_and_back"

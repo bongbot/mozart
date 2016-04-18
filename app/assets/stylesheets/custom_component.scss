@@ -1,3 +1,5 @@
+$board_side_padding: 15px;
+
 .background-layer {
   position: absolute;
   top: 0px;
@@ -125,18 +127,35 @@ a.link_tag:hover {
   border-bottom: 1px solid silver;
 }
 
-.entity_title {
-  font-size: 20px;
-  font-weight: bold;
-  text-transform: uppercase;
-
-  .text_title {
-    padding-bottom: 8px;
-  }
+@mixin bottom_line {
+  border-bottom: 1px silver solid;
 }
 
-.entity_title_bar {
-  padding: 8px 0px 8px 0px;
+//Header bar
+#titlebar {
+  margin-right: -$board_side_padding;
+  margin-left: -$board_side_padding;
+  padding: 4px $board_side_padding 4px $board_side_padding;
+
+  .title {
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+    img {
+      position: relative;
+      top: 2px; }
+  }
+
+  @include bottom_line
+}
+
+#toolbar {
+  margin-right: -$board_side_padding;
+  margin-left: -$board_side_padding;
+  padding: 4px $board_side_padding 4px $board_side_padding;
+  @include bottom_line
+
 }
 
 .vertical_align_bottom {
@@ -159,8 +178,6 @@ a.link_tag:hover {
 
 
 .mz-row {
-  border-bottom: 1px silver solid;
-  padding: 4px 10px 4px 10px;
 }
 
 .mz-row::after {
@@ -199,9 +216,6 @@ a:link.btn-new, a:visited.btn-new {
   line-height: 1.5;
 }
 
-.bottom_line {
-  border-bottom: 1px silver solid;
-}
 
 .entity_header {
   padding-bottom: 20px;
@@ -243,7 +257,7 @@ a:link.btn-new, a:visited.btn-new {
 /* board: a panel that appear distinctly out of background */
 .board {
   background: white;
-  padding: 10px 15px 10px 15px;
+  padding: 0px $board_side_padding 0px $board_side_padding;
   -moz-border-radius: 4px;
   -moz-box-shadow: 2px 2px 8px #bbbbbb, -2px 0px 8px #bbbbbb;
   /* -webkit-border-radius: 4px; */
