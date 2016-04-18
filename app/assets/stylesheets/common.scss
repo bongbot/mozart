@@ -777,15 +777,6 @@ table.asset_attributes {
   }
 }
 
-//modulebar START
-.module-bar{
-  .module-bar-item {
-    padding: 20px 5px 20px 15px;
-  }
-}
-//modulebar END
-
-
 //Footer at bottom
 $footer_height:  30px;
 $footer_height_nagative:  -30px;
@@ -813,16 +804,3 @@ html, body {
   margin-bottom: 20px;
 }
 
-//Make content in left span full-height
-.main-content {
-  position: absolute;
-  bottom: 0px;
-  top: 50px;
-  width: 100%;
-  .col-md-11 {
-    height: 100%;
-  }
-  .board-container {
-    height: 100%;
-  }
-}

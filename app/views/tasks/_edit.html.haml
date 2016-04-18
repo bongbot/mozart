@@ -6,20 +6,20 @@
     = token_tag
     = render :partial => 'layouts/title_bar', :locals => {:model => @task, :f => f, :edit => edit}
 
-    = hidden_field_tag :view, @view
-    - if is_new
-      = hidden_field_tag "task[user_id]", current_user.id
-    = hidden_field_tag "task[asset_id]", "#{@asset.id if @asset}"
-    = hidden_field_tag "task[asset_type]", "#{@asset.class if @asset}"
+      = hidden_field_tag :view, @view
+      - if is_new
+        = hidden_field_tag "task[user_id]", current_user.id
+      = hidden_field_tag "task[asset_id]", "#{@asset.id if @asset}"
+      = hidden_field_tag "task[asset_type]", "#{@asset.class if @asset}"
 
-    = f.error_messages :object_name => t('task')
+      = f.error_messages :object_name => t('task')
 
-    = render "tasks/top_section",    :f => f, :edit => edit
-    = render "tasks/description_section",    :f => f, :edit => edit
-    = render "fields/groups", :f => f, :edit => edit
+      = render "tasks/top_section",    :f => f, :edit => edit
+      = render "tasks/description_section",    :f => f, :edit => edit
+      = render "fields/groups", :f => f, :edit => edit
 
-    - unless edit
-      %span.label #{t :move_to}:
-      - [ "due_asap", "due_today", "due_tomorrow", "due_this_week", "due_next_week", "due_later" ].each do |due_day|
-        = link_to(t(due_day.to_sym), "#", :onclick => %Q/crm.reschedule_task(#{@task.id}, "#{due_day}")/, :class => "link_tag")
+      - unless edit
+        %span.label #{t :move_to}:
+        - [ "due_asap", "due_today", "due_tomorrow", "due_this_week", "due_next_week", "due_later" ].each do |due_day|
+          = link_to(t(due_day.to_sym), "#", :onclick => %Q/crm.reschedule_task(#{@task.id}, "#{due_day}")/, :class => "link_tag")
 
