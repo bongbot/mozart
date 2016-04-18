@@ -5,7 +5,7 @@
 //------------------------------------------------------------------------------
 $color_header: skyblue;
 $color_header_background: #1e4262;
-$color_logo: greenyellow;
+$color_logo: blue;
 $color_tab: white;
 $color_tab_background: #466bb1;
 $color_active_tab: black;
@@ -19,26 +19,18 @@ $color_footer: grey;
 // Header, tabs, and footer.
 //------------------------------------------------------------------------------
 #header {
-  background: $color_header_background;
-  color: $color_header;
   padding: 8px 16px 8px 16px;
   h3 a {
-    background: $color_header_background;
-    color: $color_logo;
     //font: normal 15px "Lucida Grande", Arial, Helvetica, sans-serif;
     text-decoration: none; }
   #welcome {
     float: right;
     a {
-      color: lightyellow;
       padding: 1px 4px 2px 4px;
       text-decoration: none;
-      &:hover {
-        background: $color_header_background;
-        color: yellow; } }
+      &:hover {}
+    }
     a.selected {
-      background: steelblue;
-      color: lightyellow;
       -moz-border-radius: {
         topleft: 2px;
         topright: 2px; };
@@ -46,8 +38,8 @@ $color_footer: grey;
         top-left-radius: 2px;
         top-right-radius: 2px; }; } }
   #jumpbox {
-    background: steelblue;
     margin: 2px 0px 0px 0px;
+    background: navy;
     padding: 12px;
     position: absolute;
     -moz-border-radius: {
@@ -61,16 +53,17 @@ $color_footer: grey;
         color: white;
         padding: 0px 0px 4px 0px;
         &.selected {
-          color: navy; }
+        }
         &:hover {
-          background: steelblue; } } }
+        }
+      }
+    }
     #jumpbox_label {
       color: white; }
     input {
       margin: 2px 0px 0px 0px; } } }
 
 .tabs {
-  background: $color_header_background;
   height: $size_tab_height;
   padding: 0px;
   text-align: center;
@@ -92,8 +85,8 @@ $color_footer: grey;
       background: none;
       vertical-align: bottom;
       float: none;
-      margin-right: 7px; }
-    background: $color_tab_background;
+      margin-right: 7px;
+    }
     color: white;
     float: left;
     padding: 4px 15px 6px;
@@ -106,15 +99,15 @@ $color_footer: grey;
       left-radius: 3px;
       right-radius: 3px; }; }
   a:hover {
-    background: $color_hover_tab_background;
-    color: $color_hover_tab; }
+  }
   a:link.active, a:visited.active {
-    background: $color_active_tab_background;
-    color: $color_active_tab;
-    text-decoration: none; } }
+    text-decoration: none;
+  }
+}
 
 #footer {
   color: $color_footer;
   font-size: 10px;
   padding: 0px 0px 0px 16px;
-  text-align: center; }
+  text-align: center;
+}

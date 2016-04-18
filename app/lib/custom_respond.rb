@@ -1,5 +1,5 @@
 module CustomRespond
-  DEFAULT_ALLOWED = [:index, :new, :edit, :create, :update, :redraw]
+  DEFAULT_ALLOWED = [:index, :new, :edit, :create, :update, :redraw, :filter]
 
   DEFAULT_RESPOND = {
       :index => {
@@ -22,6 +22,10 @@ module CustomRespond
           :js => "js/update"
       },
       :redraw => {
+          :html => "index",
+          :js => "js/index"
+      },
+      :filter => {
           :html => "index",
           :js => "js/index"
       },

@@ -643,6 +643,10 @@ module ApplicationHelper
   def entity_name
     controller.controller_name.singularize.underscore
   end
+
+  def get_date_time_string(time)
+    time.strftime("%Y/%m/%d")
+  end
 end
 
 

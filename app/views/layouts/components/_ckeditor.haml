@@ -11,4 +11,5 @@
       }, "ckeditor-task-description");
     })
 - else
-  = f.object.send(name.to_s) ? f.object.send(name.to_s).html_safe : ""
+  %div{:style => "padding-top: 2px;"}
+    = f.object.send(name.to_s) ? f.object.send(name.to_s).html_safe : ""

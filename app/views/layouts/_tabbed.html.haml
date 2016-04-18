@@ -1,13 +1,15 @@
-.row{:class=>"main-content"}
-  .col-md-1{}
+.main-content
+  .sidebar.pull-left
     = render "layouts/modulebar"
   = show_flash
-  .col-md-11
+  .right-panel.pull-left
     .board-container
-      %div{ :class => :sidebar, :id => :sidebar, :valign => :top }
-        = render "layouts/sidebar"
+      -#todo: do not need get data for sidebar
+      -#%div{ :class => :sidebar, :id => :sidebar, :valign => :top }
+      -#  = render "layouts/sidebar"
       %table{ :width => "100%", :height => "100%", :cellpadding => 0, :cellspacing => 0, :class => :tabbed }
         %tr
           -#todo: deal with sidebar
           %td{ :class => "board", :id => :main, :valign => :top }
             = yield
+  .clearfix

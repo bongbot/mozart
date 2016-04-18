@@ -1,0 +1,26 @@
+#dropown_profile.dropdown.pull-right
+  %button.btn.btn-secondary.dropdown-toggle{"data-toggle" => "dropdown"}
+    = "T"
+    %span.caret
+  %ul.dropdown-menu
+    %li.dropdown-item
+      = link_to(t(:profile), profile_path)
+    - if current_user.admin?
+      %li.dropdown-item
+        = link_to(t(:admin), admin_path)
+    %li.dropdown-divider
+    %li.dropdown-item
+      = link_to(t(:logout), logout_path, :method => :delete)
+
+:css
+  #dropown_profile {
+    margin-right: 10px;
+  }
+
+  #dropown_profile .dropdown-item {
+    padding: 3px 5px;
+  }
+
+  #dropown_profile .dropdown-item a {
+    display: block;
+  }

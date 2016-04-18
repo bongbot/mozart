@@ -3,27 +3,27 @@
 - if edit
   = section_title :objectives
 #campaign_objectives
-  = c_show_when_exist(f, [:target_leads, :target_conversion], edit) do
+  = c_show_when_exist(f, :target_leads, edit) do
     .row_theme
-      = c_show_when_exist(f, :target_leads, edit) do
-        .label-medium #{t :number_of_leads}:
-        = c_textfield(f, :target_leads, edit, :style => "width:110px; text-align:right;")
+      .label-medium #{t :number_of_leads}:
+      = c_textfield(f, :target_leads, edit, :style => "width:110px; text-align:right;")
 
-      = c_show_when_exist(f, :target_conversion, edit) do
-        .label-medium #{t :conversion_label}:
-        = c_textfield(f, :target_conversion, edit, :style => "width:110px; text-align:right;")
-
-  = c_show_when_exist(f, [:target_revenue, :budget], edit) do
+  = c_show_when_exist(f, :target_conversion, edit) do
     .row_theme
-      = c_show_when_exist(f, :target_revenue, edit) do
-        .label-medium #{t :revenue_label}:
-        = c_textfield(f, :target_revenue, edit, :value => @campaign.target_revenue ? @campaign.target_revenue.to_i : "", :style => "width:110px; text-align:right;")
+      .label-medium #{t :conversion_label}:
+      = c_textfield(f, :target_conversion, edit, :style => "width:110px; text-align:right;")
 
-      = c_show_when_exist(f, :budget, edit) do
-        .label-medium #{t :budget_label}:
-        = c_textfield(f, :budget, edit, :value => @campaign.budget ? @campaign.budget.to_i : "", :style => "width:110px; text-align:right;")
+  = c_show_when_exist(f, :target_revenue, edit) do
+    .row_theme
+      .label-medium #{t :revenue_label}:
+      = c_textfield(f, :target_revenue, edit, :value => @campaign.target_revenue ? @campaign.target_revenue.to_i : "", :style => "width:110px; text-align:right;")
+
+  = c_show_when_exist(f, :budget, edit) do
+    .row_theme
+      .label-medium #{t :budget_label}:
+      = c_textfield(f, :budget, edit, :value => @campaign.budget ? @campaign.budget.to_i : "", :style => "width:110px; text-align:right;")
 
   = c_show_when_exist(f, :objectives, edit) do
     .row_theme
       .label-medium.vertical-top #{t :objectives}:
-      = c_text_area(f, :objectives, edit, :style => "width:500px", :rows => 10)
+      = c_text_area(f, :objectives, edit, :style => "width:500px; vertical-align:middle;", :rows => 10)

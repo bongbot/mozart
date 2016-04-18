@@ -10,33 +10,33 @@
 - new_path = "new_" + model_name + "_path"
 - edit_path = "edit_" + model_name + "_path"
 
-.entity_title
-  .text_title
-    = name
-  .horizontal_line
+.entity_header
+  .entity_title.bottom_line
+    .text_title
+      = name
 
-.entity_title_bar
-  = render "layouts/components/back_button"
-  - if flash_previous_path?
-    = render "shared/save_and_back"
+  .entity_title_bar.bottom_line
+    = render "layouts/components/back_button"
+    - if flash_previous_path?
+      = render "shared/save_and_back"
 
-  - if is_new
-    %button.btn.btn-success
-      = t :save
-    = link_to_close send(new_path)
-  - else
-    - if edit
+    - if is_new
       %button.btn.btn-success
         = t :save
-      -#= f.submit :name => (t :save), :class => "btn btn-success"
-      = link_to_cancel send(edit_path, model), :options => {:class => "btn btn-danger"}
+      = link_to_close send(new_path)
     - else
-      = link_to_inline_tooltip(:edit, send(edit_path, model), :tool_tip => t(:edit), :class => "btn a-btn btn-success fa fa-pencil")
+      - if edit
+        %button.btn.btn-success
+          = t :save
+        -#= f.submit :name => (t :save), :class => "btn btn-success"
+        = link_to_cancel send(edit_path, model), :options => {:class => "btn btn-danger"}
+      - else
+        = link_to_inline_tooltip(:edit, send(edit_path, model), :tool_tip => t(:edit), :class => "btn a-btn btn-success fa fa-pencil")
 
-    = link_to_function(t(:delete) + '?', confirm_delete(model), :class => "btn btn-danger")
-    #confirm{ hidden }
-    %span#menu
-.horizontal_line
+      = link_to_function(t(:delete) + '?', confirm_delete(model), :class => "btn btn-danger")
+      #confirm{ hidden }
+      %span#menu
+
 
   -#= render :partial => "#{controller_name}/title_bar", :locals => {:model => model, :f => f, :edit => edit}
 

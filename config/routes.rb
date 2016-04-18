@@ -137,6 +137,7 @@ Rails.application.routes.draw do
       match :auto_complete, via: [:get, :post]
     end
     member do
+      put :reschedule
       put :complete
       put :uncomplete
     end

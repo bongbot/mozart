@@ -101,11 +101,22 @@ class TasksController < ApplicationController
       @task_before_update.bucket = @task.computed_bucket
     end
 
-    respond_custom(@task) do |_format|
+    respond_custom(@task) do |format|
       if @task.update_attributes(task_params)
-        @task.bucket = @task.computed_bucket
+        logger.debug "TTT: : #{@task.bucket.inspect}    /**#{__FILE__}:#{__LINE__}"
+
       end
     end
+  end
+
+  def reschedule
+    @task = Task.tracked_by(current_user).find(params[:id])
+    if @task.update_attributes(bucket: params[:bucket])
+      @task.bucket = @task.computed_bucket
+    else
+      logger.debug "TTT: : #{"HANDLE FAILURE".inspect}    /**#{__FILE__}:#{__LINE__}"
+    end
+    respond_custom(@task)
   end
 
   # DELETE /tasks/1

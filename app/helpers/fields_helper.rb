@@ -56,9 +56,9 @@ module FieldsHelper
       val = f.object.send(name).to_s
       if val.present?
         res = allvalues.find{|ele| val == ele.last.to_s }
-        res.first
+        res ? res.first : "ERROR!"
       else
-        "Other"
+        "N/A"
       end
     end
   end
@@ -69,8 +69,8 @@ module FieldsHelper
     if edit
       f.text_area name, options
     else
-      data << content_tag("p", value)
-      data
+      data << content_tag("span", value, options)
+      data.html_safe
     end
   end
 

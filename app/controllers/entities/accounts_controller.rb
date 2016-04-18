@@ -125,9 +125,7 @@ class AccountsController < EntitiesController
     session[:accounts_filter] = params[:category]
     @accounts = get_accounts(page: 1, per_page: params[:per_page])
 
-    respond_with(@accounts) do |format|
-      format.js { render :index }
-    end
+    respond_custom(@accounts)
   end
 
   private

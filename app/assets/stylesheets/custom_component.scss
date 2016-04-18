@@ -28,19 +28,7 @@
   //}
 }
 
-/* board: a panel that appear distinctly out of background */
-.board {
-  background: white;
-  padding: 10px 15px 10px 15px;
-  -moz-border-radius: 4px;
-  -moz-box-shadow: 2px 2px 8px #bbbbbb, -2px 0px 8px #bbbbbb;
-  /* -webkit-border-radius: 4px; */
-  -webkit-box-shadow: 2px 2px 8px #bbbbbb, -2px 0px 8px #bbbbbb;
-}
 
-.board-container {
-  padding: 5px;
-}
 
 .hidden {
   display: none;
@@ -192,7 +180,6 @@ a.link_tag:hover {
 .task-dropdown {
   .dropdown-menu {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: 10px;
     font-size: 14px;
 
     li.check_box {
@@ -211,3 +198,50 @@ a:link.btn-new, a:visited.btn-new {
   font-size: 1rem;
   line-height: 1.5;
 }
+
+.bottom_line {
+  border-bottom: 1px silver solid;
+}
+
+.entity_header {
+  padding-bottom: 20px;
+}
+
+//Tab layout
+.sidebar {
+  width: 10%;
+  height: 100%;
+  ul>li>a {
+    padding: 10px 15px 12px 15px;
+    display: block;
+    color: #555;
+    height: 25px;
+    text-align: right;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+}
+.sidebar {
+  color: #3f3f3f;
+  font-size: 14px;
+  padding: 0px 0px 0px 0px;
+}
+.right-panel {
+  width: 90%;
+  height: 100%;
+}
+
+/* board: a panel that appear distinctly out of background */
+.board {
+  background: white;
+  padding: 10px 15px 10px 15px;
+  -moz-border-radius: 4px;
+  -moz-box-shadow: 2px 2px 8px #bbbbbb, -2px 0px 8px #bbbbbb;
+  /* -webkit-border-radius: 4px; */
+  -webkit-box-shadow: 2px 2px 8px #bbbbbb, -2px 0px 8px #bbbbbb;
+}
+
+.board-container {
+  padding: 5px 5px 5px 0px;
+}
+
