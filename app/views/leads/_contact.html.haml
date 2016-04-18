@@ -3,28 +3,28 @@
 = section_title(t :contact_info)
 
 #lead_contact
-  = c_show_when_not_exist(f, [:title, :company, :alt_email, :mobile, :referred_by], edit) do
-    No info available
-  .row_theme
-    .row
-      = c_show_when_exist(f, :title, edit) do
-        .col-md-3
-          .label-medium.top #{t :job_title}:
-          = c_textfield(f, :title, edit)
-      = c_show_when_exist(f, :company, edit) do
-        .col-md-3
-          .label-medium.top #{t :company}:
-          = c_autocomplete_field(f, :company, edit, {:path => autocomplete_account_name_leads_path})
-  .row_theme
-    .row
-      = c_show_when_exist(f, :alt_email, edit) do
-        .col-md-3
-          .label-medium #{t :alt_email}:
-          = c_textfield(f, :alt_email, edit)
-      = c_show_when_exist(f, :mobile, edit) do
-        .col-md-3
-          .label-medium #{t :mobile}:
-          = c_textfield(f, :mobile, edit)
+  = c_show_when_exist(f, [:title, :company], edit) do
+    .row_theme
+      .row
+        = c_show_when_exist(f, :title, edit) do
+          .col-md-3
+            .label-medium.top #{t :job_title}:
+            = c_textfield(f, :title, edit)
+        = c_show_when_exist(f, :company, edit) do
+          .col-md-3
+            .label-medium.top #{t :company}:
+            = c_autocomplete_field(f, :company, edit, {:path => autocomplete_account_name_leads_path})
+  = c_show_when_exist(f, [:alt_email, :mobile], edit) do
+    .row_theme
+      .row
+        = c_show_when_exist(f, :alt_email, edit) do
+          .col-md-3
+            .label-medium #{t :alt_email}:
+            = c_textfield(f, :alt_email, edit)
+        = c_show_when_exist(f, :mobile, edit) do
+          .col-md-3
+            .label-medium #{t :mobile}:
+            = c_textfield(f, :mobile, edit)
   .row_theme
     = render "shared/address", :f => f, :asset => @lead, :type => 'business', :title => :address, :edit => edit
   = c_show_when_exist(f, :referred_by, edit) do

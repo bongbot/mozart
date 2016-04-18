@@ -5,7 +5,7 @@
 //------------------------------------------------------------------------------
 #buttons {
   display: inline-block;
-  .create_asset, ul { display: inline; }
+  .create_asset, ul { display: block; }
   .create_asset {
     margin-left: 24px;
     display: inline-block;
@@ -16,6 +16,10 @@
       vertical-align: middle;
     }
   }
+}
+
+.format-buttons {
+  padding-top: 4px;
 }
 
 ul.format-buttons li {

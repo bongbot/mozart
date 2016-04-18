@@ -1,8 +1,10 @@
 %li.highlight[lead]
   - if lead.status
-    .strip{:class => lead.status}= t lead.status
+    .strip{:class => lead.status}
+      = t lead.status
   - else
-    .strip{:style => "color: gray;"}= t :other
+    .strip{:style => "color: gray;"}
+      = t :other
 
   .indent
     = link_to_if can?(:read, lead), lead.full_name(current_user.preference[:leads_naming]), lead
