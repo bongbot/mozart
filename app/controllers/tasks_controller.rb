@@ -179,7 +179,11 @@ class TasksController < ApplicationController
         filters.delete(params[:filter])
       end
     end
-    respond_custom(:tasks)
+    respond_with (:tasks) do |format|
+      format.js {
+        render :action => "js/filter"
+      }
+    end
   end
 
   protected
