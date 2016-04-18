@@ -270,8 +270,8 @@
     reschedule_task: (id, bucket) ->
       $("#task_bucket").prop("disabled", false)
       $("#task_bucket").val bucket
-      $("#edit_task_" + id + " input[type=submit]")[0].click()
-
+      action = $("#edit_task_" + id).attr("action")
+      $.ajax(action += "/reschedule", {type: "PUT", data: {bucket: bucket}})
 
     #----------------------------------------------------------------------------
     flick: (id, action) ->

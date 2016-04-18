@@ -1,0 +1,9 @@
+- entity_name = controller.controller_name.singularize.underscore #account
+- @entity = instance_variable_get("@#{entity_name}")
+- index_path = index_path(entity_name)
+
+- if @entity.valid?
+  = redirect_to_previous_path_or(index_path)
+- else
+  console.log("TODO: handle failure");
+  crm.runOnload();

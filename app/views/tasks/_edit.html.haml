@@ -15,6 +15,7 @@
     = f.error_messages :object_name => t('task')
 
     = render "tasks/top_section",    :f => f, :edit => edit
+    = render "tasks/description_section",    :f => f, :edit => edit
     = render "fields/groups", :f => f, :edit => edit
 
     - unless edit

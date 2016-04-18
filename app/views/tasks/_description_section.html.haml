@@ -1,0 +1,6 @@
+= c_show_when_exist(f, :description, edit) do
+  = section_title t :task_description
+  .row_theme
+    .col-md-6.nopadding
+      = render :partial => "layouts/components/ckeditor", :locals => {:id => 'task-description', :name => :description, :f => f, :edit => edit}
+    .clearfix

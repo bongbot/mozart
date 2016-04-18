@@ -1,6 +1,7 @@
 - edit ||= false
 - disabled = !edit
 
+= section_title (t :detail)
 %div
   .row_theme
     = c_show_when_exist(f, :name, edit) do
@@ -9,7 +10,7 @@
 
   .row_theme
     = c_show_when_exist(f, :bucket, edit) do
-      .label-medium.req #{t :due}:
+      .label-medium #{t :due}:
       - bucket = (params[:bucket].blank? ? @task.bucket : params[:bucket]) || "due_asap"
       - if edit
         - with_time = Setting.task_calendar_with_time
@@ -25,26 +26,18 @@
           = image_tag("back.png", :id => "task_bucket_back", :class => "button",
           :onclick => "crm.flip_calendar('bucket_back')")
       - else
-        = f.select :bucket, @bucket, { :selected => bucket.to_sym }, { :style => "width:160px;", :disabled => disabled }
+        - if @task.bucket != "specific_time"
+          = c_selectfield f, :bucket, @bucket, { :selected => :specific_time }, { :style => "width:160px; display:none;", :onchange => "crm.flip_calendar(this.value)" }, edit
+        - else
+          = get_date_time_string(f.object.send(:due_at))
 
   .row_theme
-    .label-medium.req #{t :assign_to}:
+    .label-medium #{t :assign_to}:
     = user_select(:task, all_users, current_user, edit)
 
   .row_theme
-    .label-medium.req #{t :category}:
-    = f.select :category, @category, { :selected => @task.category.blank? ? nil : @task.category.to_sym, :include_blank => t(:select_blank) }, { :style => "width:160px", :disabled => disabled }
-  .row_theme
-    .label-medium.pull-left #{t :task_description}:
-    .pull-left.col-md-6.nopadding
-      = render :partial => "layouts/components/ckeditor", :locals => {:id => 'task-description', :name => :description, :f => f, :edit => edit}
-    .clearfix
-
-  -#.row_theme
-  -#  .row
-  -#    .col-md-6
-  -#      .label-medium #{t :task_description}:
-  -#      = render :partial => "layouts/components/ckeditor", :locals => {:id => 'task-description', :name => :description, :f => f, :edit => edit}
+    .label-medium #{t :category}:
+    = c_selectfield f, :category, @category, { :selected => @task.category.blank? ? nil : @task.category.to_sym, :include_blank => t(:select_blank) }, { :style => "width:160px", :disabled => disabled }, edit
 
   - if Setting.background_info && Setting.background_info.include?(:task)
     .row_theme
