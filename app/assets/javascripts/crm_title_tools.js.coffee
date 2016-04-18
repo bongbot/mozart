@@ -7,9 +7,4 @@
 
   window.crm ||= {}
 
-  # Use the 'ajax_chosen' class on select boxes that need to lookup values from server
-  # Each select should have a 'data-url' attribute to specify the autocomplete path
-  #----------------------------------------------------------------------------
-
-
 ) jQuery
