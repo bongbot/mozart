@@ -1,0 +1,22 @@
+- edit ||= false
+- lead = model || {}
+- is_new = is_new?(model)
+
+- unless is_new
+  .dropdown{:style => "display: inline"}
+    %button.btn.btn-secondary.dropdown-toggle{"data-toggle" => "dropdown"}
+      = t :action
+      %span.caret
+    %ul.dropdown-menu{:style => "min-width:5px"}
+      %li.dropdown-item
+        - if %w(converted rejected).include?(lead.status)
+        - elsif can?(:update, lead)
+          = link_to_convert(lead)
+      %li.dropdown-item
+        - if lead.status == "rejected"
+        - elsif can?(:update, lead)
+          = link_to_reject(lead)
+
+
+
+
