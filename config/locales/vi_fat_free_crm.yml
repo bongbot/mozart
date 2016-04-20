@@ -5,7 +5,7 @@ en-US:
 
   # Generic terms.
   #----------------------------------------------------------------------------
-  id: Id
+  id: Phân tích
   all: All
   at: at
   here: here
@@ -17,82 +17,82 @@ en-US:
   yes_button: 'Yes'
 
 
-  # Settings.
+  # Cấu hình.
   #----------------------------------------------------------------------------
   tab_dashboard: Dashboard
-  tab_tasks: Tasks
-  tab_campaigns: Campaigns
-  tab_leads: Leads
-  tab_accounts: Accounts
-  tab_contacts: Contacts
-  tab_opportunities: Opportunities
+  tab_tasks: Nhiệm vụ
+  tab_campaigns: Chiến dịch
+  tab_leads: Mối
+  tab_accounts: Tài khoản
+  tab_contacts: Liên hệ
+  tab_opportunities: Cơ hội
   tab_team: Team
-  admin_tab_groups: Groups
-  admin_tab_users: Users
-  admin_tab_fields: Custom Fields
+  admin_tab_groups: Nhóm
+  admin_tab_users: Người dùng
+  admin_tab_fields: Trường tùy biến
   admin_tab_tags: Tags
-  admin_tab_settings: Settings
+  admin_tab_settings: Cấu hình
   admin_tab_plugins: Plugins
-  affiliate: Affiliate
-  competitor: Competitor
-  customer: Customer
-  partner: Partner
-  reseller: Reseller
+  affiliate: Thành viên liên kết
+  competitor: Đối thủ
+  customer: Khách hàng
+  partner: Đối tác
+  reseller: Người bán lại
   vendor: Vendor
-  planned: Planned
-  started: Started
-  on_hold: On Hold
-  completed: Completed
+  planned: Lên kế hoạch
+  started: Bắt Đầu
+  on_hold: Tạm dừng
+  completed: Hoàn thành
   called_off: Called Off
-  new: New
-  contacted: Contacted
-  converted: Converted
-  rejected: Rejected
+  new: Mới
+  contacted: Đã liên lạc
+  converted: Chuyển đổi
+  rejected: Từ chối
   cold_call: Cold Call
-  conference: Conference
+  conference: Hội thảo
   online: Online Marketing
-  referral: Referral
-  self: Self Generated
+  referral: Giới thiệu
+  self: Tự sinh
   web: Website
-  word_of_mouth: Word of Mouth
-  other: Other
-  prospecting: Prospecting
-  analysis: Analysis
-  presentation: Presentation
-  proposal: Proposal
-  negotiation: Negotiation
-  final_review: Final Review
-  won: Closed/Won
-  lost: Closed/Lost
+  word_of_mouth: Truyền miệng
+  other: Khác
+  prospecting: Triển vọng
+  analysis: Phân tích
+  presentation: Thuyết trình
+  proposal: Đề xuất
+  negotiation: Đàm phán
+  final_review: Xem xét
+  won: Đóng/Được`
+  lost: Đóng/Mất
   call: Call
   email: Email
   follow_up: Follow-up
-  lunch: Lunch
+  lunch: Bữa trưa
   meeting: Meeting
-  money: Money
+  money: Tiền
   trip: Trip
   overdue: Overdue
-  due_asap: As Soon As Possible
-  due_today: Today
-  due_tomorrow: Tomorrow
-  due_this_week: This Week
-  due_next_week: Next Week
-  due_later: Sometime Later
-  due_specific_date: On Specific Date...
-  completed_today: Today
-  completed_yesterday: Yesterday
-  completed_last_week: Last week
-  completed_this_month: This month
-  completed_last_month: Last month
+  due_asap: Ngay khi có thể
+  due_today: Hôm nay
+  due_tomorrow: Ngày mai
+  due_this_week: Tuần này
+  due_next_week: Tuần sau
+  due_later: Lúc nào đó
+  due_specific_date: Ngày cụ thể...
+  completed_today: Hôm nay
+  completed_yesterday: Hôm qua
+  completed_last_week: Tuần trước
+  completed_this_month: Tháng này
+  completed_last_month: Tháng trước
 
   # Models/Activity.
   #----------------------------------------------------------------------------
-  one_hour: One Hour
-  one_day: One Day
-  two_days: Two Days
-  one_week: One Week
-  two_weeks: Two Weeks
-  one_month: One Month
+  one_hour: Một giờ
+  one_day: Một ngày
+  two_days: Hai ngày
+  one_week: Một tuần
+  two_weeks: Hai tuần
+  one_month: Một tháng
 
   # Model Validations.
   #----------------------------------------------------------------------------
@@ -163,14 +163,14 @@ en-US:
     attribute_options:
       opportunity:
         stage:
-          prospecting: Prospecting
-          analysis: Analysis
-          presentation: Presentation
-          proposal: Proposal
-          negotiation: Negotiation
-          final_review: Final Review
-          won: Closed/Won
-          lost: Closed/Lost
+          prospecting: Triển vọng
+          analysis: Phân tích
+          presentation: Thuyết trình
+          proposal: Đề xuất
+          negotiation: Đàm phán
+          final_review: Xem xét
+          won: Đóng/Được`
+          lost: Đóng/Mất
       account:
         rating:
           "0": "-"
@@ -224,7 +224,7 @@ en-US:
   all_users: all users
   option_after: after
   option_all: all
-  option_all_users: All Users
+  option_all_users: All Người dùng
   option_amount: amount
   option_before: before
   option_brief: brief
@@ -279,7 +279,7 @@ en-US:
   login_now_link: Login Now!
   mobile: Mobile
   my_profile: My Profile
-  new_password: New password
+  new_password: Mới password
   password: Password
   password_confirmation: Confirm new password
   phone: Phone
@@ -306,7 +306,7 @@ en-US:
   remember_me: Remember Me
   sign_up_now: Sign Up Now!
 
-  # Views -> Accounts.
+  # Views -> Tài khoản.
   #----------------------------------------------------------------------------
   account: Account
   account_id: Account
@@ -314,8 +314,8 @@ en-US:
   account_small: account
   account_summary: Account Summary
   account_categories: Account Categories
-  accounts: Accounts
-  accounts_options: Accounts Options
+  accounts: Tài khoản
+  accounts_options: Tài khoản Options
   accounts_small: accounts
   assigned_to: Assigned to
   billing_address: Billing address
@@ -336,12 +336,12 @@ en-US:
   save_account: Save Account
   share_with: Share it with the following people
   shipping_address: Shipping address
-  total_accounts: Total Accounts
+  total_accounts: Total Tài khoản
   website: Website
   account_with_title_department: ! '%{title}, %{department} at %{account}'
   account_with_title: ! '%{title} at %{account}'
 
-  # Views -> Campaigns.
+  # Views -> Chiến dịch.
   #----------------------------------------------------------------------------
   actual: Actual
   actual_performance: Actual Performance
@@ -353,9 +353,9 @@ en-US:
   campaign_summary: Campaign Summary
   campaign_targets: Campaign Targets
   campaign_statuses: Campaign Statuses
-  campaigns: Campaigns
+  campaigns: Chiến dịch
   campaign_detail: Chi tiết
-  campaigns_options: Campaigns Options
+  campaigns_options: Chiến dịch Options
   campaigns_small: campaigns
   conversion: Conversion
   conversion_label: Conversion (%)
@@ -381,20 +381,20 @@ en-US:
   starts_in: starts in %{value}
   starts_today: starts today!
   target: Target
-  total_campaigns: Total Campaigns
+  total_campaigns: Total Chiến dịch
   was_supposed_to_finish: was supposed to finish on %{value}
   was_supposed_to_start: was supposed to start %{time_ago} ago on %{start_date}
   was_supposed_to_start_in: was supposed to start in %{starts_in} on %{start_date}
   select_a_campaign: Select a campaign
 
-  # Views -> Contacts.
+  # Views -> Liên hệ.
   #----------------------------------------------------------------------------
-  alt_email_small: Other
+  alt_email_small: Khác
   blog: Website/Blog
   contact: Contact
   contact_small: contact
-  contacts: Contacts
-  contacts_options: Contacts Options
+  contacts: Liên hệ
+  contacts_options: Liên hệ Options
   contacts_small: contacts
   contact_summary: Contact Summary
   create_contact: Create Contact
@@ -429,7 +429,7 @@ en-US:
   title: Title
   subscriptions: Subscriptions
 
-  # Views -> Leads.
+  # Views -> Cơ hội.
   #----------------------------------------------------------------------------
   convert: Convert
   convert_lead: Convert Lead
@@ -454,8 +454,8 @@ en-US:
   lead_status_small: lead status
   lead_summary: Lead Summary
   lead_statuses: Lead Statuses
-  leads: Leads
-  leads_options: Leads Options
+  leads: Cơ hội
+  leads_options: Cơ hội Options
   leads_small: leads
   none: None
   rating: Rating
@@ -464,11 +464,11 @@ en-US:
   save_lead: Save Lead
   source: Source
   status: Status
-  total_leads: Total Leads
+  total_leads: Total Cơ hội
   show_status_info_small: Show status information for this lead.
   show_contact_info_small: Show contact information for this lead.
 
-  # Views -> Opportunities.
+  # Views -> Cơ hội.
   #----------------------------------------------------------------------------
   amount: Amount
   close_date: Close date
@@ -486,8 +486,8 @@ en-US:
   from: from
   no_closing_date: no expected closing date
   no_discount: with no discount
-  opportunities: Opportunities
-  opportunities_options: Opportunities Options
+  opportunities: Cơ hội
+  opportunities_options: Cơ hội Options
   opportunities_small: opportunities
   opportunity: Opportunity
   opportunity_small: opportunity
@@ -500,80 +500,80 @@ en-US:
   probability_number: and %{value} probability
   save_opportunity: Save Opportunity
   stage: Stage
-  total_opportunities: Total Opportunities
+  total_opportunities: Total Cơ hội
   weighted_amount: Weighted amount
 
-  # Views -> Tasks.
+  # Views -> Nhiệm vụ.
   #----------------------------------------------------------------------------
   task: Task
   task_small: task
-  tasks: Tasks
+  tasks: Nhiệm vụ
   tasks_small: tasks
   assign_to: Assign to
   assigned_tab: Assigned
-  assigned_tasks: Assigned Tasks
+  assigned_tasks: Assigned Nhiệm vụ
   category: Category
-  completed_tab: Completed
-  completed_tasks: Completed Tasks
-  create_task: Create Task
-  create_task_small: create new task
-  due: Due
+  completed_tab: Hoàn thành
+  completed_tasks: Nhiệm vụ hoàn thành
+  create_task: Tạo nhiệm vụ
+  create_task_small: tạo nhiệm vụ
+  due: Quá hạn
   feel_free: Feel free to
-  move_to: Move to
-  no_tasks: You don't have any %{value} tasks
-  no_tasks_pending: pending
-  no_tasks_assigned: assigned
-  no_tasks_completed: completed
-  pending_tab: Pending
-  pending_tasks: Pending Tasks
+  move_to: Chuyển tới
+  no_tasks: Bạn đang có %{value} nhiệm vụ
+  no_tasks_pending: treo
+  no_tasks_assigned: đượg gán
+  no_tasks_completed: hoàn thành
+  pending_tab: Treo
+  pending_tasks: Nhiệm vụ chưa giải quyết
   related: ! 're:'
-  save_task: Save Task
-  task_assigned: The task has been assigned to %{value}
-  task_assigned_to: and assigned to %{value}
-  task_completed: completed
-  task_uncomplete: Uncomplete
-  task_completed_ago: completed %{value} ago
-  task_completed_by: completed %{time_ago} ago (%{date}) by %{user}
-  task_created: The task has been created
-  task_due_in: due in %{value}
+  save_task: Lưu nhiệm vụ
+  task_assigned: Nhiệm vụ đã được gán cho %{value}
+  task_assigned_to: và gán cho %{value}
+  task_completed: hoàn thành
+  task_uncomplete: Chưa hoàn thành
+  task_completed_ago: hoàn thành %{value} trước
+  task_completed_by: hoàn thành %{time_ago} trước (%{date}) bởi %{user}
+  task_created: Nhiệm vụ đã được tạo
+  task_due_in: trễ trong %{value}
   task_due_later: due sometime soon
   task_due_now: due now
   task_due_today: due today
-  task_from: From %{value}
+  task_from: Từ %{value}
   task_overdue: late, was due on
-  task_pending: The task has been moved to pending tasks
-  total_tasks: Total %{value}
-  view_assigned_tasks: view assigned tasks
-  view_pending_tasks: view pending tasks
+  task_pending: Nhiệm vụ đã được chuyển trạng thái sang chờ giải quyết
+  total_tasks: Tổng %{value}
+  view_assigned_tasks: xem nhiệm vụ đã được gán
+  view_pending_tasks: xem nhiệm vụ đang chờ giải quyết
   task_description: Miêu tả
 
   # Views -> Team.
   #----------------------------------------------------------------------------
-  unassigned_opportunities: Unassigned Opportunities
-  no_opportunities_found: There are currently no outstanding opportunities.
+  unassigned_opportunities: Cơ hội chưa gán
+  no_opportunities_found: Hiện chưa có cơ hội nổi bật nào.
 
   # Views -> Home.
   #----------------------------------------------------------------------------
-  action_completed: completed
-  action_create: created
-  action_destroy: deleted
-  action_reassigned: reassigned
-  action_rejected: rejected
-  action_rescheduled: rescheduled
-  action_update: updated
-  action_view: viewed
-  action_won: won
-  activities: Activities
-  no_activity_records: No activity records found.
-  recent_activity: Recent Activity
-  recent_activity_options: Recent Activity Options
-  subject_account: account
-  subject_address: address on
-  subject_campaign: campaign
-  subject_comment: comment on
-  subject_contact: contact
-  subject_email: email on
-  subject_lead: lead
+  action_completed: hoàn thành
+  action_create: được tạo
+  action_destroy: xóa
+  action_reassigned: gán lại
+  action_rejected: từ chối
+  action_rescheduled: kế hoạch lại
+  action_update: cập nhật
+  action_view: đã xem
+  action_won: thu được
+  activities: Hoạt động
+  no_activity_records: Không tìm thấy hoạt động nào.
+  recent_activity: Hoạt động gần đây
+  recent_activity_options: Lựa chọn hoạt động gần đây
+  subject_account: tài khoản
+  subject_address: địa chỉ
+  subject_campaign: chiến dịch
+  subject_comment: lời bình
+  subject_contact: liên hệ
+  subject_email: email
+  subject_lead: cơ hội
   subject_opportunity: opportunity
   subject_task: task
   subject_user: user
@@ -582,13 +582,13 @@ en-US:
   view_past_participle: Views
   update_past_participle: Updates
   destroy_past_participle: Deletions
-  all_events_past_participle: Activities
+  all_events_past_participle: Hoạt động
   action_create_comment: ! '- &quot;%{comment}&quot;'
-  my_tasks: My Tasks
+  my_tasks: My Nhiệm vụ
   no_task_records: You have no tasks.
-  my_opportunities: My Opportunities
+  my_opportunities: My Cơ hội
   no_opportunity_records: You have no opportunities.
-  my_accounts: My Accounts
+  my_accounts: My Tài khoản
   no_account_records: You have no accounts
   not_showing_hidden_entities: Not showing %{count} hidden %{entity}.
 
@@ -666,7 +666,7 @@ en-US:
   welcome: Welcome
 
   # Advanced search
-  accounts_advanced_search: Accounts Advanced search
+  accounts_advanced_search: Tài khoản Advanced search
   advanced_search: Advanced search
   basic_search: Basic search
   search_results_count:
@@ -706,11 +706,11 @@ en-US:
   create_group: Create Group
   save_group: Save Group
   group_members: members
-  groups: Groups
+  groups: Nhóm
   groups_small: groups
   group_small: group
 
-  # Views -> Admin -> Users
+  # Views -> Admin -> Người dùng
   #----------------------------------------------------------------------------
   confirm_group_delete: Are you sure you wish to delete this group? There are %{count}
     items that still reference it.
@@ -733,7 +733,7 @@ en-US:
   user_since: user since %{value}
   user_suspended: Suspended
   user_suspended_on: suspended on %{value}
-  users: Users
+  users: Người dùng
   users_small: users
 
   # Views -> Versions
@@ -833,10 +833,10 @@ en-US:
         other: Displaying all %{count} %{plural}
       multi_page: Displaying %{plural} %{from} - %{to} of %{total} in total
 
-  # Views -> Admin -> Custom Fields
+  # Views -> Admin -> Trường tùy biến
   #----------------------------------------------------------------------------
   label: Label
-  custom_fields: Custom Fields
+  custom_fields: Trường tùy biến
   custom_field_options: Custom Field Options
   create_field: Create field
   save_field: Save field
