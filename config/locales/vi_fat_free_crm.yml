@@ -102,64 +102,63 @@ en-US:
         authentication:
           attributes:
             login_field:
-              is_not_valid: is not valid
+              is_not_valid: không hợp lệ
             password_field:
-              is_not_valid: is not valid
+              is_not_valid: không hợp lệ
         account:
           attributes:
             name:
-              missing_account_name: ^Please specify account name.
+              missing_account_name: ^Hãy chọn một tài khoản.
             access:
-              share_account: ^Please specify users to share the account with.
+              share_account: ^Hãy chọn người để chia sẽ.
         campaign:
           attributes:
             name:
-              missing_campaign_name: ^Please specify campaign name.
+              missing_campaign_name: ^Hãy chỉ định một chiến dịch.
             ends_on:
-              dates_not_in_sequence: ^Please make sure the campaign end date is after
-                the start date.
+              dates_not_in_sequence: ^Ngày kết thúc phải sau ngày bắt đầu.
             access:
-              share_campaign: ^Please specify users to share the campaign with.
+              share_campaign: ^Hãy chỉ định người để chia sẻ chiến dịch.
         contact:
           attributes:
             first_name:
-              missing_first_name: ^Please specify first name.
+              missing_first_name: ^Xin hãy điền họ.
             last_name:
-              missing_last_name: ^Please specify last name.
+              missing_last_name: ^Xin hãy điền tên.
             access:
-              share_contact: ^Please specify users to share the contact with.
+              share_contact: ^Hãy chỉ định người để chia sẻ liên hệ.
         lead:
           attributes:
             first_name:
-              missing_first_name: ^Please specify first name.
+              missing_first_name: ^Xin hãy điền họ.
             last_name:
-              missing_last_name: ^Please specify last name.
+              missing_last_name: ^Xin hãy điền tên.
             access:
-              share_lead: ^Please specify users to share the lead with.
+              share_lead: ^Hãy chỉ định người để chia sẻ mối.
         opportunity:
           attributes:
             name:
-              missing_opportunity_name: ^Please specify opportunity name.
+              missing_opportunity_name: ^Hãy điền tên cơ hội.
             access:
-              share_opportunity: ^Please specify users to share the opportunity with.
+              share_opportunity: ^Hãy chỉ định người để chia sẻ cơ hội.
         task:
           attributes:
             name:
-              missing_task_name: ^Please specify task name.
+              missing_task_name: ^Hãy điền tên nhiệm vụ.
             calendar:
-              invalid_date: ^Please specify valid date.
+              invalid_date: ^Hãy chọn ngày hợp lệ.
         user:
           attributes:
             username:
-              missing_username: ^Please specify username.
-              username_taken: ^This username is already taken.
+              missing_username: ^Hãy điền tên người dùng.
+              username_taken: ^Tên này đã được dùng.
             email:
-              missing_email: ^Please specify email address.
-              email_in_use: ^There is another user with the same email.
+              missing_email: ^Hãy điền địa chỉ email.
+              email_in_use: ^Email bị trùng.
         custom_field:
-          required: ^%{field} is required.
-          maxlength: ^%{field} is too long.
-          endbeforestart: ^%{field} cannot end before it begins.
+          required: ^%{field} là bắt buộc.
+          maxlength: ^%{field} quá dài.
+          endbeforestart: ^%{field} không thể kết thúc trước khi bắt đầu.
     attribute_options:
       opportunity:
         stage:
@@ -180,24 +179,21 @@ en-US:
           "4": "★★★★"
           "5": "★★★★★"
 
-  msg_account_suspended: User account has been suspended.
-  password_reset_instruction: password reset instructions
+  msg_account_suspended: Tài khoản người dùng đã bị khóa.
+  password_reset_instruction: hướng dẫn đặt lại mật khẩu
 
   # Controllers.
   #----------------------------------------------------------------------------
-  msg_account_created: Your account has been created and is awaiting approval by the
-    system administrator.
-  msg_account_not_approved: Your account has not been approved yet.
-  msg_asset_deleted: ! '%{value} has been deleted.'
-  msg_asset_not_available: This %{value} is no longer available.
-  msg_not_authorized: You are not authorized to take this action.
-  msg_assets_not_available: The %{value} are not available.
-  msg_asset_rejected: ! '%{value} has been rejected.'
-  msg_bad_image_file: ^Could't upload or resize the image file you specified.
-  msg_cant_create_related: Can't create the %{asset} since the %{related} is no longer
-    available.
-  msg_cant_delete_user: ^Couldn't delete the user since %{value} has related assets
-    present.
+  msg_account_created: Tài khoản của bạn đã được tạo và chờ quản trị hệ thống duyệt.
+  msg_account_not_approved: Tài khoản chưa được duyệt.
+  msg_asset_deleted: ! '%{value} đã bị xóa.'
+  msg_asset_not_available: %{value} không tồn tại.
+  msg_not_authorized: Bạn không có quyền thực hiện hành động này.
+  msg_assets_not_available: %{value} không tồn tại.
+  msg_asset_rejected: ! '%{value} đã bị từ chối.'
+  msg_bad_image_file: ^Không thể tải lên hoặc chỉnh kích cỡ ảnh đã chọn.
+  msg_cant_create_related: Không thể tạo %{asset} vì %{related} không tồn tại.
+  msg_cant_delete_user: ^Không thể xóa vì %{value} có tài sản liên quan.
   msg_cant_do: Can't %{action} the %{asset} since it's no longer available.
   msg_email_not_found: No user was found with that email address.
   msg_enter_new_password: Please enter your new password.
