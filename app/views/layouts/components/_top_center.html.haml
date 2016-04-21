@@ -1,0 +1,31 @@
+- if current_user
+  .btn-group
+    %button#add-button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
+      %i.icon-plus
+      %span.caret
+    %u.dropdown-menu
+      %li.menu-task
+        = link_to("/tasks/new")
+      %li.menu-task
+        = link_to("/campaigns/new")
+      %li.menu-task
+        = link_to("/leads/new")
+      %li.menu-task
+        = link_to("/accounts/new")
+      %li.menu-task
+        = link_to("/contacts/new")
+      %li.menu-task
+        = link_to("/opporturnity/new")
+
+  = tag :input, { "type" => "text", :class => "top-search"}
+
+  .btn-group
+    %button#search-button.btn.btn-primary{:type=>"submit"}
+      %i.icon-white.ui-icon-search
+    %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
+      %i.icon-list-alt
+      %span.caret
+    %ul.dropdown-menu
+      - ["contact", "lead"].each do |val|
+        %li
+          = link_to(val)

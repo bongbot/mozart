@@ -5,8 +5,8 @@
     .col-md-offset-5
       .row
         .col-md-6
-          - if current_user
-            = tag :input, { "type" => "text"}
+          = render "layouts/components/top_center"
+
         .col-md-6
           #welcome
             - if current_user
