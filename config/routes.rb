@@ -10,12 +10,17 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
+  # sass start
+  get 'signup' => 'sass/application#signup'
+  post 'tenant_create' => 'sass/application#create'
+  # sass end
+
   get 'activities' => 'home#index'
   get 'admin'      => 'admin/users#index',       :as => :admin
   get 'login'      => 'authentications#new',     :as => :login
   delete 'logout'  => 'authentications#destroy', :as => :logout
   get 'profile'    => 'users#show',              :as => :profile
-  get 'signup'     => 'users#new',               :as => :signup
+  get 'user_signup'     => 'users#new',               :as => :user_signup
 
   get '/home/options',  as: :options
   get '/home/toggle',   as: :toggle
@@ -201,6 +206,8 @@ Rails.application.routes.draw do
 
     resources :settings
     resources :plugins,  only: :index
+
+    resources :subscribers
   end
 
   resources :tests

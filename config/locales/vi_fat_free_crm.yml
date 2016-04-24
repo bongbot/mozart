@@ -33,6 +33,7 @@ en-US:
   admin_tab_tags: Tags
   admin_tab_settings: Cấu hình
   admin_tab_plugins: Plugins
+  admin_tab_subscribers: Người đăng ký
   affiliate: Thành viên liên kết
   competitor: Đối thủ
   customer: Khách hàng
@@ -187,9 +188,9 @@ en-US:
   msg_account_created: Tài khoản của bạn đã được tạo và chờ quản trị hệ thống duyệt.
   msg_account_not_approved: Tài khoản chưa được duyệt.
   msg_asset_deleted: ! '%{value} đã bị xóa.'
-  msg_asset_not_available: %{value} không tồn tại.
+  msg_asset_not_available: Cái %{value} không tồn tại.
   msg_not_authorized: Bạn không có quyền thực hiện hành động này.
-  msg_assets_not_available: %{value} không tồn tại.
+  msg_assets_not_available: Cái %{value} không tồn tại.
   msg_asset_rejected: ! '%{value} đã bị từ chối.'
   msg_bad_image_file: ^Không thể tải lên hoặc chỉnh kích cỡ ảnh đã chọn.
   msg_cant_create_related: Không thể tạo %{asset} vì %{related} không tồn tại.

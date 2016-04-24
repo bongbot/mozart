@@ -1,0 +1,7 @@
+1. All tenant: Apartment.tenant_names
+
+2. Create tenants:
+Apartment::Tenant.create('tenant_name')
+
+3. Switch tenants:
+Apartment::Tenant.switch!('tenant_name')

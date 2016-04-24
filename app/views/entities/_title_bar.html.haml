@@ -5,7 +5,7 @@
 
   .pull-right
     -#= link_to(t(:new), send("new_#{@model_name}_path"), :class => "btn btn-secondary" )
-    %a{:title => "", "data-toggle" => "tooltip", "data-placement" => "bottom", "data-container" => "body",
+    %a{:title => "", "data-toggle" => "tooltip", "data-placement" => "left", "data-container" => "body",
       :href => send("new_#{@model_name}_path")  , "data-original-title" => t("create_#{@model_name}".to_sym), :class => "btn btn-success btn-new"}
       %span.fa.fa-plus
 

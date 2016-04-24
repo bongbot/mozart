@@ -43,7 +43,7 @@ $board_side_padding: 15px;
 
 //Override Boostrap
 .btn {
-  padding: 4px 12px;
+  padding: 2px 12px;
 }
 .errorExplanation p {
   margin-top: inherit;
@@ -232,8 +232,11 @@ a:link.btn-new, a:visited.btn-new {
 
   }
 
-  .module-bar-item:nth-of-type(1) > a.active {
-    box-shadow: 0px -2px 8px 0px rgb(187, 187, 187)
+  .module-bar-item:nth-of-type(1) > a {
+    &.active,
+    &:hover {
+      box-shadow: 0px -2px 8px 0px rgb(187, 187, 187)
+    }
   }
 
   .module-bar-item>a {
@@ -285,3 +288,79 @@ a:link.btn-new, a:visited.btn-new {
   }
 }
 
+//TOP HEADER START
+[class^="icon-"], [class*=" icon-"] {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+  line-height: 14px;
+  vertical-align: text-top;
+  background-image: url("/assets/icons/glyphicons-halflings.png");
+  background-position: 14px 14px;
+  background-repeat: no-repeat;
+}
+
+.icon-white {
+  background:  url("/assets/icons/glyphicons-halflings-white.png");
+}
+
+.icon-plus {
+  background-position: -408px -96px;
+}
+
+.icon-list-alt {
+  background-position: -264px -24px;
+}
+
+.icon-search {
+  background-position: -48px 0;
+}
+
+.mz-caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: top;
+  border-top: 4px solid #000;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  content: "";
+}
+
+.mz-btn-group {
+  position: relative;
+  display: inline-block;
+  font-size: 0;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.btn .mz-caret {
+  margin-top: 10px;
+}
+
+#top-search {
+  form {
+    display: inline-block;
+    vertical-align: bottom;
+  }
+
+  input[type="text"]{
+    padding: 4.5px 8px;
+    border-radius: 2px 0 0 2px;
+    width: 300px;
+    font-size: 14px;
+  }
+
+  #search-button {
+    border-radius: 0 2px 2px 0;
+  }
+
+  i.icon-plus,
+  i.icon-list-alt {
+    margin-right: -4px;
+  }
+
+}
+//TOP HEADER END

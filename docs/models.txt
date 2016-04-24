@@ -1,2 +1,7 @@
 1. add type to settings
 rails g migration addTypeToSettings type:bool
+
+2. Add subscriber model:
+ rails generate model Subscriber name:string password:string domain:string description:text
+
+ Controllers:

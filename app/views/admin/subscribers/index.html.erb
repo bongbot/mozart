@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Admin Subscribers</h1>
+
+
+<table class="table">
+  <tbody>
+    <% @admin_subscribers.each do |admin_subscriber| %>
+      <tr>
+        <td> <%= admin_subscriber.name %> </td>
+        <td> <%= admin_subscriber.password %> </td>
+        <td> <%= admin_subscriber.domain %> </td>
+        <td><%= link_to 'Show', admin_subscriber_path(admin_subscriber) %></td>
+        <td><%= link_to 'Edit', edit_admin_subscriber_path(admin_subscriber) %></td>
+        <td><%= link_to 'Destroy', admin_subscriber_path(admin_subscriber), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Subscriber', new_admin_subscriber_path %>

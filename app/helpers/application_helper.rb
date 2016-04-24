@@ -6,6 +6,8 @@
 module ApplicationHelper
   def tabs(tabs = nil)
     tabs ||= controller_path =~ /admin/ ? FatFreeCRM::Tabs.admin : FatFreeCRM::Tabs.main
+    logger.debug "TTT: : #{tabs.inspect}    /**#{__FILE__}:#{__LINE__}"
+
     if tabs
       @current_tab ||= tabs.first[:text] # Select first tab by default.
       tabs.each { |tab| tab[:active] = (@current_tab == tab[:text] || @current_tab == tab[:url][:controller]) }

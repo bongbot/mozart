@@ -1,31 +1,34 @@
 - if current_user
-  .btn-group
-    %button#add-button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
-      %i.icon-plus
-      %span.caret
-    %u.dropdown-menu
-      %li.menu-task
-        = link_to("/tasks/new")
-      %li.menu-task
-        = link_to("/campaigns/new")
-      %li.menu-task
-        = link_to("/leads/new")
-      %li.menu-task
-        = link_to("/accounts/new")
-      %li.menu-task
-        = link_to("/contacts/new")
-      %li.menu-task
-        = link_to("/opporturnity/new")
+  #top-search
+    .mz-btn-group
+      %button#add-button.btn{"data-toggle" => "dropdown"}
+        %i.icon-plus
+        %span.mz-caret
+      %u.dropdown-menu
+        %li.menu-task
+          = link_to("/tasks/new")
+        %li.menu-task
+          = link_to("/campaigns/new")
+        %li.menu-task
+          = link_to("/leads/new")
+        %li.menu-task
+          = link_to("/accounts/new")
+        %li.menu-task
+          = link_to("/contacts/new")
+        %li.menu-task
+          = link_to("/opporturnity/new")
 
-  = tag :input, { "type" => "text", :class => "top-search"}
+    = form_for(:search) do |f|
+      = f.text_field :input, :class => "top-search pull-left"
+      %button#search-button.btn.btn-primary.pull-left{:type=>"submit"}
+        %i.icon-white.icon-search
+      .clearfix
 
-  .btn-group
-    %button#search-button.btn.btn-primary{:type=>"submit"}
-      %i.icon-white.ui-icon-search
-    %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
-      %i.icon-list-alt
-      %span.caret
-    %ul.dropdown-menu
-      - ["contact", "lead"].each do |val|
-        %li
-          = link_to(val)
+    .mz-btn-group
+      %button.btn{"data-toggle" => "dropdown"}
+        %i.icon-list-alt
+        %span.mz-caret
+      %ul.dropdown-menu
+        - ["contact", "lead"].each do |val|
+          %li
+            = link_to(val)
