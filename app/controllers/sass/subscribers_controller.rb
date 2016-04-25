@@ -1,4 +1,4 @@
-class Admin::SubscribersController < Admin::ApplicationController
+class Sass::SubscribersController < Sass::ApplicationController
   before_action :set_admin_subscriber, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/subscribers
@@ -24,7 +24,7 @@ class Admin::SubscribersController < Admin::ApplicationController
     @admin_subscriber = Subscriber.new(admin_subscriber_params)
 
     if @admin_subscriber.save
-      redirect_to admin_subscriber_path(@admin_subscriber), notice: 'Subscriber was successfully created.'
+      redirect_to sass_subscriber_path(@admin_subscriber), notice: 'Subscriber was successfully created.'
     else
       render :new
     end
@@ -33,7 +33,7 @@ class Admin::SubscribersController < Admin::ApplicationController
   # PATCH/PUT /admin/subscribers/1
   def update
     if @admin_subscriber.update(admin_subscriber_params)
-      redirect_to @admin_subscriber, notice: 'Subscriber was successfully updated.'
+      redirect_to sass_subscriber_path(@admin_subscriber), notice: 'Subscriber was successfully updated.'
     else
       render :edit
     end

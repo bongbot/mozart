@@ -195,49 +195,47 @@ en-US:
   msg_bad_image_file: ^Không thể tải lên hoặc chỉnh kích cỡ ảnh đã chọn.
   msg_cant_create_related: Không thể tạo %{asset} vì %{related} không tồn tại.
   msg_cant_delete_user: ^Không thể xóa vì %{value} có tài sản liên quan.
-  msg_cant_do: Can't %{action} the %{asset} since it's no longer available.
-  msg_email_not_found: No user was found with that email address.
-  msg_enter_new_password: Please enter your new password.
-  msg_goodbye: You have been logged out. Thank you for using Fat Free CRM!
-  msg_invalid_password: ^Please specify valid current password
-  msg_invalig_login: Invalid username or password.
-  msg_last_login: Your last login was on %{value}.
-  msg_login_needed: You must be logged in to access this page.
-  msg_logout_needed: You must be logged out to access this page.
-  msg_password_changed: Your password has been changed.
-  msg_password_not_changed: Your password has not been changed.
-  msg_password_updated: Password was successfully updated.
-  msg_pwd_instructions_sent: Instructions to reset your password have been sent to
-    you. Please check your email.
-  msg_require_admin: You must be Administrator to access this page.
-  msg_successful_signup: Successful signup, welcome to Fat Free CRM!
-  msg_welcome: Welcome to Fat Free CRM!
+  msg_cant_do: Không thể %{action} %{asset} vì đối tượng không tồn tại.
+  msg_email_not_found: Không tìm thấy người dùng nào với email này.
+  msg_enter_new_password: Xin hãy nhập mật mã.
+  msg_goodbye: Bạn đã thoát. Cảm ơn vì đã sử dụng CRM!
+  msg_invalid_password: ^Hãy chỉ định mật mã hợp lệ
+  msg_invalig_login: Tên hoặc mật mã không hợp lệ.
+  msg_last_login: Lần cuối bạn đăng nhập vào %{value}.
+  msg_login_needed: Bạn phải đăng nhập để truy nhập trang này.
+  msg_logout_needed: Bạn phải đăng xuất để truy nhập trang này.
+  msg_password_changed: Mật khẩu của bạn đã thay đổi.
+  msg_password_not_changed: Mật khẩu của bạn chưa được thay đổi.
+  msg_password_updated: Mật khẩu đã được lưu trữ thành công.
+  msg_pwd_instructions_sent: Hướng dẫn thiết lập lại mật khẩu đã được gửi. Xin hãy check mail.
+  msg_require_admin: Chỉ quản trị viên mới được truy nhập trang này.
+  msg_successful_signup: Bạn đã đăng ký thành công. Chào mứng bạn sử dụng CRM!
+  msg_welcome: Chào mứng bạn sử dụng CRM!
 
   # Options.
   #----------------------------------------------------------------------------
-  option_amount*probability: weighted amount
-  activity_options: Show %{models} %{action_type} performed by %{user} in the past
-    %{period}.
-  all_users: all users
-  option_after: after
-  option_all: all
-  option_all_users: All Người dùng
-  option_amount: amount
-  option_before: before
-  option_brief: brief
-  option_closes_on: close date
-  option_company: company
-  option_created_at: date created
-  option_ends_on: end date
-  option_first_name: first name
-  option_last_name: last name
-  option_leads_count: actual leads
-  option_long: long
-  option_name: name
-  option_probability: probability
-  option_rating: rating
-  option_revenue: actual revenue
-  option_starts_on: start date
+  option_amount*probability: lượng tương ứng
+  activity_options: Hiển thị %{models} %{action_type} thực hiện bởi %{user} %{period}.
+  all_users: tất cả user
+  option_after: sau
+  option_all: tất cả
+  option_all_users: Tất cả người dùng
+  option_amount: lượng
+  option_before: trước
+  option_brief: tóm tắt
+  option_closes_on: ngày đóng
+  option_company: công ty
+  option_created_at: ngày tạo
+  option_ends_on: ngày kết thúc
+  option_first_name: họ
+  option_last_name: tên
+  option_leads_count: mối thực sự
+  option_long: dài
+  option_name: tên
+  option_probability: xác suất
+  option_rating: đánh giá
+  option_revenue: thu nhập thực sự
+  option_starts_on: ngày bắt đầu
   option_target_leads: target leads
   option_target_revenue: target revenue
   option_updated_at: date updated

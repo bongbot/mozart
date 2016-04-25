@@ -1,0 +1,20 @@
+= f.error_messages
+
+.inputs
+  .form-control
+    .label
+      = t :name
+    = f.text_field(:name)
+  .form-control
+    .label
+      = t :password
+    = f.text_field(:password)
+  .form-control
+    .label
+      = t :domain
+    = f.text_field(:domain)
+
+
+
+.actions
+  = f.button :submit

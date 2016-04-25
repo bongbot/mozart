@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   # sass start
   get 'signup' => 'sass/application#signup'
   post 'tenant_create' => 'sass/application#create'
+  namespace :sass do
+    resources :subscribers
+  end
   # sass end
 
   get 'activities' => 'home#index'
@@ -206,8 +209,6 @@ Rails.application.routes.draw do
 
     resources :settings
     resources :plugins,  only: :index
-
-    resources :subscribers
   end
 
   resources :tests

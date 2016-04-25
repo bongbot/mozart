@@ -1,6 +1,7 @@
 class Sass::ApplicationController < ApplicationController
   # before_action :set_sass, only: [:show, :edit, :update, :destroy]
 
+
   # GET /sasses/1
   def signup
     begin
@@ -9,6 +10,7 @@ class Sass::ApplicationController < ApplicationController
       puts "TTT: " + "SIGNUP" + ex.message.to_s
     end
 
+    render "signup", :layout => "layouts/sass/empty"
   end
 
   # POST /sasses
@@ -38,20 +40,22 @@ class Sass::ApplicationController < ApplicationController
   end
 
   def add_admin_info(username, password, email)
-    unless username && password && email
+    if username && password && email
       User.reset_column_information # Reload the class since we've added new fields in migrations.
       user = User.find_by_username(username) || User.new
       user.update_attributes(username: username, password: password, email: email)
       user.update_attribute(:admin, true) # Mass assignments don't work for :admin because of the attr_protected
       user.update_attribute(:suspended_at, nil) # Mass assignments don't work for :suspended_at because of the attr_protected
       puts "Admin user has been created."
+    else
+      puts "TTT: " + "SOMETHING WRONG:" + [username, password, email].inspect
     end
   end
 
   # PATCH/PUT /sasses/1
   def update
-    if @sass.update(sass_params)
-      redirect_to @sass, notice: 'Sass was successfully updated.'
+    if @admin_subscriber.update(sass_params)
+      redirect_to sass_subscriber_path(@admin_subscriber), notice: 'Sass was successfully updated.'
     else
       render :edit
     end
@@ -62,6 +66,7 @@ class Sass::ApplicationController < ApplicationController
     # todo: drop schema
     # todo: delete record
   end
+
 
 
   private

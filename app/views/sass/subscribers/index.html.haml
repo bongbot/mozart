@@ -1,0 +1,17 @@
+%p#notice= notice
+%h1 Listing Admin Subscribers
+%table.table
+  %tbody
+    - @admin_subscribers.each do |admin_subscriber|
+      %tr
+        %td
+          = admin_subscriber.name
+        %td
+          = admin_subscriber.password
+        %td
+          = admin_subscriber.domain
+        %td= link_to 'Show', sass_subscriber_path(admin_subscriber)
+        %td= link_to 'Edit', edit_sass_subscriber_path(admin_subscriber)
+        %td= link_to 'Destroy', sass_subscriber_path(admin_subscriber), method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Subscriber', new_sass_subscriber_path

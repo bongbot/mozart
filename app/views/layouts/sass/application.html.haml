@@ -12,9 +12,27 @@
     = csrf_meta_tag
 
   %body
-    = yield
-    -#%script{:type => "text/javascript"}
-    -#  = "crm.base_url = '#{Setting.base_url}';" unless Setting.base_url.blank?
-    -#  = get_browser_timezone_offset
-    -#  SAIGON
-      = yield
+    .wrapper
+      = render "layouts/sass/header"
+      .main-content
+        .sidebar.pull-left
+          .module-bar
+            .module-bar-item
+              = link_to(sass_subscribers_path) do
+                %i.fa{class: ""}
+                  = t(:subscriber)
+
+        = show_flash
+        .right-panel.pull-left
+          .board-container
+            -#todo: do not need get data for sidebar
+            -#%div{ :class => :sidebar, :id => :sidebar, :valign => :top }
+            -#  = render "layouts/sidebar"
+            %table{ :width => "100%", :height => "100%", :cellpadding => 0, :cellspacing => 0, :class => :tabbed }
+              %tr
+                -#todo: deal with sidebar
+                %td{ :class => "board", :id => :main, :valign => :top }
+                  = yield
+        .clearfix
+    = render "layouts/footer"
+

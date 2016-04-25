@@ -1,0 +1,5 @@
+= form_for(@admin_subscriber, :url => sass_subscriber_path) do |f|
+  = render 'form', :f => f
+
+= link_to sass_subscribers_path(@admin_subscriber)
+= link_to 'Back', sass_subscribers_path

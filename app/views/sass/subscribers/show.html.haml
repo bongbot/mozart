@@ -1,0 +1,18 @@
+#notice
+  = notice
+
+.form-control
+  .label
+    = t :name
+  = @admin_subscriber.name
+.form-control
+  .label
+    = t :password
+  = @admin_subscriber.password
+.form-control
+  .label
+    = t :domain
+  = @admin_subscriber.domain
+
+= link_to 'Edit', edit_sass_subscriber_path(@admin_subscriber)
+= link_to 'Back', sass_subscribers_path
