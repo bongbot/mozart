@@ -1,21 +1,27 @@
-
-.standalone
+.standalone.inline_block
   = form_for(@subscriber, :url => tenant_create_path) do |f|
     = f.error_messages
 
     .inputs
-      .form-control
-        .label
-          = t :name
-        = f.text_field(:name)
-      .form-control
-        .label
-          = t :password
-        = f.text_field(:password)
-      .form-control
-        .label
-          = t :domain
-        = f.text_field(:domain)
+      .row.form-group
+        .col-md-3
+          .label
+            = t :name
+        .col-md-9
+          = f.text_field(:name)
+      .row.form-group
+        .col-md-3
+          .label
+            = t :password
+        .col-md-9
+          = f.text_field(:password)
+      .row.form-group
+        .col-md-3
+          .label
+            = t :domain
+        .col-md-9
+          = f.text_field(:domain)
 
-    .actions
-      = f.button :submit
+  .actions
+    %button#signup.btn.btn-success
+      = t :submit

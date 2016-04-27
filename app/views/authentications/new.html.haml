@@ -10,7 +10,7 @@
     %fieldset.form-group
       = f.password_field :password, :placeholder => t(:password),:class => "form-control"
 
-    %div(style="margin-left:12px") #{f.check_box(:remember_me)} #{t :remember_me}
+    %div #{f.check_box(:remember_me)} #{t :remember_me}
     %br
       = f.submit t(:login), :class => "btn btn-success"
       = link_to t(:forgot_password) << '?', new_password_path
