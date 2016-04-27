@@ -2,6 +2,18 @@
 rails g migration addTypeToSettings type:bool
 
 2. Add subscriber model:
- rails generate model Subscriber name:string password:string domain:string description:text
+    rails generate devise Subscriber
+    rails g migration AddFieldsToSubscriber name:string password:string domain:string description:text
+    rails g migration AddConfirmableToSubscriber confirmation_token:string confirmed_at:datetime confirmation_sent_at:datetime unconfirmed_email:string
+
+## Confirmable
+      # t.string   :confirmation_token
+      # t.datetime :confirmed_at
+      # t.datetime :confirmation_sent_at
+      # t.string   :unconfirmed_email # Only if using reconfirmable
+
 
  Controllers:
+
+Stack overflow:
+http://stackoverflow.com/questions/8186584/how-do-i-set-up-email-confirmation-with-devise

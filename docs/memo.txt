@@ -3,3 +3,6 @@ rails g migration addDescriptionToTasks description:string{1000}
 
 2. Generate sass controllers
 rails g scaffold_controllers sass
+
+3. rake rolback:
+rake db:rollback STEP=2

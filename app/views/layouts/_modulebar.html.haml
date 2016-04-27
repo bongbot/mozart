@@ -1,6 +1,7 @@
-.module-bar
-  - tabs.each do |tab|
-    .module-bar-item
-      = link_to(tab[:url], :class => tab[:active] ? "active" : nil) do
-        %i.fa{class: tab[:icon]}
-        = t(tab[:text])
+- if (controller_path =~ /devise/) != 0
+  .module-bar
+    - tabs.each do |tab|
+      .module-bar-item
+        = link_to(tab[:url], :class => tab[:active] ? "active" : nil) do
+          %i.fa{class: tab[:icon]}
+          = t(tab[:text])

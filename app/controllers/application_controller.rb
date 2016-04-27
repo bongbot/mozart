@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   helper_method :previous_path?
   helper_method :previous_path
 
-  respond_to :html, only: [:index, :show, :auto_complete]
+  respond_to :html
   respond_to :js
   respond_to :json, :xml, except: :edit
   respond_to :atom, :csv, :rss, :xls, only: :index

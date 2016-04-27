@@ -20,21 +20,22 @@ class Sass::ApplicationController < ApplicationController
     if res
       redirect_to login_url(subdomain:domain)
     else
-      render "signup", :layout => "layouts/sass/empty"
+      render :signup
     end
   end
 
   def create_tenant(domain)
+    sass_params[:email] = sass_params[:email] || (domain + "@gmail.com")
     @subscriber = Subscriber.new(sass_params)
     puts "TTT: " + @subscriber.inspect
+
     if @subscriber.valid?
       @subscriber.save
       # create a schema with registered tenant
       Apartment::Tenant.create(domain)
       Apartment::Tenant.switch!(domain)
 
-      email = sass_params[:email] || "default@gmail.com"
-      add_admin_info(sass_params[:name], sass_params[:password], email)
+      add_admin_info(sass_params[:name], sass_params[:password], sass_params[:email])
       create_domain(domain)
       true
     else

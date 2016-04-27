@@ -8,3 +8,14 @@ require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
 FatFreeCRM::Application.initialize!
+
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
+    :tls => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => "gmail.com",
+    :authentication => :login,
+    :user_name => "bongbot11287@gmail.com",
+    :password => "latoido1287"
+}

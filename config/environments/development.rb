@@ -45,5 +45,11 @@ if defined?(FatFreeCRM::Application)
 
     # Time zone
     config.active_record.default_timezone = :local
+
+    # Mail setting for devise:
+    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
+
   end
 end

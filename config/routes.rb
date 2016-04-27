@@ -4,6 +4,9 @@
 # See MIT-LICENSE file or http://www.opensource.org/licenses/mit-license.php
 #------------------------------------------------------------------------------
 Rails.application.routes.draw do
+  resources :tests
+  devise_for :subscribers
+
   mount Ckeditor::Engine => '/ckeditor'
 
   resources :lists
@@ -11,7 +14,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   # sass start
-  get 'signup' => 'sass/application#signup'
+  get 'subsignup' => 'sass/application#signup'
   post 'tenant_create' => 'sass/application#create'
   namespace :sass do
     resources :subscribers
@@ -211,5 +214,4 @@ Rails.application.routes.draw do
     resources :plugins,  only: :index
   end
 
-  resources :tests
 end
