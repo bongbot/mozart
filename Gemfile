@@ -95,7 +95,7 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 # CKEditor
 gem 'ckeditor'
 
-gem 'devise'
+gem 'devise', '3.5.6'
 
 # Mail cacher for devise
-gem 'mailcatcher'
+# gem 'mailcatcher'

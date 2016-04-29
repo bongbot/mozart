@@ -5,7 +5,8 @@
 #------------------------------------------------------------------------------
 Rails.application.routes.draw do
   resources :tests
-  devise_for :subscribers
+  devise_for :subscribers, :controllers => {:registrations => "sass/registrations"}
+
 
   mount Ckeditor::Engine => '/ckeditor'
 

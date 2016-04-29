@@ -87,6 +87,13 @@ module FatFreeCRM
 
     config.active_record.raise_in_transactional_callbacks = true
 
+    # Aulo load local gem
+    # if Rails.env.development?
+    #   reload_gems = %w(doforme)
+    #   config.autoload_paths += Gem.loaded_specs.values.inject([]){ |a,gem| a += gem.load_paths if reload_gems.include? gem.name; a }
+    #   require 'active_support/dependencies'
+    #   ActiveSupport::Dependencies.explicitly_unloadable_constants += reload_gems.map { |gem| gem.classify }
+    # end
 
   end
 end

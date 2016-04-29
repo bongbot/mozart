@@ -3,7 +3,7 @@ namespace :db do
 
   task migrate_mozart_sass: :environment do
     ActiveRecord::Base.establish_connection MOZART_SASS
-    ActiveRecord::Migrator.migrate("db/migrate/sass/")
+    ActiveRecord::Migrator.migrate("db/sass/")
   end
 
 end
