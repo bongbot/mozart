@@ -1,0 +1,22 @@
+%h2 Đăng nhập
+
+.standalone
+  - if @error
+    %b.label-danger
+      = @error
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .form-group
+      .label
+        = t :email
+      = f.text_field :email, :class => "form-control"
+    .form-group
+      .label
+        = t :password
+      = f.text_field :password, :class => "form-control"
+    .form-group
+      = f.check_box :remember_me if devise_mapping.rememberable?
+      .label
+        = t :remember_me
+    .form-group
+      = f.button :submit
+= render "devise/shared/links"

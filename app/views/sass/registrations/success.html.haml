@@ -1,6 +1,9 @@
 .standalone
   %div
     Cảm ơ bạn đăng ký, mở email và xác nhận đăng ký để bắt đầu sử dụng chương trình.
-    Confirm URL:
+    - if Rails.env.development?
+      Confirm URL:
+      = link_to("Confirm", confirmation_url(@resource, confirmation_token: @resource.confirmation_token))
 
-  = link_to("Confirm", confirmation_url(@resource, confirmation_token: @resource.confirmation_token))
+  %b
+    = link_to("Tới trang đăng nhập", session_url(@resource))

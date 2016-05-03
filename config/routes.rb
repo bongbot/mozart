@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resources :tests
   devise_for :subscribers, :controllers => {
                              :registrations => "sass/registrations",
-                             :confirmations => "sass/confirmations"
+                             :confirmations => "sass/confirmations",
+                             :sessions => "sass/sessions",
                          }
 
   devise_scope :subscriber do

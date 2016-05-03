@@ -11,3 +11,6 @@ Figaro: set environment variables
 gem 'figaro'
 bundle install
 bundle exec figaro install
+
+5. Wiki for devise:
+https://github.com/plataformatec/devise/wiki/

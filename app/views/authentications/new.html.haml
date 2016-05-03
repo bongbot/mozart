@@ -13,6 +13,13 @@
       = f.submit t(:login), :class => "btn btn-success"
       = link_to t(:forgot_password) << '?', new_password_path
 
+    - if subscriber_signed_in?
+      %li
+        = link_to('Logout', destroy_subscriber_session_path, :method => :delete)
+    - else
+      %li
+        = link_to('Login', new_subscriber_session_path)
+
 .text-center
   %span
     #{t :no_account} #{link_to t(:sign_up_now), subsignup_path}
