@@ -5,8 +5,14 @@
 #------------------------------------------------------------------------------
 Rails.application.routes.draw do
   resources :tests
-  devise_for :subscribers, :controllers => {:registrations => "sass/registrations"}
+  devise_for :subscribers, :controllers => {
+                             :registrations => "sass/registrations",
+                             :confirmations => "sass/confirmations"
+                         }
 
+  devise_scope :subscriber do
+    get 'success/:id' => 'sass/registrations#success', :as => :success
+  end
 
   mount Ckeditor::Engine => '/ckeditor'
 

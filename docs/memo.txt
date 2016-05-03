@@ -6,3 +6,8 @@ rails g scaffold_controllers sass
 
 3. rake rolback:
 rake db:rollback STEP=2
+
+Figaro: set environment variables
+gem 'figaro'
+bundle install
+bundle exec figaro install

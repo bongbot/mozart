@@ -23,6 +23,13 @@ class UserMailer < ActionMailer::Base
          from: from_address
   end
 
+  def test(aa)
+    mail subject: "Fat Free CRM: ",
+         to: "tcuong1829@gmail.com",
+         from: "bongbot1287@gmail.com",
+         date: Time.now
+  end
+
   private
 
   def from_address

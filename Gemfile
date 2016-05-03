@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+ruby '2.2.3'
 
 # Uncomment the database that you have configured in config/database.yml
 # ----------------------------------------------------------------------
@@ -42,7 +43,7 @@ group :development do
     gem 'capistrano-rvm'
     #~ gem 'capistrano-chruby'
     #~ gem 'capistrano-rbenv'
-    gem 'guard'
+    # gem 'guard'
     gem 'guard-rspec'
     gem 'guard-rails'
     gem 'rb-inotify', require: false
@@ -95,7 +96,8 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 # CKEditor
 gem 'ckeditor'
 
+# Devise Authentication
 gem 'devise', '3.5.6'
 
-# Mail cacher for devise
-# gem 'mailcatcher'
+# Figato for setting environment variables
+gem 'figaro'

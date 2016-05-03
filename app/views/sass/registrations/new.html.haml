@@ -1,0 +1,25 @@
+%h2 Đăng ký
+.standalone{:style => "width: 480px;"}
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = f.error_notification
+    .form-inputs
+      .form-group
+        = f.input :name, required: true, autofocus: true, :class => "w100"
+      .form-group
+        = f.input :domain, required: true, autofocus: true, :class => "w100"
+      .form-group
+        = f.input :email, required: true, autofocus: true, :class => "w100"
+      .form-group
+        = f.input :password, required: true, :class => "w100"
+      .form-group
+        = f.input :password_confirmation, required: true, :class => "w100"
+    .form-actions
+      .form-group
+        = f.button :submit, "Sign up"
+
+  = render "devise/shared/links"
+
+  :css
+    .standalone input {
+       width: 100%;
+    }

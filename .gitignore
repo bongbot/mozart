@@ -34,8 +34,11 @@ Design
 *~
 *.swp
 *.gem
+Gemfile.lock
 
 .idea/
 *.iml
 
 railways.cache
+# Ignore application configuration
+/config/application.yml

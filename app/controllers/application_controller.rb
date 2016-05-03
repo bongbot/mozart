@@ -32,6 +32,8 @@ class ApplicationController < ActionController::Base
 
   include ERB::Util # to give us h and j methods
   include CustomRespond
+  include ExtendLogger
+
 
   # Common auto_complete handler for all core controllers.
   #----------------------------------------------------------------------------
