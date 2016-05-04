@@ -4,7 +4,7 @@
   = form_for @authentication, :url => authentication_path, :html => one_submit_only do |f|
 
     %fieldset.form-group
-      = f.text_field :username, :placeholder => t(:username), :class => "form-control"
+      = f.email_field :email, :placeholder => t(:email), :class => "form-control"
     %fieldset.form-group
       = f.password_field :password, :placeholder => t(:password),:class => "form-control"
 

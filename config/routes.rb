@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get 'activities' => 'home#index'
   get 'admin'      => 'admin/users#index',       :as => :admin
   get 'login'      => 'authentications#new',     :as => :login
+  get 'sasslogin'      => 'authentications#sasslogin'
   delete 'logout'  => 'authentications#destroy', :as => :logout
   get 'profile'    => 'users#show',              :as => :profile
   get 'user_signup'     => 'users#new',               :as => :user_signup

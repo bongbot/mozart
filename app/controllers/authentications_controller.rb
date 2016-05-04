@@ -38,6 +38,10 @@ class AuthenticationsController < ApplicationController
     end
   end
 
+  def sasslogin
+    create
+  end
+
   # The login form gets submitted to :update action when @authentication is
   # saved (@authentication != nil) but the user is suspended.
   #----------------------------------------------------------------------------

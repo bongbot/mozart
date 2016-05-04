@@ -30,12 +30,6 @@ class Sass::SessionsController < Devise::SessionsController
      render :new
    end
 
-
-    # mail exist admin => ok: show subscriber list
-    #                     error: error
-    #            normal => route to login page of domain
-    #      not: error not subscribed
-
   end
 end
 

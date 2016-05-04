@@ -77,8 +77,10 @@ class User < ActiveRecord::Base
 
   acts_as_authentic do |c|
     c.session_class = Authentication
-    c.validates_uniqueness_of_login_field_options = { case_sensitive: false, message: :username_taken }
-    c.validates_length_of_login_field_options     = { minimum: 1, message: :missing_username }
+    # todo: change email to unique field
+    c.login_field = :email  
+    c.validates_uniqueness_of_login_field_options = { case_sensitive: false, message: :email_taken }
+    c.validates_length_of_login_field_options     = { minimum: 1, message: :missing_email }
     c.validates_uniqueness_of_email_field_options = { message: :email_in_use }
     c.validates_length_of_password_field_options  = { minimum: 0, allow_blank: true, if: :require_password? }
     c.ignore_blank_passwords = true
