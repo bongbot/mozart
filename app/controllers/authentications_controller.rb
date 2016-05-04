@@ -10,6 +10,7 @@ class AuthenticationsController < ApplicationController
   #----------------------------------------------------------------------------
   def new
     @authentication = Authentication.new
+    #todo: Support redirect from sass
   end
 
   #----------------------------------------------------------------------------
