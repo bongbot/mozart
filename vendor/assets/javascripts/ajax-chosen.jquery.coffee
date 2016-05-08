@@ -140,8 +140,8 @@ do ($ = jQuery) ->
               select.trigger("liszt:updated")
             else
               # If there are no results, display the no_results text
-              select.data().chosen.no_results_clear()
-              select.data().chosen.no_results field.val()
+              select.data().chosen_control.no_results_clear()
+              select.data().chosen_control.no_results field.val()
 
             # Finally, call the user supplied callback (if it exists)
             settings.success(data) if settings.success?
