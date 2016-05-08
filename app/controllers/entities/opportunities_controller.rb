@@ -11,12 +11,7 @@ class OpportunitiesController < EntitiesController
   # GET /opportunities
   #----------------------------------------------------------------------------
   def index
-    @opportunities = get_opportunities(page: params[:page], per_page: params[:per_page])
-
-    respond_with @opportunities do |format|
-      format.xls { render layout: 'header' }
-      format.csv { render csv: @opportunities }
-    end
+    super
   end
 
   # GET /opportunities/1

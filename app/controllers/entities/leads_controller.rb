@@ -10,12 +10,7 @@ class LeadsController < EntitiesController
   # GET /leads
   #----------------------------------------------------------------------------
   def index
-    @leads = get_leads(page: params[:page])
-
-    respond_custom @leads do |format|
-      format.xls { render layout: 'header' }
-      format.csv { render csv: @leads }
-    end
+    super
   end
 
   # GET /leads/1

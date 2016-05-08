@@ -9,12 +9,7 @@ class AccountsController < EntitiesController
   # GET /accounts
   #----------------------------------------------------------------------------
   def index
-    @accounts = get_accounts(page: params[:page], per_page: params[:per_page])
-
-    respond_custom @accounts do |format|
-      format.xls { render layout: 'header' }
-      format.csv { render csv: @accounts }
-    end
+    super
   end
 
   # GET /accounts/1
