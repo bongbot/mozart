@@ -2,4 +2,8 @@
 - model_names = model_name.pluralize
 - models = entities
 
-= render :partial => "#{model_names}/#{model_name}", :collection => models
+- if models.any?
+  = render :partial => "#{model_names}/#{model_name}", :collection => models
+- else
+  %div{:style => "text-align: center"}
+    = "Không có kết quả nào"
