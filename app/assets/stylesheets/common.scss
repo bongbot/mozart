@@ -42,8 +42,7 @@ $label_medium_with: 170px;
     weight: bold; };
   small {
     font-weight: normal;
-    font-size: 11px;
-    padding-left: 5px; }
+    font-size: 11px;}
   a:link, a:visited {
     color: $color_subtitle;
     text-decoration: none; }
@@ -130,7 +129,7 @@ $label_medium_with: 170px;
   &#comment_new_tools {
     margin: 8px 0px 0px 0px; } }
 
-.label {
+.mz-label {
   color: #3f3f3f;
   font-size: 12px;
   margin: 8px 0px 0px 0px;

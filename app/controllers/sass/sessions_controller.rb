@@ -13,8 +13,14 @@ class Sass::SessionsController < Devise::SessionsController
    email = params.require(resource_name.to_sym)[:email]
    password = params.require(resource_name.to_sym)[:password]
    subscriber = resource_class.find_by_email(email)
-   @error = "Không tồn tại email trên trong cơ sở dữ liệu" if subscriber == nil
-   @error = "Tài khoản chưa kích hoạt" if (subscriber and subscriber.confirmed_at == nil)
+
+   unless subscriber
+     @error = "Không tồn tại email trên trong cơ sở dữ liệu"
+   else
+     if subscriber.confirmed_at
+       @error = "Tài khoản chưa kích hoạt"
+     end
+   end
 
    unless @error
      if subscriber.description == "admin"
@@ -23,7 +29,7 @@ class Sass::SessionsController < Devise::SessionsController
        # login
        redirect_to sass_subscribers_path
      else
-      redirect_to login_url(subdomain:subscriber.domain, password: password, email: email)
+      redirect_to sasslogin_url(subdomain:subscriber.domain, "authentication[password]": password, "authentication[email]": email)
      end
    else
      self.resource = resource_class.new(sign_in_params)

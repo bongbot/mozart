@@ -21,6 +21,7 @@ do ($ = jQuery) ->
     # Load chosen. To make things clear, I have taken the liberty
     # of using the .chzn-autoselect class to specify input elements
     # we want to use with ajax autocomplete.
+    chosenOptions.no_results_text = "Không tìm thấy: "
     @chosen(if chosenOptions then chosenOptions else {})
 
     @each ->

@@ -329,11 +329,7 @@ a:link.btn-new, a:visited.btn-new {
 }
 
 .mz-btn-group {
-  position: relative;
   display: inline-block;
-  font-size: 0;
-  white-space: nowrap;
-  vertical-align: middle;
 }
 
 .btn .mz-caret {
@@ -371,4 +367,34 @@ a:link.btn-new, a:visited.btn-new {
 
 .w100 {
   width:100%;
+}
+
+@mixin link_text {
+  a {
+    text-decoration: none;
+    background-color: inherit;
+    color: grey;
+  }
+}
+
+
+.create-assest-top-menu {
+  .dropdown-item {
+    @include link_text
+  }
+
+  .dropdown-item:focus, .dropdown-item:hover {
+    color: white;
+    background-color: blue;
+    a {
+      background-color: inherit;
+      color: white;
+    }
+  }
+}
+
+//Tab part of search result page
+#search_results_tab {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

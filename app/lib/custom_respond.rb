@@ -108,6 +108,7 @@ module CustomRespond
       respond_default(model, action, &block)
     else
       respond_with(model) do |format|
+        puts "TTT: FORMAT:" + format.inspect
         yield(format) if block_given?
         format.js {
           render :action => "js/" + params[:action]

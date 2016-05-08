@@ -6,16 +6,16 @@
       = @error
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .form-group
-      .label
+      .mz-label
         = t :email
       = f.text_field :email, :class => "form-control"
     .form-group
-      .label
+      .mz-label
         = t :password
       = f.text_field :password, :class => "form-control"
     .form-group
       = f.check_box :remember_me if devise_mapping.rememberable?
-      .label
+      .mz-label
         = t :remember_me
     .form-group
       = f.button :submit

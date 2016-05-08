@@ -1,6 +1,6 @@
 - entities = controller.controller_name # accounts
 - @entities = instance_variable_get("@#{entities}")
-
+console.log("TTT");
 - if @entities.any?
   $('##{entities}').html('#{ j render(@entities) }');
 - else

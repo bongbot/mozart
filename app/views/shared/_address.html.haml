@@ -14,9 +14,9 @@
       %div
         %span(style="float:right")
           = link_to_function(t(:same_as_billing), "crm.copy_address('account_shipping_address', 'account_billing_address')")
-        .label.label-block #{t title}:
+        .mz-label.label-block #{t title}:
     - else
-      .label.label-block #{t title}:
+      .mz-label.label-block #{t title}:
     = a.text_area :full_address, :style =>"width:240px", :rows => 4
   - else
     - if edit
@@ -46,7 +46,7 @@
             %td= spacer
             %td
               //todo: make this component
-              = a.country_select(:country, priority_countries, { :include_blank => 'Please choose...',  },
+              = a.country_select(:country, priority_countries, { :include_blank => 'Quốc gia...',  },
               {:"data-placeholder" => t(:select_a_country), :style => "width:150px; margin-top:6px", :class => 'select2'})
       .clearfix
     - else

@@ -11,7 +11,7 @@ en-US:
   here: tại đây
   no_button: 'Không'
   not_implemented: Chưa hoàn thành.
-  or: or
+  or: hoặc
   select_none: -- Không gì --
   select_blank: -- Chọn --
   yes_button: 'Có'
@@ -19,7 +19,7 @@ en-US:
 
   # Cấu hình.
   #----------------------------------------------------------------------------
-  tab_dashboard: Dashboard
+  tab_dashboard: Tổng quan
   tab_tasks: Nhiệm vụ
   tab_campaigns: Chiến dịch
   tab_leads: Mối
@@ -188,9 +188,9 @@ en-US:
   msg_account_created: Tài khoản của bạn đã được tạo và chờ quản trị hệ thống duyệt.
   msg_account_not_approved: Tài khoản chưa được duyệt.
   msg_asset_deleted: ! '%{value} đã bị xóa.'
-  msg_asset_not_available: Cái %{value} không tồn tại.
+  msg_asset_not_available: ! '%{value} không tồn tại.'
   msg_not_authorized: Bạn không có quyền thực hiện hành động này.
-  msg_assets_not_available: Cái %{value} không tồn tại.
+  msg_assets_not_available: ! '%{value} không tồn tại.'
   msg_asset_rejected: ! '%{value} đã bị từ chối.'
   msg_bad_image_file: ^Không thể tải lên hoặc chỉnh kích cỡ ảnh đã chọn.
   msg_cant_create_related: Không thể tạo %{asset} vì %{related} không tồn tại.
@@ -215,7 +215,7 @@ en-US:
   # Options.
   #----------------------------------------------------------------------------
   option_amount*probability: lượng tương ứng
-  activity_options: Hiển thị %{models} %{action_type} thực hiện bởi %{user} %{period}.
+  activity_options: Hiển thị %{models} %{action_type} thực hiện bởi %{user} trong %{period}.
   all_users: tất cả user
   option_after: sau
   option_all: tất cả
@@ -355,7 +355,7 @@ en-US:
   conversion_label: Chuyển đổi (%)
   conversion_number: ! '%{value} conversion'
   target_conversion: mục tiên chuyển đổi
-  create_campaign: tạo Chiến dịch
+  create_campaign: Tạo chiến dịch
   end_date: Ngày kết thúc
   finished_on: hoàn thành vào %{value}
   finishes_in: kết thúc ở %{value}
@@ -393,7 +393,7 @@ en-US:
   create_contact: Tạo liên hệ
   department: Phòng ban
   department_small: ! '%{value} phòng ban'
-  do_not_call: Không gọi
+  do_not_call: Không được gọi
   extra_info: Thông tin phụ
   extra_info_small: liên hệ phụ
   facebook: Facebook
@@ -421,7 +421,7 @@ en-US:
   title: Tiêu đề
   subscriptions: Đăng ký
 
-  # Views -> Cơ hội.
+  # Views -> Mối.
   #----------------------------------------------------------------------------
   convert: Chuyển đổi
   convert_lead: Chuyển đổi mối
@@ -596,11 +596,11 @@ en-US:
   comment_intro: Bạn có thể thêm bình luận sau.
   confirm_delete: Bạn thực sự muốn xoá %{value}?
   copy_permissions: Sao chép %{value} quyển truy nhập
-  could_not_find: Không thể tìm thấy bất ký %{value}. Hãy tự do
-  could_not_find_matching: Không thể tìm thấy bất ký %{value} khớp
-  create_new: tạo mới
+  could_not_find: Không thể tìm thấy bất kỳ %{value} nào. Hãy tự do
+  could_not_find_matching: Không thể tìm thấy bất kỳ %{value} nào khớp
+  create_new: Tạo mới
   create_a_new: tạo mới
-  select_existing: lựa chọn tồn tại
+  select_existing: Chọn bản ghi đã đăng ký
   delete: Xoá
   discard: Huỷ
   edit: Sửa
@@ -613,7 +613,7 @@ en-US:
   no_match: Không %{value} khớp
   no_recent_items: Không có bản ghi nào.
   options: Lựa chọn
-  permissions: Quyền truy nhập
+  permissions: Quyền Truy Nhập
   please_retry: xin hãy thử điều kiện tìm kiếm khác
   recent_items: Bản ghi gần đây
   select_contact: Chọn liên hệ
@@ -630,7 +630,7 @@ en-US:
   zipcode: Zip Code
   state: Tỉnh
   country: Nước
-  select_a_country: Chọn nước
+  select_a_country: Quốc gia
   expand_all: Mở hết
   collapse_all: Đóng hết
   expanded: Mở
@@ -930,3 +930,4 @@ en-US:
   save: Lưu
   detail: Chi Tiết
   add_new: Thêm mới
+

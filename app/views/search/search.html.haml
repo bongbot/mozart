@@ -1,0 +1,29 @@
+#titlebar
+  .title
+    Kết quả
+
+#search_results_tab
+  %ul.nav.nav-tabs
+    - @result.each do |ele|
+      - ele_active =( ele[:key] == @current_entity_name.underscore.to_sym ? "active" : "")
+      - get_path = search_partial_path(model: ele[:key].to_s, keyword: @keyword)
+      %li.nav-item{:role => "presentation"}
+        = link_to(get_path, :class => "#{ele_active} nav-link", :remote => true) do
+          = t(ele[:key])
+          %span.label.label-primary
+            = ele[:count]
+
+#result
+  = render "entity_results", :model_name => @current_entity_name, :entities => @entities
+
+:javascript
+  $(function(){
+    $('.nav li a').click(function(e) {
+          $('.nav li a').removeClass('active');
+
+          var $this = $(this);
+          if (!$this.hasClass('active')) {
+              $this.addClass('active');
+          }
+      });
+  })

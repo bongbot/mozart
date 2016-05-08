@@ -18,7 +18,7 @@
               %td= account_select_or_create(a, edit)
               %td= spacer
               %td
-                .label.req #{t :assigned_to}:
+                .mz-label.req #{t :assigned_to}:
                 = user_select(:account, all_users, current_user, edit)
       = render "leads/opportunity"
       = render "leads/convert_permissions"

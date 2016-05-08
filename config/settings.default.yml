@@ -405,3 +405,7 @@ task_completed:
   - :completed_last_week
   - :completed_this_month
   - :completed_last_month
+
+
+priority_countries:
+  - VN

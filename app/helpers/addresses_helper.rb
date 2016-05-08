@@ -13,6 +13,7 @@ module AddressesHelper
 
   def priority_countries
     Setting[:priority_countries]
+    puts "TTT: " + Setting[:priority_countries].inspect
   end
 
   def address_exist?(address)
@@ -45,5 +46,31 @@ module AddressesHelper
     else
       ""
     end
+  end
+
+  # Render a text field that is part of compound address.
+  #----------------------------------------------------------------------------
+  def address_field(form, object, attribute, extra_styles, edit = false)
+    hint = "#{t(attribute)}..."
+    if edit
+      form.text_field(attribute,
+                      style:   "margin-top: 6px; #{extra_styles}",
+                      placeholder: hint
+      )
+    else
+      if object.send(attribute).present?
+        object.send(attribute)
+      end
+    end
+  end
+
+  def state_select()
+    # collection_select(:post, :author_id, Account.find(:all), :id, :name)
+    # collection_select :account, :id, accounts, :id, :name, options,
+    #                   :"data-placeholder" => t(:select_an_account),
+    #                   :"data-url" => auto_complete_accounts_path(format: 'json'),
+    #                   :"data-chosen" => auto_complete_accounts_path(format: 'json'),
+    #                   style: "width:230px;display:none; vertical-align: bottom",
+    #                   class: 'ajax_chosen'
   end
 end

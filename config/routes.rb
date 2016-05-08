@@ -19,8 +19,6 @@ Rails.application.routes.draw do
 
   resources :lists
 
-  root to: 'home#index'
-
   # sass start
   get 'subsignup' => 'sass/application#signup'
   post 'tenant_create' => 'sass/application#create'
@@ -28,6 +26,12 @@ Rails.application.routes.draw do
     resources :subscribers
   end
   # sass end
+
+  root to: 'home#index'
+
+  # Searching
+  post 'search' => 'search#search'
+  get 'search_partial' => 'search#search_partial'
 
   get 'activities' => 'home#index'
   get 'admin'      => 'admin/users#index',       :as => :admin

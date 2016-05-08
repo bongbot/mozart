@@ -17,6 +17,17 @@ class EntitiesController < ApplicationController
 
   helper_method :entity, :entities
 
+  #index method for all entities controller
+  def index
+    models = get_list_of_records(page: params[:page], per_page: params[:per_page])
+    instance_variable_set("@#{controller_name}", models)
+
+    respond_custom models do |format|
+      format.xls { render layout: 'header' }
+      format.csv { render csv: models }
+    end
+  end
+
   # Common attach handler for all core controllers.
   #----------------------------------------------------------------------------
   def attach
@@ -142,6 +153,24 @@ class EntitiesController < ApplicationController
     advanced_search = params[:q].present?
     wants = request.format
 
+    scope = get_list_of_record_with_session_conditions(query, tags, advanced_search, wants)
+
+    @search_results_count = scope.count
+
+    # Pagination is disabled for xls and csv requests
+    unless wants.xls? || wants.csv?
+      per_page = if options[:per_page]
+                   options[:per_page] == 'all' ? @search_results_count : options[:per_page]
+                 else
+                   current_user.pref[:"#{controller_name}_per_page"]
+                 end
+      scope = scope.paginate(page: current_page, per_page: per_page)
+    end
+
+    scope
+  end
+
+  def get_list_of_record_with_session_conditions(query, tags, advanced_search, wants)
     scope = entities.merge(ransack_search.result(distinct: true))
 
     # Get filter from session, unless running an advanced search
@@ -159,20 +188,10 @@ class EntitiesController < ApplicationController
       scope = scope.order(order)
     end
 
-    @search_results_count = scope.count
-
-    # Pagination is disabled for xls and csv requests
-    unless wants.xls? || wants.csv?
-      per_page = if options[:per_page]
-                   options[:per_page] == 'all' ? @search_results_count : options[:per_page]
-                 else
-                   current_user.pref[:"#{controller_name}_per_page"]
-      end
-      scope = scope.paginate(page: current_page, per_page: per_page)
-    end
-
     scope
   end
+
+
 
   #----------------------------------------------------------------------------
   def update_recently_viewed

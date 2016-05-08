@@ -6,11 +6,11 @@
     = fields_for("pair[1]", field2) do |second|
       %tr
         %td
-          .label.top Hint:
+          .mz-label.top Hint:
           = first.text_field :hint
         %td= spacer
         %td
-          .label.top
+          .mz-label.top
             %span Required:
             = first.check_box :required
             %br

@@ -3,19 +3,19 @@
   %table
     %tr
       %td
-        .label.top.req #{t :username}:
+        .mz-label.top.req #{t :username}:
         = f.text_field :username
       %td= spacer
       %td
-        .label.top.req #{t :email}:
+        .mz-label.top.req #{t :email}:
         = f.text_field :email
     %tr
       %td
-        .label #{t :password}:
+        .mz-label #{t :password}:
         = f.password_field :password
       %td= spacer
       %td
-        .label #{t :password_confirmation}:
+        .mz-label #{t :password_confirmation}:
         = f.password_field :password_confirmation
     %tr
       %td(colspan=3)
@@ -30,19 +30,19 @@
   %table
     %tr
       %td
-        .label #{t :first_name}:
+        .mz-label #{t :first_name}:
         = f.text_field :first_name
       %td= spacer
       %td
-        .label #{t :last_name}:
+        .mz-label #{t :last_name}:
         = f.text_field :last_name
     %tr
       %td
-        .label #{t :job_title}:
+        .mz-label #{t :job_title}:
         = f.text_field :title
       %td= spacer
       %td
-        .label #{t :company}:
+        .mz-label #{t :company}:
         = f.text_field :company
 
 .subtitle #{t :group_memberships}
@@ -50,5 +50,5 @@
   %table
     %tr
       %td
-        .label #{t :groups}:
+        .mz-label #{t :groups}:
         = f.select :group_ids, Group.all.map {|g| [g.name, g.id]}, {}, :multiple => true, :class => 'select2'

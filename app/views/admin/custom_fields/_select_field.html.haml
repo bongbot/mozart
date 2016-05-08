@@ -1,5 +1,5 @@
 %div
-  .label.top.req
+  .mz-label.top.req
     = "Select Options (pipe separated):"
 = f.text_field :collection_string, :class => 'field_collection_string', :size => 78
 
@@ -9,7 +9,7 @@
       
     %td= spacer
     %td
-      .label.top
+      .mz-label.top
         %span Required:
         = f.check_box :required
         %br
@@ -17,9 +17,9 @@
         = f.check_box :disabled
   %tr
     %td
-      .label.top Hint:
+      .mz-label.top Hint:
       = f.text_field :hint
     %td= spacer
     %td
-      .label.top Placeholder:
+      .mz-label.top Placeholder:
       = f.text_field :placeholder

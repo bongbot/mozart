@@ -60,7 +60,7 @@ module ApplicationHelper
     related = "related=#{dom_id(related)}"
     assest_path = "assest_path=#{assest_path}"
     url="/create_assest?#{related}&#{assest_path}"
-    html << content_tag(:div, link_to(create_id, url, text: t(create_id)), class: "subtitle_tools")
+    html << content_tag(:div, link_to(t(create_id), url), class: "subtitle_tools")
 
     html << content_tag(:div, t(assets), class: :subtitle, id: "create_#{asset}_title")
     html << content_tag(:div, "", class: :remote, id: create_id, style: "display:none;")
@@ -384,22 +384,6 @@ module ApplicationHelper
       when "Private" then t(:permissions_intro_private, text)
       when "Public"  then t(:permissions_intro_public,  text)
       when "Shared"  then t(:permissions_intro_shared,  text)
-    end
-  end
-
-  # Render a text field that is part of compound address.
-  #----------------------------------------------------------------------------
-  def address_field(form, object, attribute, extra_styles, edit = false)
-    hint = "#{t(attribute)}..."
-    if edit
-      form.text_field(attribute,
-                      style:   "margin-top: 6px; #{extra_styles}",
-                      placeholder: hint
-      )
-    else
-      if object.send(attribute).present?
-        object.send(attribute)
-      end
     end
   end
 

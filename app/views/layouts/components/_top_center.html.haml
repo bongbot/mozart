@@ -1,30 +1,30 @@
 - if current_user
   #top-search
-    .mz-btn-group
+    .mz-btn-group.dropdown
       %button#add-button.btn{"data-toggle" => "dropdown"}
         %i.icon-plus
         %span.mz-caret
-      %u.dropdown-menu
-        %li.menu-task
-          = link_to("/tasks/new")
-        %li.menu-task
-          = link_to("/campaigns/new")
-        %li.menu-task
-          = link_to("/leads/new")
-        %li.menu-task
-          = link_to("/accounts/new")
-        %li.menu-task
-          = link_to("/contacts/new")
-        %li.menu-task
-          = link_to("/opporturnity/new")
+      %ul.dropdown-menu.create-assest-top-menu
+        %li.dropdown-item
+          = link_to(t(:create_task), new_task_path)
+        %li.dropdown-item
+          = link_to(t(:create_campaign), new_campaign_path)
+        %li.dropdown-item
+          = link_to(t(:create_lead), new_lead_path)
+        %li.dropdown-item
+          = link_to(t(:create_account), new_account_path)
+        %li.dropdown-item
+          = link_to(t(:create_contact), new_contact_path)
+        %li.dropdown-item
+          = link_to(t(:create_opportunity), new_opportunity_path)
 
-    = form_for(:search) do |f|
-      = f.text_field :input, :class => "top-search pull-left"
+    = form_for(:search, :url => search_path) do |f|
+      = f.text_field :keyword, :value => @keyword, :class => "top-search pull-left"
       %button#search-button.btn.btn-primary.pull-left{:type=>"submit"}
         %i.icon-white.icon-search
       .clearfix
 
-    .mz-btn-group
+    .mz-btn-group.dropdown
       %button.btn{"data-toggle" => "dropdown"}
         %i.icon-list-alt
         %span.mz-caret
