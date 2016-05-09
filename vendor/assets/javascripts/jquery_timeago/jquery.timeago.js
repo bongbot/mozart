@@ -42,7 +42,25 @@
       allowFuture: false,
       localeTitle: false,
       cutoff: 0,
-      locales: {}, // Added for FFCRM
+      locales: {vi: {
+          prefixAgo: null,
+          prefixFromNow: null,
+          suffixAgo: "trước",
+          suffixFromNow: "từ bây giờ",
+          seconds: "dưới một phút",
+          minute: "khoảng một phút",
+          minutes: "%d phút",
+          hour: "khoảng một giờ",
+          hours: "khoảng %d giờ",
+          day: "một ngày",
+          days: "%d ngày",
+          month: "khoảng một tháng",
+          months: "%d tháng",
+          year: "khoảng một năm",
+          years: "%d năm",
+          wordSeparator: " ",
+          numbers: []
+      }}, // Added for FFCRM
       strings: {
         prefixAgo: null,
         prefixFromNow: null,
@@ -65,6 +83,7 @@
     },
     inWords: function(distanceMillis) {
       var $l = this.settings.strings;
+        console.log($l);
       var prefix = $l.prefixAgo;
       var suffix = $l.suffixAgo;
       if (this.settings.allowFuture) {

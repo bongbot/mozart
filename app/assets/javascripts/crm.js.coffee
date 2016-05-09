@@ -13,7 +13,7 @@
     searchRequest: null
     autocompleter: null
     base_url: ""
-    language: "en-US"
+    language: "vi"
 
     #----------------------------------------------------------------------------
     find_form: (class_name) ->

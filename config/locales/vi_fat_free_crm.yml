@@ -1,5 +1,5 @@
 ---
-en-US:
+vi:
   language: Vietnam
   visible_to: Nhìn thấy
 
@@ -654,6 +654,9 @@ en-US:
   logout: Logout
   quick_find: Quick find
   welcome: Welcome
+
+  #Simple search
+  Search: Tìm
 
   # Advanced search
   accounts_advanced_search: Tìm kiếm nâng cao cho tài khoản

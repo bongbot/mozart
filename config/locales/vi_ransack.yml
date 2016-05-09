@@ -1,0 +1,91 @@
+---
+vi:
+  ransack:
+    search: Tìm
+    predicate: khẳng định
+    and: và
+    or: hoặc
+    any: bất kỳ
+    all: tất cả
+    combinator: tổ hợp
+    attribute: thuộc tính
+    value: giá trị
+    condition: điều kiện
+    sort: sắp xếp
+    asc: từ dưới lên
+    desc: từ trên xuống
+    submit: Tìm
+    add_group: Thêm một nhóm điều kiện
+    group_first: Hiên thị tất cả khi %{combinator} khớp những điều kiện sau
+    group_rest: ! '...và khi %{combinator} khớp những điều kiện sau'
+    add_condition: Thêm điều kiện
+    remove_condition: Xoá điều kiện
+    predicates:
+      eq: là
+      eq_any: là bất kỳ
+      eq_all: là tất cả
+      not_eq: không là
+      not_eq_any: không là bất kỳ
+      not_eq_all: không là tất cả
+      matches: khớp
+      matches_any: khớp bất kỳ
+      matches_all: khớp tất cả
+      does_not_match: không khớp
+      does_not_match_any: không khớp bất kỳ
+      does_not_match_all: không khớp tất cả
+      lt: nhỏ hơn
+      lt_any: nhỏ hơn bất kỳ
+      lt_all: nhỏ hơn tất cả
+      lteq: nhỏ hơn hoặc bằng
+      lteq_any: nhỏ hơn hoặc bằng bất kỳ
+      lteq_all: nhỏ hơn hoặc bằng tất cả
+      gt: lớn hơn
+      gt_any: lớn hơn bất kỳ
+      gt_all: lớn hơn tất cả
+      gteq: lớn hơn hoặc bằng
+      gteq_any: lớn hơn hoặc bằng bất kỳ
+      gteq_all: lớn hơn hoặc bằng tất cả
+      in: trong
+      in_any: trong bất kỳ
+      in_all: trong tất cả
+      not_in: không trong
+      not_in_any: không trong bất kỳ
+      not_in_all: không trong tất cả
+      cont: chứa
+      cont_any: chứa bất kỳ
+      cont_all: chứa tất cả
+      not_cont: không chứa
+      not_cont_any: không chứa bất kỳ
+      not_cont_all: không chứa tất cả
+      start: bắt đầu với
+      start_any: bắt đầu với bất kỳ
+      start_all: bắt đầu với tất cả
+      not_start: không bắt đầu với
+      not_start_any: không bắt đầu với bất kỳ
+      not_start_all: không bắt đầu với tất cả
+      end: kết thúc với
+      end_any: kết thúc với bất kỳ
+      end_all: kết thúc với tất cả
+      not_end: không kết thúc với
+      not_end_any: không kết thúc với bất kỳ
+      not_end_all: không kết thúc với tất cả
+      'true': là đúng
+      'false': là sai
+      present: là hiện tại
+      blank: là trống
+      'null': không null
+      not_null: là null
+      alt:
+        date:
+          lt: trước
+          lt_any: trước bất kỳ
+          lt_all: trước tất cả
+          lteq: trước hoặc vào
+          lteq_any: trước hoặc vào bất kỳ
+          lteq_all: trước hoặc vào tất cả
+          gt: sau
+          gt_any: sau bất kỳ
+          gt_all: sau tất cả
+          gteq: sau hoặc vào
+          gteq_any: sau hoặc vào bất kỳ
+          gteq_all: sau hoặc vào tất cả
