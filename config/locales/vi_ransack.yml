@@ -12,6 +12,7 @@ vi:
     value: giá trị
     condition: điều kiện
     sort: sắp xếp
+    Sort_by: Sắp xếp bởi
     asc: từ dưới lên
     desc: từ trên xuống
     submit: Tìm
@@ -20,6 +21,7 @@ vi:
     group_rest: ! '...và khi %{combinator} khớp những điều kiện sau'
     add_condition: Thêm điều kiện
     remove_condition: Xoá điều kiện
+    Select_a_Field: Chọn một trường
     predicates:
       eq: là
       eq_any: là bất kỳ
