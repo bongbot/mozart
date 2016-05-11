@@ -100,3 +100,7 @@ gem 'devise', '3.5.6'
 
 # Figato for setting environment variables
 gem 'figaro'
+
+gem 'ransack_ui', :path => "../ransack_ui"
+
+gem 'require_reloader'

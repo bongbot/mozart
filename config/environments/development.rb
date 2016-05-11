@@ -64,5 +64,7 @@ if defined?(FatFreeCRM::Application)
 
     config.action_mailer.default_url_options = {:host => "localhost:3000"}
 
+    # Automatically reload local gems
+    RequireReloader.watch_local_gems!
   end
 end
