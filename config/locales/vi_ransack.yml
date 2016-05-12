@@ -1,5 +1,16 @@
 ---
 vi:
+  activerecord:
+    models:
+      opportunity: Cơ hội
+      campaign: Chiến dịch
+      lead: Mối
+      contact: Liên hệ
+      account: Tài khoản
+      task: Nhiệm vụ
+      address: Địa chỉ
+      comment: Lời bình
+      acts_as_taggable_on/tag: Ghim
   ransack:
     search: Tìm
     predicate: khẳng định
@@ -91,3 +102,90 @@ vi:
           gteq: sau hoặc vào
           gteq_any: sau hoặc vào bất kỳ
           gteq_all: sau hoặc vào tất cả
+    id: ID
+    user_id: ID người dùng
+    assigned_to: Gán cho
+    name: Tên
+    access: Truy nhập
+    status: Trạng thái
+    budget: Ngân sách
+    target_leads: Mục tiêu mối
+    target_conversion: Mục chuyển đổi
+    target_revenue: Mục thu nhập
+    leads_count: Số mối
+    opportunities_count: Số cơ hội
+    revenue: Ngân sách
+    starts_on: Bắt đầu vào
+    ends_on: Kết thúc vào
+    objectives: Mục tiêu
+    deleted_at: Xóa lúc
+    created_at: Tạo lúc
+    updated_at: Cập nhật lúc
+    background_info: Thông tin hoàn cảnh
+    subscribed_users: Người đăng ký
+    completed_by: Hoàn thành bởi
+    asset_id: ID tài nguyên
+    asset_type: Loại tài nguyên
+    priority: Ưu tiên
+    category: Phân loại
+    bucket: Giỏ
+    due_at: Trễ lúc
+    completed_at: Hoàn thành lúc
+    description: Miêu tả
+    campaign_id: ID chiến dịch
+    first_name: Tên
+    last_name: Họ
+    title: Tiêu đề
+    company: Công ty
+    source: Nguồn
+    referred_by: Giới thiệu bởi
+    email: Email
+    alt_email: Email phụ
+    phone: Điện thoại
+    mobile: Di động
+    blog: Blog
+    linkedin: LinkedIn
+    facebook: Facebook
+    twitter: Twitter
+    rating: Xếp hạng
+    do_not_call: Không được gọi
+    skype: Skype
+    stage: Giai đoạn
+    probability: Xác xuất
+    amount: Lượng
+    discount: Giảm giá
+    closes_on: Đóng lúc
+    imap_message_id: ID Imap Message
+    mediator_id: ID trung gian
+    mediator_type: Loại trung gian
+    sent_from: Gửi từ
+    sent_to: Gửi tới
+    cc: CC
+    bcc: BCC
+    subject: Chủ đề
+    body: Nội dung
+    header: Đầu đề
+    sent_at: Gửi lúc
+    received_at: Nhận lúc
+    state: Trạng thái
+    commentable_id: ID lời bình
+    commentable_type: Loại lời bình
+    private: Riêng tư
+    comment: Lời bình
+    taggings_count: Số nhãn ghim
+    lead_id: ID mối
+    reports_to: Báo cáo tới
+    department: Ban
+    fax: Fax
+    born_on: Sinh vào
+    street1: Đường 1
+    street2: Đường 2
+    city: Thành phố
+    zipcode: Zipcode
+    country: Quốc gia
+    full_address: Địa chỉ đầy đủ
+    address_type: Loại địa chỉ
+    addressable_id: ID có thể có địa chỉ
+    addressable_type: Loại có thể có địa chỉ
+    website: Website
+    toll_free_phone: Điện thoại miễn phí
