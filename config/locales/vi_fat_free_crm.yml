@@ -295,15 +295,15 @@ vi:
   # Views -> Authenticate.
   #----------------------------------------------------------------------------
   forgot_password: Quên mật khẩu
-  login: Đăng ký
+  login: Đăng nhập
   no_account: Bạn chưa có tài khoản?
-  remember_me: Nhớ
+  remember_me: Giữ đăng nhập
   sign_up_now: Đăng ký ngay!
 
   # Views -> Tài khoản.
   #----------------------------------------------------------------------------
   account: Tài khoản
-  account_id: Tài khoản
+  account_id: Tài khoảne
   select_an_account: Chọn một tài khoản
   account_small: tài khoản
   account_summary: Tóm tắt tài khoản
@@ -934,3 +934,10 @@ vi:
   detail: Chi Tiết
   add_new: Thêm mới
 
+  #Sass
+  Sign_up: Đăng ký
+  Forgot_your_password: Quên mật khẩu?
+  Didn_t_receive_confirmation_instructions: Chưa nhận được hướng dẫn xác nhận?
+  Resend_confirmation_instructions: Gửi lại hướng dẫn xác nhận
+  submit: gửi
+  Submit: Gửi

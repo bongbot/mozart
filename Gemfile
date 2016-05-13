@@ -101,6 +101,11 @@ gem 'devise', '3.5.6'
 # Figato for setting environment variables
 gem 'figaro'
 
+# Cutomized ransack ui
 gem 'ransack_ui', :path => "../ransack_ui"
 
+# Autoload local gems
 gem 'require_reloader'
+
+# Monitoring webapp performance
+gem 'newrelic_rpm'

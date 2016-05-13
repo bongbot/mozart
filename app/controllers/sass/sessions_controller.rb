@@ -1,11 +1,10 @@
 class Sass::SessionsController < Devise::SessionsController
   def new
-    logger.debugT "TTT: :" + sign_in_params.inspect
-    # new login
     self.resource = resource_class.new(sign_in_params)
     # clean_up_passwords(resource)
     # yield resource if block_given?
-    respond_with(resource, serialize_options(resource))
+    puts "TTT:RESOURCE: " + serialize_options(resource).inspect
+    respond_with(resource, serialize_options(resource).merge({:layout => "sass/empty"}))
   end
 
  def create

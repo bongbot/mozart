@@ -272,11 +272,6 @@
   :icon: :fa-plus-circle
   :url:
     :controller: admin/plugins
-- :active: false
-  :text: :admin_tab_subscribers
-  :icon: :fa-plus-circle
-  :url:
-    :controller: admin/subscribers
 
 
 # Account Category. To add custom account type use string value, for example:

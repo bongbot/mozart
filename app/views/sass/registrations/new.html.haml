@@ -1,4 +1,4 @@
-%h2 Đăng ký
+%h2 Đăng ký 2
 .standalone{:style => "width: 480px;"}
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = f.error_notification
@@ -17,7 +17,7 @@
       .form-group
         = f.button :submit, "Sign up"
 
-  = render "devise/shared/links"
+  -#= render "sass/shared/links"
 
   :css
     .standalone input {

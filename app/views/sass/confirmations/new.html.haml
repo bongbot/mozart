@@ -1,0 +1,16 @@
+.standalone{:style => "width: 480px;"}
+  %b
+    = t(:Resend_confirmation_instructions)
+  = simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+    = f.error_notification
+    = f.full_error :confirmation_token
+
+    .form-inputs
+      .form-group
+        -#.mz-label
+        -#  = t :email
+        -#= f.text_field :email, :class => "form-control"
+        = f.input :email, required: true, autofocus: true
+      .form-actions
+        .form-group
+          = f.button :submit, t(:Submit), :class => "btn btn-success"

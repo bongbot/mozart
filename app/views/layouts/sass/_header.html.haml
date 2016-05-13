@@ -4,7 +4,7 @@
       - if current_user
         = current_user.name
     %span
-
-    = link_to(t(:profile), profile_path)
-    = link_to(t(:back_to_crm), root_path)
-    = link_to(t(:logout), logout_path, :method => :delete)
+      - if current_user
+        = link_to(t(:profile), profile_path)
+        = link_to(t(:back_to_crm), root_path)
+        = link_to(t(:logout), logout_path, :method => :delete)
