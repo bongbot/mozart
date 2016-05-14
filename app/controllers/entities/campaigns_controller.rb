@@ -145,9 +145,7 @@ class CampaignsController < EntitiesController
     @campaigns = get_campaigns(page: 1, per_page: params[:per_page])
     set_options # Refresh options
 
-    respond_with(@campaigns) do |format|
-      format.js { render :action => "js/index"}
-    end
+    respond_custom(@campaigns)
   end
 
   # POST /campaigns/filter                                                 AJAX
@@ -156,9 +154,7 @@ class CampaignsController < EntitiesController
     session[:campaigns_filter] = params[:status]
     @campaigns = get_campaigns(page: 1, per_page: params[:per_page])
 
-    respond_with(@campaigns) do |format|
-      format.js { render :action => "js/index" }
-    end
+    respond_custom(@campaigns)
   end
 
   private

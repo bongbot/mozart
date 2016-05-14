@@ -145,18 +145,14 @@ class OpportunitiesController < EntitiesController
     @opportunities = get_opportunities(page: 1, per_page: params[:per_page])
     set_options # Refresh options
 
-    respond_with(@opportunities) do |format|
-      format.js { render :action => "js/index" }
-    end
+    respond_custom(@opportunities)
   end
 
   # POST /opportunities/filter                                             AJAX
   #----------------------------------------------------------------------------
   def filter
     @opportunities = get_opportunities(page: 1, per_page: params[:per_page])
-    respond_with(@opportunities) do |format|
-      format.js { render :action => "js/index" }
-    end
+    respond_custom(@opportunities)
   end
 
   private

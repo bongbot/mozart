@@ -195,9 +195,7 @@ class LeadsController < EntitiesController
     @leads = get_leads(page: 1, per_page: params[:per_page]) # Start one the first page.
     set_options # Refresh options
 
-    respond_with(@leads) do |format|
-      format.js { render :action => "js/index" }
-    end
+    respond_custom(@leads)
   end
 
   # POST /leads/filter                                                     AJAX
@@ -206,9 +204,7 @@ class LeadsController < EntitiesController
     session[:leads_filter] = params[:status]
     @leads = get_leads(page: 1, per_page: params[:per_page]) # Start one the first page.
 
-    respond_with(@leads) do |format|
-      format.js { render :action => "js/index" }
-    end
+    respond_custom(@leads)
   end
 
   private
