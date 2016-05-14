@@ -187,6 +187,7 @@ module ApplicationHelper
     url = params[:url] if params[:url]
     options = params[:options] || {}
     options = options.merge({remote: true})
+    options = options.merge({class: "btn btn-danger"})
     link_to(t(:cancel),
             url + "#{url.include?('?') ? '&' : '?'}cancel=true",
             options
@@ -341,7 +342,7 @@ module ApplicationHelper
   end
 
   #----------------------------------------------------------------------------
-  def options_menu_item(option, key, url = send("redraw_#{controller.controller_name}_path"))
+  def options_menu_item(option, key, url = send("redraw_#{controller.controller_name}_path") + ".js")
     name = t("option_#{key}")
     "{ name: \"#{name.titleize}\", on_select: function() {" +
       %{
@@ -437,7 +438,7 @@ module ApplicationHelper
 
   def entity_filter_checkbox(name, value, count)
     checked = (session["#{controller_name}_filter"].present? ? session["#{controller_name}_filter"].split(",").include?(value.to_s) : count.to_i > 0)
-    url = url_for(action: :filter)
+    url = url_for(action: :filter) + ".js"
     onclick = %{
       var query = $('#query').val(),
           values = [];
