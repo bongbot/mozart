@@ -9,21 +9,20 @@
     - if @error
       %b.label-danger
         = @error
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .form-group
-        .mz-label
-          = t :email
-        = f.text_field :email, :class => "form-control"
-      .form-group
-        .mz-label
-          = t :password
-        = f.text_field :password, :class => "form-control"
-      .form-group
-        = f.check_box :remember_me if devise_mapping.rememberable?
-        %span.mz-label
-          = t :remember_me
-      .form-group
-        = f.button t(:login), :class => "btn btn-success"
-        = link_to t(:Forgot_your_password), new_subscriber_password_path(resource_name)
-      .form-group
-        = link_to t(:Didn_t_receive_confirmation_instructions), new_subscriber_confirmation_path(resource_name)
+    .standard_form
+      = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        = f.error_notification
+        .form-group
+          = f.input :email, required: true, autofocus: true
+        .form-group
+          = f.input :password, required: true, autofocus: true
+        .form-group
+          = f.check_box :remember_me if devise_mapping.rememberable?
+          %span.mz-label
+            = t :remember_me
+        .form-group
+          = f.button_success :submit, t(:Sign_in)
+          -#= f.submit t(:login), :class => "btn btn-success"
+          = link_to t(:Forgot_your_password), new_subscriber_password_path(resource_name)
+        .form-group
+          = link_to t(:Didn_t_receive_confirmation_instructions), new_subscriber_confirmation_path(resource_name)

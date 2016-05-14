@@ -2,9 +2,8 @@
   = form_tag(passwords_path, one_submit_only) do
     .title #{t :forgot_password}
     .intro #{t :password_intro}
-    .section
+    .form-group
       .mz-label #{t :email}:
       = text_field_tag :email
-    %br
-    .buttonbar
-      = submit_tag t(:reset_password), :id => "passwords_submit"
+    .form-group
+      = submit_tag t(:reset_password), :id => "passwords_submit", :class => "btn btn-success"

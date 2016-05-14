@@ -1,25 +1,17 @@
-%h2 Đăng ký 2
 .standalone{:style => "width: 480px;"}
-  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    = f.error_notification
-    .form-inputs
+  .standard_form
+    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = f.error_notification
       .form-group
-        = f.input :name, required: true, autofocus: true, :class => "w100"
+        = f.input :name, required: true, autofocus: true
       .form-group
-        = f.input :domain, required: true, autofocus: true, :class => "w100"
+        = f.input :domain, required: true, autofocus: true
       .form-group
-        = f.input :email, required: true, autofocus: true, :class => "w100"
+        = f.input :email, required: true, autofocus: true
       .form-group
-        = f.input :password, required: true, :class => "w100"
+        = f.input :password, required: true
       .form-group
-        = f.input :password_confirmation, required: true, :class => "w100"
-    .form-actions
+        = f.input :password_confirmation, required: true
       .form-group
-        = f.button :submit, "Sign up"
-
-  -#= render "sass/shared/links"
-
-  :css
-    .standalone input {
-       width: 100%;
-    }
+        = f.button_success :submit, t(:Sign_up)
+        = link_to "Tới trang đăng nhập", new_session_path(resource_name)
