@@ -340,7 +340,7 @@ vi:
   actual: Thực tế
   actual_performance: Hiệu suất thực tế
   budget: Ngân sách
-  budget_label: Ngân sách ($)
+  budget_label: Ngân sách (VND)
   campaign: Chiến dịch
   campaign_and_leads: chiến dịch và đầu mối chiến dịch
   campaign_small: chiến dịch
@@ -366,7 +366,7 @@ vi:
    thu nhập mục tiêu và ngân sách chiến dịch. Những chỉ định này sẽ giúp bạn theo dõi hiệu suất chiến dịch.
   objectives_small: mục tiêu chiến dịch
   revenue: Thu nhập
-  revenue_label: Thu nhập ($)
+  revenue_label: Thu nhập (VND)
   revenue_number: ! '%{value} trong thu nhập'
   save_campaign: Lưu chiến dịch
   start_date: Ngày bắt đầu
@@ -467,7 +467,7 @@ vi:
   closes_today: kỳ vọng đóng hôm nay!
   closing_date: ngày đóng là %{value}
   create_opportunity: Tạo cơ hội
-  currency: ($)
+  currency: (VND)
   days_late: Quá bởi
   days_left: Ngày còn
   discount: Giảm giá
@@ -644,6 +644,7 @@ vi:
   about_ffc: About Mozart
   about_ffc_resources: Mozart resources (links open a new window)
   about_ffc_version: Mozart version
+  about_mozart_version: Mozart version
   about_home_page: Home page
   about_project_page: Project page
   about_thank_you: Thank you for using Mozart! We appreciate your business and
