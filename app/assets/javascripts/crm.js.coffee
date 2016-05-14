@@ -178,12 +178,12 @@
       console.log "TTT: TODO: handle this"
       if value
         $("#lead_access_campaign").prop('disabled', false)
-        $("#lead_access_campaign").checked = 1
+        $("#lead_access_campaign").prop('checked', true)
         $("#copy_permissions").css color: "#3f3f3f"
       else
         $("#lead_access_campaign").prop('disabled', true)
+        $("#lead_access_private").prop('checked', true)
         $("#copy_permissions").css color: "grey"
-        $("#lead_access_private").checked = 1
 
 
     #----------------------------------------------------------------------------
