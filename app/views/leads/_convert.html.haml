@@ -20,5 +20,4 @@
       = render "leads/convert_permissions"
       .buttonbar
         = f.submit t(:convert_lead), :class => "btn btn-success"
-        #{t :or}
         = link_to_cancel convert_lead_path(@lead)

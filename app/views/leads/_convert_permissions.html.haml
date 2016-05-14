@@ -1,5 +1,5 @@
 =section_title (t :permissions)
-#lead_convert_permissions
+#lead_convert_permissions.permissions_panel
   .radio_box
     = radio_button_tag "access", "Lead", true, :onclick => "$('#people').hide(); $('#account_access').val('Lead'); $('#opportunity_access').val('Lead');"
     = label :access, :Lead, t(:copy_permissions, t(:lead_small)), :style => "cursor:pointer"
@@ -19,9 +19,9 @@
         %td
           = label_tag :lead_user_ids, "#{t(:users)}:"
           %br
-          = select :lead, :user_ids, user_options, {}, :multiple => true
+          = select :lead, :user_ids, user_options, {}, :multiple => true, :class => 'select2'
       %tr
         %td
           = label_tag :lead_group_ids, "#{t(:groups)}:"
           %br
-          = select :lead, :group_ids, group_options, {}, :multiple => true
+          = select :lead, :group_ids, group_options, {}, :multiple => true,  :class => 'select2'
