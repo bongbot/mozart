@@ -426,7 +426,7 @@ vi:
   convert: Chuyển đổi
   convert_lead: Chuyển đổi mối
   convert_lead_permissions_intro: Quyền truy nhập mối sẽ được sao chép từ mối được chuyển đổi
-    . Bạn có thể thay đổi quyền truy nhập liên hệ sau.
+    . Bạn có thể thay đổi quyền truy nhập mối sau.
   convert_lead_text: Chuyển đổi mối sẽ tạo một liên hệ liên kết với tài khoản tồn tại hoặc được tạo mới.
    Trạn thái mỗi sẽ được đổi thành đã chuyển đổi
   create_lead: Tạo mối

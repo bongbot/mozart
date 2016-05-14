@@ -1,28 +1,24 @@
 - edit ||= false
 
-#convert_lead
-  .board
+%div{:id => "convert_"  + dom_id(@entity)}
+  .board{:style => "text-align: left; padding-top: 10px; padding-bottom: 10px;"}
     = form_for(@lead, :url => promote_lead_path(@lead), :html => one_submit_only, :remote => true) do |f|
-      = link_to_close convert_lead_path(@lead)
       = fields_for(@account) do |a|
         = a.hidden_field :user_id
         = a.hidden_field :access
 
         = error_messages_for :account, :opportunity, :object_name => t('lead')
 
-        .section
-          %small
-            #{t(:convert_lead_text, @lead.full_name)}
-          %table
-            %tr
-              %td= account_select_or_create(a, edit)
-              %td= spacer
-              %td
-                .mz-label.req #{t :assigned_to}:
-                = user_select(:account, all_users, current_user, edit)
+        .row_theme.text-info
+          #{t(:convert_lead_text, @lead.full_name)}
+        .row_theme
+          = account_select_or_create(a, edit)
+        .row_theme
+          .label-medium.req #{t :assigned_to}:
+          = user_select(:account, all_users, current_user, edit)
       = render "leads/opportunity"
       = render "leads/convert_permissions"
       .buttonbar
-        = f.submit t(:convert_lead)
+        = f.submit t(:convert_lead), :class => "btn btn-success"
         #{t :or}
         = link_to_cancel convert_lead_path(@lead)

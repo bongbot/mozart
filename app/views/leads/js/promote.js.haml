@@ -1,6 +1,6 @@
 - entity_name = controller.controller_name.singularize.underscore #account
 - @entity = instance_variable_get("@#{entity_name}")
-- id = called_from_landing_page? ? "convert_#{entity_name}" : dom_id(@entity)
+- id = called_from_landing_page? ? "convert_#{entity_name}" : "convert_"  + dom_id(@entity)
 - index_path = index_path(entity_name)
 
 - if @entity.status == "converted"
