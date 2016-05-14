@@ -100,17 +100,6 @@ a.link_tag:hover {
 }
 //CAMPAIGN END
 
-//PERMISSION START
-.permissions_content {
-  .radio_box input {
-    vertical-align: middle;
-  }
-}
-
-.permission_name_tag {
-  padding: 3px 5px 3px 5px;
-}
-//PERMISSION END
 
 .section_title {
   font-weight: bold;
@@ -399,3 +388,24 @@ a:link.btn-new, a:visited.btn-new {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+//PERMISSION component START
+.permissions_content {
+  .radio_box input {
+    vertical-align: middle;
+  }
+}
+
+.permission_name_tag {
+  padding: 3px 5px 3px 5px;
+}
+
+.permissions_panel {
+  #people {
+    .select2 {
+      width: 200px;
+    }
+  }
+}
+//PERMISSION END
+
