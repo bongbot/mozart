@@ -37,6 +37,13 @@
 
 // Flash messages.
 //------------------------------------------------------------------------------
+#flash {
+  position: absolute;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
 p, div {
   &.flash_warning, &.flash_error {
     background: lightpink;

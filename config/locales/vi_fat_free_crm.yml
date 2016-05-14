@@ -936,8 +936,28 @@ vi:
 
   #Sass
   Sign_up: Đăng ký
+  Sign_in: Đăng nhập
   Forgot_your_password: Quên mật khẩu?
   Didn_t_receive_confirmation_instructions: Chưa nhận được hướng dẫn xác nhận?
   Resend_confirmation_instructions: Gửi lại hướng dẫn xác nhận
   submit: gửi
   Submit: Gửi
+
+#  Simple form
+  simple_form:
+    "yes": 'Có'
+    "no": 'Không'
+    required:
+      text: 'Bắt buộc'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Kiểm tra lại những lỗi dưới đây:"
+    labels:
+      subscriber:
+        name: 'Tên'
+        password: 'Mật khẩu'
+        password_confirmation: 'Mật khẩu xác nhận'
+        domain: 'Domain'
