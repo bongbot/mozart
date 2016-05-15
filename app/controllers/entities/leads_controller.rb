@@ -134,14 +134,10 @@ class LeadsController < EntitiesController
 
     respond_with(@lead) do |format|
       if @account.errors.empty? && @opportunity.errors.empty? && @contact.errors.empty?
-        logger.debug "TTT: : #{"AA".inspect}    /**#{__FILE__}:#{__LINE__}"
         @lead.convert
         # update_sidebar
         format.js { render :action => "js/promote" }
       else
-        logger.debug "TTT: BB: #{@account.errors.inspect}    /**#{__FILE__}:#{__LINE__}"
-        logger.debug "TTT: BB: #{@opportunity.errors.inspect}    /**#{__FILE__}:#{__LINE__}"
-        logger.debug "TTT: BB: #{@contact.errors.inspect}    /**#{__FILE__}:#{__LINE__}"
         format.js { render :action => "js/promote" }
         format.json { render json: @account.errors + @opportunity.errors + @contact.errors, status: :unprocessable_entity }
         format.xml  { render xml: @account.errors + @opportunity.errors + @contact.errors, status: :unprocessable_entity }
