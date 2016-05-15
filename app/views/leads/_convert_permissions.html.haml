@@ -1,16 +1,16 @@
 =section_title (t :permissions)
 #lead_convert_permissions.permissions_panel
   .radio_box
-    = radio_button_tag "access", "Lead", true, :onclick => "$('#people').hide(); $('#account_access').val('Lead'); $('#opportunity_access').val('Lead');"
+    = radio_button_tag "access", "Lead", true, :onclick => "$('#lead_convert_permissions #people').hide(); $('#account_access').val('Lead'); $('#opportunity_access').val('Lead');"
     = label :access, :Lead, t(:copy_permissions, t(:lead_small)), :style => "cursor:pointer"
   .radio_box
-    = radio_button_tag "access", "Private", false, :onclick => "$('#people').hide(); $('#account_access').val('Private'); $('#opportunity_access').val('Private');"
+    = radio_button_tag "access", "Private", false, :onclick => "$('#lead_convert_permissions #people').hide(); $('#account_access').val('Private'); $('#opportunity_access').val('Private');"
     = label :access, :Private, t(:keep_private), :style => "cursor:pointer"
   .radio_box
-    = radio_button_tag "access", "Public", false, :onclick => "$('#people').hide(); $('#account_access').val('Public'); $('#opportunity_access').val('Public');"
+    = radio_button_tag "access", "Public", false, :onclick => "$('#lead_convert_permissions #people').hide(); $('#account_access').val('Public'); $('#opportunity_access').val('Public');"
     = label :access, :Public, t(:make_public), :style => "cursor:pointer"
   .radio_box
-    = radio_button_tag "access", "Shared", false, :onclick => "$('#people').show(); $('#account_access').val('Shared'); $('#opportunity_access').val('Shared');"
+    = radio_button_tag "access", "Shared", false, :onclick => "$('#lead_convert_permissions #people').show(); $('#account_access').val('Shared'); $('#opportunity_access').val('Shared');"
     = label :access, :Shared, t(:share_with), :style => "cursor:pointer"
 
   #people{ hidden_if(@lead.access != "Shared") }
