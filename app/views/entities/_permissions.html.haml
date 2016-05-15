@@ -3,7 +3,7 @@
 - model = entity.class.name.underscore
 
 = section_title :permissions
-#entity_permissions
+#entity_permissions.permissions_panel
   %div
     .label-medium.pull-left
       = t :visible_to
@@ -23,11 +23,11 @@
           %div
             = f.label :user_ids, "#{t(:users)}:"
             %br
-            = f.select :user_ids, user_options, {}, :multiple => true, :class => 'select2', :style => "width: 200px"
+            = f.select :user_ids, user_options, {}, :multiple => true, :class => 'select2'
           %div
             = f.label :group_ids, "#{t(:groups)}:"
             %br
-            = f.select :group_ids, group_options, {}, :multiple => true, :class => 'select2', :style => "width: 200px"
+            = f.select :group_ids, group_options, {}, :multiple => true, :class => 'select2'
         - else
           %div
             = f.label :user_ids, "#{t(:users)}:"
@@ -36,9 +36,9 @@
             = f.label :group_ids, "#{t(:groups)}:"
             = permissedid_to_name(f.object.send(:group_ids), group_options)
 
-      - if !edit and entity.is_a?(Lead)
+      - if entity.is_a?(Lead)
         .radio_box
-          = f.radio_button :access, t(:campaign), :onclick => "$('#people').hide(); $('#lead_access_campaign').val('Campaign');", :disabled => true
+          = f.radio_button :access, "Campaign", :onclick => "$('#people').hide(); $('#lead_access_campaign').val('Campaign');", :disabled => disabled
           %font{ :id => :copy_permissions}
             = t(:copy_permissions, t(:campaign_small))
     .clearfix

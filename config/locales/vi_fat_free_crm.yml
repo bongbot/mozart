@@ -12,7 +12,7 @@ vi:
   no_button: 'Không'
   not_implemented: Chưa hoàn thành.
   or: hoặc
-  select_none: -- Không gì --
+  select_none: -- Không --
   select_blank: -- Chọn --
   yes_button: 'Có'
 
@@ -111,7 +111,7 @@ vi:
             name:
               missing_account_name: ^Hãy chọn một tài khoản.
             access:
-              share_account: ^Hãy chọn người để chia sẽ.
+              share_account: ^Hãy chọn người để chia sẻ.
         campaign:
           attributes:
             name:
@@ -584,6 +584,7 @@ vi:
 
   # Views -> Common.
   #----------------------------------------------------------------------------
+  action: Thao tác
   add_note: Thêm ghi chú
   save_note: Lưu ghi chú
   add_note_help: Thêm ghi chú mới...
@@ -595,7 +596,7 @@ vi:
   close_form: Đóng form
   comment_intro: Bạn có thể thêm bình luận sau.
   confirm_delete: Bạn thực sự muốn xoá %{value}?
-  copy_permissions: Sao chép %{value} quyển truy nhập
+  copy_permissions: Sao chép thiết lập truy nhập từ %{value}
   could_not_find: Không thể tìm thấy bất kỳ %{value} nào. Hãy tự do
   could_not_find_matching: Không thể tìm thấy bất kỳ %{value} nào khớp
   create_new: Tạo mới
