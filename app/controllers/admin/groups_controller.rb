@@ -12,24 +12,25 @@ class Admin::GroupsController < Admin::ApplicationController
   #----------------------------------------------------------------------------
   def index
     @groups = @groups.unscoped.paginate(page: params[:page])
+    respond_custom(@group)
   end
 
   # GET /groups/1
   #----------------------------------------------------------------------------
   def show
-    respond_with(@group)
+    respond_custom(@group)
   end
 
   # GET /groups/new
   #----------------------------------------------------------------------------
   def new
-    respond_with(@group)
+    respond_custom(@group)
   end
 
   # GET /groups/1/edit
   #----------------------------------------------------------------------------
   def edit
-    respond_with(@group)
+    respond_custom(@group)
   end
 
   # POST /groups
@@ -38,7 +39,7 @@ class Admin::GroupsController < Admin::ApplicationController
     @group.attributes = group_params
     @group.save
 
-    respond_with(@group)
+    respond_custom(@group)
   end
 
   # PUT /groups/1
@@ -46,7 +47,7 @@ class Admin::GroupsController < Admin::ApplicationController
   def update
     @group.update_attributes(group_params)
 
-    respond_with(@group)
+    respond_custom(@group)
   end
 
   # DELETE /groups/1
@@ -54,7 +55,7 @@ class Admin::GroupsController < Admin::ApplicationController
   def destroy
     @group.destroy
 
-    respond_with(@group)
+    respond_custom(@group)
   end
 
   protected

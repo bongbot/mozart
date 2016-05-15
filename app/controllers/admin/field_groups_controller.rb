@@ -12,7 +12,7 @@ class Admin::FieldGroupsController < Admin::ApplicationController
   def new
     @field_group = FieldGroup.new(klass_name: params[:klass_name])
 
-    respond_with(@field_group)
+    respond_custom(@field_group)
   end
 
   # GET /admin/field_groups/1/edit                                         AJAX
@@ -24,7 +24,7 @@ class Admin::FieldGroupsController < Admin::ApplicationController
       @previous = FieldGroup.find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
 
-    respond_with(@field_group)
+    respond_custom(@field_group)
   end
 
   # POST /admin/field_groups
@@ -33,7 +33,7 @@ class Admin::FieldGroupsController < Admin::ApplicationController
   def create
     @field_group = FieldGroup.create(field_group_params)
 
-    respond_with(@field_group)
+    respond_custom(@field_group)
   end
 
   # PUT /admin/field_groups/1
@@ -43,7 +43,7 @@ class Admin::FieldGroupsController < Admin::ApplicationController
     @field_group = FieldGroup.find(params[:id])
     @field_group.update_attributes(field_group_params)
 
-    respond_with(@field_group)
+    respond_custom(@field_group)
   end
 
   # DELETE /admin/field_groups/1
@@ -53,7 +53,7 @@ class Admin::FieldGroupsController < Admin::ApplicationController
     @field_group = FieldGroup.find(params[:id])
     @field_group.destroy
 
-    respond_with(@field_group)
+    respond_custom(@field_group)
   end
 
   # POST /admin/field_groups/sort
@@ -73,6 +73,7 @@ class Admin::FieldGroupsController < Admin::ApplicationController
   #----------------------------------------------------------------------------
   def confirm
     @field_group = FieldGroup.find(params[:id])
+    respond_custom(@field_group)
   end
 
   protected

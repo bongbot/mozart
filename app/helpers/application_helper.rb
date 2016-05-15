@@ -580,7 +580,8 @@ module ApplicationHelper
   end
 
   def is_new?(model)
-    (not model) or model.id.blank?
+    # cancan preset user model with current logined admin, so id null check for new model will become incorrect
+    (not model) or model.created_at.blank?
   end
 
   def edit_path(model)

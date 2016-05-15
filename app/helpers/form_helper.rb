@@ -10,6 +10,17 @@ module SimpleForm
   end
 end
 
+module ActionView
+ module Helpers
+   class FormBuilder
+    def submit_success(value=nil, options={})
+        options = options.merge({:class => "btn btn-success"})
+        self.submit(value, options)
+    end
+   end
+ end
+end
+
 module FormHelper
   # Dummy helper for simple form overrides
 end

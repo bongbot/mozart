@@ -13,14 +13,14 @@ class Admin::TagsController < Admin::ApplicationController
   #----------------------------------------------------------------------------
   def index
     @tags = Tag.all
-    respond_with(@tags)
+    respond_custom(@tags)
   end
 
   # GET /admin/tags/new
   # GET /admin/tags/new.xml                                               AJAX
   #----------------------------------------------------------------------------
   def new
-    respond_with(@tag)
+    respond_custom(@tag)
   end
 
   # GET /admin/tags/1/edit                                                AJAX
@@ -29,6 +29,7 @@ class Admin::TagsController < Admin::ApplicationController
     if params[:previous].to_s =~ /(\d+)\z/
       @previous = Tag.find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
+    respond_custom(@tag)
   end
 
   # POST /admin/tags
@@ -37,7 +38,7 @@ class Admin::TagsController < Admin::ApplicationController
   def create
     @tag.update_attributes(tag_params)
 
-    respond_with(@tag)
+    respond_custom(@tag)
   end
 
   # PUT /admin/tags/1
@@ -46,7 +47,7 @@ class Admin::TagsController < Admin::ApplicationController
   def update
     @tag.update_attributes(tag_params)
 
-    respond_with(@tag)
+    respond_custom(@tag)
   end
 
   # DELETE /admin/tags/1
@@ -55,12 +56,13 @@ class Admin::TagsController < Admin::ApplicationController
   def destroy
     @tag.destroy
 
-    respond_with(@tag)
+    respond_custom(@tag)
   end
 
   # GET /admin/tags/1/confirm                                             AJAX
   #----------------------------------------------------------------------------
   def confirm
+    respond_custom(@tag)
   end
 
   protected

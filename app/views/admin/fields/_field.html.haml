@@ -4,7 +4,7 @@
 
   .tools
     %small
-      = link_to t(:edit), edit_admin_field_path(field), :class => 'edit'
+      = link_to t(:edit), edit_admin_field_path(field, :format => :js), :class => 'edit'
       = link_to_delete(field, :url => admin_field_path(field), :klass_name => 'Field')
 
   %tt

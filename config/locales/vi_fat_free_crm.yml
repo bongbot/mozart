@@ -30,7 +30,7 @@ vi:
   admin_tab_groups: Nhóm
   admin_tab_users: Người dùng
   admin_tab_fields: Trường tùy biến
-  admin_tab_tags: Nhãn
+  admin_tab_tags: Thẻ
   admin_tab_settings: Cấu hình
   admin_tab_plugins: Plugins
   admin_tab_subscribers: Người đăng ký
@@ -160,6 +160,12 @@ vi:
           required: ^%{field} là bắt buộc.
           maxlength: ^%{field} quá dài.
           endbeforestart: ^%{field} không thể kết thúc trước khi bắt đầu.
+        field:
+          missing_field_label: ^Hãy chỉ định tên trường.
+          missing_field_type: ^Hãy chỉ định kiểu trường.
+          field_type_invalid: ^Kiểu trường không hợp lệ.
+          label_too_long: ^Tên không được dài quá 64 ký tự.
+          maxlength_must_be_even: ^Giới hạn ký tự phải là số chẵn.
     attribute_options:
       opportunity:
         stage:
@@ -179,6 +185,9 @@ vi:
           "3": "★★★"
           "4": "★★★★"
           "5": "★★★★★"
+    attributes:
+      tag:
+        name: "Tên"
 
   msg_account_suspended: Tài khoản người dùng đã bị khóa.
   password_reset_instruction: hướng dẫn đặt lại mật khẩu
@@ -303,7 +312,7 @@ vi:
   # Views -> Tài khoản.
   #----------------------------------------------------------------------------
   account: Tài khoản
-  account_id: Tài khoảne
+  account_id: Tài khoản Id
   select_an_account: Chọn một tài khoản
   account_small: tài khoản
   account_summary: Tóm tắt tài khoản
@@ -508,7 +517,7 @@ vi:
   create_task: Tạo nhiệm vụ
   create_task_small: tạo nhiệm vụ
   due: Hết hạn
-  feel_free: Hãy tự do
+  feel_free: Hãy
   move_to: Chuyển tới
   no_tasks: Bạn đang có %{value} nhiệm vụ
   no_tasks_pending: treo
@@ -567,7 +576,7 @@ vi:
   subject_opportunity: cơ hội
   subject_task: nhiệm vụ
   subject_user: người dùng
-  tag_list: Nhãn
+  tag_list: Thẻ
   create_past_participle: Tạo bản nghi
   view_past_participle: Views
   update_past_participle: Cập nhật
@@ -597,7 +606,7 @@ vi:
   comment_intro: Bạn có thể thêm bình luận sau.
   confirm_delete: Bạn thực sự muốn xoá %{value}?
   copy_permissions: Sao chép thiết lập truy nhập từ %{value}
-  could_not_find: Không thể tìm thấy bất kỳ %{value} nào. Hãy tự do
+  could_not_find: Không thể tìm thấy bất kỳ %{value} nào. Bắt đầu
   could_not_find_matching: Không thể tìm thấy bất kỳ %{value} nào khớp
   create_new: Tạo mới
   create_a_new: tạo mới
@@ -826,6 +835,13 @@ vi:
 
   # Views -> Admin -> Trường tùy biến
   #----------------------------------------------------------------------------
+  Account: Tài khoản
+  Campaign: Chiến dịch
+  Contact: Liên hệ
+  Lead: Mối
+  Opportunity: Cơ hội
+  field_label: Tên trường
+  field_type: Loại trường
   label: Nhãn
   custom_fields: Trường tùy biến
   custom_field_options: Lựa chọn trường tùy biến
@@ -835,8 +851,8 @@ vi:
   edit_field_group: Sửa nhóm trường
   save_field_group: Lưu nhóm trường
   field_group_empty: Không có trường nào trong nhóm này.
-  select_or_create_tags: Chọn nhãn, hoặc tạo mới bằng nhấn phím 'enter'.
-  restrict_by_tag: ! 'Giới hạn theo Tag:'
+  select_or_create_tags: Chọn thẻ, hoặc tạo mới bằng nhấn phím 'enter'.
+  restrict_by_tag: ! 'Giới hạn theo thẻ:'
   restrict_by_tag_info: (Chỉ hiển thị những trường cho %{assets} được gắn với những thẻ sau)
   field_group_tag_restriction: Nhóm trường này áp dụng cho %{assets} được gắn với thẻ "%{tag}"
   field_group_unrestricted: Nhóm trường này áp dụng cho tất cả %{assets}
@@ -861,7 +877,7 @@ vi:
 
   # Views -> Admin -> Plugins
   #----------------------------------------------------------------------------
-  tag_with_taggings_confirm_delete: Nếu thẻ được xoá, xoá sẽ được loại bỏ khỏi %{value} bản ghi.
+  tag_with_taggings_confirm_delete: Nếu bị xoá, thẻ này sẽ được loại bỏ khỏi %{value} bản ghi.
   msg_cant_delete_tag: Không thể xoá '%{value}' vì đối tượng được liên kết với Nhóm Trường.
   views:
     admin:

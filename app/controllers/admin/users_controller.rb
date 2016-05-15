@@ -13,21 +13,22 @@ class Admin::UsersController < Admin::ApplicationController
   #----------------------------------------------------------------------------
   def index
     @users = get_users(page: params[:page])
-    respond_with(@users)
+    respond_custom(@users)
   end
 
   # GET /admin/users/1
   # GET /admin/users/1.xml
   #----------------------------------------------------------------------------
   def show
-    respond_with(@user)
+    respond_custom(@user)
   end
 
   # GET /admin/users/new
   # GET /admin/users/new.xml                                               AJAX
   #----------------------------------------------------------------------------
   def new
-    respond_with(@user)
+    puts "TTT:USER: " + @user.inspect
+    respond_custom(@user)
   end
 
   # GET /admin/users/1/edit                                                AJAX
@@ -37,7 +38,7 @@ class Admin::UsersController < Admin::ApplicationController
       @previous = User.find_by_id(Regexp.last_match[1]) || Regexp.last_match[1].to_i
     end
 
-    respond_with(@user)
+    respond_custom(@user)
   end
 
   # POST /admin/users
@@ -48,7 +49,7 @@ class Admin::UsersController < Admin::ApplicationController
     @user = User.new(user_params)
     @user.save_without_session_maintenance
 
-    respond_with(@user)
+    respond_custom(@user)
   end
 
   # PUT /admin/users/1
@@ -60,13 +61,13 @@ class Admin::UsersController < Admin::ApplicationController
     @user.attributes = user_params
     @user.save_without_session_maintenance
 
-    respond_with(@user)
+    respond_custom(@user)
   end
 
   # GET /admin/users/1/confirm                                             AJAX
   #----------------------------------------------------------------------------
   def confirm
-    respond_with(@user)
+    respond_custom(@user)
   end
 
   # DELETE /admin/users/1
@@ -75,7 +76,7 @@ class Admin::UsersController < Admin::ApplicationController
   def destroy
     flash[:warning] = t(:msg_cant_delete_user, @user.full_name) unless @user.destroy
 
-    respond_with(@user)
+    respond_custom(@user)
   end
 
   # POST /users/auto_complete/query                                        AJAX
@@ -88,7 +89,7 @@ class Admin::UsersController < Admin::ApplicationController
   def suspend
     @user.update_attribute(:suspended_at, Time.now) if @user != current_user
 
-    respond_with(@user)
+    respond_custom(@user)
   end
 
   # PUT /admin/users/1/reactivate
@@ -97,7 +98,7 @@ class Admin::UsersController < Admin::ApplicationController
   def reactivate
     @user.update_attribute(:suspended_at, nil)
 
-    respond_with(@user)
+    respond_custom(@user)
   end
 
   protected
