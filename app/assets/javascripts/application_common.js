@@ -48,3 +48,14 @@ crm.toggleUrlEdit = function(toggle){
     }
     window.history.pushState('', 'Title', curUrl);
 }
+
+//!Remote link (and a like) prevent event bubble so bootstrap not toggled. Below code fix this issude
+//usage: add ".dropdown-remote" class to menu with remote link
+$(function(){
+    $(".dropdown-remote").each(function(){
+        var self = this;
+       $(self).find(".dropdown-item a").click(function(){
+            $(self).find(">button").dropdown("toggle");
+        })
+    });
+});
