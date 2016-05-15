@@ -23,5 +23,4 @@
       = render "shared/add_comment",   :f => f, :edit => true
     = hook(:entity_form, self, {f: f, entity: @lead})
 
-    = render :partial => "layouts/components/submit_button", :locals => {:f => f, :edit => edit, :label => :save_lead}
 
