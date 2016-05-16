@@ -214,46 +214,7 @@ a:link.btn-new, a:visited.btn-new {
   padding-bottom: 20px;
 }
 
-//Tab layout
-.sidebar {
-  width: 10%;
-  height: 100%;
-  .module-bar{
 
-  }
-
-  .module-bar-item:nth-of-type(1) > a {
-    &.active,
-    &:hover {
-      box-shadow: 0px -2px 8px 0px rgb(187, 187, 187)
-    }
-  }
-
-  .module-bar-item>a {
-    padding: 20px 15px 20px 15px;
-    display: block;
-    color: #555;
-    text-align: right;
-    text-decoration: none;
-    white-space: nowrap;
-    font-size: 16px;
-
-    &.active,
-    &:hover {
-      color: black;
-      background: silver;
-    }
-  }
-}
-.sidebar {
-  color: #3f3f3f;
-  font-size: 14px;
-  padding: 0px 0px 0px 0px;
-}
-.right-panel {
-  width: 90%;
-  height: 100%;
-}
 
 /* board: a panel that appear distinctly out of background */
 .board {

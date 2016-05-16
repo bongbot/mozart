@@ -1,14 +1,19 @@
 #header
-  #welcome
-    %span 
-      #{t :welcome},
-      = current_user.name
-    %span> !&nbsp;&nbsp;
+  .row
+    %h3.home.col-md-1
+      = link_to(t(:crm_admin_page), admin_path)
+    .col-md-offset-5
+      .row
+        .col-md-6
+          -#= render "layouts/components/top_center"
 
-    = link_to(t(:quick_find), "#", :id => "jumper") << " |"
-    = link_to(t(:profile), profile_path) << " |"
-    = link_to(t(:back_to_crm), root_path) << " |"
-    = link_to(t(:logout), logout_path, :method => :delete)
-    = render "/layouts/jumpbox"
-  %h3
-    = link_to(t(:crm_admin_page), admin_path)
+        .col-md-6
+          #welcome
+            = render :layout => "shared/profile_button" do
+              %li.dropdown-item
+                = link_to(t(:profile), profile_path)
+              %li.dropdown-item
+                = link_to(t(:back_to_crm), root_path)
+              %li.dropdown-item
+                = link_to(t(:logout), logout_path, :method => :delete)
+  = render "/layouts/jumpbox"
