@@ -78,6 +78,7 @@ class UsersController < ApplicationController
         if avatar.valid?
           @user.avatar = avatar
         else
+          @user.build_avatar
           @user.avatar.errors.clear
           @user.avatar.errors.add(:image, t(:msg_bad_image_file))
         end
