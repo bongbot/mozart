@@ -30,7 +30,9 @@ class AuthenticationsController < ApplicationController
       redirect_back_or_default root_url
     else
       # logout current user if exists
-      current_user_session.destroy
+      if current_user
+        current_user_session.destroy
+      end
 
       if @authentication.user && @authentication.user.awaits_approval?
         flash[:notice] = t(:msg_account_not_approved)
