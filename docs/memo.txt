@@ -17,3 +17,6 @@ https://github.com/plataformatec/devise/wiki/
 
 6. Moutable gem:
 rails plugin new sass --mountable
+
+7. Run only one test
+rspec --tag count spec/controllers/search_controller_spec.rb
