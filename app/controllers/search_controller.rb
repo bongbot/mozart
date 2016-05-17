@@ -11,10 +11,10 @@ class SearchController < ApplicationController
 
     if @keyword
       @result = []
-      @entitiy_names = %w{Campaign Lead Account Contact Opportunity}
-      @current_entity_name = @entitiy_names[0].downcase
+      entitiy_names = %w{task campaign lead account contact opportunity}
+      @current_entity_name = entitiy_names[0].downcase
 
-      @entitiy_names.each_with_index do |entity_name, idx|
+      entitiy_names.each_with_index do |entity_name, idx|
         if idx == 0
           scope = search_objects(@keyword, entity_name)
           @entities = scope

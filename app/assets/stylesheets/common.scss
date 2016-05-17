@@ -294,7 +294,7 @@ $label_medium_with: 170px;
   margin: 0px 6px 0px 0px;
   padding: 1px 4px 1px 3px;
   text-align: right;
-  width: 75px;
+  min-width: 75px;
   -moz-border-radius: {
     topleft: 7px;
     bottomleft: 7px; };
