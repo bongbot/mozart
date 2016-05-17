@@ -4,9 +4,10 @@
 - text_name = @entity.full_name
 
 - if @entity.errors.empty?
-  $('##{id}').html('#{ j render(:partial => "edit",  :locals => {:edit => false}) }');
   crm.set_title('edit_#{entity_name}', '#{h text_name}');
+  $('##{id}').html('#{ j render(:partial => "edit",  :locals => {:edit => false}) }');
   = refresh_sidebar(:show, :summary)
+  $('#recently').replaceWith('#{ j render(:partial => "shared/recently") }');
   crm.event.emit(EVENT_EDIT_OK);
 - else
   $('##{id}').html('#{ j render(:partial => "edit",  :locals => {:edit => true}) }');

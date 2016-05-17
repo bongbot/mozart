@@ -7,6 +7,7 @@
     crm.set_title('edit_#{entity_name}', '#{h @entity.name}');
     $('##{id}').html('#{ j render(:partial => "edit",  :locals => {:edit => false}) }');
     = refresh_sidebar(:show, :summary)
+    $('#recently').replaceWith('#{ j render(:partial => "shared/recently") }');
     crm.toggleUrlEdit(false);
     crm.event.emit(EVENT_EDIT_OK);
 - else
