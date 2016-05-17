@@ -6,27 +6,39 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe SearchController do
-  before(:each) do
-
+  before do
+    require_user
+    @campaigns = [FactoryGirl.create(:campaign, user: current_user, name: "campain")]
   end
 
-  # GET /searchs
+  # POST /search
   #----------------------------------------------------------------------------
-  describe "responding to POST index" do
-    before do
-      FactoryGirl.create(:campaign, user: current_user, name: "campain 1")
-    end
-
-    after do
-      Time.zone = @timezone
-    end
-
-    it "should render search result with found created campaign" do
+  describe "responding to POST search" do
+    it "should render search result with found campaign" do
       post :search, search:{keyword:""}
-      # puts "TTT:: " + assigns[:entities].inspect
-
-      # expect(assigns[:tasks].values.flatten - @tasks.values.flatten).to eq([])
+      expect(assigns[:entities]).to eq(@campaigns)
       expect(response).to render_template("search/search")
+    end
+
+    it "should show correct count result with found lead", :count => true  do
+      @leads = [FactoryGirl.create(:lead, user: current_user)]
+
+      post :search, search:{keyword:""}
+      lead_count = assigns[:result].find{|_| _[:key] == :lead}
+      expect(lead_count[:count]).to eq(1)
+      expect(response).to render_template("search/search")
+    end
+  end
+
+  # GET /search_partial
+  #----------------------------------------------------------------------------
+  describe "responding to search partial" do
+    it "should show all search result of target resource when changing tab" do
+      @leads = [FactoryGirl.create(:lead, user: current_user)]
+
+      xhr :get, :search_partial, {keyword:"", model: "lead"}
+      expect(assigns[:entities]).to eq(@leads)
+      expect(response).to render_template("search/js/search_partial")
     end
 
   end
