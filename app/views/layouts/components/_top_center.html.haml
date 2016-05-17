@@ -29,6 +29,4 @@
         %i.icon-list-alt
         %span.mz-caret
       %ul.dropdown-menu
-        - ["contact", "lead"].each do |val|
-          %li
-            = link_to(val)
+        = render "shared/recently"

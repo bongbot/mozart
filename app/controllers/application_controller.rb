@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   before_action :set_common_variable
   before_action :clear_setting_cache
   before_action "hook(:app_before_filter, self)"
+  before_action :set_paper_trail_whodunnit
   after_action "hook(:app_after_filter,  self)"
 
   helper_method :current_user_session, :current_user, :can_signup?
