@@ -8,7 +8,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe SearchController do
   before do
     require_user
-    @campaigns = [FactoryGirl.create(:campaign, user: current_user, name: "campain")]
+    @tasks = [FactoryGirl.create(:task, user: current_user, name: "campain")]
   end
 
   # POST /search
@@ -16,7 +16,7 @@ describe SearchController do
   describe "responding to POST search" do
     it "should render search result with found campaign" do
       post :search, search:{keyword:""}
-      expect(assigns[:entities]).to eq(@campaigns)
+      expect(assigns[:entities]).to eq(@tasks)
       expect(response).to render_template("search/search")
     end
 
