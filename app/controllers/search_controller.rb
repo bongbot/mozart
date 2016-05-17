@@ -11,7 +11,7 @@ class SearchController < ApplicationController
 
     if @keyword
       @result = []
-      @entitiy_names = %w{Task Campaign Lead Account Contact Opportunity}
+      @entitiy_names = %w{Campaign Lead Account Contact Opportunity}
       @current_entity_name = @entitiy_names[0].downcase
 
       @entitiy_names.each_with_index do |entity_name, idx|
