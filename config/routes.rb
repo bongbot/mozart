@@ -12,6 +12,7 @@ Rails.application.routes.draw do
                          }
 
   devise_scope :subscriber do
+    get "subscribers/confirmations/check_finish" => "sass/confirmations#check_finish", :as => :check_finish
     get 'success/:id' => 'sass/registrations#success', :as => :success
   end
 

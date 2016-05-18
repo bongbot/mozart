@@ -1,0 +1,34 @@
+.standalone{:style => "width: 480px;"}
+  Vui lòng đợi trong khi chúng tôi đang khởi tạo thông tin cho tài khoản của bạn...
+
+  %span#dataSpan.hidden{:"data-url" => check_finish_path, :"data-login" => login_url(subdomain:@resource.domain)}
+:javascript
+  $(function() {
+    function startCheck() {
+      setTimeout(function(){
+        $.ajax({
+          url:$("#dataSpan").data("url"),
+          success: function(data){
+            if(data.state = "success") {
+              window.location = $("#dataSpan").data("login");
+            } else if (data.state = "waiting") {
+              startCheck();
+            } else if (data.state = "error") {
+              error();
+            }
+
+          },
+          fail: function(){
+            error();
+          }
+        })
+
+      }, 3000)
+    }
+
+    function error() {
+      alert("Rất xin lỗi bạn. Có lỗi trong quá trình xử lý! Hãy liên lạc với chúng tôi để nhận được trợ giúp")
+    }
+
+    startCheck();
+  })
