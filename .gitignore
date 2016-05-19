@@ -42,3 +42,4 @@ Gemfile.lock
 railways.cache
 # Ignore application configuration
 /config/application.yml
+nohup.out

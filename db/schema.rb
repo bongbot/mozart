@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424125438) do
+ActiveRecord::Schema.define(version: 20160404164512) do
 
   create_table "account_contacts", force: :cascade do |t|
     t.integer  "account_id", limit: 4
@@ -355,15 +355,6 @@ ActiveRecord::Schema.define(version: 20160424125438) do
   end
 
   add_index "settings", ["name"], name: "index_settings_on_name", using: :btree
-
-  create_table "subscribers", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "password",    limit: 255
-    t.string   "domain",      limit: 255
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id",        limit: 4
