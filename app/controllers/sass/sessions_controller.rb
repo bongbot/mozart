@@ -16,7 +16,7 @@ class Sass::SessionsController < Devise::SessionsController
    unless subscriber
      @error = "Không tồn tại email trên trong cơ sở dữ liệu"
    else
-     if subscriber.confirmed_at
+     if !subscriber.confirmed_at
        @error = "Tài khoản chưa kích hoạt"
      end
    end

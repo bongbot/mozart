@@ -10,7 +10,7 @@ module TasksHelper
   def task_filter_checkbox(view, filter, count)
     name = "filter_by_task_#{view}"
     checked = (session[name] ? session[name].split(",").include?(filter.to_s) : count > 0)
-    url = url_for(action: :filter, view: view)
+    url = url_for(action: :filter, view: view, :format => :js)
     onclick = %{
       $('#loading').show();
       $.post('#{url}', {filter: this.value, checked: this.checked}, function () {
