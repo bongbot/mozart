@@ -158,5 +158,6 @@ class AccountsController < EntitiesController
     categorized = @account_category_total.values.sum
     @account_category_total[:all] = Account.my.count
     @account_category_total[:other] = @account_category_total[:all] - categorized
+    @account_category_total
   end
 end
