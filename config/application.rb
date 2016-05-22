@@ -30,8 +30,7 @@ module FatFreeCRM
     unless ENV["TRAVIS_CI"] == "true"
       require 'apartment/elevators/generic' # or 'domain' or 'generic'
       config.middleware.use 'Apartment::Elevators::Generic', Proc.new {     |request|
-                              puts "TTT:R: " + request.host.inspect
-                              if request.host.split(".").length > 2 && request.host.split(".").length < 4
+                              if request.host.split(".").length >= 2 && request.host.split(".").length < 4
                                 request.host.split(".")[0]
                               else
                                 config   = Rails.configuration.database_configuration
