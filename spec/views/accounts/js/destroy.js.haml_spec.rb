@@ -13,7 +13,7 @@ describe "/accounts/destroy" do
     assign(:account, @account = FactoryGirl.create(:account))
     assign(:accounts, [@account].paginate)
     assign(:account_category_total, Hash.new(1))
-    render
+    render template: 'accounts/js/destroy'
   end
 
   it "should blind up destroyed account partial" do
@@ -24,9 +24,7 @@ describe "/accounts/destroy" do
     expect(rendered).to include("#paginate")
   end
 
-  it "should update accounts sidebar" do
-    expect(rendered).to include("#sidebar")
-    expect(rendered).to have_text("Account Categories")
-    expect(rendered).to have_text("Recent Items")
+  it "should update accounts toolbar" do
+    expect(rendered).to include("#toolbar")
   end
 end

@@ -17,44 +17,20 @@ describe "/accounts/update" do
   end
 
   describe "no errors:" do
-    describe "on account landing page -" do
-      before do
-        controller.request.env["HTTP_REFERER"] = "http://localhost/accounts/123"
-      end
-
-      it "should flip [edit_account] form" do
-        render
-        expect(rendered).not_to include("account_#{@account.id}")
-        expect(rendered).to include("crm.flip_form('edit_account'")
-      end
-
-      it "should update sidebar" do
-        render
-        expect(rendered).to include("$('#sidebar').html")
-        expect(rendered).to have_text("Recent Items")
-        expect(rendered).to include("$('#summary').effect('shake'")
-      end
+    before do
+      controller.request.env["HTTP_REFERER"] = "http://localhost/accounts/123"
     end
 
-    describe "on accounts index page -" do
-      before do
-        controller.request.env["HTTP_REFERER"] = "http://localhost/accounts"
-      end
+    it "should flip render account and emit edit ok" do
+      render template: "accounts/js/update", formats: [:js]
+      # render template: "accounts/js/update", formats: [:js]
+      expect(rendered).to include("account_#{@account.id}")
+      expect(rendered).to include("crm.event.emit(EVENT_EDIT_OK);")
+    end
 
-      it "should update sidebar" do
-        render
-        expect(rendered).to include("#sidebar")
-        expect(rendered).to have_text("Account Categories")
-        expect(rendered).to have_text("Recent Items")
-      end
-
-      it "should replace [edit_account] form with account partial and highlight it" do
-        controller.request.env["HTTP_REFERER"] = "http://localhost/accounts"
-        render
-
-        expect(rendered).to include("#account_#{@account.id}")
-        expect(rendered).to include(%/$('#account_#{@account.id}').effect("highlight"/)
-      end
+    it "should update recently" do
+      render template: "accounts/js/update", formats: [:js]
+      expect(rendered).to include("$('#recently').replaceWith")
     end
   end # no errors
 
@@ -63,32 +39,13 @@ describe "/accounts/update" do
       @account.errors.add(:name)
     end
 
-    describe "on account landing page -" do
-      before do
-        controller.request.env["HTTP_REFERER"] = "http://localhost/accounts/123"
-      end
+    it "should redraw the [edit_account] form and shake it" do
+      render template: "accounts/js/update", formats: [:js]
 
-      it "should redraw the [edit_account] form and shake it" do
-        render
-
-        expect(rendered).to include("#edit_account")
-        expect(rendered).to include(%/$('#edit_account').effect("shake"/)
-        expect(rendered).to include('focus()')
-      end
-    end
-
-    describe "on accounts index page -" do
-      before do
-        controller.request.env["HTTP_REFERER"] = "http://localhost/accounts"
-      end
-
-      it "should redraw the [edit_account] form and shake it" do
-        render
-
-        expect(rendered).to include("account_#{@account.id}")
-        expect(rendered).to include(%/$('#account_#{@account.id}').effect("shake"/)
-        expect(rendered).to include('focus()')
-      end
+      expect(rendered).to include("#edit_account")
+      expect(rendered).to include(%/$('#edit_account').effect("shake"/)
+      expect(rendered).to include('focus()')
+      expect(rendered).to include("crm.event.emit(EVENT_EDIT_NG);")
     end
   end # errors
 end

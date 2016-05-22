@@ -93,6 +93,7 @@ ActionView::Base.class_eval do
     HashWithIndifferentAccess.new(request.path_parameters)["controller"].split('/').last
   end
 
+  # todo do something to remove these duplications
   def called_from_index_page?(controller = controller_name)
     if controller != "tasks"
       request.referer =~ %r{/#{controller}$}
@@ -101,7 +102,12 @@ ActionView::Base.class_eval do
     end
   end
 
-  def called_from_landing_page?(controller = controller_name)
-    request.referer =~ %r{/#{controller}/\w+}
+  def previous_path?
+    false
   end
+
+  def flash_previous_path?
+    false
+  end
+
 end

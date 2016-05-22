@@ -19,7 +19,6 @@ describe "/accounts/index" do
 
     expect(rendered).to include("$('#accounts').html")
     expect(rendered).to include("$('#paginate').html")
-    expect(rendered).to include("AAA")
   end
 
   it "should render [empty] template if @accounts collection if there are no accounts" do
