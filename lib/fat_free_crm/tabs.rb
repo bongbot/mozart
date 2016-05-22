@@ -17,7 +17,6 @@ module FatFreeCRM
 
       def admin
         @@admin ||= (Setting[:admin_tabs] && Setting[:admin_tabs].dup)
-        # puts "TTT: : #{@@admin.inspect}    /**#{__FILE__}:#{__LINE__}"
       end
     end
   end

@@ -13,7 +13,6 @@ module AddressesHelper
 
   def priority_countries
     Setting[:priority_countries]
-    puts "TTT: " + Setting[:priority_countries].inspect
   end
 
   def address_exist?(address)
