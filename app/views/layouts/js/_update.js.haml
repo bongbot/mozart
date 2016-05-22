@@ -1,11 +1,13 @@
 - entity_name = controller.controller_name.singularize.underscore #account
 - @entity = instance_variable_get("@#{entity_name}")
 - id = "edit_#{entity_name}"
+- name = @entity.respond_to?(:name) ?  @entity.name : @entity.full_name
 
 - if @entity.errors.empty?
-  crm.set_title('edit_#{entity_name}', '#{h @entity.name}');
+  crm.set_title('edit_#{entity_name}', '#{h name}');
   $('##{id}').html('#{ j render(:partial => "edit",  :locals => {:edit => false}) }');
   $('#recently').replaceWith('#{ j render(:partial => "shared/recently") }');
+  = yield
   crm.toggleUrlEdit(false);
   crm.event.emit(EVENT_EDIT_OK);
 
@@ -13,6 +15,7 @@
   $('##{id}').html('#{ j render(:partial => "edit",  :locals => {:edit => true}) }');
   $('##{id}').effect("shake", { duration:250, distance: 6 });
   $('##{dom_id(@entity, :edit)} input[type!=hidden]').first().focus();
+  = yield
   crm.event.emit(EVENT_EDIT_NG);
 
 = hook(:entity_update, self, {entity: @entity})
