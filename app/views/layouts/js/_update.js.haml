@@ -1,15 +1,14 @@
 - entity_name = controller.controller_name.singularize.underscore #account
 - @entity = instance_variable_get("@#{entity_name}")
-- id = called_from_landing_page? ? "edit_#{entity_name}" : dom_id(@entity)
+- id = "edit_#{entity_name}"
 
 - if @entity.errors.empty?
-  - if called_from_landing_page?
-    crm.set_title('edit_#{entity_name}', '#{h @entity.name}');
-    $('##{id}').html('#{ j render(:partial => "edit",  :locals => {:edit => false}) }');
-    = refresh_sidebar(:show, :summary)
-    $('#recently').replaceWith('#{ j render(:partial => "shared/recently") }');
-    crm.toggleUrlEdit(false);
-    crm.event.emit(EVENT_EDIT_OK);
+  crm.set_title('edit_#{entity_name}', '#{h @entity.name}');
+  $('##{id}').html('#{ j render(:partial => "edit",  :locals => {:edit => false}) }');
+  $('#recently').replaceWith('#{ j render(:partial => "shared/recently") }');
+  crm.toggleUrlEdit(false);
+  crm.event.emit(EVENT_EDIT_OK);
+
 - else
   $('##{id}').html('#{ j render(:partial => "edit",  :locals => {:edit => true}) }');
   $('##{id}').effect("shake", { duration:250, distance: 6 });
