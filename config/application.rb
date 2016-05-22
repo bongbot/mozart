@@ -92,6 +92,5 @@ end
 # so that FatFreeCRM::Engine is skipped.
 require 'fat_free_crm'
 
-ENV['ENV'] ||= 'development'
 db_conf =  Rails.configuration.database_configuration
-MOZART_SASS = db_conf["mozart_sass"][ENV['ENV']]
+MOZART_SASS = db_conf["mozart_sass"][ENV['RAILS_ENV']]
