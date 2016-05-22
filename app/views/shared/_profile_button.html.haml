@@ -1,6 +1,6 @@
 #dropown_profile.dropdown.pull-right
   %button.dropdown-toggle{"data-toggle" => "dropdown", :style => "border-width: 0px; background-color: transparent;"}
-    = avatar_for(current_user, :size => :small_medium)
+    = avatar_for(current_user, :size => :small_medium, :style => "max-width: 31px; overflow: hidden; max-height: 31px;")
     %span.caret
   %ul.dropdown-menu
     = yield
