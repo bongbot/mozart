@@ -20,6 +20,8 @@ shared_examples_for "background" do
   end
 end
 
+
+# JS Response
 shared_examples_for "edit_js_common" do
   describe "edit js should work properly" do
     before do

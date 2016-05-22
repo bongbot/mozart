@@ -2,6 +2,7 @@ shared_examples_for "destroy_common" do
   describe "should destroy in index page properly" do
     before do
       create_variables(model)
+      render template: "#{@models}/js/destroy", formats: [:js]
     end
 
     it "should blind up destroyed #{@model} partial" do

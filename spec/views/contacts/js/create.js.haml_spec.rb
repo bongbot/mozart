@@ -5,17 +5,17 @@
 #------------------------------------------------------------------------------
 require 'spec_helper'
 
-describe "/accounts/destroy" do
-  include AccountsHelper
+describe "/contacts/create" do
+  include ContactsHelper
 
   before do
     login_and_assign
-    assign(:account, @account = FactoryGirl.create(:account))
-    assign(:accounts, [@account].paginate)
-    assign(:account_category_total, Hash.new(1))
+    @account = FactoryGirl.create(:account)
   end
 
-  it_should_behave_like "destroy_common" do
-    let(:model) { :account }
+  it_should_behave_like "create_common" do
+    let(:model) { :contact }
+    let(:success_data) { @contact = FactoryGirl.create(:contact); @contact }
+    let(:error_data) { FactoryGirl.build(:contact, first_name: nil) }
   end
 end

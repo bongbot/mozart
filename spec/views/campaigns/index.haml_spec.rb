@@ -13,7 +13,6 @@ describe "/campaigns/index" do
     assign :per_page, Campaign.per_page
     assign :sort_by,  Campaign.sort_by
     assign :ransack_search, Campaign.search
-    assign :model_name, "account"
     assign :campaign_status_total, {}
     login_and_assign
   end

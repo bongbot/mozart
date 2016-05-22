@@ -5,17 +5,16 @@
 #------------------------------------------------------------------------------
 require 'spec_helper'
 
-describe "/accounts/destroy" do
-  include AccountsHelper
+describe "/contacts/destroy" do
+  include ContactsHelper
 
   before do
     login_and_assign
-    assign(:account, @account = FactoryGirl.create(:account))
-    assign(:accounts, [@account].paginate)
-    assign(:account_category_total, Hash.new(1))
+    assign(:contact, @contact = FactoryGirl.create(:contact))
+    assign(:contacts, [@contact].paginate)
   end
 
   it_should_behave_like "destroy_common" do
-    let(:model) { :account }
+    let(:model) { :contact }
   end
 end

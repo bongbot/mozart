@@ -5,7 +5,6 @@ shared_examples_for "index_list" do
     end
 
     it "should render list of accounts if list of #{@models} is not empty" do
-      puts "TTT: " + @models.inspect + "/**#{__FILE__}:#{__LINE__}"
       assign(@models.to_sym, data)
 
       render

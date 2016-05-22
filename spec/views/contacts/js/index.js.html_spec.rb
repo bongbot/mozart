@@ -5,17 +5,15 @@
 #------------------------------------------------------------------------------
 require 'spec_helper'
 
-describe "/accounts/destroy" do
-  include AccountsHelper
+describe "/contacts/index" do
+  include ContactsHelper
 
   before do
     login_and_assign
-    assign(:account, @account = FactoryGirl.create(:account))
-    assign(:accounts, [@account].paginate)
-    assign(:account_category_total, Hash.new(1))
   end
 
-  it_should_behave_like "destroy_common" do
-    let(:model) { :account }
+  it_should_behave_like "index_js_common" do
+    let(:model) { :contact }
+    let(:data) { [FactoryGirl.create(:contact, id: 42)].paginate }
   end
 end

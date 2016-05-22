@@ -11,7 +11,6 @@ describe "/campaigns/destroy" do
     assign(:campaign, @campaign = FactoryGirl.create(:campaign, user: current_user))
     assign(:campaigns, [@campaign].paginate)
     assign(:campaign_status_total, Hash.new(1))
-    render template: 'campaigns/js/destroy'
   end
 
   it_should_behave_like "destroy_common" do
