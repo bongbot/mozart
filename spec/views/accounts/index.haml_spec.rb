@@ -13,6 +13,8 @@ describe "/accounts/index" do
     assign :per_page, Account.per_page
     assign :sort_by,  Account.sort_by
     assign :ransack_search, Account.search
+    assign :model_name, "account"
+    assign :account_category_total, {}
     login_and_assign
   end
 

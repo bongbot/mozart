@@ -310,6 +310,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_common_variable
+    puts "TTT:SAIGON: " + "HANOI".inspect
     @model_name = controller_name.singularize
   end
 

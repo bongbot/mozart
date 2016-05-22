@@ -20,23 +20,23 @@ describe "/accounts/new" do
     expect(rendered).to include("crm.flick('empty', 'toggle')")
   end
 
-  describe "new account" do
-    it "should render [new] template into :create_account div" do
-      params[:cancel] = nil
-      render
-
-      expect(rendered).to include("#create_account")
-      expect(rendered).to include("crm.flip_form('create_account');")
-    end
-  end
-
-  describe "cancel new account" do
-    it "should hide [create account] form()" do
-      params[:cancel] = "true"
-      render
-
-      expect(rendered).not_to include("#create_account")
-      expect(rendered).to include("crm.flip_form('create_account');")
-    end
-  end
+  # describe "new account" do
+  #   it "should render [new] template into :create_account div" do
+  #     params[:cancel] = nil
+  #     render
+  #
+  #     expect(rendered).to include("#create_account")
+  #     expect(rendered).to include("crm.flip_form('create_account');")
+  #   end
+  # end
+  #
+  # describe "cancel new account" do
+  #   it "should hide [create account] form()" do
+  #     params[:cancel] = "true"
+  #     render
+  #
+  #     expect(rendered).not_to include("#create_account")
+  #     expect(rendered).to include("crm.flip_form('create_account');")
+  #   end
+  # end
 end
