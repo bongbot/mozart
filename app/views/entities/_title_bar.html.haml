@@ -1,11 +1,12 @@
+- model_name = controller_name.singularize
+
 .mz-row
   .pull-left.title
-    %span{:id => "create_#{@model_name}_title"} #{t controller_name.to_sym}
+    %span{:id => "create_#{model_name}_title"} #{t controller_name.to_sym}
     = image_tag("loading.gif", :size => :thumb, :id => "loading", :style => "display: none;")
 
   .pull-right
-    -#= link_to(t(:new), send("new_#{@model_name}_path"), :class => "btn btn-secondary" )
     %a{:title => "", "data-toggle" => "tooltip", "data-placement" => "left", "data-container" => "body",
-      :href => send("new_#{@model_name}_path")  , "data-original-title" => t("create_#{@model_name}".to_sym), :class => "btn btn-success btn-new"}
+      :href => send("new_#{model_name}_path")  , "data-original-title" => t("create_#{model_name}".to_sym), :class => "btn btn-success btn-new"}
       %span.fa.fa-plus
 
