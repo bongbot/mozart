@@ -26,18 +26,7 @@ describe "/accounts/_edit" do
     end
   end
 
-  it "should render background info field in edit mode if settings require so" do
-    Setting.background_info = [:account]
-    assign(:edit, true)
-
-    render partial: "accounts/edit", locals: {edit: true}
-    expect(rendered).to have_tag("textarea[id=account_background_info]")
-  end
-
-  it "should not render background info field if settings do not require so" do
-    Setting.background_info = []
-
-    render
-    expect(rendered).not_to have_tag("textarea[id=account_background_info]")
+  it_should_behave_like "background" do
+    let(:model) { :account }
   end
 end

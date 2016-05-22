@@ -11,20 +11,11 @@ describe "/campaigns/destroy" do
     assign(:campaign, @campaign = FactoryGirl.create(:campaign, user: current_user))
     assign(:campaigns, [@campaign].paginate)
     assign(:campaign_status_total, Hash.new(1))
-    render
+    render template: 'campaigns/js/destroy'
   end
 
-  it "should blind up destroyed campaign partial" do
-    expect(rendered).to include("slideUp")
+  it_should_behave_like "destroy_common" do
+    let(:model) { :campaign }
   end
 
-  it "should update Campaigns sidebar" do
-    expect(rendered).to include("#sidebar")
-    expect(rendered).to have_text("Recent Items")
-    expect(rendered).to include(%/$('#filters').effect('shake'/)
-  end
-
-  it "should update pagination" do
-    expect(rendered).to include("#paginate")
-  end
 end

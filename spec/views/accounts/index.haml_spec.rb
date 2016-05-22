@@ -24,20 +24,8 @@ describe "/accounts/index" do
     expect(rendered).to have_tag('a', text: "New Media Inc")
   end
 
-  it "should render list of accounts if list of accounts is not empty" do
-    assign(:accounts, [FactoryGirl.create(:account), FactoryGirl.create(:account)].paginate)
-
-    render
-    expect(view).to render_template(partial: "_account")
-    expect(view).to render_template(partial: "shared/_paginate_with_per_page")
-  end
-
-  it "should render a message if there're no accounts" do
-    assign(:accounts, [].paginate)
-
-    render
-    expect(view).not_to render_template(partial: "_account")
-    expect(view).to render_template(partial: "shared/_empty")
-    expect(view).to render_template(partial: "shared/_paginate_with_per_page")
+  it_should_behave_like "index_list" do
+    let(:model) { :account }
+    let(:data) { [FactoryGirl.create(:account), FactoryGirl.create(:account)].paginate }
   end
 end

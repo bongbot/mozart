@@ -8,7 +8,7 @@ require 'spec_helper'
 describe "/campaigns/_edit" do
   include CampaignsHelper
 
-  before do
+  before do |example|
     login_and_assign
     assign(:campaign, @campaign = FactoryGirl.create(:campaign))
     assign(:users, [current_user])
@@ -26,17 +26,8 @@ describe "/campaigns/_edit" do
     end
   end
 
-  it "should render background info field if settings require so" do
-    Setting.background_info = [:campaign]
-
-    render
-    expect(rendered).to have_tag("textarea[id=campaign_background_info]")
+  it_should_behave_like "background" do
+    let(:model) { :campaign }
   end
 
-  it "should not render background info field if settings do not require so" do
-    Setting.background_info = []
-
-    render
-    expect(rendered).not_to have_tag("textarea[id=campaign_background_info]")
-  end
 end

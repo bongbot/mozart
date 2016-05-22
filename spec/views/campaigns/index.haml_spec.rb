@@ -13,23 +13,14 @@ describe "/campaigns/index" do
     assign :per_page, Campaign.per_page
     assign :sort_by,  Campaign.sort_by
     assign :ransack_search, Campaign.search
+    assign :model_name, "account"
+    assign :campaign_status_total, {}
     login_and_assign
   end
 
-  it "should render list of accounts if list of campaigns is not empty" do
-    assign(:campaigns, [FactoryGirl.create(:campaign)].paginate)
-
-    render
-    expect(view).to render_template(partial: "_campaign")
-    expect(view).to render_template(partial: "shared/_paginate_with_per_page")
+  it_should_behave_like "index_list" do
+    let(:model) { :campaign }
+    let(:data) { [FactoryGirl.create(:campaign)].paginate }
   end
 
-  it "should render a message if there're no campaigns" do
-    assign(:campaigns, [].paginate)
-
-    render
-    expect(view).not_to render_template(partial: "_campaigns")
-    expect(view).to render_template(partial: "shared/_empty")
-    expect(view).to render_template(partial: "shared/_paginate_with_per_page")
-  end
 end

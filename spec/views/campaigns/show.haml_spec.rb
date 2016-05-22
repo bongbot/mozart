@@ -20,7 +20,7 @@ describe "/campaigns/show" do
     allow(view).to receive(:params) { { id: 123 } }
   end
 
-  it "should render campaign landing page" do
+  it "should render campaign page" do
     render
     expect(view).to render_template(partial: "comments/_new")
     expect(view).to render_template(partial: "shared/_timeline")

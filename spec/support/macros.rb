@@ -42,3 +42,10 @@ def adjust_timezone(offset)
     allow(Time).to receive(:now).and_return(adjusted_time)
   end
 end
+
+def create_variables(model)
+  @model = model.to_s
+  @_model = "_#{@model}"
+  @models = "#{@model.pluralize}"
+  @_models = "_#{@models}"
+end

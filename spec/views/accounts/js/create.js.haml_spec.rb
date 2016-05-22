@@ -12,29 +12,9 @@ describe "/accounts/create" do
     login_and_assign
   end
 
-  # Note: [Create Account] is only called from Accounts index. Unlike other
-  # core object Account partial is not embedded.
-  describe "create success" do
-    before do
-      assign(:account, @account = FactoryGirl.create(:account))
-      assign(:accounts, [@account].paginate)
-      assign(:account_category_total, Hash.new(1))
-      render template: 'accounts/js/create', formats: [:js]
-    end
-
-    it "should redirect to index or back to resource page if successful" do
-      expect(rendered).to include("window.location.href")
-    end
-  end
-
-  describe "create failure" do
-    it "should re-render [create] template in :create_account div" do
-      assign(:account, FactoryGirl.build(:account, name: nil)) # make it invalid
-      assign(:users, [current_user])
-
-      render template: 'accounts/js/create', formats: [:js]
-      expect(rendered).to include("#edit_account")
-      expect(rendered).to include(%/$('#edit_account').effect("shake"/)
-    end
+  it_should_behave_like "create_common" do
+    let(:model) { :account }
+    let(:success_data) { @account = FactoryGirl.create(:account); @account }
+    let(:error_data) { FactoryGirl.build(:account, name: nil) }
   end
 end

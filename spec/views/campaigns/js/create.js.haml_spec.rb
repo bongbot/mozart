@@ -5,16 +5,15 @@
 #------------------------------------------------------------------------------
 require 'spec_helper'
 
-describe "/accounts/edit" do
-  include AccountsHelper
-
+describe "/campaigns/create" do
   before do
     login_and_assign
-    assign(:account, @account = FactoryGirl.create(:account, user: current_user))
-    assign(:users, [current_user])
   end
 
-  it_should_behave_like "edit_js_common" do
-      let(:model) { :account }
-    end
+  it_should_behave_like "create_common" do
+    let(:model) { :campaign }
+    let(:success_data) { @campaign = FactoryGirl.create(:campaign); @campaign }
+    let(:error_data) { FactoryGirl.build(:campaign, name: nil) }
+  end
+
 end

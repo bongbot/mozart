@@ -16,15 +16,7 @@ describe "/accounts/destroy" do
     render template: 'accounts/js/destroy'
   end
 
-  it "should blind up destroyed account partial" do
-    expect(rendered).to include("slideUp")
-  end
-
-  it "should update accounts pagination" do
-    expect(rendered).to include("#paginate")
-  end
-
-  it "should update accounts toolbar" do
-    expect(rendered).to include("#toolbar")
+  it_should_behave_like "destroy_common" do
+    let(:model) { :account }
   end
 end
