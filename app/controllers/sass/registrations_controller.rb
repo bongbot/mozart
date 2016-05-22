@@ -12,7 +12,11 @@ class Sass::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
 
     resource.pwd = sign_up_params[:password]
-    resource.save
+    begin
+      resource.save
+    rescue Exception => ex
+      logger.info "III:ERROR: " + ex.inspect
+    end
 
     yield resource if block_given?
     if resource.persisted?

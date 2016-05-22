@@ -57,6 +57,7 @@ group :development, :test do
   gem 'headless'
   gem 'byebug'
   gem 'pry-rails' unless ENV["CI"]
+  gem 'pry-doc' unless ENV["CI"]
   gem 'factory_girl_rails'
 end
 

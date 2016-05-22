@@ -62,5 +62,24 @@ if defined?(FatFreeCRM::Application)
 
     # Do not dump schema after migrations.
     config.active_record.dump_schema_after_migration = false
+
+    # Mail setting for devise:
+
+    ActionMailer::Base.delivery_method = :smtp
+    ActionMailer::Base.perform_deliveries = true
+    ActionMailer::Base.raise_delivery_errors = true
+    ActionMailer::Base.smtp_settings = {
+        :enable_starttls_auto => true,
+        :address            => ENV['GMAIL_ADDRESS'],
+        :port               => '465',
+        :tls                  => true,
+        :domain => ENV['GMAIL_DOMAIN'],
+        :authentication     => :plain,
+        :user_name          => ENV['GMAIL_USERNAME'],
+        :password           => ENV['GMAIL_PASSWORD']
+    }
+
+    config.action_mailer.default_url_options = {:host => "localhost:3000"}
+
   end
 end

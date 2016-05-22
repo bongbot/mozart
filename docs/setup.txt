@@ -4,10 +4,10 @@ OR
 rake db:migrate && rake ffcrm:setup:admin USERNAME=cuongtm PASSWORD=cuongtm EMAIL=cuongtm@example.com
 
 test:
- rake db:migrate RAILS_ENV=test && rake ffcrm:setup:admin USERNAME=cuongtm PASSWORD=cuongtm EMAIL=cuongtm@example.com
-  RAILS_ENV=test
+ rake db:migrate RAILS_ENV=production && rake ffcrm:setup:admin USERNAME=cuongtm PASSWORD=cuongtm EMAIL=cuongtm@example.com
+  RAILS_ENV=production
 2. Run setup for sass development:
-rake db:migrate_mozart_sass
+rake db:migrate_mozart_sass RAILS_ENV=production
 
 3. Running test:
 bundle exec rspec spec/models/entities/account_contact_spec.rb
