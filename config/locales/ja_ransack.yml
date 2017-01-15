@@ -20,6 +20,8 @@ ja:
     group_rest: ! '...and where %{combinator} of the following match'
     add_condition: 検索条件を追加する
     remove_condition: 検索条件を削除する
+    Select_a_Field: 一つのフィルドを選択してください
+    Sort_by: ソート順
     predicates:
       eq: 一致する
       eq_any: 一致する｜右記のいずれか

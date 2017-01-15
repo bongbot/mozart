@@ -17,6 +17,7 @@ ja:
   tab_accounts: 取引先
   tab_contacts: 取引先責任者
   tab_opportunities: 商談
+  tab_team: チーム
   admin_tab_users: ユーザ
   admin_tab_settings: 管理設定
   admin_tab_plugins: プラグイン
@@ -43,6 +44,7 @@ ja:
   proposal: 提案
   negotiation: 価格交渉
   final_review: 最終交渉
+  filter: フィルタ
   won: 終/成立
   lost: 終/失注
   call: 電話
@@ -213,6 +215,9 @@ ja:
   login_now_link: 今すぐログイン！
   mobile: 携帯電話
   my_profile: 自分のプロフィール
+  my_tasks: 自分のタスク
+  my_opportunities: 自分の商談
+  my_accounts: 自分のアカウント
   new_password: 新しいパスワード
   password: パスワード
   password_confirmation: 新しいパスワードの確認
@@ -231,6 +236,9 @@ ja:
   forgot_password: パスワードを忘れた場合
   login: ログイン
   no_account: アカウントがない場合
+  no_task_records: タスクレコードがありません。
+  no_opportunity_records: 商談レコードがありません。
+  no_account_records: アカウントレコードがありません。
   remember_me: Remember Me
   sign_up_now: 今すぐサインアップ！
   account: 取引先
@@ -390,6 +398,7 @@ ja:
   completed_tab: 完了
   completed_tasks: 完了タスク
   create_task: タスクを作成
+  create_a_new: '%{name}を作成してください'
   create_task_small: 新しいタスクを作成してください。
   due: 期日
   feel_free: どうぞお気軽に
@@ -471,7 +480,9 @@ ja:
   permissions: パーミッション
   please_retry: please try another query.
   recent_items: 最近のアイテム
+  entities_per_page: 1 ページに表示するアイテム
   search_assets: ! '%{value}を検索'
+  search_results_count: '%{count}件'
   time_ago: ! '%{value}前'
   background_info: 背景
   address: 住所
@@ -555,3 +566,9 @@ ja:
     formats:
       mmddhhss: ! '%b %e at %l:%M%p'
       mmddyyyy_hhmm: ! '%m/%d/%Y %l:%M %p'
+
+#Simple search
+  basic_search: 基本検索
+  advanced_search: 上級検索
+
+

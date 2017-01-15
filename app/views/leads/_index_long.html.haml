@@ -35,7 +35,7 @@
 
     - if lead.tag_list.present?
       %dt
-        .tags= tags_for_index(lead)
+        .tag.label.label-default= tags_for_index(lead)
 
     = render "leads/index_tool_buttons", :lead => lead
 

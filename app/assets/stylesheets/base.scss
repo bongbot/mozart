@@ -3,7 +3,7 @@
 // Fat Free CRM is freely distributable under the terms of MIT license.
 // See MIT-LICENSE file or http://www.opensource.org/licenses/mit-license.php
 //------------------------------------------------------------------------------
-$color_body: #e5e5e5;
+$color_body: rgb(246, 246, 246);
 $color_link: #0033cc;
 $color_link_hover: white;
 $color_link_hover_background: #0033cc;
@@ -21,7 +21,9 @@ html, body {
     variant: normal;
     weight: normal; };
   height: 100%;
-  line-height: normal; }
+  line-height: normal;
+  font-size: 14px !important;
+}
 
 body, ol, ul, li, dt, tt, label, input, select, textarea {
   font: {

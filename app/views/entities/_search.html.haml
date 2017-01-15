@@ -7,7 +7,8 @@
         = link_to t('advanced_search'), '#', :"data-search-form" => "advanced_search", :class => (!params[:q] ? "" : " active")
 
     #search_results_count
-      = t('search_results_count', :count => @search_results_count)
+      - if @search_results_count.to_i > 0
+        = t('search_results_count', :count => @search_results_count)
 
   .search_form#basic_search{ :style => (params[:q] ? 'display: none;' : '') }
     = render "basic_search"

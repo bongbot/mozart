@@ -22,6 +22,8 @@ if defined?(FatFreeCRM::Application)
     # Don't care if the mailer can't send
     # config.action_mailer.raise_delivery_errors = false
 
+    # config.serve_static_files = true
+
     # Print deprecation notices to the Rails logger
     config.active_support.deprecation = :log
 
@@ -37,6 +39,7 @@ if defined?(FatFreeCRM::Application)
     # Asset digests allow you to set far-future HTTP expiration dates on all assets,
     # yet still be able to expire them through the digest params.
     config.assets.digest = true
+    config.assets.compile = true
 
     # Adds additional error checking when serving assets at runtime.
     # Checks for improperly declared sprockets dependencies.

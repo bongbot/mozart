@@ -1,7 +1,7 @@
 - if current_user
   #top-search
     .mz-btn-group.dropdown
-      %button#add-button.btn{"data-toggle" => "dropdown"}
+      %button#add-button.btn.btn-primary{"data-toggle" => "dropdown"}
         %i.icon-plus
         %span.mz-caret
       %ul.dropdown-menu.create-assest-top-menu
@@ -20,12 +20,12 @@
 
     = form_for(:search, :url => search_path) do |f|
       = f.text_field :keyword, :value => @keyword, :class => "top-search pull-left"
-      %button#search-button.btn.btn-primary.pull-left{:type=>"submit"}
+      %button#search-button.btn.btn-success.pull-left{:type=>"submit"}
         %i.icon-white.icon-search
       .clearfix
 
     .mz-btn-group.dropdown
-      %button.btn{"data-toggle" => "dropdown"}
+      %button.btn.btn-primary{"data-toggle" => "dropdown"}
         %i.icon-list-alt
         %span.mz-caret
       %ul.dropdown-menu

@@ -32,7 +32,7 @@ vi:
     group_rest: ! '...và khi %{combinator} khớp những điều kiện sau'
     add_condition: Thêm điều kiện
     remove_condition: Xoá điều kiện
-    Select_a_Field: Chọn một trường
+    Select_a_Field: Chọn một trường AAA
     predicates:
       eq: là
       eq_any: là bất kỳ

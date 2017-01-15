@@ -15,8 +15,8 @@ $label_medium_with: 170px;
   font: {
     size: 17px;
     weight: bold; };
-  padding-bottom: 2px;
-  margin-top: 6px;
+  //padding-bottom: 2px;
+  //margin-top: 6px;
   img {
     position: relative;
     top: 2px; } }
@@ -93,7 +93,7 @@ $label_medium_with: 170px;
   -webkit-border-radius: 6px;
   -webkit-box-shadow: 5px 5px 15px #bbbbbb, -5px 0px 15px #bbbbbb;
   input[type="text"], input[type="password"], input[type="email"] {
-    font-size: 16px;
+    font-size: 14px;
     padding: 2px;
     height: auto; }
   input[type="text"] {
@@ -292,15 +292,17 @@ $label_medium_with: 170px;
   float: left;
   font-size: 11px;
   margin: 0px 6px 0px 0px;
-  padding: 1px 4px 1px 3px;
-  text-align: right;
+  padding: 1px 4px 1px 4px;
+  text-align: center;
   min-width: 75px;
-  -moz-border-radius: {
-    topleft: 7px;
-    bottomleft: 7px; };
-  -webkit-border: {
-    top-left-radius: 7px;
-    bottom-left-radius: 7px; }; }
+  border-radius: 7px;
+}
+  //-moz-border-radius: {
+  //  topleft: 7px;
+  //  bottomleft: 7px; };
+  //-webkit-border: {
+  //  top-left-radius: 7px;
+  //  bottom-left-radius: 7px; }; }
 
 // Indentation classes:
 //   - indent: for use with strip (regular indentation).
@@ -477,7 +479,7 @@ $label_medium_with: 170px;
 // Sidebar, filters, and selectors.
 //------------------------------------------------------------------------------
 .filters, .panel {
-  background: snow;
+  background: white;
   margin: 0px 0px 12px 0px;
   padding: 6px 8px 6px 8px;
 
@@ -497,7 +499,7 @@ $label_medium_with: 170px;
     font-size: 12px;
     font-weight: bold; }
   input[type=text] {
-    margin-bottom: 4px; } }
+    margin-bottom: 0px; } }
 
 .panel {
   div {
@@ -800,7 +802,7 @@ footer {
 
 html, body {
   height: 100%;
-  background-color: #f6f6f6;
+  background-color: rgb(246, 246, 246);
 }
 
 
@@ -809,3 +811,23 @@ html, body {
   margin-bottom: 20px;
 }
 
+.fields.value {
+  input {
+    height: 26px;
+  }
+}
+
+.ransack_sort_order {
+  margin-left: 4px;
+}
+
+.add-button {
+  margin-top: 1px;
+}
+
+.btn.btn-primary {
+  background: rgb(245, 245, 245);
+  opacity: 0.7;
+  border-color: #ccc;
+  color: black;
+}
