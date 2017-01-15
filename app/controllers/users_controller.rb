@@ -107,6 +107,7 @@ class UsersController < ApplicationController
         @user.password = params[:user][:password]
         @user.password_confirmation = params[:user][:password_confirmation]
         @user.save
+        update_sass_password
         flash[:notice] = t(:msg_password_changed)
       else
         flash[:notice] = t(:msg_password_not_changed)
@@ -156,5 +157,14 @@ class UsersController < ApplicationController
     params[:avatar]
       .permit(:image)
       .merge(entity: @user)
+  end
+
+  def update_sass_password
+    subscriber = Subscriber.where(email: @user.email).first
+    if subscriber
+      subscriber.update_attributes(params.require(:user).permit(:password, :password_confirmation))
+      subscriber.update_attributes({pwd: params.require(:user)[:password]})
+    end
+    subscriber
   end
 end

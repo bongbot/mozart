@@ -61,6 +61,7 @@
 #
 #:locale: "en-US"
 :locale: "vi"
+#:locale: "ja"
 
 
 # Settings for outgoing email (SMTP)

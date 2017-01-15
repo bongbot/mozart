@@ -110,3 +110,7 @@ gem 'require_reloader'
 
 # Monitoring webapp performance
 gem 'newrelic_rpm'
+
+# hot fix for saas
+gem "attr_encrypted", "~> 3.0.0"
+

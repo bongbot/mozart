@@ -6,4 +6,7 @@ class Subscriber < ActiveRecord::Base
   devise :database_authenticatable, :confirmable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, password_length: 6..128
 
+  attr_encrypted :pwd, key: 'This is a key that is 256 bits!!'
+
+
 end
